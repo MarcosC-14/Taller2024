@@ -17,7 +17,7 @@ public class Cliente extends Persona {
      * Constructor predeterminado de Cliente
      */
     public Cliente() {
-
+        sape;
     }
 
     /**
