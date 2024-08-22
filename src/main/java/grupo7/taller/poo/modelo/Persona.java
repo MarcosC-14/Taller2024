@@ -10,9 +10,7 @@ package grupo7.taller.poo.modelo;
  */
 class Persona {
     private String nombre, correo, contrasenia;
-    
-    //HE LPP SMEU ERAI'
-    
+       
     /**
     * Constructor predeterminado de Persona
     */
