@@ -8,28 +8,36 @@ package grupo7.taller.poo.modelo;
  *
  * @author marco
  */
-class Persona {
-    private String nombre, correo, contrasenia;
-       
+
+    public class Persona {
+    //atributo que representa el nombre y apellido de una persona
+    private String nombre;
+    //atributo que representa el correo electronico de una persona
+    private String correo;
+    //atributo que representa la contraseña de una persona
+    private String contrasenia;
+
     /**
-    * Constructor predeterminado de Persona
-    */
+     *Constructor por defecto de la clase Persona
+     */
     public Persona() {
+        nombre= "NN";
+        correo= "correo@correo";
+        contrasenia="contrasenia";
     }
     
     /**
-    * Constructor parametrizado de Cliente
-    * @param n Es el nombre del cliente
-    * @param c Es el correo del cliente
-    * @param cn Es la contrasenia del cliente
-    * @param tel Es el telefono del cliente
-    */
+     *Constructor parametrizado de la clase Persona 
+     *@param nombre indica el nombre y apellido de la persona
+     *@param correo indica el correo electronico de la persona
+     *@param contrasenia indica la contrasenia que tiene la persona
+     * El constructor solo permite correos electronicos que tengan @
+     */
     public Persona(String nombre, String correo, String contrasenia) {
         this.nombre = nombre;
-        this.correo = correo;
+        this.setCorreo(correo);
         this.contrasenia = contrasenia;
     }
-    
 
     public String getNombre() {
         return nombre;
@@ -42,9 +50,14 @@ class Persona {
     public String getCorreo() {
         return correo;
     }
-
+    /**
+     *Setter del atributo correo electronico
+     *Solo ingresa el valor del correo electronico controlando que tenga un @
+     */
     public void setCorreo(String correo) {
-        this.correo = correo;
+        if((correo.indexOf('@'))!=-1){
+            this.correo = correo;
+        }
     }
 
     public String getContrasenia() {
@@ -54,6 +67,10 @@ class Persona {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Persona{" + "nombre=" + nombre + ", correo=" + correo + ", contrasenia=" + contrasenia + '}';
+    }
     
 }
