@@ -17,7 +17,8 @@ public class Cliente extends Persona {
      * Constructor predeterminado de Cliente
      */
     public Cliente() {
-
+        super();
+        this.telefono = "";
     }
 
     /**
@@ -60,25 +61,20 @@ public class Cliente extends Persona {
     
     /**
      * Método para actualizar los atributos del cliente
-     * @param nom Nombre
      * @param cor Correo
-     * @param con Contrasenia
      * @param tel Telefono
      */
-    public void actualizarInformacion(String nom, String cor, String con, String tel) {
-        this.setNombre(nom);
+    public void actualizarInformacion(String cor, String tel) {
         this.setCorreo(cor);
-        this.setContrasenia(con);
         this.setTelefono(tel);
     }
     
     /**
-     * Método para restablecer la contrasenia del usuario
+     * Método para recuperar la contrasenia del usuario
      * @param correo Ingresa el correo por parámetro
-     * @return Devuelve la nueva contrasenia
+     * @return Devuelve la contrasenia 
      */
     public String restablecerContrasenia(String correo) {
-        String nuevaCon = "";
-        return nuevaCon;
+        return this.getContrasenia();
     }
 }

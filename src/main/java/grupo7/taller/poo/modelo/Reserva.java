@@ -25,6 +25,14 @@ public class Reserva {
      * Constructor por defecto de Reserva
      */
     public Reserva() {
+        this.fecha = null;
+        this.hora = null;
+        this.comentario = "";
+        this.asistencia = false;
+        this.tiempoOcupacion = null;
+        this.tiempoFinalizacion = null;
+        this.cliente = null;
+        this.tarjeta = tarjeta;
     }
 
     /**
@@ -42,7 +50,8 @@ public class Reserva {
         this.asistencia = false;
         this.cliente = cliente;
         this.tarjeta = tarjeta;
-        //tiemposEn0
+        this.tiempoOcupacion = null;
+        this.tiempoFinalizacion = null;
         
     }
 

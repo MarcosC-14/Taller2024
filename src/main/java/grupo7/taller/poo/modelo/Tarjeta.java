@@ -18,6 +18,10 @@ public class Tarjeta {
      * Constructor por defecto de Tarjeta
      */
     public Tarjeta() {
+        this.nombre = "";   
+        this.emisor = "";
+        this.numero = "";
+        this.codSeguridad = "";
     }
     
     /**
