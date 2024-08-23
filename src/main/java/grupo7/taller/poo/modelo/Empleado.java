@@ -4,6 +4,7 @@ package grupo7.taller.poo.modelo;
 
 public class Empleado extends Persona {
     private Rol rol;
+    //Falta relacion con Cliente, Mesa y Administrador
 
     public Empleado() {
         super();
