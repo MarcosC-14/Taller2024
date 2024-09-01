@@ -5,11 +5,11 @@
 package grupo7.taller.poo.modelo;
 
 /**
- *
- * @author marco
+ *Esta clase representa a una persona
+ * 
+ * @author nombre de todos
  */
-
-    public class Persona {
+ abstract public class Persona {
     //atributo que representa el nombre y apellido de una persona
     private String nombre;
     //atributo que representa el correo electronico de una persona
