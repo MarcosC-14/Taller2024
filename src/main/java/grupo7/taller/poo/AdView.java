@@ -15,7 +15,7 @@ public class AdView extends javax.swing.JFrame {
      */
     public AdView() {
         initComponents();
-         setSize(1208,680);
+         setSize(729, 400);
                 setResizable(false);
                 setTitle("Panel de administracion");
                 setLocationRelativeTo(null);
@@ -48,15 +48,6 @@ public class AdView extends javax.swing.JFrame {
         jPanel_balances = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_reservas = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        busqueda_cliente_txt = new javax.swing.JTextField();
-        busqueda_mesa_txt = new javax.swing.JTextField();
-        busqueda_fecha_txt = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -76,6 +67,15 @@ public class AdView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         busqueda_empelado_id = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_reservas = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        busqueda_cliente_txt = new javax.swing.JTextField();
+        busqueda_mesa_txt = new javax.swing.JTextField();
+        busqueda_fecha_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,7 +87,7 @@ public class AdView extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Restaurante Flor");
+        jLabel1.setText("Restaurante Floripa");
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +103,7 @@ public class AdView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(21, 21, 21))
         );
@@ -117,7 +117,7 @@ public class AdView extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 520, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 640, 60));
 
         jLabel2.setText("Logo");
 
@@ -145,7 +145,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel_reservas.setBackground(new java.awt.Color(0, 102, 102));
 
-        txt_reservas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_reservas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_reservas.setText("Reservas");
         txt_reservas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -160,12 +160,12 @@ public class AdView extends javax.swing.JFrame {
             .addGroup(jPanel_reservasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txt_reservas)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel_reservasLayout.setVerticalGroup(
             jPanel_reservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_reservasLayout.createSequentialGroup()
-                .addGap(0, 5, Short.MAX_VALUE)
+                .addGap(0, 10, Short.MAX_VALUE)
                 .addComponent(txt_reservas))
         );
 
@@ -173,7 +173,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel_clientes.setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Clientes");
 
         javax.swing.GroupLayout jPanel_clientesLayout = new javax.swing.GroupLayout(jPanel_clientes);
@@ -183,7 +183,7 @@ public class AdView extends javax.swing.JFrame {
             .addGroup(jPanel_clientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel_clientesLayout.setVerticalGroup(
             jPanel_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +197,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel_mesas.setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Mesas");
 
         javax.swing.GroupLayout jPanel_mesasLayout = new javax.swing.GroupLayout(jPanel_mesas);
@@ -207,7 +207,7 @@ public class AdView extends javax.swing.JFrame {
             .addGroup(jPanel_mesasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel_mesasLayout.setVerticalGroup(
             jPanel_mesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +221,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel_empleados.setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Empleados");
 
         javax.swing.GroupLayout jPanel_empleadosLayout = new javax.swing.GroupLayout(jPanel_empleados);
@@ -235,7 +235,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel_empleadosLayout.setVerticalGroup(
             jPanel_empleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_empleadosLayout.createSequentialGroup()
-                .addGap(0, 5, Short.MAX_VALUE)
+                .addGap(0, 10, Short.MAX_VALUE)
                 .addComponent(jLabel11))
         );
 
@@ -243,7 +243,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel_balances.setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Balances");
 
         javax.swing.GroupLayout jPanel_balancesLayout = new javax.swing.GroupLayout(jPanel_balances);
@@ -253,7 +253,7 @@ public class AdView extends javax.swing.JFrame {
             .addGroup(jPanel_balancesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel_balancesLayout.setVerticalGroup(
             jPanel_balancesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +265,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel3.add(jPanel_balances, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 90, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 90, 350));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 90, 390));
 
         jTabbedPane2.setBackground(new java.awt.Color(0, 102, 102));
         jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
@@ -275,54 +275,7 @@ public class AdView extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tabla_reservas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id", "Fecha", "Cliente", "Mesa"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tabla_reservas);
-
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 520, 260));
-
-        jLabel3.setText("Cliente: ");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        jLabel4.setText("Fecha:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
-
-        jLabel5.setText("Mesa:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
-
-        busqueda_cliente_txt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                busqueda_cliente_txtActionPerformed(evt);
-            }
-        });
-        jPanel4.add(busqueda_cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 130, -1));
-        jPanel4.add(busqueda_mesa_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
-        jPanel4.add(busqueda_fecha_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
-
-        jTabbedPane2.addTab("Reservas", jPanel4);
-
-        jPanel5.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel5.setBackground(new java.awt.Color(0, 51, 51));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -351,8 +304,8 @@ public class AdView extends javax.swing.JFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,7 +314,7 @@ public class AdView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 520, 250));
+        jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 250));
 
         jLabel6.setText("Buscar:");
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
@@ -375,7 +328,7 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Clientes", jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel6.setBackground(new java.awt.Color(0, 51, 51));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -395,7 +348,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -405,7 +358,7 @@ public class AdView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel6.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 520, 250));
+        jPanel6.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 250));
 
         jLabel7.setText("Buscar:");
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
@@ -419,7 +372,7 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Mesas", jPanel6);
 
-        jPanel7.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel7.setBackground(new java.awt.Color(0, 51, 51));
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -446,7 +399,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,22 +443,69 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Empleados", jPanel7);
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBackground(new java.awt.Color(0, 51, 51));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGap(0, 414, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Balances", jPanel8);
 
-        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 520, 340));
+        jPanel4.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabla_reservas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Fecha", "Cliente", "Mesa"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabla_reservas);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 640, 300));
+
+        jLabel3.setText("Cliente: ");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel4.setText("Fecha:");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+
+        jLabel5.setText("Mesa:");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+
+        busqueda_cliente_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                busqueda_cliente_txtActionPerformed(evt);
+            }
+        });
+        jPanel4.add(busqueda_cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 130, -1));
+        jPanel4.add(busqueda_mesa_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+        jPanel4.add(busqueda_fecha_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+
+        jTabbedPane2.addTab("Reservas", jPanel4);
+
+        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 640, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
