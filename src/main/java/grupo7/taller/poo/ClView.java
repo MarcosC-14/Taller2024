@@ -532,7 +532,7 @@ public class ClView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField fechaNewReserva_txt;
+    public javax.swing.JTextField fechaNewReserva_txt;
     private javax.swing.JPanel historial_cliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -555,14 +555,14 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane_cliente;
-    private javax.swing.JTable jTableSuspenderReserva_Cliente;
-    private javax.swing.JTable jTable_ModificarReserva_Cliente;
-    private javax.swing.JTable jTable_historialCliente;
+    public javax.swing.JTable jTableSuspenderReserva_Cliente;
+    public javax.swing.JTable jTable_ModificarReserva_Cliente;
+    public javax.swing.JTable jTable_historialCliente;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTextField modificarReserva_busqueda_txt;
+    public javax.swing.JTextField modificarReserva_busqueda_txt;
     private javax.swing.JPanel modificarReserva_cliente;
     private javax.swing.JPanel realizaReserva_cliente;
-    private javax.swing.JTextField suspenderReserva_busqueda_txt;
+    public javax.swing.JTextField suspenderReserva_busqueda_txt;
     private javax.swing.JPanel suspenderReserva_cliente;
     // End of variables declaration//GEN-END:variables
 }

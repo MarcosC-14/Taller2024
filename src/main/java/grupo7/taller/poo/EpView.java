@@ -124,9 +124,7 @@ public class EpView extends javax.swing.JFrame {
 
         tablaListadoMesasEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Numero", "Cliente", "Comentario"
@@ -190,6 +188,6 @@ public class EpView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTable tablaListadoMesasEmpleado;
+    public javax.swing.JTable tablaListadoMesasEmpleado;
     // End of variables declaration//GEN-END:variables
 }
