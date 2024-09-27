@@ -6,6 +6,7 @@ package grupo7.taller.poo.modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,8 +19,9 @@ public class Reserva {
     private boolean asistencia;
     private LocalTime tiempoOcupacion;
     private LocalTime tiempoFinalizacion;
-    private Cliente cliente;
+    private ArrayList<Cliente> cliente;
     private Tarjeta tarjeta;    //necesita estar en el metodo realizar reserva de cliente?
+    private AgendaRestaurante utiliza;
 
     /**
      * Constructor por defecto de Reserva
@@ -31,7 +33,7 @@ public class Reserva {
         this.asistencia = false;
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
-        this.cliente = null;
+        
         this.tarjeta = tarjeta;
     }
 
@@ -48,12 +50,26 @@ public class Reserva {
         this.hora = hora;
         this.comentario = comentario;
         this.asistencia = false;
+        this.cliente.add(cliente);
+        this.tarjeta = tarjeta;
+        this.tiempoOcupacion = null;
+        this.tiempoFinalizacion = null;
+        
+    }
+    
+    public Reserva(LocalDate fecha, LocalTime hora, String comentario,ArrayList<Cliente> cliente, Tarjeta tarjeta) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.comentario = comentario;
+        this.asistencia = false;
         this.cliente = cliente;
         this.tarjeta = tarjeta;
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
         
     }
+    
+    
 
     /**
      * Getter del atributo fecha

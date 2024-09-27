@@ -15,8 +15,40 @@ public class AgendaRestaurante {
     private ArrayList<Date> fechasEspecial;
     private Date horaApertura;
     private Date horaCierre;
+    private ArrayList<Reserva> reservas;
 
     public AgendaRestaurante() {
+    }
+    
+    
+    public AgendaRestaurante(ArrayList<Date> fechasEspecial, Date horaApertura, Date horaCierre, Reserva reservas) {
+        this.fechasEspecial = fechasEspecial;
+        this.horaApertura = horaApertura;
+        this.horaCierre = horaCierre;
+        this.reservas.add(reservas);
+    }
+    
+    
+    
+    public AgendaRestaurante(ArrayList<Date> fechasEspecial, Date horaApertura, Date horaCierre, ArrayList<Reserva> reservas) {
+        this.fechasEspecial = fechasEspecial;
+        this.horaApertura = horaApertura;
+        this.horaCierre = horaCierre;
+        this.reservas = reservas;
+    }
+    
+    
+    
+    
+    
+    
+    
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
     }
     
     

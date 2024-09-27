@@ -4,6 +4,8 @@
  */
 package grupo7.taller.poo.modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author marco
@@ -13,6 +15,7 @@ public class Tarjeta {
     private String emisor;
     private String numero;
     private String codSeguridad;
+    private ArrayList<Reserva> reservas;
 
     /**
      * Constructor por defecto de Tarjeta
@@ -32,11 +35,12 @@ public class Tarjeta {
      * @param numero Es numero de la tarjeta
      * @param codSeguridad Es el codigo de seguridad de la tarjeta
      */
-    public Tarjeta(String nombre, String emisor, String numero, String codSeguridad) {
+    public Tarjeta(String nombre, String emisor, String numero, String codSeguridad, Reserva reserva) {
         this.nombre = nombre;   
         this.emisor = emisor;
         this.numero = numero;
         this.codSeguridad = codSeguridad;
+        this.reservas.add(reserva);
     }
 
     /**
