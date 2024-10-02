@@ -5,12 +5,14 @@
 package grupo7.taller.poo.modelo;
 
 import java.util.Date;
-
+import java.util.ArrayList;
 /**
  *
  * @author Valentin
  */
 public class Administrador extends Empleado {
+    private ArrayList<Empleado> gestiona;
+    private AgendaRestaurante administra;
     public void CrearCuentaEmpleado(Empleado e){    
     }
     public void DenifirHoraAperturayCierre(Date a, Date c){

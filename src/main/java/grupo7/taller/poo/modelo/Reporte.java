@@ -5,12 +5,14 @@
 package grupo7.taller.poo.modelo;
 
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
  * @author Valentin
  */
 public class Reporte {
+    private ArrayList Reserva;
    
     public int ReservasDia(Date d){
         return 0;

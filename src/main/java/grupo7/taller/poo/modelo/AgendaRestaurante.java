@@ -16,6 +16,7 @@ public class AgendaRestaurante {
     private Date horaApertura;
     private Date horaCierre;
     private ArrayList<Reserva> reservas;
+    private ArrayList<Administrador> registra;
 
     public AgendaRestaurante() {
     }

@@ -1,10 +1,13 @@
 
 package grupo7.taller.poo.modelo;
-
-
+import java.util.ArrayList;
+//relaciones listas
 public class Empleado extends Persona {
     private Rol rol;
-    //Falta relacion con Cliente, Mesa y Administrador
+    private ArrayList<Cliente> recibe;
+    private ArrayList<Mesa> atiende;
+    private ArrayList<Administrador> administrador;
+    
 
     public Empleado() {
         super();

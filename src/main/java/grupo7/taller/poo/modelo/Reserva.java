@@ -19,7 +19,8 @@ public class Reserva {
     private boolean asistencia;
     private LocalTime tiempoOcupacion;
     private LocalTime tiempoFinalizacion;
-    private ArrayList<Cliente> cliente;
+    private Mesa mesa;
+    private Cliente cliente;
     private Tarjeta tarjeta;    //necesita estar en el metodo realizar reserva de cliente?
     private AgendaRestaurante utiliza;
 
@@ -50,14 +51,15 @@ public class Reserva {
         this.hora = hora;
         this.comentario = comentario;
         this.asistencia = false;
-        this.cliente.add(cliente);
+        this.cliente=cliente;
         this.tarjeta = tarjeta;
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
         
     }
     
-    public Reserva(LocalDate fecha, LocalTime hora, String comentario,ArrayList<Cliente> cliente, Tarjeta tarjeta) {
+    /**
+     * public Reserva(LocalDate fecha, LocalTime hora, String comentario, Cliente cliente, Tarjeta tarjeta) {
         this.fecha = fecha;
         this.hora = hora;
         this.comentario = comentario;
@@ -68,7 +70,7 @@ public class Reserva {
         this.tiempoFinalizacion = null;
         
     }
-    
+    */
     
 
     /**
