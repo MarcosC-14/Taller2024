@@ -90,7 +90,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jButton_registro.setText("Registrarse");
+        jButton_registro.setText("Registro Cliente");
 
         jButton_recuperarContraseña.setText("Recuperar Contraseña");
 

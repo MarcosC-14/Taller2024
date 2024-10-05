@@ -51,20 +51,23 @@ public class ClView extends javax.swing.JFrame {
         historial_cliente = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_historialCliente = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField_cliente_id = new javax.swing.JTextField();
+        jTextField_cliente_fecha = new javax.swing.JTextField();
+        jTextField_cliente_mesa = new javax.swing.JTextField();
+        jComboBox1_cliente_asistencia = new javax.swing.JComboBox<>();
+        jButton_cliente_modificar_reserva = new javax.swing.JButton();
+        jButton_cliente_eliminar_reserva = new javax.swing.JButton();
+        jButton_cliente_cancelar = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField_cliente_reserva_buscar = new javax.swing.JTextField();
         realizaReserva_cliente = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         fechaNewReserva_txt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        modificarReserva_cliente = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        modificarReserva_busqueda_txt = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_ModificarReserva_Cliente = new javax.swing.JTable();
-        suspenderReserva_cliente = new javax.swing.JPanel();
-        suspenderReserva_busqueda_txt = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTableSuspenderReserva_Cliente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -278,6 +281,9 @@ public class ClView extends javax.swing.JFrame {
 
         jTabbedPane_cliente.setBackground(new java.awt.Color(0, 102, 102));
 
+        historial_cliente.setBackground(new java.awt.Color(0, 51, 51));
+        historial_cliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Mis Reservas"));
+
         jTable_historialCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -296,17 +302,91 @@ public class ClView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_historialCliente);
 
+        jLabel9.setText("Id:");
+
+        jLabel10.setText("Fecha:");
+
+        jLabel11.setText("Mesa:");
+
+        jLabel12.setText("Asistencia:");
+
+        jComboBox1_cliente_asistencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Presente", "Ausente" }));
+
+        jButton_cliente_modificar_reserva.setText("Modificar");
+
+        jButton_cliente_eliminar_reserva.setText("Eliminar");
+
+        jButton_cliente_cancelar.setText("Cancelar");
+
+        jLabel13.setText("Buscar:");
+
         javax.swing.GroupLayout historial_clienteLayout = new javax.swing.GroupLayout(historial_cliente);
         historial_cliente.setLayout(historial_clienteLayout);
         historial_clienteLayout.setHorizontalGroup(
             historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+            .addGroup(historial_clienteLayout.createSequentialGroup()
+                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField_cliente_id)
+                    .addComponent(jTextField_cliente_fecha))
+                .addGap(98, 98, 98)
+                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1_cliente_asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField_cliente_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton_cliente_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                        .addComponent(jButton_cliente_eliminar_reserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_cliente_modificar_reserva))
+                .addGap(64, 64, 64))
+            .addGroup(historial_clienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_cliente_reserva_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         historial_clienteLayout.setVerticalGroup(
             historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historial_clienteLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextField_cliente_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_cliente_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_cliente_modificar_reserva))
+                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel12)
+                            .addComponent(jTextField_cliente_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1_cliente_asistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_cliente_eliminar_reserva)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton_cliente_cancelar)
+                .addGap(15, 15, 15)
+                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextField_cliente_reserva_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane_cliente.addTab("Historial", historial_cliente);
@@ -351,102 +431,6 @@ public class ClView extends javax.swing.JFrame {
 
         jTabbedPane_cliente.addTab("Realizar Reserva", realizaReserva_cliente);
 
-        modificarReserva_cliente.setBackground(new java.awt.Color(0, 51, 51));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Buscar:");
-
-        jTable_ModificarReserva_Cliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Fecha", "Mesa", "Comentario"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable_ModificarReserva_Cliente);
-
-        javax.swing.GroupLayout modificarReserva_clienteLayout = new javax.swing.GroupLayout(modificarReserva_cliente);
-        modificarReserva_cliente.setLayout(modificarReserva_clienteLayout);
-        modificarReserva_clienteLayout.setHorizontalGroup(
-            modificarReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(modificarReserva_clienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modificarReserva_busqueda_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
-        );
-        modificarReserva_clienteLayout.setVerticalGroup(
-            modificarReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(modificarReserva_clienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(modificarReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(modificarReserva_busqueda_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane_cliente.addTab("Modificar Reserva", modificarReserva_cliente);
-
-        suspenderReserva_cliente.setBackground(new java.awt.Color(0, 51, 51));
-
-        suspenderReserva_busqueda_txt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                suspenderReserva_busqueda_txtActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Buscar:");
-
-        jTableSuspenderReserva_Cliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Fecha", "Mesa"
-            }
-        ));
-        jScrollPane3.setViewportView(jTableSuspenderReserva_Cliente);
-
-        javax.swing.GroupLayout suspenderReserva_clienteLayout = new javax.swing.GroupLayout(suspenderReserva_cliente);
-        suspenderReserva_cliente.setLayout(suspenderReserva_clienteLayout);
-        suspenderReserva_clienteLayout.setHorizontalGroup(
-            suspenderReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(suspenderReserva_clienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(suspenderReserva_busqueda_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
-        );
-        suspenderReserva_clienteLayout.setVerticalGroup(
-            suspenderReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(suspenderReserva_clienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(suspenderReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(suspenderReserva_busqueda_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane_cliente.addTab("Suspender Reserva", suspenderReserva_cliente);
-
         getContentPane().add(jTabbedPane_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 640, 340));
 
         pack();
@@ -455,14 +439,6 @@ public class ClView extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void fechaNewReserva_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaNewReserva_txtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fechaNewReserva_txtActionPerformed
-
-    private void suspenderReserva_busqueda_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suspenderReserva_busqueda_txtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_suspenderReserva_busqueda_txtActionPerformed
 
     private void jPanel_historialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_historialMouseEntered
         jPanel_historial.setBackground(new Color(0, 152, 152));
@@ -495,6 +471,10 @@ public class ClView extends javax.swing.JFrame {
     private void jPanel_cancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cancelarMouseExited
          jPanel_cancelar.setBackground(new Color(0, 102, 102));
     }//GEN-LAST:event_jPanel_cancelarMouseExited
+
+    private void fechaNewReserva_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaNewReserva_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaNewReserva_txtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -532,10 +512,17 @@ public class ClView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField fechaNewReserva_txt;
+    private javax.swing.JTextField fechaNewReserva_txt;
     private javax.swing.JPanel historial_cliente;
+    public javax.swing.JButton jButton_cliente_cancelar;
+    public javax.swing.JButton jButton_cliente_eliminar_reserva;
+    public javax.swing.JButton jButton_cliente_modificar_reserva;
+    public javax.swing.JComboBox<String> jComboBox1_cliente_asistencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -552,17 +539,13 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_modificar;
     private javax.swing.JPanel jPanel_nuevaReserva;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane_cliente;
-    public javax.swing.JTable jTableSuspenderReserva_Cliente;
-    public javax.swing.JTable jTable_ModificarReserva_Cliente;
-    public javax.swing.JTable jTable_historialCliente;
+    private javax.swing.JTable jTable_historialCliente;
+    public javax.swing.JTextField jTextField_cliente_fecha;
+    public javax.swing.JTextField jTextField_cliente_id;
+    public javax.swing.JTextField jTextField_cliente_mesa;
+    public javax.swing.JTextField jTextField_cliente_reserva_buscar;
     private javax.swing.JToggleButton jToggleButton1;
-    public javax.swing.JTextField modificarReserva_busqueda_txt;
-    private javax.swing.JPanel modificarReserva_cliente;
     private javax.swing.JPanel realizaReserva_cliente;
-    public javax.swing.JTextField suspenderReserva_busqueda_txt;
-    private javax.swing.JPanel suspenderReserva_cliente;
     // End of variables declaration//GEN-END:variables
 }
