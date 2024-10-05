@@ -91,6 +91,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         jButton_registro.setText("Registro Cliente");
+        jButton_registro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_registroActionPerformed(evt);
+            }
+        });
 
         jButton_recuperarContraseña.setText("Recuperar Contraseña");
 
@@ -167,8 +172,18 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ingresoActionPerformed
-        // TODO add your handling code here:
+        AdView user = new AdView();
+        this.setVisible(false);
+        user.setVisible(true); 
     }//GEN-LAST:event_jButton_ingresoActionPerformed
+
+    private void jButton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registroActionPerformed
+        
+        ClRegisterView registro = new ClRegisterView();
+        this.setVisible(false);
+        registro.setVisible(true); 
+        
+    }//GEN-LAST:event_jButton_registroActionPerformed
 
     /**
      * @param args the command line arguments
