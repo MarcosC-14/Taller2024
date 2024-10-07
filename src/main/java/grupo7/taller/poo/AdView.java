@@ -394,6 +394,7 @@ public class AdView extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 90, 350));
 
         jTabbedPane2.setBackground(new java.awt.Color(0, 102, 102));
+        jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Reservas"));
         jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -531,6 +532,7 @@ public class AdView extends javax.swing.JFrame {
         jTabbedPane2.addTab("Clientes", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Mesas"));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel10.setBackground(new java.awt.Color(0, 51, 51));
@@ -655,6 +657,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(0, 51, 51));
 
         jPanel11.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleados"));
 
         jLabel8.setText("Buscar:");
 
@@ -739,7 +742,7 @@ public class AdView extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField_administrador_empleado_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton_administrador_empleado_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton_administrador_empleado_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -811,11 +814,11 @@ public class AdView extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 292, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Balances", jPanel8);
@@ -895,6 +898,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_eventosEspeciales.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder("Eventos Especiales"));
 
         jLabel13.setText("Fecha:");
 
@@ -941,7 +945,7 @@ public class AdView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_bloqueoMesas)
                 .addGap(32, 32, 32))
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
         );
         jPanel_eventosEspecialesLayout.setVerticalGroup(
             jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
