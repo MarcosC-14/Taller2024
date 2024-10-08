@@ -21,7 +21,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        LoginControl employee_login = new LoginControl(cliente, cliente_dao, this);
+        LoginControl cliente_login = new LoginControl(cliente, cliente_dao, this);
     }
 
     /**
