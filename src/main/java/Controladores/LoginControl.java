@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class LoginControl implements ActionListener{
      private Cliente cliente;
      private ClienteDao cliente_dao;
-    private Inicio inicio;
+     private Inicio inicio;
 
     public LoginControl(Cliente cliente, ClienteDao cliente_Dao, Inicio inicio) {
         this.cliente = cliente;
@@ -65,4 +65,4 @@ public class LoginControl implements ActionListener{
     
     
     
-}
+
