@@ -35,7 +35,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButton_Administrador_salir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -52,6 +52,27 @@ public class AdView extends javax.swing.JFrame {
         jPanel_eventos = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_reservasAdmin = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField_administrador_reserva_busqueda_cliente = new javax.swing.JTextField();
+        busqueda_mesa_txt = new javax.swing.JTextField();
+        busqueda_fecha_txt = new javax.swing.JTextField();
+        jTextField_administrador_reserva_id = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jTextField_administrador_reserva_fecha = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jTextField_administrador_reserva_cliente = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jTextField_administrador_reserva_mesa = new javax.swing.JTextField();
+        jButton_administrador_reservas_agregar = new javax.swing.JButton();
+        jButton_administrador_reserva_modificar = new javax.swing.JButton();
+        jButton_administrador_reservas_eliminar = new javax.swing.JButton();
+        jButton_administrador_reservas_cancelar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -107,27 +128,6 @@ public class AdView extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jTextField_administrador_empleado_correo = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_reservasAdmin = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField_administrador_reserva_busqueda_cliente = new javax.swing.JTextField();
-        busqueda_mesa_txt = new javax.swing.JTextField();
-        busqueda_fecha_txt = new javax.swing.JTextField();
-        jTextField_administrador_reserva_id = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jTextField_administrador_reserva_fecha = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        jTextField_administrador_reserva_cliente = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
-        jTextField_administrador_reserva_mesa = new javax.swing.JTextField();
-        jButton_administrador_reservas_agregar = new javax.swing.JButton();
-        jButton_administrador_reserva_modificar = new javax.swing.JButton();
-        jButton_administrador_reservas_eliminar = new javax.swing.JButton();
-        jButton_administrador_reservas_cancelar = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel_eventosEspeciales = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -135,6 +135,18 @@ public class AdView extends javax.swing.JFrame {
         jButton_bloqueoMesas = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable_bloqueoMesas = new javax.swing.JTable();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jPasswordField_admin_nuevaContraseña = new javax.swing.JPasswordField();
+        jPasswordField_admin__confirmar_nuevaContraseña = new javax.swing.JPasswordField();
+        btn_administrador_actualizarContraseña = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jTextField_administrador_perfil_nombre = new javax.swing.JTextField();
+        jTextField_administrador_perfil_correo = new javax.swing.JTextField();
+        jTextField_administrador_perfil_rol = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -148,10 +160,10 @@ public class AdView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Restaurante Floripa");
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Administrador_salir.setText("Salir");
+        jButton_Administrador_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_Administrador_salirActionPerformed(evt);
             }
         });
 
@@ -163,7 +175,7 @@ public class AdView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jButton_Administrador_salir)
                 .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
@@ -172,7 +184,7 @@ public class AdView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(jButton_Administrador_salir))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -394,13 +406,86 @@ public class AdView extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 90, 350));
 
         jTabbedPane2.setBackground(new java.awt.Color(0, 102, 102));
-        jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Reservas"));
+        jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTabbedPane2KeyPressed(evt);
             }
         });
+
+        jPanel4.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reservas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabla_reservasAdmin.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Fecha", "Cliente", "Mesa"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabla_reservasAdmin);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 640, 170));
+
+        jLabel3.setText("Cliente: ");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        jLabel4.setText("Fecha:");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
+
+        jLabel5.setText("Mesa:");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+
+        jTextField_administrador_reserva_busqueda_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_administrador_reserva_busqueda_clienteActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTextField_administrador_reserva_busqueda_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 130, -1));
+        jPanel4.add(busqueda_mesa_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 70, -1));
+        jPanel4.add(busqueda_fecha_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 70, -1));
+        jPanel4.add(jTextField_administrador_reserva_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 60, 20));
+
+        jLabel27.setText("Id:");
+        jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel28.setText("Fecha:");
+        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
+        jPanel4.add(jTextField_administrador_reserva_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 60, 20));
+
+        jLabel29.setText("Cliente:");
+        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        jPanel4.add(jTextField_administrador_reserva_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 90, -1));
+
+        jLabel30.setText("Mesa:");
+        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
+        jPanel4.add(jTextField_administrador_reserva_mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 60, 20));
+
+        jButton_administrador_reservas_agregar.setText("Agregar");
+        jPanel4.add(jButton_administrador_reservas_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+
+        jButton_administrador_reserva_modificar.setText("Modificar");
+        jPanel4.add(jButton_administrador_reserva_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, -1, -1));
+
+        jButton_administrador_reservas_eliminar.setText("Eliminar");
+        jPanel4.add(jButton_administrador_reservas_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
+
+        jButton_administrador_reservas_cancelar.setText("Cancelar");
+        jPanel4.add(jButton_administrador_reservas_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
+
+        jTabbedPane2.addTab("Reservas", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(0, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -532,7 +617,8 @@ public class AdView extends javax.swing.JFrame {
         jTabbedPane2.addTab("Clientes", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Mesas"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mesas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel6.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel10.setBackground(new java.awt.Color(0, 51, 51));
@@ -657,7 +743,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(0, 51, 51));
 
         jPanel11.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleados"));
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel8.setText("Buscar:");
 
@@ -823,82 +909,10 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Balances", jPanel8);
 
-        jPanel4.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tabla_reservasAdmin.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Fecha", "Cliente", "Mesa"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tabla_reservasAdmin);
-
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 640, 170));
-
-        jLabel3.setText("Cliente: ");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
-
-        jLabel4.setText("Fecha:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
-
-        jLabel5.setText("Mesa:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
-
-        jTextField_administrador_reserva_busqueda_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_administrador_reserva_busqueda_clienteActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField_administrador_reserva_busqueda_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 130, -1));
-        jPanel4.add(busqueda_mesa_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 70, -1));
-        jPanel4.add(busqueda_fecha_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 70, -1));
-        jPanel4.add(jTextField_administrador_reserva_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 60, 20));
-
-        jLabel27.setText("Id:");
-        jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        jLabel28.setText("Fecha:");
-        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
-        jPanel4.add(jTextField_administrador_reserva_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 60, 20));
-
-        jLabel29.setText("Cliente:");
-        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
-        jPanel4.add(jTextField_administrador_reserva_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 90, -1));
-
-        jLabel30.setText("Mesa:");
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
-        jPanel4.add(jTextField_administrador_reserva_mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 60, 20));
-
-        jButton_administrador_reservas_agregar.setText("Agregar");
-        jPanel4.add(jButton_administrador_reservas_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
-
-        jButton_administrador_reserva_modificar.setText("Modificar");
-        jPanel4.add(jButton_administrador_reserva_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, -1, -1));
-
-        jButton_administrador_reservas_eliminar.setText("Eliminar");
-        jPanel4.add(jButton_administrador_reservas_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
-
-        jButton_administrador_reservas_cancelar.setText("Cancelar");
-        jPanel4.add(jButton_administrador_reservas_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
-
-        jTabbedPane2.addTab("Reservas", jPanel4);
-
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_eventosEspeciales.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder("Eventos Especiales"));
+        jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eventos Especiales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel13.setText("Fecha:");
 
@@ -966,6 +980,86 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Eventos Especiales", jPanel12);
 
+        jPanel13.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        jLabel31.setText("Nueva Contraseña");
+
+        jLabel32.setText("Confirmar Contraseña");
+
+        btn_administrador_actualizarContraseña.setText("Actualizar");
+        btn_administrador_actualizarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_administrador_actualizarContraseñaActionPerformed(evt);
+            }
+        });
+
+        jLabel33.setText("Nombre:");
+
+        jLabel34.setText("Correo:");
+
+        jLabel35.setText("Rol:");
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(45, 45, 45)
+                        .addComponent(jTextField_administrador_perfil_rol))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addGap(26, 26, 26)
+                        .addComponent(jTextField_administrador_perfil_correo))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField_administrador_perfil_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel32)
+                            .addComponent(jLabel31))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPasswordField_admin_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField_admin__confirmar_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_administrador_actualizarContraseña)
+                        .addGap(114, 114, 114))))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(jTextField_administrador_perfil_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31)
+                    .addComponent(jPasswordField_admin_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jTextField_administrador_perfil_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32)
+                    .addComponent(jPasswordField_admin__confirmar_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_administrador_actualizarContraseña)
+                    .addComponent(jLabel35)
+                    .addComponent(jTextField_administrador_perfil_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62))
+        );
+
+        jTabbedPane2.addTab("Perfil", jPanel13);
+
         getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 640, 350));
 
         pack();
@@ -975,9 +1069,9 @@ public class AdView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane2KeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton_Administrador_salirActionPerformed
 
     private void jTextField_administrador_reserva_busqueda_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_reserva_busqueda_clienteActionPerformed
         // TODO add your handling code here:
@@ -1083,6 +1177,10 @@ public class AdView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_administrador_empleado_nombreActionPerformed
 
+    private void btn_administrador_actualizarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrador_actualizarContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_administrador_actualizarContraseñaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1119,6 +1217,7 @@ public class AdView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_administrador_actualizarContraseña;
     public javax.swing.JButton btn_administrador_cliente_cancelar;
     public javax.swing.JButton btn_administrador_cliente_eliminar;
     public javax.swing.JButton btn_administrador_cliente_modificar;
@@ -1131,7 +1230,7 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JTextField busqueda_id_cliente;
     public javax.swing.JTextField busqueda_mesa_txt;
     public javax.swing.JTextField busqueda_num_mesa;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton_Administrador_salir;
     public javax.swing.JButton jButton_administrador_empleado_agregar;
     public javax.swing.JButton jButton_administrador_empleado_cancelar;
     public javax.swing.JButton jButton_administrador_empleado_eliminar;
@@ -1169,6 +1268,11 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1179,6 +1283,7 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1194,6 +1299,8 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_eventosEspeciales;
     private javax.swing.JPanel jPanel_mesas;
     private javax.swing.JPanel jPanel_reservas;
+    public javax.swing.JPasswordField jPasswordField_admin__confirmar_nuevaContraseña;
+    public javax.swing.JPasswordField jPasswordField_admin_nuevaContraseña;
     public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1213,12 +1320,15 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField_administrador_empleado_nombre;
     public javax.swing.JTextField jTextField_administrador_mesa_cliente;
     public javax.swing.JTextField jTextField_administrador_mesa_numero;
+    public javax.swing.JTextField jTextField_administrador_perfil_correo;
+    public javax.swing.JTextField jTextField_administrador_perfil_nombre;
+    public javax.swing.JTextField jTextField_administrador_perfil_rol;
     public javax.swing.JTextField jTextField_administrador_reserva_busqueda_cliente;
     public javax.swing.JTextField jTextField_administrador_reserva_cliente;
     public javax.swing.JTextField jTextField_administrador_reserva_fecha;
     public javax.swing.JTextField jTextField_administrador_reserva_id;
     public javax.swing.JTextField jTextField_administrador_reserva_mesa;
-    private javax.swing.JTextField jTextField_fechaEvento;
+    public javax.swing.JTextField jTextField_fechaEvento;
     public javax.swing.JTable tabla_reservasAdmin;
     private javax.swing.JLabel txt_reservas;
     // End of variables declaration//GEN-END:variables

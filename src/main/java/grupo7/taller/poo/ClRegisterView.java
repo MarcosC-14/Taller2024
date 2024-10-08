@@ -30,6 +30,7 @@ public class ClRegisterView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,11 +54,13 @@ public class ClRegisterView extends javax.swing.JFrame {
         jButton_confirmarRegistroCliente = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        jTextField1.setText("jTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nombre");
@@ -279,13 +282,14 @@ public class ClRegisterView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField_registroCliente;
-    private javax.swing.JTextField jTextField_CodigoTarjeta;
-    private javax.swing.JTextField jTextField_NombreTarjeta;
-    private javax.swing.JTextField jTextField_correoRegistroCliente;
-    private javax.swing.JTextField jTextField_emisorTarjeta;
-    private javax.swing.JTextField jTextField_numeroTarjeta;
-    private javax.swing.JTextField jTextField_registroNombreCliente;
-    private javax.swing.JTextField jTextField_telefonoRegistroCliente;
+    public javax.swing.JPasswordField jPasswordField_registroCliente;
+    private javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField_CodigoTarjeta;
+    public javax.swing.JTextField jTextField_NombreTarjeta;
+    public javax.swing.JTextField jTextField_correoRegistroCliente;
+    public javax.swing.JTextField jTextField_emisorTarjeta;
+    public javax.swing.JTextField jTextField_numeroTarjeta;
+    public javax.swing.JTextField jTextField_registroNombreCliente;
+    public javax.swing.JTextField jTextField_telefonoRegistroCliente;
     // End of variables declaration//GEN-END:variables
 }
