@@ -4,32 +4,24 @@
  */
 package grupo7.taller.poo;
 
-import grupo7.taller.poo.modelo.ConectorSql;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.util.Date;
-import javax.swing.JOptionPane;
+import Controladores.LoginControl;
+import grupo7.taller.poo.modelo.Cliente;
+import grupo7.taller.poo.modelo.ClienteDao;
+
 
 /**
  *
  * @author Valentin
  */
 public class Inicio extends javax.swing.JFrame {
-    // instanciar coneccion
-    ConectorSql cn = new ConectorSql();
-    Connection conn;
-    PreparedStatement pst;
-    ResultSet rs;
-
+    Cliente cliente = new Cliente();
+    ClienteDao cliente_dao= new ClienteDao();
     /**
      * Creates new form SystemView
      */
     public Inicio() {
         initComponents();
+        LoginControl employee_login = new LoginControl(cliente, cliente_dao, this);
     }
 
     /**
