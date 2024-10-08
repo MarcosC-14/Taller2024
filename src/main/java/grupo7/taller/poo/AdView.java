@@ -407,7 +407,7 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.setBackground(new java.awt.Color(0, 102, 102));
         jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane2.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTabbedPane2KeyPressed(evt);
@@ -982,9 +982,12 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel13.setBackground(new java.awt.Color(0, 51, 51));
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel13.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Nueva Contraseña");
 
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Confirmar Contraseña");
 
         btn_administrador_actualizarContraseña.setText("Actualizar");
@@ -994,10 +997,13 @@ public class AdView extends javax.swing.JFrame {
             }
         });
 
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Nombre:");
 
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Correo:");
 
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Rol:");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
