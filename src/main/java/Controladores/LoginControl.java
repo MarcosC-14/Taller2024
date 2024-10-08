@@ -9,13 +9,14 @@ import grupo7.taller.poo.Inicio;
 import grupo7.taller.poo.modelo.Cliente;
 import grupo7.taller.poo.modelo.ClienteDao;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Uvenk
  */
-public class LoginControl {
+public class LoginControl implements ActionListener{
      private Cliente cliente;
      private ClienteDao cliente_dao;
     private Inicio inicio;
