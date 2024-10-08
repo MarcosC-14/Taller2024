@@ -4,6 +4,7 @@
  */
 package Controladores;
 
+import grupo7.taller.poo.AdView;
 import grupo7.taller.poo.Inicio;
 import grupo7.taller.poo.modelo.Cliente;
 import grupo7.taller.poo.modelo.ClienteDao;
@@ -26,7 +27,6 @@ public class LoginControl {
         this.inicio.jButton_ingreso.addActionListener(this);
     }
     
-    
     public void actionPerformed(ActionEvent e) {
         // Obtener datos de la vista
         String user = inicio.txt_username.getText().trim();
@@ -37,10 +37,10 @@ public class LoginControl {
 
             if (!user.equals(" ") || !pass.equals("")) {
                 // pasar parametros al metodo login
-                cliente = ClienteDao.loginQuery(user, pass);
+                cliente = cliente_dao.loginQuery(user, pass);
                 //verficar existencia de usuario
                 if (cliente.getNombre() != null) {
-                        Inicio aux = new Inicio();
+                        AdView aux = new AdView();
                         aux.setVisible(true);
                     }
                     this.inicio.dispose();
