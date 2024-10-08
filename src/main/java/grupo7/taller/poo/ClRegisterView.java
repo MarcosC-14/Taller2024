@@ -4,12 +4,25 @@
  */
 package grupo7.taller.poo;
 
+import grupo7.taller.poo.modelo.ConectorSql;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rebechi
  */
 public class ClRegisterView extends javax.swing.JFrame {
-
+      // instanciar coneccion
+    ConectorSql cn = new ConectorSql();
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
     /**
      * Creates new form ClRegisterView
      */
@@ -229,7 +242,21 @@ public class ClRegisterView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_correoRegistroClienteActionPerformed
 
     private void jButton_confirmarRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_confirmarRegistroClienteActionPerformed
-        // TODO add your handling code here:
+     String query = "INSERT INTO cliente (nombre, correo, contraseña, telefono) VALUES(?,?,?,?)";
+        Timestamp datetime = new Timestamp(new Date().getTime());
+        try {
+            conn = cn.getConnection();
+            pst = conn.prepareStatement(query);
+            pst.setString(1, nombre.getName());
+            pst.setTimestamp(2, datetime);
+            pst.setTimestamp(3, datetime);
+            pst.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al registrar categoria" + e);
+            return false;
+        }
+                // TODO add your handling code here:
     }//GEN-LAST:event_jButton_confirmarRegistroClienteActionPerformed
 
     /**

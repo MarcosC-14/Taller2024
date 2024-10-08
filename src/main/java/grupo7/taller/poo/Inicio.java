@@ -4,11 +4,26 @@
  */
 package grupo7.taller.poo;
 
+import grupo7.taller.poo.modelo.ConectorSql;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Valentin
  */
 public class Inicio extends javax.swing.JFrame {
+    // instanciar coneccion
+    ConectorSql cn = new ConectorSql();
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
 
     /**
      * Creates new form SystemView
@@ -33,7 +48,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jUserField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton_ingreso = new javax.swing.JButton();
         jButton_registro = new javax.swing.JButton();
@@ -119,7 +134,7 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(jButton_ingreso)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                .addComponent(jTextField1)))
+                                .addComponent(jUserField1)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton_registro)
@@ -135,7 +150,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(84, 84, 84)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jUserField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -233,6 +248,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jUserField1;
     // End of variables declaration//GEN-END:variables
 }
