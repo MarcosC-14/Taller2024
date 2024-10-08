@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `restaurante_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `restaurante_database`;
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: restaurante_database
@@ -156,6 +154,14 @@ LOCK TABLES `tarjeta` WRITE;
 /*!40000 ALTER TABLE `tarjeta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tarjeta` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'restaurante_database'
+--
+
+--
+-- Dumping routines for database 'restaurante_database'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -166,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-08 16:19:37
+-- Dump completed on 2024-10-08 16:38:25
