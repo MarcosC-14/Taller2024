@@ -74,7 +74,10 @@ public class Cliente extends Persona {
      * @param correo Ingresa el correo por parámetro
      * @return Devuelve la contrasenia 
      */
-    public String restablecerContrasenia(String correo) {
-        return this.getContrasenia();
+    public String restablecerContrasenia(String correo) { 
+        if(this.getContrasenia().equalsIgnoreCase(correo)){
+            return this.getContrasenia();
+        }
+        return "Correo Invalido, intente de nuevo";
     }
 }
