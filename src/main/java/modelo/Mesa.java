@@ -16,48 +16,39 @@ public class Mesa {
     private Capacidad capacidad;
     private Ubicacion ubicacion;
     public String mapa;
-    
     private ArrayList<Reserva> reservas;
 
     public Mesa() {
         this.reservas= new ArrayList<Reserva>();
     }
     
-    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Cliente cliente) {
+    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Reserva reserva) {
         this.numero = numero;
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;   
-       // this.clientes.add(cliente);
+        this.reservas.add(reserva);
     }
 
-    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, ArrayList<Cliente> clientes) {
+    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, ArrayList<Reserva> reservas) {
         this.numero = numero;
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;
-        //this.clientes = clientes;
+        this.reservas = reservas;
     }
     
-    public String getMapa() {
-        return mapa;
-    }
-
-    public void setMapa(String mapa) {
-        this.mapa = mapa;
-    }
-
-   // public ArrayList<Cliente> getClientes() {
-     //   return clientes;
-    //}
-
-    public void setClientes(ArrayList<Cliente> clientes) {
-    //    this.clientes = clientes;
+    public ArrayList<Reserva> getReservas(){
+        return reservas;
     }
     
-    public void agregarCliente(Cliente cliente){
-      //  if(clientes.size()==0){
-        //    this.clientes= new ArrayList<Cliente>();
-       // }
-        //clientes.add(cliente);
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+    
+    public void agregarReserva(Reserva reserva){
+        if(reservas.size()==0){
+            this.reservas= new ArrayList<Reserva>();
+        }
+        reservas.add(reserva);
     }
     
     public int getNumero() {
@@ -83,14 +74,4 @@ public class Mesa {
         this.ubicacion= ubicacion;
     }
     
-    public boolean dispo(int n, Date fecha){
-        return false;
-    }
-    
-    public void filtroUbi(Ubicacion u){
-        
-    }
-    public void filtroCapa(Capacidad c){
-        
-    }
 }

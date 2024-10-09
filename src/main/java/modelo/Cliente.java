@@ -81,9 +81,9 @@ public class Cliente extends Persona {
      * @param cor Correo
      * @param tel Telefono
      */
-    public void actualizarInformacion(String cor, String tel) {
-        this.setCorreo(cor);
-        this.setTelefono(tel);
+    public void actualizarInformacion(String correo, String telefono) {
+        this.setCorreo(correo);
+        this.setTelefono(telefono);
     }
     
     /**

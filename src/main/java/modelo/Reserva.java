@@ -22,7 +22,6 @@ public class Reserva {
     private Mesa mesa;
     private Cliente cliente;
     private Tarjeta tarjeta;    //necesita estar en el metodo realizar reserva de cliente?
-    private AgendaRestaurante utiliza;
 
     /**
      * Constructor por defecto de Reserva
@@ -34,8 +33,6 @@ public class Reserva {
         this.asistencia = false;
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
-     //   this.mesas=new ArrayList<Mesa>();
-        this.tarjeta = tarjeta;
     }
 
     /**
@@ -46,7 +43,7 @@ public class Reserva {
      * @param comentario Comentario del cliente
      * 
      */
-    public Reserva(LocalDate fecha, LocalTime hora, String comentario,Cliente cliente, Tarjeta tarjeta, ArrayList<Mesa> mesas) {
+    public Reserva(LocalDate fecha, LocalTime hora, String comentario,Cliente cliente, Tarjeta tarjeta, Mesa mesa) {
         this.fecha = fecha;
         this.hora = hora;
         this.comentario = comentario;
@@ -55,7 +52,7 @@ public class Reserva {
         this.tarjeta = tarjeta;
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
-      //  this.mesas=mesas;
+        this.mesa=mesa;
     }
     
     /**
@@ -67,12 +64,10 @@ public class Reserva {
         this.cliente = cliente;
         this.tarjeta = tarjeta;
         this.tiempoOcupacion = null;
-        this.tiempoFinalizacion = null;
-        
+        this.tiempoFinalizacion = null;     
     }
     */
     
-
     /**
      * Getter del atributo fecha
      * @return 
@@ -169,6 +164,28 @@ public class Reserva {
         this.tiempoFinalizacion = tiempoFinalizacion;
     }
     
+    //get y set tarjeta
+    public void setMesa(Mesa mesa){
+        this.mesa=mesa;
+    }
+    public Mesa getMesa(){
+        return mesa;
+    }
+    
+    public void setCliente (Cliente cliente){
+        this.cliente=cliente;
+    }
+    public Cliente getCliente(){
+        return cliente;
+    }
+    
+    public void setTarjeta(Tarjeta tarjeta){
+        this.tarjeta=tarjeta;
+    }
+    public Tarjeta getTarjeta(){
+        return tarjeta;
+    }
+    
     /**
      * Método para enviar recordatorio al cliente de su reserva 
      */
@@ -186,7 +203,7 @@ public class Reserva {
         
     
     public void muestraResMesa(){
-        //Si muestra reservaciones de mesas, debería estar en cliente?
+        //Si muestra reservaciones de mesas, debería estar en cliente? tal vez organizacionMEsas
         
     }
     

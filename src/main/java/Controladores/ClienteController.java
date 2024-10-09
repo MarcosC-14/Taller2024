@@ -40,14 +40,23 @@ public class ClienteController implements ActionListener{
                     || telefono.equals("")){
                 JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
             }else{
-                cliente.setNombre(nombre);
-                cliente.setCorreo(correo);
-                cliente.setContrasenia(contrasenia);
-                cliente.setTelefono(telefono);
-                if(clienteDAO.registrarCliente(cliente)){
-                    JOptionPane.showMessageDialog(null,"Registrado exitosamente");
+               
+                if(esCorreoElectronicoValido(correo)){
+                    cliente.setNombre(nombre);
+                    cliente.setCorreo(correo);
+                    cliente.setContrasenia(contrasenia);
+                    cliente.setTelefono(telefono);
+                    if(clienteDAO.registrarCliente(cliente)){
+                        JOptionPane.showMessageDialog(null,"Registrado exitosamente");
+                    }
+                } else{
+                    JOptionPane.showMessageDialog(null,"Ingrese un correo electronico valido");
                 }
+                
             }
         }
+    }
+    public static boolean esCorreoElectronicoValido(String correo) {
+        return correo.contains("@");
     }
 }

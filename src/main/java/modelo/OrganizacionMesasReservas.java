@@ -1,12 +1,11 @@
 package modelo;
 
-/**
-package grupo7.taller.poo.modelo;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Iterator;
 import java.util.ArrayList; 
-public class OrganizacionMesas {
+public class OrganizacionMesasReservas {
     private ArrayList<Mesa> mesas;
     private ArrayList<Reserva> reservas;
     
@@ -34,42 +33,36 @@ public class OrganizacionMesas {
         }
         return nuevaM;
     }
-    public boolean disponible(int numero, LocalDate dia, LocalTime hora){
+    public boolean mesaDisponible(int numero, LocalDate dia, LocalTime hora){
         boolean disponible=true;
             for(Iterator it = reservas.iterator();it.hasNext();){
-            Object o = it.next();
-            Reserva r= (Reserva) o;
-            
-        //   va a ir numero de mesa 
-    //if()
-               if(r.getHora().equals(hora)&& r.getFecha().equals(dia)){
-               disponible=false;  
-     }
+                Object o = it.next();
+                Reserva r= (Reserva) o;
+               if(r.getMesa().getNumero()==numero&&r.getHora().equals(hora)&& r.getFecha().equals(dia)){
+                disponible=false;  
+                }
             }  
         return disponible;
     }
-}
-    /**
-    *public ArrayList<Mesa> mesasDisponibles(LocalDate dia, LocalTime hora){
-    *    ArrayList<Mesa> nuevaM = new ArrayList();
-    *    for(Iterator it = mesas.iterator();it.hasNext();){
-    *        Object o = it.next();
-    *        Mesa m= (Mesa) o;
-    *      
-    *    }
-    *    return nuevaM;
-    *}
-    * 
-    */
-   
-/**
- * public Mesa buscarNumeroM(int numero){
-     *   for(Iterator it= reservas.iterator();it.hasNext();){
-      *   for(Iterator itm= mesas.iterator();itm.hasNext();){
-       *      
-       *  }   
-      *  }
-     *   return null;
-    *}
+
+    
+    public ArrayList<Mesa> mesasDisponibles(LocalDate dia, LocalTime hora){
+        ArrayList<Mesa> nuevaM = new ArrayList();
+        for(Iterator it = mesas.iterator();it.hasNext();){
+            Object o = it.next();
+            Mesa m= (Mesa) o;
+           
+            for (Iterator itR= m.getReservas().iterator();itR.hasNext(); ){
+                Object obR = itR.next();
+                Reserva r = (Reserva) obR;
+                if(!r.getFecha().equals(dia)&&!r.getHora().equals(hora)){
+                    nuevaM.add(m);
+                }
+            }
+        }
+        return nuevaM;
+    }
      
-*/
+    
+}  
+

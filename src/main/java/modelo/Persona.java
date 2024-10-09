@@ -52,12 +52,9 @@ package modelo;
     }
     /**
      *Setter del atributo correo electronico
-     *Solo ingresa el valor del correo electronico controlando que tenga un @
      */
     public void setCorreo(String correo) {
-        if((correo.indexOf('@'))!=-1){
-            this.correo = correo;
-        }
+        this.correo = correo;
     }
 
     public String getContrasenia() {
