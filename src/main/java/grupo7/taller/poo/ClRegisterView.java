@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Views;
+package grupo7.taller.poo;
 
 import Controladores.ClienteController;
-import modelo.Cliente;
-import modelo.ConectorSql;
-import persistencia.ClasesDAO.ClienteDAO;
+import grupo7.taller.poo.modelo.Cliente;
+import grupo7.taller.poo.modelo.ConectorSql;
+import grupo7.taller.poo.persistencia.ClasesDao.ClienteDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

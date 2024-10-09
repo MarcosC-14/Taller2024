@@ -1,5 +1,5 @@
 
-package modelo;
+package grupo7.taller.poo.modelo;
 
 
 public enum Capacidad {

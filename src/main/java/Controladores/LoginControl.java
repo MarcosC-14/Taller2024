@@ -4,10 +4,10 @@
  */
 package Controladores;
 
-import Views.AdView;
-import Views.Inicio;
-import modelo.Cliente;
-import modelo.ClienteDao;
+import grupo7.taller.poo.AdView;
+import grupo7.taller.poo.Inicio;
+import grupo7.taller.poo.modelo.Cliente;
+import grupo7.taller.poo.modelo.ClienteDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
