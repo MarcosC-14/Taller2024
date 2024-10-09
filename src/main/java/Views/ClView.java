@@ -33,6 +33,9 @@ public class ClView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -64,22 +67,54 @@ public class ClView extends javax.swing.JFrame {
         jButton_cliente_cancelar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jTextField_cliente_reserva_buscar = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jButton_cliente_perfil_actualizar = new javax.swing.JButton();
+        jTextField_cliente_perfil_correo = new javax.swing.JTextField();
+        jTextField_cliente_perfil_telefono = new javax.swing.JTextField();
         realizaReserva_cliente = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         fechaNewReserva_txt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        capacidad = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        comentario = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
-        jPasswordField_cliente_perfil_nuevaContra = new javax.swing.JPasswordField();
-        jPasswordField_cliente_perfil_confirmarContra = new javax.swing.JPasswordField();
-        jButton_cliente_perfil_actualizar = new javax.swing.JButton();
-        jTextField_cliente_perfil_nombre = new javax.swing.JTextField();
-        jTextField_cliente_perfil_correo = new javax.swing.JTextField();
-        jTextField_cliente_perfil_telefono = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        codSeguridadT = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        numTarjeta = new javax.swing.JTextPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        emisorT = new javax.swing.JTextPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        nombreT = new javax.swing.JTextPane();
+        jLabel23 = new javax.swing.JLabel();
+        numMesa = new javax.swing.JScrollPane();
+        jTextPane6 = new javax.swing.JTextPane();
+        jLabel24 = new javax.swing.JLabel();
+        ubicacion = new javax.swing.JScrollPane();
+        jTextPane7 = new javax.swing.JTextPane();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextPane8 = new javax.swing.JTextPane();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        hora = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -404,58 +439,12 @@ public class ClView extends javax.swing.JFrame {
 
         jTabbedPane_cliente.addTab("Historial", historial_cliente);
 
-        realizaReserva_cliente.setBackground(new java.awt.Color(0, 102, 102));
-
-        jLabel3.setText("Fecha");
-
-        fechaNewReserva_txt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaNewReserva_txtActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("ACA DEBERIA IR EL SUPUESTO MAPITA ");
-
-        javax.swing.GroupLayout realizaReserva_clienteLayout = new javax.swing.GroupLayout(realizaReserva_cliente);
-        realizaReserva_cliente.setLayout(realizaReserva_clienteLayout);
-        realizaReserva_clienteLayout.setHorizontalGroup(
-            realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fechaNewReserva_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel8)
-                .addContainerGap(287, Short.MAX_VALUE))
-        );
-        realizaReserva_clienteLayout.setVerticalGroup(
-            realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(fechaNewReserva_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
-                .addComponent(jLabel8)
-                .addContainerGap(157, Short.MAX_VALUE))
-        );
-
-        jTabbedPane_cliente.addTab("Nueva Reserva", realizaReserva_cliente);
-
         jPanel4.setBackground(new java.awt.Color(0, 51, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-
-        jLabel14.setText("Nombre:");
 
         jLabel15.setText("Correo:");
 
         jLabel16.setText("Telefono:");
-
-        jLabel17.setText("Nueva Contraseña:");
-
-        jLabel18.setText("Confirmar Contraseña:");
 
         jButton_cliente_perfil_actualizar.setText("Actualizar");
 
@@ -476,44 +465,21 @@ public class ClView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField_cliente_perfil_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField_cliente_perfil_correo)
-                            .addComponent(jTextField_cliente_perfil_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel17))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField_cliente_perfil_nuevaContra, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField_cliente_perfil_confirmarContra, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton_cliente_perfil_actualizar)
-                        .addGap(104, 104, 104))))
+                        .addComponent(jLabel15)
+                        .addGap(20, 20, 20)
+                        .addComponent(jTextField_cliente_perfil_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
+                .addComponent(jButton_cliente_perfil_actualizar)
+                .addGap(104, 104, 104))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel17)
-                    .addComponent(jPasswordField_cliente_perfil_nuevaContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_cliente_perfil_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addGap(118, 118, 118)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel18)
-                    .addComponent(jPasswordField_cliente_perfil_confirmarContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_cliente_perfil_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jButton_cliente_perfil_actualizar)
@@ -522,6 +488,200 @@ public class ClView extends javax.swing.JFrame {
         );
 
         jTabbedPane_cliente.addTab("Perfil", jPanel4);
+
+        realizaReserva_cliente.setBackground(new java.awt.Color(0, 102, 102));
+
+        jLabel3.setText("Fecha");
+
+        fechaNewReserva_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaNewReserva_txtActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("ACA DEBERIA IR EL SUPUESTO MAPITA ");
+
+        capacidad.setViewportView(jTextPane1);
+
+        jLabel14.setText("Hora");
+
+        jLabel17.setText("Comentario");
+
+        comentario.setColumns(20);
+        comentario.setRows(5);
+        jScrollPane4.setViewportView(comentario);
+
+        jLabel18.setText("Datos de tarjeta");
+
+        jLabel19.setText("Emisor");
+
+        jLabel20.setText("Numero");
+
+        jLabel21.setText("Nombre");
+
+        jLabel22.setText("Codigo de seguridad");
+
+        codSeguridadT.setViewportView(jTextPane2);
+
+        jScrollPane6.setViewportView(numTarjeta);
+
+        jScrollPane7.setViewportView(emisorT);
+
+        jScrollPane8.setViewportView(nombreT);
+
+        jLabel23.setText("Numero de mesa");
+
+        numMesa.setViewportView(jTextPane6);
+
+        jLabel24.setText("Ubicacion");
+
+        ubicacion.setViewportView(jTextPane7);
+
+        jLabel25.setText("Capacidad");
+
+        jScrollPane11.setViewportView(jTextPane8);
+
+        jScrollPane12.setViewportView(hora);
+
+        jButton1.setText("Reservar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout realizaReserva_clienteLayout = new javax.swing.GroupLayout(realizaReserva_cliente);
+        realizaReserva_cliente.setLayout(realizaReserva_clienteLayout);
+        realizaReserva_clienteLayout.setHorizontalGroup(
+            realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8))
+                    .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                    .addComponent(jLabel22)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(codSeguridadT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 145, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createSequentialGroup()
+                                    .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel20)
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel21))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane7)
+                                        .addComponent(jScrollPane8))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(226, 226, 226))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, realizaReserva_clienteLayout.createSequentialGroup()
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, realizaReserva_clienteLayout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(fechaNewReserva_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, realizaReserva_clienteLayout.createSequentialGroup()
+                                    .addComponent(jLabel25)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(capacidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(numMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                    .addComponent(jLabel24)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(23, 23, 23))
+        );
+        realizaReserva_clienteLayout.setVerticalGroup(
+            realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(fechaNewReserva_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addGap(18, 18, 18)
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(codSeguridadT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6))
+                    .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel24)
+                            .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addGap(12, 12, 12))
+                                    .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23)
+                                    .addComponent(numMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(capacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap())
+        );
+
+        jTabbedPane_cliente.addTab("Nueva Reserva", realizaReserva_cliente);
 
         getContentPane().add(jTabbedPane_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 640, 340));
 
@@ -572,6 +732,10 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_cliente_perfil_telefonoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -608,8 +772,14 @@ public class ClView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane capacidad;
+    private javax.swing.JScrollPane codSeguridadT;
+    private javax.swing.JTextArea comentario;
+    private javax.swing.JTextPane emisorT;
     public javax.swing.JTextField fechaNewReserva_txt;
     private javax.swing.JPanel historial_cliente;
+    private javax.swing.JTextPane hora;
+    private javax.swing.JButton jButton1;
     public javax.swing.JButton jButton_cliente_cancelar;
     public javax.swing.JButton jButton_cliente_eliminar_reserva;
     public javax.swing.JButton jButton_cliente_modificar_reserva;
@@ -625,7 +795,14 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -641,19 +818,34 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_cliente_menu_perfil;
     private javax.swing.JPanel jPanel_historial;
     private javax.swing.JPanel jPanel_nuevaReserva;
-    public javax.swing.JPasswordField jPasswordField_cliente_perfil_confirmarContra;
-    public javax.swing.JPasswordField jPasswordField_cliente_perfil_nuevaContra;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane_cliente;
     public javax.swing.JTable jTable_historialCliente;
+    private javax.swing.JTextArea jTextArea1;
     public javax.swing.JTextField jTextField_cliente_fecha;
     public javax.swing.JTextField jTextField_cliente_id;
     public javax.swing.JTextField jTextField_cliente_mesa;
     public javax.swing.JTextField jTextField_cliente_perfil_correo;
-    public javax.swing.JTextField jTextField_cliente_perfil_nombre;
     public javax.swing.JTextField jTextField_cliente_perfil_telefono;
     public javax.swing.JTextField jTextField_cliente_reserva_buscar;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane6;
+    private javax.swing.JTextPane jTextPane7;
+    private javax.swing.JTextPane jTextPane8;
     public javax.swing.JToggleButton jToggleButton_cliente_Salir;
+    private javax.swing.JTextPane nombreT;
+    private javax.swing.JScrollPane numMesa;
+    private javax.swing.JTextPane numTarjeta;
     private javax.swing.JPanel realizaReserva_cliente;
+    private javax.swing.JScrollPane ubicacion;
     // End of variables declaration//GEN-END:variables
 }

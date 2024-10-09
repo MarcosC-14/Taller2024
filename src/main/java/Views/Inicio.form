@@ -224,6 +224,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Recuperar Contrase&#xf1;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_recuperarContrase&#xf1;aActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

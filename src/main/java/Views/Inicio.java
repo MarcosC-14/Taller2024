@@ -106,6 +106,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         jButton_recuperarContraseña.setText("Recuperar Contraseña");
+        jButton_recuperarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_recuperarContraseñaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -186,6 +191,10 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registroActionPerformed
       
     }//GEN-LAST:event_jButton_registroActionPerformed
+
+    private void jButton_recuperarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_recuperarContraseñaActionPerformed
+        // enviarlo a otra ventana que le pida su correo y le devuelva su contraseña
+    }//GEN-LAST:event_jButton_recuperarContraseñaActionPerformed
 
     /**
      * @param args the command line arguments
