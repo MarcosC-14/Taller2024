@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package grupo7.taller.poo.modelo;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.Date;

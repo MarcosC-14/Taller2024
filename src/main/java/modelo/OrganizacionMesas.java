@@ -1,5 +1,5 @@
 
-package grupo7.taller.poo.modelo;
+package modelo;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Iterator;

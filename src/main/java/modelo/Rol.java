@@ -1,5 +1,5 @@
 
-package grupo7.taller.poo.modelo;
+package modelo;
 
 
 public enum Rol {

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package grupo7.taller.poo.persistencia.ClasesDao;
+package persistencia.ClasesDAO;
 
-import grupo7.taller.poo.modelo.Cliente;
-import grupo7.taller.poo.persistencia.SQLiteManager;
+import modelo.Cliente;
+import persistencia.SQLiteManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

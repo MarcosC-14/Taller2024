@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package grupo7.taller.poo;
+package Views;
 
 import Controladores.LoginControl;
-import grupo7.taller.poo.modelo.Cliente;
-import grupo7.taller.poo.modelo.ClienteDao;
+import modelo.Cliente;
+import modelo.ClienteDao;
 
 
 /**

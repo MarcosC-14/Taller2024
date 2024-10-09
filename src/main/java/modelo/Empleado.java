@@ -1,5 +1,5 @@
 
-package grupo7.taller.poo.modelo;
+package modelo;
 import java.util.ArrayList;
 //relaciones listas
 public class Empleado extends Persona {
