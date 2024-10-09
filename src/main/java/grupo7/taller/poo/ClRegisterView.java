@@ -4,7 +4,10 @@
  */
 package grupo7.taller.poo;
 
+import Controladores.ClienteController;
+import grupo7.taller.poo.modelo.Cliente;
 import grupo7.taller.poo.modelo.ConectorSql;
+import grupo7.taller.poo.persistencia.ClasesDao.ClienteDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,11 +23,14 @@ public class ClRegisterView extends javax.swing.JFrame {
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
+    Cliente cliente = new Cliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
     /**
      * Creates new form ClRegisterView
      */
     public ClRegisterView() {
      initComponents();
+     ClienteController clienteC = new ClienteController(cliente, clienteDAO,this);
          setSize(729, 420);
                 setResizable(false);
                 setTitle("Panel de administracion");
@@ -70,7 +76,7 @@ public class ClRegisterView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de Cliente"));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nombre");
@@ -279,7 +285,7 @@ public class ClRegisterView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton_confirmarRegistroCliente;
+    public javax.swing.JButton jButton_confirmarRegistroCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
