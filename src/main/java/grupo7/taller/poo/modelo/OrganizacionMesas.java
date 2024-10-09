@@ -1,4 +1,4 @@
-
+/**
 package grupo7.taller.poo.modelo;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -34,16 +34,19 @@ public class OrganizacionMesas {
     }
     public boolean disponible(int numero, LocalDate dia, LocalTime hora){
         boolean disponible=true;
-        /**    for(Iterator it = reservas.iterator();it.hasNext();){
-    *        Object o = it.next();
-    *        Reserva r= (Reserva) o;
-    *       va air numero de mesa o la mesa entera?
-    *           if(r.getHora().equals(hora)&& r.r.getFecha().equals(dia)){
-    *           disponible=false;  
-    * }
-    */    
+            for(Iterator it = reservas.iterator();it.hasNext();){
+            Object o = it.next();
+            Reserva r= (Reserva) o;
+            
+        //   va a ir numero de mesa 
+    //if()
+               if(r.getHora().equals(hora)&& r.getFecha().equals(dia)){
+               disponible=false;  
+     }
+            }  
         return disponible;
     }
+}
     /**
     *public ArrayList<Mesa> mesasDisponibles(LocalDate dia, LocalTime hora){
     *    ArrayList<Mesa> nuevaM = new ArrayList();
@@ -56,5 +59,15 @@ public class OrganizacionMesas {
     *}
     * 
     */
+   
+/**
+ * public Mesa buscarNumeroM(int numero){
+     *   for(Iterator it= reservas.iterator();it.hasNext();){
+      *   for(Iterator itm= mesas.iterator();itm.hasNext();){
+       *      
+       *  }   
+      *  }
+     *   return null;
+    *}
      
-}
+*/

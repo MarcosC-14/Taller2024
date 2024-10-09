@@ -34,7 +34,7 @@ public class Reserva {
         this.asistencia = false;
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
-        
+     //   this.mesas=new ArrayList<Mesa>();
         this.tarjeta = tarjeta;
     }
 
@@ -46,7 +46,7 @@ public class Reserva {
      * @param comentario Comentario del cliente
      * 
      */
-    public Reserva(LocalDate fecha, LocalTime hora, String comentario,Cliente cliente, Tarjeta tarjeta) {
+    public Reserva(LocalDate fecha, LocalTime hora, String comentario,Cliente cliente, Tarjeta tarjeta, ArrayList<Mesa> mesas) {
         this.fecha = fecha;
         this.hora = hora;
         this.comentario = comentario;
@@ -55,7 +55,7 @@ public class Reserva {
         this.tarjeta = tarjeta;
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
-        
+      //  this.mesas=mesas;
     }
     
     /**

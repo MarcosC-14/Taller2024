@@ -16,31 +16,26 @@ public class Mesa {
     private Capacidad capacidad;
     private Ubicacion ubicacion;
     public String mapa;
-    private Empleado recepcionista;
-    private ArrayList<Cliente> clientes;
+    
+    private ArrayList<Reserva> reservas;
 
     public Mesa() {
+        this.reservas= new ArrayList<Reserva>();
     }
     
+    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Cliente cliente) {
+        this.numero = numero;
+        this.capacidad = capacidad;
+        this.ubicacion = ubicacion;   
+       // this.clientes.add(cliente);
+    }
 
-    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Empleado recepcionista, Cliente cliente) {
+    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, ArrayList<Cliente> clientes) {
         this.numero = numero;
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;
-        this.recepcionista = recepcionista;
-        this.clientes.add(cliente);
+        //this.clientes = clientes;
     }
-
-    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Empleado recepcionista, ArrayList<Cliente> clientes) {
-        this.numero = numero;
-        this.capacidad = capacidad;
-        this.ubicacion = ubicacion;
-        this.recepcionista = recepcionista;
-        this.clientes = clientes;
-    }
-    
-    
-    
     
     public String getMapa() {
         return mapa;
@@ -50,37 +45,44 @@ public class Mesa {
         this.mapa = mapa;
     }
 
-    public Empleado getRecepcionista() {
-        return recepcionista;
-    }
-
-    public void setRecepcionista(Empleado recepcionista) {
-        this.recepcionista = recepcionista;
-    }
-
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
+   // public ArrayList<Cliente> getClientes() {
+     //   return clientes;
+    //}
 
     public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
+    //    this.clientes = clientes;
     }
     
+    public void agregarCliente(Cliente cliente){
+      //  if(clientes.size()==0){
+        //    this.clientes= new ArrayList<Cliente>();
+       // }
+        //clientes.add(cliente);
+    }
     
-    
-   
-
     public int getNumero() {
         return numero;
+    }
+    
+    public void setNumero(int numero){
+        this.numero=numero;
     }
 
     public Capacidad getCapacidad() {
         return capacidad;
     }
 
+    public void setCapacidad( Capacidad capacidad){
+        this.capacidad= capacidad;
+    }
     public Ubicacion getUbicacion() {
         return ubicacion;
     }
+    
+    public void setUbicacion(Ubicacion ubicacion){
+        this.ubicacion= ubicacion;
+    }
+    
     public boolean dispo(int n, Date fecha){
         return false;
     }

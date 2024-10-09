@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package grupo7.taller.poo.modelo;
-
+import java.util.ArrayList;
 /**
  *
  * @author marco
@@ -12,6 +12,7 @@ public class Cliente extends Persona {
 
     // Este atributo representa el número de teléfono del cliente
     private String telefono;
+    private ArrayList<Reserva> reservas;
 
     /**
      * Constructor predeterminado de Cliente
@@ -19,6 +20,7 @@ public class Cliente extends Persona {
     public Cliente() {
         super();
         this.telefono = "";
+        this.reservas=new ArrayList <Reserva>();
     }
 
     /**
@@ -29,9 +31,18 @@ public class Cliente extends Persona {
      * @param cn Es la contrasenia del cliente
      * @param tel Es el telefono del cliente
      */
-    public Cliente(String n, String c, String cn, String tel) {
+    public Cliente(String n, String c, String cn, String tel, ArrayList<Reserva> reservas) {
         super(n, c, cn);
         this.telefono = tel;
+        this.reservas=reservas;
+    }
+
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
     }
     
     /**
@@ -50,6 +61,12 @@ public class Cliente extends Persona {
         this.telefono = telefono;
     }
     
+    public void agregarReserva(Reserva reserva){
+        if(reservas.size()==0){
+            this.reservas= new ArrayList<Reserva>();
+        }
+        this.reservas.add(reserva);
+    }
     /**
      * Método para que el usuario inicie sesión en el sistema
      * @param con Representa la contraseña ingresada
@@ -79,5 +96,8 @@ public class Cliente extends Persona {
             return this.getContrasenia();
         }
         return "Correo Invalido, intente de nuevo";
+    }
+    public String toString(){
+        return "Cliente: (Nombre: "+super.getNombre()+", Correo: "+super.getCorreo()+", Contrasenia: "+super.getContrasenia()+", Telefono: "+telefono+"y datos de Reservas: "+reservas+")";
     }
 }
