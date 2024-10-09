@@ -4,10 +4,10 @@
  */
 package Controladores;
 
-import grupo7.taller.poo.modelo.Cliente;
-import grupo7.taller.poo.persistencia.ClasesDao.ClienteDAO;
+import modelo.Cliente;
+import persistencia.ClasesDao.ClienteDAO;
 import java.awt.event.ActionListener;
-import grupo7.taller.poo.ClRegisterView;
+import Views.ClRegisterView;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 

@@ -1,5 +1,5 @@
 
-package grupo7.taller.poo.modelo;
+package modelo;
 import java.util.ArrayList;
 //tiene que toString traer datos de clientes y mesas?
 public class Empleado extends Persona {
