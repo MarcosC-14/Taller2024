@@ -47,6 +47,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton_recuperarContraseña = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio de Sesion");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

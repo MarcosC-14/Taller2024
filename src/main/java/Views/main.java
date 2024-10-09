@@ -12,8 +12,8 @@ public class main {
     public static void main(String[] args) {
        Inicio login = new Inicio();
         login.setVisible(true); 
-       ClRegisterView registro = new ClRegisterView();
-       registro.setVisible(true);
+       //ClRegisterView registro = new ClRegisterView();
+      // registro.setVisible(true);
     }
         
 }
