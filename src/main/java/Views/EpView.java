@@ -282,7 +282,11 @@ public class EpView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton_empleado_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton_empleado_salirActionPerformed
-        // TODO add your handling code here:
+        if(evt.getSource()== jToggleButton_empleado_salir){
+          dispose();
+          Inicio login = new Inicio();
+          login.setVisible(true);
+    }
     }//GEN-LAST:event_jToggleButton_empleado_salirActionPerformed
 
     private void jTextField_empleado_busquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_empleado_busquedaActionPerformed

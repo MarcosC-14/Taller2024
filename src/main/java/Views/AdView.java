@@ -1076,7 +1076,11 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane2KeyPressed
 
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
-        // TODO add your handling code here:
+    if(evt.getSource()== jButton_Administrador_salir){
+          dispose();
+          Inicio login = new Inicio();
+          login.setVisible(true);
+    }
     }//GEN-LAST:event_jButton_Administrador_salirActionPerformed
 
     private void jTextField_administrador_reserva_busqueda_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_reserva_busqueda_clienteActionPerformed

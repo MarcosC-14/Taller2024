@@ -59,6 +59,7 @@ public class ClRegisterView extends javax.swing.JFrame {
         jTextField_correoRegistroCliente = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jButton_confirmarRegistroCliente = new javax.swing.JButton();
+        jButton_cancelarRegistroCliente = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -99,6 +100,13 @@ public class ClRegisterView extends javax.swing.JFrame {
             }
         });
 
+        jButton_cancelarRegistroCliente.setText("Cancelar");
+        jButton_cancelarRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cancelarRegistroClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,7 +122,7 @@ public class ClRegisterView extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField_correoRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,21 +135,24 @@ public class ClRegisterView extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(jButton_confirmarRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(296, 296, 296)
+                .addComponent(jButton_confirmarRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton_cancelarRegistroCliente)
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jButton_cancelarRegistroCliente))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,6 +183,14 @@ public class ClRegisterView extends javax.swing.JFrame {
     private void jButton_confirmarRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_confirmarRegistroClienteActionPerformed
     
     }//GEN-LAST:event_jButton_confirmarRegistroClienteActionPerformed
+
+    private void jButton_cancelarRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelarRegistroClienteActionPerformed
+         if(evt.getSource()== jButton_cancelarRegistroCliente){
+          dispose();
+          Inicio login = new Inicio();
+          login.setVisible(true);
+    }
+    }//GEN-LAST:event_jButton_cancelarRegistroClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +228,7 @@ public class ClRegisterView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_cancelarRegistroCliente;
     public javax.swing.JButton jButton_confirmarRegistroCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
