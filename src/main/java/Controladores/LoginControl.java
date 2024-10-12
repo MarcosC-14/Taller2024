@@ -6,9 +6,10 @@ package Controladores;
 
 import Views.AdView;
 import Views.ClRegisterView;
+import Views.ClView;
 import Views.Inicio;
 import modelo.Cliente;
-import modelo.ClienteDao;
+import persistencia.ClasesDao.ClienteDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -20,41 +21,47 @@ import javax.swing.JOptionPane;
 public class LoginControl implements ActionListener {
 
     private Cliente cliente;
-    private ClienteDao cliente_dao;
+    private ClienteDAO cliente_dao;
     private Inicio inicio;
     private ClRegisterView registro;
 
-    public LoginControl(Cliente cliente, ClienteDao cliente_Dao, Inicio inicio) {
+    public LoginControl(Cliente cliente, ClienteDAO cliente_Dao) {
         this.cliente = cliente;
         this.cliente_dao = cliente_Dao;
-        this.inicio = inicio;
+    }
+
+    public void setInicio(Inicio i){
+        this.inicio = i;
         this.inicio.jButton_ingreso.addActionListener(this);
         this.inicio.jButton_recuperarContraseña.addActionListener(this);
         this.inicio.jButton_registro.addActionListener(this);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         // Obtener datos de la vista
-        String user = inicio.txt_username.getText().trim();
+        String correo = inicio.txt_username.getText().trim();
         String pass = String.valueOf(inicio.txt_password.getPassword());
 
         if (e.getSource() == inicio.jButton_ingreso) {
             // validar que los campos no esten vacios 
-
-            if (!user.equals(" ") || !pass.equals("")) {
+                
+            if (!correo.equals("") || !pass.equals("")) {
                 // pasar parametros al metodo login
-                cliente = cliente_dao.loginQuery(user, pass);
+                cliente = cliente_dao.loginQuery(correo, pass);
                 //verficar existencia de usuario
-                if (cliente.getNombre() != null) {
-                    AdView aux = new AdView();
+                if (cliente.getCorreo().equals(correo)) {
+                    ClView aux = new ClView();
                     aux.setVisible(true);
+                    this.inicio.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
                 }
-                this.inicio.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
             }
         } else if (e.getSource() == inicio.jButton_registro) {
+            this.registro = new ClRegisterView();
             this.registro.setVisible(true);
             this.inicio.dispose();
 

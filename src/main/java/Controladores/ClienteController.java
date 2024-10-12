@@ -8,6 +8,7 @@ import modelo.Cliente;
 import persistencia.ClasesDao.ClienteDAO;
 import java.awt.event.ActionListener;
 import Views.ClRegisterView;
+import Views.ClView;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
@@ -19,10 +20,16 @@ public class ClienteController implements ActionListener{
     private Cliente cliente;
     private ClienteDAO clienteDAO;
     private ClRegisterView view;
+    private ClView view2;
     
-    public ClienteController(Cliente cliente, ClienteDAO clienteDAO, ClRegisterView view){
+    
+    public ClienteController(Cliente cliente, ClienteDAO clienteDAO){
         this.cliente = cliente;
         this.clienteDAO = clienteDAO;
+        
+    }
+    
+    public void setClRegisterView(ClRegisterView view){
         this.view = view;
         this.view.jButton_confirmarRegistroCliente.addActionListener(this);
     }
@@ -54,6 +61,10 @@ public class ClienteController implements ActionListener{
                 }
                 
             }
+        }else
+        
+        if(e.getSource().equals(view2.jButton_nuevaReserva)){
+            
         }
     }
     public static boolean esCorreoElectronicoValido(String correo) {

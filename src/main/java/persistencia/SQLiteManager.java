@@ -14,10 +14,9 @@ import java.sql.SQLException;
  */
 public class SQLiteManager {
 
-    private static Connection connection;
-
-    public static Connection getConexion() {
-        if(connection == null){
+    private Connection connection;
+    
+    public Connection getConexion() {
             try {
                 // Establece la URL de conexión a la base de datos SQLite
                 String url = "jdbc:sqlite:Restaurante.db";
@@ -28,7 +27,6 @@ public class SQLiteManager {
             } catch (SQLException e) {
                 System.err.println("Error de conexión: " + e.getMessage());
             }
-        }
         return connection;
     }
 

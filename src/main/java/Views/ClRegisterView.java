@@ -30,7 +30,8 @@ public class ClRegisterView extends javax.swing.JFrame {
      */
     public ClRegisterView() {
      initComponents();
-     ClienteController clienteC = new ClienteController(cliente, clienteDAO,this);
+     ClienteController clienteC = new ClienteController(cliente, clienteDAO);
+     clienteC.setClRegisterView(this);
          setSize(729, 420);
                 setResizable(false);
                 setTitle("Panel de administracion");

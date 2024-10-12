@@ -382,7 +382,7 @@
         <Container class="javax.swing.JPanel" name="historial_cliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="0" type="rgb"/>
+              <Color blue="66" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -599,7 +599,7 @@
         <Container class="javax.swing.JPanel" name="jPanel4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="0" type="rgb"/>
+              <Color blue="66" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -633,7 +633,7 @@
                               <Component id="jTextField_cliente_perfil_correo" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="256" max="32767" attributes="0"/>
+                      <EmptySpace pref="255" max="32767" attributes="0"/>
                       <Component id="jButton_cliente_perfil_actualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
@@ -647,7 +647,7 @@
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField_cliente_perfil_correo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton_cliente_perfil_actualizar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -722,7 +722,7 @@
                                   <Component id="jScrollPane4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton_nuevaReserva" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -758,7 +758,7 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="fechaNewReserva_txt" min="-2" pref="70" max="-2" attributes="0"/>
+                                      <Component id="jTextField_fechaNewReserva" min="-2" pref="70" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
@@ -799,7 +799,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="fechaNewReserva_txt" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="jTextField_fechaNewReserva" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -849,7 +849,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_nuevaReserva" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -863,9 +863,9 @@
                 <Property name="text" type="java.lang.String" value="Fecha"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="fechaNewReserva_txt">
+            <Component class="javax.swing.JTextField" name="jTextField_fechaNewReserva">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fechaNewReserva_txtActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_fechaNewReservaActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -888,7 +888,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="comentario">
+                <Component class="javax.swing.JTextArea" name="jTextField_comentario">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -988,20 +988,23 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextPane" name="Capacidad">
+                <Component class="javax.swing.JTextPane" name="jTextField_Capacidad">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="jButton_nuevaReserva">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reservar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_nuevaReservaActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox_cliente_reserva_mesa">
               <Properties>
@@ -1026,9 +1029,9 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_cliente_reserva_codSeg">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_cliente_reserva_codSegActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
