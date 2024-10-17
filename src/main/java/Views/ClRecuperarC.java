@@ -116,7 +116,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
         return;
     }
         ClienteDAO cliente = new ClienteDAO();
-    // Llamar al método recuperarContrasenia del objeto cliente
+    // Llamar al método recuperarContrasenia del objeto clienteDAO
     String resultado = cliente.recuperarContraseña(correoIngreso);
 
     // Mostrar el resultado en un JOptionPane
