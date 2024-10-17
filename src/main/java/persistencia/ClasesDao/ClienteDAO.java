@@ -83,4 +83,25 @@ public class ClienteDAO{
         }
         return cliente;
     }
+     public String recuperarContraseña(String correo) { 
+         String contraseña="";
+         String query = "SELECT *FROM cliente WHERE correo = ?";
+         try {
+            con = conn.getConexion();
+            ps = con.prepareStatement(query);
+            //Enviar parametros
+            ps.setString(1, correo);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                contrasenia = rs.getString("contrasenia");
+            } else{
+                contrasenia= "Correo no encontrado";
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener Cliente" + e);
+        
+    }
+         return contrasenia;
+    }
     }

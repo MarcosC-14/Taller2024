@@ -131,9 +131,8 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_ingreso)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                .addComponent(txt_username)))
+                            .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton_registro)
@@ -194,7 +193,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_registroActionPerformed
 
     private void jButton_recuperarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_recuperarContraseñaActionPerformed
-        // enviarlo a otra ventana que le pida su correo y le devuelva su contraseña
+        ClRecuperarC ventanaContraseña = new ClRecuperarC();
+        ventanaContraseña.setVisible(true);
+        this.dispose();
+// enviarlo a otra ventana que le pida su correo y le devuelva su contraseña
     }//GEN-LAST:event_jButton_recuperarContraseñaActionPerformed
 
     /**
