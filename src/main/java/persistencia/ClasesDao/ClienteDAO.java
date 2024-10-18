@@ -44,7 +44,7 @@ public class ClienteDAO{
      */
     public boolean registrarCliente(Cliente cliente){
         boolean registrado = false;
-        
+        //que revise si el correo ya esta ingresado
         String sql = "INSERT into cliente (nombre,correo,contrasenia,telefono) VALUES(?,?,?,?)";
         try {
             con = conn.getConexion();
