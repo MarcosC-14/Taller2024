@@ -81,7 +81,13 @@ public class ClienteDAO{
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener Empleado" + e);
-        }
+        }finally{
+            try{
+                 conn.cerrarConexion();
+             } catch(Exception e){
+                 System.out.println("Fallo"  + e.getMessage());
+             }
+        }   
         return cliente;
     }
      public String recuperarContraseña(String correo) { 
@@ -101,8 +107,13 @@ public class ClienteDAO{
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener Cliente" + e);
-        
-    }
+        } finally{
+             try{
+                 conn.cerrarConexion();
+             } catch(Exception e){
+                 System.out.println("Fallo"  + e.getMessage());
+             }
+         }
          return contrasenia;
     }
      public boolean actualizarInformacion(String correo, String telefono, String correoActual){
@@ -142,7 +153,11 @@ public class ClienteDAO{
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
              System.out.println(e);
          }finally {
-             
+             try{
+                 conn.cerrarConexion();
+             } catch(Exception e){
+                 System.out.println("Fallo"  + e.getMessage());
+             }
          }
          return actualizacion;
      

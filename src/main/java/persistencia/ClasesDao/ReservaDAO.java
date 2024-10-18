@@ -39,7 +39,13 @@ public class ReservaDAO {
 
         } catch (SQLException e) {
             System.out.println(e.toString());
-        }
+        } finally{
+             try{
+                 conn.cerrarConexion();
+             } catch(Exception e){
+                 System.out.println("Fallo"  + e.getMessage());
+             }
+         }
         return realizado;
     }
 }
