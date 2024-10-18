@@ -591,7 +591,7 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel6.setText("Hora");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "19-20:15", "20:30-21:45", "22-23:00", "23-00:15" }));
 
         jButton3.setText("Mesas Disponible");
 
