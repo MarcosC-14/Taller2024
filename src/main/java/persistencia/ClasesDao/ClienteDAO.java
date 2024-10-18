@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * La clase ClienteDAO ofrece los metodos necesarios para realizar las operaciones
  * necesarias con la base de datos que afecten a los clientes como Registrar a un 
  * cliente, permitir que el cliente se registre, ofrecerle un metodo para que recupere
- * su contraseña y permitir que actualice su informacion de contacto.
+ * su contraseña y permitir que actualice su numero de telefono y su correo electronico.
  * Se utiliza la clase SQLiteManager para concectarse a la base de datos.
  * @author Marcos Ramon Caraballo, Angelina María Vialle,
  * @version 27/10/2024 
@@ -143,19 +143,17 @@ public class ClienteDAO{
     }
      
      /**
-      * Actualiza la informacion de contacto de cliente en la base de datos
-      * @param correo, representa el nuevo correo electronico
-      * @param telefono, representa el numero de telefono
+      * Actualiza el correo del cliente en la base de datos.
+      * Verifica que el correo electronico actual este en la base de datos y el nuevo correo electronico tenga un @ y no este en la base de datos
       * @param correoActual, representa el correo electronico que se tiene actualmente
-      * @return true en caso de se haya podido actualizar correctamente, false en 
+      * @param correoNuevo, representa el nuevo correo electronico
+      * @return true en caso de se haya podido actualizar correctamente el correo, false en 
       * caso contrario.
       */
-     
-     public boolean actualizarInformacion(String correo, String telefono, String correoActual){
-         
-         boolean actualizacion= false;
+     public boolean actualizarCorreo( String correoActual, String correoNuevo){
+        boolean actualizacion= false;
          String verificaCorreo ="SELECT *  FROM cliente WHERE correo= ?";
-         String sql="UPDATE cliente SET correo = ?, telefono = ? WHERE correo = ?";
+         String sql="UPDATE cliente SET correo = ? WHERE correo = ?";
          try{
              
              con = conn.getConexion(); //asegura que estas conectado
@@ -164,16 +162,15 @@ public class ClienteDAO{
              rs=ps.executeQuery();
              if(rs.next()){
                  
-                 if(ClienteController.esCorreoElectronicoValido(correo)){
+                 if(ClienteController.esCorreoElectronicoValido(correoNuevo)){
                      
                       ps=con.prepareStatement(verificaCorreo);
-                      ps.setString(1,correo);
+                      ps.setString(1,correoNuevo);
                       rs=ps.executeQuery();
                       if(!(rs.next())){
-                          ps=con.prepareStatement(sql);
-                        ps.setString(1, correo);
-                        ps.setString(2, telefono);
-                        ps.setString(3, correoActual);
+                        ps=con.prepareStatement(sql);
+                        ps.setString(1, correoNuevo);
+                        ps.setString(2, correoActual);
                         actualizacion =(ps.executeUpdate()>0);
                  }else{
                      JOptionPane.showMessageDialog(null,"El nuevo correo coincide con un correo registrado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -195,5 +192,54 @@ public class ClienteDAO{
          }
          return actualizacion;
      
-    }
+     }
+     
+     /**
+      * Actualiza el numero de telefono del cliente en la base de datos.
+      * Verifica que el correo este en la base de datos y que el nuevo telefono no coincida con el numero de telefono de alguien más.
+      * @param correo, representa el correo electronico del cliente.
+      * @param telefono, representa el nuevo numero de telefono
+      * @return true en caso de se haya podido actualizar correctamente el correo, false en 
+      * caso contrario.
+      */
+     public boolean actualizarTelefono(String correo, String telefono){
+     boolean actualizacion= false;
+         String verificaCorreo ="SELECT *  FROM cliente WHERE correo= ?";
+         String verificaTelefono ="SELECT *  FROM cliente WHERE telefono= ?";
+         String sql="UPDATE cliente SET telefono = ? WHERE correo = ?";
+         try{
+             
+             con = conn.getConexion(); //asegura que estas conectado
+             ps=con.prepareStatement(verificaCorreo);
+             ps.setString(1, correo);
+             rs=ps.executeQuery();
+             
+             
+             if(rs.next()){
+                  ps=con.prepareStatement(verificaTelefono);
+                      ps.setString(1,telefono);
+                      rs=ps.executeQuery();
+                 if(!(rs.next())){
+                        ps=con.prepareStatement(sql);
+                        ps.setString(1, telefono);
+                        ps.setString(2, correo);
+                        actualizacion =(ps.executeUpdate()>0);
+                 }else{
+                     JOptionPane.showMessageDialog(null, "El telefono ya se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+                 }
+             }else{
+                 JOptionPane.showMessageDialog(null,"El correo no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+             }
+         }catch(SQLException e){
+             JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
+             System.out.println(e);
+         }finally {
+             try {
+                conn.cerrarConexion();
+            }catch (Exception e) {
+                System.out.println(e.toString());
+            }
+         }
+         return actualizacion;
+     }
 }

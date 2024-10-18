@@ -854,20 +854,38 @@ public class ClView extends javax.swing.JFrame {
         String telefonoIngresado = jTxtClientePerfilTelefono.getText();
         String correoIngresado = jTxtClientePerfilNuevoCorreo.getText();
         String correoActual =jTxtCorreoActual.getText();
-        if (telefonoIngresado.isEmpty()|| correoIngresado.isEmpty()|| correoActual.isEmpty()) {
-       
-        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese su correo actual, el nuevo correo y su nuevo telefono.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if ( correoActual.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese su correo actual.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         return;
-    }
+    } else{
+        if(correoIngresado.isEmpty()&& telefonoIngresado.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese un correo o telefono para actualizar sus datos.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        }
         ClienteDAO cliente = new ClienteDAO();
     // Llamar al método actualizarInformacion del objeto clienteDAO
     //String resultado = cliente.recuperarContraseña(correoIngreso);
-    boolean resultado= cliente.actualizarInformacion(correoIngresado, telefonoIngresado, correoActual);
-    if(resultado){
-        javax.swing.JOptionPane.showMessageDialog(this, "Datos actualizados", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    boolean resultadoC=false;
+    boolean resultadoT=false;
+    
+    if(!(telefonoIngresado.isEmpty())){
+        resultadoT= cliente.actualizarTelefono(correoActual, telefonoIngresado);
+        if(resultadoT){
+        javax.swing.JOptionPane.showMessageDialog(this, "Telefono actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }else{
-        javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el telefono.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
     }
+    }
+    if(!(correoIngresado.isEmpty())){
+        resultadoC = cliente.actualizarCorreo(correoActual, correoIngresado);
+        if(resultadoC){
+        javax.swing.JOptionPane.showMessageDialog(this, "Correo actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }else{
+        javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el correo.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
+    }
+    
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
 
     /**
