@@ -21,6 +21,9 @@ public class ClienteController implements ActionListener{
     private ClienteDAO clienteDAO;
     private ClRegisterView view;
     private ClView view2;
+
+    public ClienteController() {
+    }
     
     
     public ClienteController(Cliente cliente, ClienteDAO clienteDAO){

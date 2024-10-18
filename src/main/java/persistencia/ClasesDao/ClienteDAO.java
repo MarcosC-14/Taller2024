@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistencia.ClasesDao;
-
+import persistencia.SQLiteManager;
+import Controladores.ClienteController;
 import modelo.Cliente;
 import persistencia.SQLiteManager;
 import java.sql.Connection;
@@ -104,4 +105,46 @@ public class ClienteDAO{
     }
          return contrasenia;
     }
+     public boolean actualizarInformacion(String correo, String telefono, String correoActual){
+         
+         boolean actualizacion= false;
+         String verificaCorreo ="SELECT *  FROM cliente WHERE correo= ?";
+         String sql="UPDATE cliente SET correo = ?, telefono = ? WHERE correo = ?";
+         try{
+             
+             con = conn.getConexion(); //asegura que estas conectado
+             ps=con.prepareStatement(verificaCorreo);
+             ps.setString(1, correoActual);
+             rs=ps.executeQuery();
+             if(rs.next()){
+                 
+                 ClienteController c=new ClienteController();
+                 if(c.esCorreoElectronicoValido(correo)){
+                     
+                      ps=con.prepareStatement(verificaCorreo);
+                      ps.setString(1,correo);
+                      rs=ps.executeQuery();
+                      if(!(rs.next())){
+                          ps=con.prepareStatement(sql);
+                        ps.setString(1, correo);
+                        ps.setString(2, telefono);
+                        ps.setString(3, correoActual);
+                        actualizacion =(ps.executeUpdate()>0);
+                 }else{
+                     JOptionPane.showMessageDialog(null,"El nuevo correo coincide con un correo registrado", "Error", JOptionPane.ERROR_MESSAGE);
+                 }}else{
+                     JOptionPane.showMessageDialog(null,"INGRESE UN CORREO ELECTRONICO VALIDO","Error", JOptionPane.ERROR_MESSAGE);
+                 }
+             }else{
+                 JOptionPane.showMessageDialog(null,"El correo no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+             }
+         }catch(SQLException e){
+             JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
+             System.out.println(e);
+         }finally {
+             
+         }
+         return actualizacion;
+     
     }
+}
