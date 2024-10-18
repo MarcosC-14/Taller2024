@@ -592,6 +592,11 @@ public class ClView extends javax.swing.JFrame {
         jLabel6.setText("Hora");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "19-20:15", "20:30-21:45", "22-23:00", "23-00:15" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Mesas Disponible");
 
@@ -887,6 +892,10 @@ public class ClView extends javax.swing.JFrame {
     }
     
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
