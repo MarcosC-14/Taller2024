@@ -14,8 +14,13 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author marco
+ * La clase ClienteDAO ofrece los metodos necesarios para realizar las operaciones
+ * necesarias con la base de datos que afecten a los clientes como Registrar a un 
+ * cliente, permitir que el cliente se registre, ofrecerle un metodo para que recupere
+ * su contraseña y permitir que actualice su informacion de contacto.
+ * Se utiliza la clase SQLiteManager para concectarse a la base de datos.
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,
+ * @version 27/10/2024 
  */
 public class ClienteDAO{
     
@@ -32,6 +37,11 @@ public class ClienteDAO{
     public static String contrasenia = "";
     public static String telefono = "";
     
+    /**
+     * Este metodo se encarga de registrar a un nuevo cliente en la base de datos.
+     * @param cliente, representa a un objeto cliente, el cual contiene los datos a registrar
+     * @return true si se pudo registrar el cliente, false en caso contrario
+     */
     public boolean registrarCliente(Cliente cliente){
         boolean registrado = false;
         
@@ -52,7 +62,14 @@ public class ClienteDAO{
         
     }
 
-
+    /**
+     * Se encarga de revisar que el usuario y la contraseña ingresados sean validos,
+     * en caso que sea asi, permite el acceso.
+     * @param user, representa el correo electronico del cliente.
+     * @param password, representa la contraseña del cliente
+     * @return devuelve un objeto cliente con las informacion de cliente en caso 
+     * de que el usuario y la contraseña sean validos, si no devuelve un objeto vacio
+     */
     public Cliente loginQuery(String user, String password) {
         String query = "SELECT *FROM cliente WHERE correo = ? AND contrasenia = ?";
         Cliente cliente = new Cliente();
@@ -90,6 +107,14 @@ public class ClienteDAO{
         }   
         return cliente;
     }
+    
+    /**
+     * Recupera la contraseña de un cliente a traves de su correo electronico.
+     * @param correo, es el correo electronico del cliente.
+     *@return Devuelve la contraseña de un cliente en caso de que el correo electronico
+     * sea valido o un mensaje avisando que no encontro el correo.
+     */
+    
      public String recuperarContraseña(String correo) { 
          String contraseña="";
          String query = "SELECT *FROM cliente WHERE correo = ?";
@@ -116,6 +141,16 @@ public class ClienteDAO{
          }
          return contrasenia;
     }
+     
+     /**
+      * Actualiza la informacion de contacto de cliente en la base de datos
+      * @param correo, representa el nuevo correo electronico
+      * @param telefono, representa el numero de telefono
+      * @param correoActual, representa el correo electronico que se tiene actualmente
+      * @return true en caso de se haya podido actualizar correctamente, false en 
+      * caso contrario.
+      */
+     
      public boolean actualizarInformacion(String correo, String telefono, String correoActual){
          
          boolean actualizacion= false;

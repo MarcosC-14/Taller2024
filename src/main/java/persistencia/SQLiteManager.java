@@ -9,12 +9,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author marco
+ * La clase SQLiteManager se encarga manejar la apertura y cierre de la base de 
+ * datos. Dandote metodos para abrir y cerrar la conexion de manera segura.
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,
+ * @version 27/10/2024
  */
 public class SQLiteManager {
 
     private Connection connection;
+    
+    /**
+     * Este metodo se encarga de establecer la conexion con la base de datos.
+     * Si logra conectarse devuelve la conexion.
+     * @return la conexion establecida a la base de datos en caso de que se haya 
+     * podido, o el objeto nulo en caso de error.
+     */
     
     public Connection getConexion() {
             try {
@@ -29,7 +38,11 @@ public class SQLiteManager {
             }
         return connection;
     }
-
+    
+    /**
+     * Se encarga de cerrar la conexion a la base de datos.
+     * Si hay una conexion a la base de datos la cierra.
+     */
     // Método para cerrar la conexión a la base de datos
     public void cerrarConexion() {
         try {
