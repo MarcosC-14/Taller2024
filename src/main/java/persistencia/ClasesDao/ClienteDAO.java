@@ -118,8 +118,7 @@ public class ClienteDAO{
              rs=ps.executeQuery();
              if(rs.next()){
                  
-                 ClienteController c=new ClienteController();
-                 if(c.esCorreoElectronicoValido(correo)){
+                 if(ClienteController.esCorreoElectronicoValido(correo)){
                      
                       ps=con.prepareStatement(verificaCorreo);
                       ps.setString(1,correo);
@@ -142,7 +141,11 @@ public class ClienteDAO{
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
              System.out.println(e);
          }finally {
-             
+             try {
+                conn.cerrarConexion();
+            }catch (Exception e) {
+                System.out.println(e.toString());
+            }
          }
          return actualizacion;
      
