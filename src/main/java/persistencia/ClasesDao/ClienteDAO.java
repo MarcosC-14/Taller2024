@@ -57,6 +57,8 @@ public class ClienteDAO{
 
         } catch (SQLException e) {
             System.out.println(e.toString());
+        }finally {
+            conn.cerrarConexion();
         }
         return registrado;
         
@@ -98,13 +100,9 @@ public class ClienteDAO{
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener Empleado" + e);
-        }finally{
-            try{
-                 conn.cerrarConexion();
-             } catch(Exception e){
-                 System.out.println("Fallo"  + e.getMessage());
-             }
-        }   
+        }finally {
+            conn.cerrarConexion();
+        }
         return cliente;
     }
     
@@ -132,13 +130,9 @@ public class ClienteDAO{
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener Cliente" + e);
-        } finally{
-             try{
-                 conn.cerrarConexion();
-             } catch(Exception e){
-                 System.out.println("Fallo"  + e.getMessage());
-             }
-         }
+        } finally {
+            conn.cerrarConexion();
+        }
          return contrasenia;
     }
      
@@ -184,12 +178,8 @@ public class ClienteDAO{
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
              System.out.println(e);
          }finally {
-             try {
-                conn.cerrarConexion();
-            }catch (Exception e) {
-                System.out.println(e.toString());
-            }
-         }
+            conn.cerrarConexion();
+        }
          return actualizacion;
      
      }
