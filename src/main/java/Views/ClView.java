@@ -604,16 +604,12 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel6.setText("Hora");
 
-<<<<<<< HEAD
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "19-20:15", "20:30-21:45", "22-23:00", "23-00:15" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "18:15", "20:30", "22:45" }));
+        jComboBox_horaBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
             }
         });
-=======
-        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "18", "20", "22" }));
->>>>>>> 1a0222a7cbaf5568274b0ab1b925ed193d9e15d3
 
         jButton_mesasBuscar.setText("Mesas Disponible");
         jButton_mesasBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -946,11 +942,11 @@ public class ClView extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
 
-<<<<<<< HEAD
+
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
-=======
+
     private void JButton_confirmarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_confirmarFechaActionPerformed
         fechaBuscar = LocalDate.parse(jTextField_fechaNewReserva.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String h = (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
@@ -962,7 +958,7 @@ public class ClView extends javax.swing.JFrame {
     private void jButton_mesasBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_mesasBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_mesasBuscarActionPerformed
->>>>>>> 1a0222a7cbaf5568274b0ab1b925ed193d9e15d3
+
 
     /**
      * @param args the command line arguments
