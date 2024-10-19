@@ -14,6 +14,8 @@ import modelo.Mesa;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.ReservaDAO;
 import modelo.Cliente;
+import modelo.Reserva;
+import modelo.Tarjeta;
 /**
  *
  * @author Rebechi
@@ -28,6 +30,7 @@ public class ClView extends javax.swing.JFrame {
     LocalDate fechaBuscar;
     LocalTime horaBuscar;
     Cliente cliente1;
+    Reserva reserva = new Reserva();
     
     public ClView(Cliente cliente1) {
         initComponents();
@@ -96,26 +99,26 @@ public class ClView extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextField_cliente_reserva_EmiT = new javax.swing.JTextPane();
+        jTextFieldClienteReservaEmiT = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextField_cliente_reserva_nombreT = new javax.swing.JTextPane();
+        jTextFieldCienteReservaNombreT = new javax.swing.JTextPane();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jButton_nuevaReserva = new javax.swing.JButton();
-        jComboBox_cliente_reserva_mesa = new javax.swing.JComboBox<>();
-        jTextField_cliente_reserva_codSeg = new javax.swing.JTextField();
-        jComboBox_cliente_reserva_ubicacion = new javax.swing.JComboBox<>();
+        jComboBoxClienteReservaMesa = new javax.swing.JComboBox<>();
+        jTextFieldClienteReservanNumT = new javax.swing.JTextField();
+        jComboBoxClienteReservaUbicacion = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxClienteReservaCapacidad = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jComboBox_horaBuscar = new javax.swing.JComboBox<>();
         jButton_mesasBuscar = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable_mesasDisponibles = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldClienteReservaCodSeg = new javax.swing.JTextField();
         JButton_confirmarFecha = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLNuevoCorreo = new javax.swing.JLabel();
@@ -492,9 +495,9 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel22.setText("Codigo de seguridad");
 
-        jScrollPane7.setViewportView(jTextField_cliente_reserva_EmiT);
+        jScrollPane7.setViewportView(jTextFieldClienteReservaEmiT);
 
-        jScrollPane8.setViewportView(jTextField_cliente_reserva_nombreT);
+        jScrollPane8.setViewportView(jTextFieldCienteReservaNombreT);
 
         jLabel23.setText("Numero de mesa");
 
@@ -509,20 +512,20 @@ public class ClView extends javax.swing.JFrame {
             }
         });
 
-        jComboBox_cliente_reserva_mesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
-        jComboBox_cliente_reserva_mesa.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxClienteReservaMesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBoxClienteReservaMesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox_cliente_reserva_mesaActionPerformed(evt);
+                jComboBoxClienteReservaMesaActionPerformed(evt);
             }
         });
 
-        jTextField_cliente_reserva_codSeg.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldClienteReservanNumT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_cliente_reserva_codSegActionPerformed(evt);
+                jTextFieldClienteReservanNumTActionPerformed(evt);
             }
         });
 
-        jComboBox_cliente_reserva_ubicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Interior", "Exterior" }));
+        jComboBoxClienteReservaUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cualquiera", "Interior", "Exterior" }));
 
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Interior");
@@ -532,7 +535,7 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mesas.png"))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "4", "6", "8", "10" }));
+        jComboBoxClienteReservaCapacidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cualquiera", "dos", "cuatro", "seis", "ocho", "diez" }));
 
         jLabel6.setText("Hora");
 
@@ -602,15 +605,17 @@ public class ClView extends javax.swing.JFrame {
                                         .addGap(6, 6, 6)
                                         .addComponent(jLabel6)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox_cliente_reserva_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox_cliente_reserva_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox_horaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxClienteReservaUbicacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
+                                        .addComponent(jComboBoxClienteReservaMesa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(2, 2, 2))
+                                    .addComponent(jComboBox_horaBuscar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                                 .addGap(104, 104, 104)
-                                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField_fechaNewReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxClienteReservaCapacidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField_fechaNewReserva)))
                             .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel17))
@@ -640,7 +645,7 @@ public class ClView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField_cliente_reserva_codSeg, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldClienteReservanNumT, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel21)
@@ -655,7 +660,7 @@ public class ClView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldClienteReservaCodSeg, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton_nuevaReserva)
@@ -686,14 +691,14 @@ public class ClView extends javax.swing.JFrame {
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                         .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel25)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxClienteReservaCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
-                            .addComponent(jComboBox_cliente_reserva_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxClienteReservaMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox_cliente_reserva_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxClienteReservaUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -727,11 +732,11 @@ public class ClView extends javax.swing.JFrame {
                                 .addGap(7, 7, 7)
                                 .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel20)
-                                    .addComponent(jTextField_cliente_reserva_codSeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldClienteReservanNumT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel22)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldClienteReservaCodSeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton_nuevaReserva)
@@ -877,15 +882,21 @@ public class ClView extends javax.swing.JFrame {
         mesas = reservaDAO.mesas();
         DefaultTableModel model = (DefaultTableModel) jTable_mesasDisponibles.getModel();
         model.setRowCount(0); //Elimina las filas existentes;
+        String filtroUbi =(String)(jComboBoxClienteReservaUbicacion.getSelectedItem());
+        String filtroCap =(String)(jComboBoxClienteReservaCapacidad.getSelectedItem());
         
         for(Mesa m : mesas){
-            String disponible = reservaDAO.mesaDisponible(m.getNumero(),fechaBuscar,horaBuscar)? "Sí":"No";
-            model.addRow(new Object[]{
-                m.getNumero(),
-                m.getCapacidad(),
-                m.getUbicacion(),
-                disponible
-            });
+            String disponible = reservaDAO.mesaDisponible(m.getNumero(),
+                    fechaBuscar,horaBuscar)? "Sí":"No";
+            if(filtroUbi.equals("Cualquiera") || filtroUbi.equals(String.valueOf(m.getUbicacion()))){
+                if(filtroCap.equals("Cualquiera") || filtroCap.equals(String.valueOf(m.getCapacidad())))
+                    model.addRow(new Object[]{
+                        m.getNumero(),
+                        m.getCapacidad(),
+                        m.getUbicacion(),
+                        disponible
+                });
+            }
             
         }
         
@@ -940,16 +951,37 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTxtClientePerfilNuevoCorreoActionPerformed
 
     private void jButton_nuevaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_nuevaReservaActionPerformed
-        // TODO add your handling code here:
+        ReservaDAO rDAO = new ReservaDAO();
+        reserva.setCliente(cliente1);
+        reserva.setFecha(fechaBuscar);
+        reserva.setHora(horaBuscar);
+        reserva.setComentario(jTextField_comentario.getText());
+        Mesa mesaR = new Mesa();
+        int numM = Integer.parseInt((String)jComboBoxClienteReservaMesa.getSelectedItem());
+        mesaR.setNumero(numM);
+        reserva.setMesa(mesaR);
+        
+        Tarjeta tarjetaR = new Tarjeta();
+        tarjetaR.setNombre(jTextFieldCienteReservaNombreT.getText());
+        tarjetaR.setEmisor(this.jTextFieldClienteReservaEmiT.getText());
+        tarjetaR.setNumero(this.jTextFieldClienteReservanNumT.getText());
+        tarjetaR.setCodSeguridad(this.jTextFieldClienteReservaCodSeg.getText());
+        
+        reserva.setTarjeta(tarjetaR);
+        if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)){
+            rDAO.realizarReserva(reserva);
+        }
+        
+        
     }//GEN-LAST:event_jButton_nuevaReservaActionPerformed
 
-    private void jTextField_cliente_reserva_codSegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_cliente_reserva_codSegActionPerformed
+    private void jTextFieldClienteReservanNumTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClienteReservanNumTActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_cliente_reserva_codSegActionPerformed
+    }//GEN-LAST:event_jTextFieldClienteReservanNumTActionPerformed
 
-    private void jComboBox_cliente_reserva_mesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_cliente_reserva_mesaActionPerformed
+    private void jComboBoxClienteReservaMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteReservaMesaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox_cliente_reserva_mesaActionPerformed
+    }//GEN-LAST:event_jComboBoxClienteReservaMesaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -1036,9 +1068,9 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JButton jButton_cliente_perfil_actualizar;
     private javax.swing.JButton jButton_mesasBuscar;
     public javax.swing.JButton jButton_nuevaReserva;
-    private javax.swing.JComboBox<String> jComboBox1;
-    public javax.swing.JComboBox<String> jComboBox_cliente_reserva_mesa;
-    public javax.swing.JComboBox<String> jComboBox_cliente_reserva_ubicacion;
+    private javax.swing.JComboBox<String> jComboBoxClienteReservaCapacidad;
+    public javax.swing.JComboBox<String> jComboBoxClienteReservaMesa;
+    public javax.swing.JComboBox<String> jComboBoxClienteReservaUbicacion;
     private javax.swing.JComboBox<String> jComboBox_horaBuscar;
     private javax.swing.JLabel jLNuevoCorreo;
     private javax.swing.JLabel jLTelefono;
@@ -1093,14 +1125,14 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JTable jTable_historialCliente;
     private javax.swing.JTable jTable_mesasDisponibles;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JTextPane jTextFieldCienteReservaNombreT;
+    private javax.swing.JTextField jTextFieldClienteReservaCodSeg;
+    public javax.swing.JTextPane jTextFieldClienteReservaEmiT;
+    public javax.swing.JTextField jTextFieldClienteReservanNumT;
     public javax.swing.JTextField jTextField_cliente_fecha;
     public javax.swing.JTextField jTextField_cliente_id;
     public javax.swing.JTextField jTextField_cliente_mesa;
-    public javax.swing.JTextPane jTextField_cliente_reserva_EmiT;
     public javax.swing.JTextField jTextField_cliente_reserva_buscar;
-    public javax.swing.JTextField jTextField_cliente_reserva_codSeg;
-    public javax.swing.JTextPane jTextField_cliente_reserva_nombreT;
     public javax.swing.JTextArea jTextField_comentario;
     public javax.swing.JTextField jTextField_fechaNewReserva;
     public javax.swing.JToggleButton jToggleButton_cliente_Salir;

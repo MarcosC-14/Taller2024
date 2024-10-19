@@ -41,7 +41,7 @@ public class ReservaDAO {
             ps.setString(2,reserva.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
             ps.setString(3, reserva.getComentario());
             ps.setInt(4, reserva.getMesa().getNumero());
-            ps.setString(5,reserva.getCliente().getCorreo());
+            ps.setInt(5,reserva.getCliente().getId());
             ps.setString(6, reserva.getTarjeta().getNumero());
             realizado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
@@ -87,20 +87,20 @@ public class ReservaDAO {
                 Mesa mesa = new Mesa();
                 mesa.setNumero(rs.getInt("numero"));
                 Capacidad c = null;
-                switch (rs.getInt("capacidad")){
-                    case 2:
+                switch (rs.getString("capacidad")){
+                    case "dos":
                         c = Capacidad.dos;
                         break;
-                    case 4:
+                    case "cuatro":
                         c = Capacidad.cuatro;
                         break;
-                    case 6:
+                    case "seis":
                         c = Capacidad.seis;
                         break;
-                    case 8:
+                    case "ocho":
                         c = Capacidad.ocho;
                         break;
-                    case 10:
+                    case "diez":
                         c = Capacidad.diez;
                         break;
                     default:
