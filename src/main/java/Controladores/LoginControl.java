@@ -51,7 +51,7 @@ public class LoginControl implements ActionListener {
                 cliente = cliente_dao.loginQuery(correo, pass);
                 //verficar existencia de usuario
                 if (cliente.getCorreo().equals(correo)) {
-                    ClView aux = new ClView();
+                    ClView aux = new ClView(cliente);
                     aux.setVisible(true);
                     this.inicio.dispose();
                 }else{

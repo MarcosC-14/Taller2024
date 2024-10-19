@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Cliente extends Persona {
 
-    // Este atributo representa el número de teléfono del cliente
+    private int id;
     private String telefono;
     private ArrayList<Reserva> reservas;
 
@@ -31,10 +31,19 @@ public class Cliente extends Persona {
      * @param cn Es la contrasenia del cliente
      * @param tel Es el telefono del cliente
      */
-    public Cliente(String n, String c, String cn, String tel, ArrayList<Reserva> reservas) {
+    public Cliente(int id, String n, String c, String cn, String tel, ArrayList<Reserva> reservas) {
         super(n, c, cn);
+        this. id= id;
         this.telefono = tel;
         this.reservas=reservas;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ArrayList<Reserva> getReservas() {

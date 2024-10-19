@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Mesa;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.ReservaDAO;
-
+import modelo.Cliente;
 /**
  *
  * @author Rebechi
@@ -27,13 +27,15 @@ public class ClView extends javax.swing.JFrame {
     ArrayList<Mesa> mesas;
     LocalDate fechaBuscar;
     LocalTime horaBuscar;
+    Cliente cliente1;
     
-    public ClView() {
+    public ClView(Cliente cliente1) {
         initComponents();
         setSize(850, 560);
                 setResizable(false);
                 setTitle("Sistema de Clientes");
                 setLocationRelativeTo(null);
+        this.cliente1= cliente1;
                 
     }
 
@@ -81,15 +83,6 @@ public class ClView extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextField_cliente_reserva_buscar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLNuevoCorreo = new javax.swing.JLabel();
-        jLTelefono = new javax.swing.JLabel();
-        jButton_cliente_perfil_actualizar = new javax.swing.JButton();
-        jTxtClientePerfilTelefono = new javax.swing.JTextField();
-        jTxtClientePerfilNuevoCorreo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLCorreoActual = new javax.swing.JLabel();
-        jTxtCorreoActual = new javax.swing.JTextField();
         realizaReserva_cliente = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextField_fechaNewReserva = new javax.swing.JTextField();
@@ -124,6 +117,21 @@ public class ClView extends javax.swing.JFrame {
         jTable_mesasDisponibles = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         JButton_confirmarFecha = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLNuevoCorreo = new javax.swing.JLabel();
+        jLTelefono = new javax.swing.JLabel();
+        jButton_cliente_perfil_actualizar = new javax.swing.JButton();
+        jTxtClientePerfilTelefono = new javax.swing.JTextField();
+        jTxtClientePerfilNuevoCorreo = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        nombreClienteBase = new javax.swing.JTextField();
+        correoClienteBase = new javax.swing.JTextField();
+        telefonoClienteBase = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jBVerDatos = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -457,82 +465,6 @@ public class ClView extends javax.swing.JFrame {
 
         jTabbedPane_cliente.addTab("Historial", historial_cliente);
 
-        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-
-        jLNuevoCorreo.setText("Nuevo Correo:");
-
-        jLTelefono.setText("Telefono:");
-
-        jButton_cliente_perfil_actualizar.setText("Actualizar");
-        jButton_cliente_perfil_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_cliente_perfil_actualizarActionPerformed(evt);
-            }
-        });
-
-        jTxtClientePerfilNuevoCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtClientePerfilNuevoCorreoActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Ver Datos del Perfil");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLCorreoActual.setText("Correo Actual");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton_cliente_perfil_actualizar)
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLNuevoCorreo)
-                            .addComponent(jLTelefono)
-                            .addComponent(jLCorreoActual))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTxtClientePerfilTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(jTxtClientePerfilNuevoCorreo)
-                            .addComponent(jTxtCorreoActual))))
-                .addGap(228, 444, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCorreoActual)
-                    .addComponent(jTxtCorreoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTxtClientePerfilNuevoCorreo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLNuevoCorreo))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLTelefono)
-                    .addComponent(jTxtClientePerfilTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_cliente_perfil_actualizar)
-                    .addComponent(jButton1))
-                .addContainerGap(493, Short.MAX_VALUE))
-        );
-
-        jTabbedPane_cliente.addTab("Perfil", jPanel4);
-
         realizaReserva_cliente.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel3.setText("Fecha");
@@ -809,6 +741,131 @@ public class ClView extends javax.swing.JFrame {
 
         jTabbedPane_cliente.addTab("Nueva Reserva", realizaReserva_cliente);
 
+        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        jLNuevoCorreo.setText("Nuevo Correo:");
+
+        jLTelefono.setText("Telefono:");
+
+        jButton_cliente_perfil_actualizar.setText("Actualizar");
+        jButton_cliente_perfil_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cliente_perfil_actualizarActionPerformed(evt);
+            }
+        });
+
+        jTxtClientePerfilNuevoCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtClientePerfilNuevoCorreoActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel16.setText("Datos del Cliente ");
+
+        jLabel28.setText("Nombre");
+
+        jLabel29.setText("Correo");
+
+        jLabel31.setText("Telefono");
+
+        nombreClienteBase.setEditable(false);
+        nombreClienteBase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreClienteBaseActionPerformed(evt);
+            }
+        });
+
+        correoClienteBase.setEditable(false);
+
+        telefonoClienteBase.setEditable(false);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel12.setText("Cambio de Datos");
+
+        jBVerDatos.setText("Ver datos");
+        jBVerDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVerDatosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBVerDatos)
+                        .addGap(114, 114, 114))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLNuevoCorreo)
+                                    .addComponent(jLTelefono))
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTxtClientePerfilTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                    .addComponent(jTxtClientePerfilNuevoCorreo))
+                                .addGap(60, 60, 60)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel28)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel31)))
+                            .addComponent(jButton_cliente_perfil_actualizar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefonoClienteBase, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreClienteBase, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(correoClienteBase, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(jBVerDatos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(nombreClienteBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtClientePerfilNuevoCorreo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLNuevoCorreo)))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel29)
+                        .addComponent(correoClienteBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLTelefono)
+                            .addComponent(jTxtClientePerfilTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel31))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_cliente_perfil_actualizar))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(telefonoClienteBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(472, Short.MAX_VALUE))
+        );
+
+        jTabbedPane_cliente.addTab("Perfil", jPanel4);
+
         getContentPane().add(jTabbedPane_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 790, 740));
 
         pack();
@@ -894,37 +951,27 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_cliente_reserva_mesaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PerfilCL perfil = new PerfilCL();
-        perfil.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton_cliente_perfil_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_perfil_actualizarActionPerformed
+        int idCliente=cliente1.getId();
         String telefonoIngresado = jTxtClientePerfilTelefono.getText();
         String correoIngresado = jTxtClientePerfilNuevoCorreo.getText();
-        String correoActual =jTxtCorreoActual.getText();
-        if ( correoActual.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese su correo actual.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        return;
-    } else{
+       
         if(correoIngresado.isEmpty()&& telefonoIngresado.isEmpty()){
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese un correo o telefono para actualizar sus datos.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
-        }
+        
         }
         ClienteDAO cliente = new ClienteDAO();
     // Llamar al método actualizarInformacion del objeto clienteDAO
-    //String resultado = cliente.recuperarContraseña(correoIngreso);
     boolean resultadoC=false;
     boolean resultadoT=false;
     
     if(!(telefonoIngresado.isEmpty())){
-        resultadoT= cliente.actualizarTelefono(correoActual, telefonoIngresado);
+        resultadoT= cliente.actualizarTelefono(idCliente, telefonoIngresado);
         if(resultadoT){
         javax.swing.JOptionPane.showMessageDialog(this, "Telefono actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }else{
@@ -932,14 +979,13 @@ public class ClView extends javax.swing.JFrame {
     }
     }
     if(!(correoIngresado.isEmpty())){
-        resultadoC = cliente.actualizarCorreo(correoActual, correoIngresado);
+        resultadoC = cliente.actualizarCorreo(idCliente, correoIngresado);
         if(resultadoC){
         javax.swing.JOptionPane.showMessageDialog(this, "Correo actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }else{
         javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el correo.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
     }
     }
-    
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
 
 
@@ -959,46 +1005,30 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_mesasBuscarActionPerformed
 
+    private void nombreClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteBaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreClienteBaseActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jBVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerDatosActionPerformed
+        //trae nombre, coreo y telefono y guarda
+        int idCliente = cliente1.getId();
+        ClienteDAO cliente= new ClienteDAO();
+        String vector[]= cliente.mostrarDatos(idCliente);
+        nombreClienteBase.setText(vector[0]);
+        correoClienteBase.setText(vector[1]);
+        telefonoClienteBase.setText(vector[2]);
+    }//GEN-LAST:event_jBVerDatosActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClView().setVisible(true);
-            }
-        });
-    }
+
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButton_confirmarFecha;
+    private javax.swing.JTextField correoClienteBase;
     private javax.swing.JPanel historial_cliente;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBVerDatos;
     private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton_cliente_cancelar;
     public javax.swing.JButton jButton_cliente_eliminar_reserva;
@@ -1010,14 +1040,15 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboBox_cliente_reserva_mesa;
     public javax.swing.JComboBox<String> jComboBox_cliente_reserva_ubicacion;
     private javax.swing.JComboBox<String> jComboBox_horaBuscar;
-    private javax.swing.JLabel jLCorreoActual;
     private javax.swing.JLabel jLNuevoCorreo;
     private javax.swing.JLabel jLTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -1030,7 +1061,10 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1072,7 +1106,8 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JToggleButton jToggleButton_cliente_Salir;
     public javax.swing.JTextField jTxtClientePerfilNuevoCorreo;
     public javax.swing.JTextField jTxtClientePerfilTelefono;
-    private javax.swing.JTextField jTxtCorreoActual;
+    private javax.swing.JTextField nombreClienteBase;
     private javax.swing.JPanel realizaReserva_cliente;
+    private javax.swing.JTextField telefonoClienteBase;
     // End of variables declaration//GEN-END:variables
 }

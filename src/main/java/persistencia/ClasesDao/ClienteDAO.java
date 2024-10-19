@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-
+import java.util.Arrays;
 /**
  * La clase ClienteDAO ofrece los metodos necesarios para realizar las operaciones
  * necesarias con la base de datos que afecten a los clientes como Registrar a un 
@@ -31,11 +31,7 @@ public class ClienteDAO{
     
     // variables para enviar datos entre interfaces
     
-    public static int id_user = 0;
-    public static String nombre = "";
-    public static String correo = "";
-    public static String contrasenia = "";
-    public static String telefono = "";
+    private Cliente cliente= new Cliente();
     
     /**
      * Este metodo se encarga de registrar a un nuevo cliente en la base de datos.
@@ -74,7 +70,7 @@ public class ClienteDAO{
      */
     public Cliente loginQuery(String user, String password) {
         String query = "SELECT *FROM cliente WHERE correo = ? AND contrasenia = ?";
-        Cliente cliente = new Cliente();
+        
         try {
             con = conn.getConexion();
             ps = con.prepareStatement(query);
@@ -86,16 +82,14 @@ public class ClienteDAO{
             
             if (rs.next()) {
                 cliente.setNombre(rs.getString("nombre"));
-                nombre = cliente.getNombre();
                 
                 cliente.setCorreo(rs.getString("correo"));
-                correo = cliente.getCorreo();
                 
                 cliente.setContrasenia(rs.getString("contrasenia"));
-                contrasenia = cliente.getContrasenia();
                 
                 cliente.setTelefono(rs.getString("telefono"));
-                telefono = cliente.getTelefono();
+                
+                cliente.setId(rs.getInt("id"));
 
             }
         } catch (SQLException e) {
@@ -124,16 +118,16 @@ public class ClienteDAO{
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                contrasenia = rs.getString("contrasenia");
+                contraseña = rs.getString("contrasenia");
             } else{
-                contrasenia= "Correo no encontrado";
+                contraseña= "Correo no encontrado";
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener Cliente" + e);
         } finally {
             conn.cerrarConexion();
         }
-         return contrasenia;
+         return contraseña;
     }
      
      /**
@@ -144,35 +138,34 @@ public class ClienteDAO{
       * @return true en caso de se haya podido actualizar correctamente el correo, false en 
       * caso contrario.
       */
-     public boolean actualizarCorreo( String correoActual, String correoNuevo){
+     public boolean actualizarCorreo(int id, String correoNuevo){
         boolean actualizacion= false;
-         String verificaCorreo ="SELECT *  FROM cliente WHERE correo= ?";
-         String sql="UPDATE cliente SET correo = ? WHERE correo = ?";
+         String buscaId ="SELECT *  FROM cliente WHERE id= ?";
+         String buscarCorreo="SELECT * FROM cliente WHERE correo=?";
+         String sql="UPDATE cliente SET correo = ? WHERE id = ?";
          try{
-             
              con = conn.getConexion(); //asegura que estas conectado
-             ps=con.prepareStatement(verificaCorreo);
-             ps.setString(1, correoActual);
+             ps=con.prepareStatement(buscaId);
+             ps.setInt(1, id);
              rs=ps.executeQuery();
-             if(rs.next()){
-                 
+             if(rs.next()){    
                  if(ClienteController.esCorreoElectronicoValido(correoNuevo)){
-                     
-                      ps=con.prepareStatement(verificaCorreo);
+                      ps=con.prepareStatement(buscarCorreo);
                       ps.setString(1,correoNuevo);
                       rs=ps.executeQuery();
                       if(!(rs.next())){
                         ps=con.prepareStatement(sql);
                         ps.setString(1, correoNuevo);
-                        ps.setString(2, correoActual);
+                        ps.setInt(2, id);
                         actualizacion =(ps.executeUpdate()>0);
+                        if(actualizacion){
+                            cliente.setCorreo(correoNuevo);
+                        }
                  }else{
-                     JOptionPane.showMessageDialog(null,"El nuevo correo coincide con un correo registrado", "Error", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(null,"El nuevo correo coincide con un correo registrado", "Error",JOptionPane.ERROR_MESSAGE);
                  }}else{
                      JOptionPane.showMessageDialog(null,"INGRESE UN CORREO ELECTRONICO VALIDO","Error", JOptionPane.ERROR_MESSAGE);
                  }
-             }else{
-                 JOptionPane.showMessageDialog(null,"El correo no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
              }
          }catch(SQLException e){
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
@@ -181,7 +174,6 @@ public class ClienteDAO{
             conn.cerrarConexion();
         }
          return actualizacion;
-     
      }
      
      /**
@@ -192,19 +184,16 @@ public class ClienteDAO{
       * @return true en caso de se haya podido actualizar correctamente el correo, false en 
       * caso contrario.
       */
-     public boolean actualizarTelefono(String correo, String telefono){
+     public boolean actualizarTelefono(int id, String telefono){
      boolean actualizacion= false;
-         String verificaCorreo ="SELECT *  FROM cliente WHERE correo= ?";
+         String verificaId ="SELECT *  FROM cliente WHERE id= ?";
          String verificaTelefono ="SELECT *  FROM cliente WHERE telefono= ?";
-         String sql="UPDATE cliente SET telefono = ? WHERE correo = ?";
+         String sql="UPDATE cliente SET telefono = ? WHERE id = ?";
          try{
-             
              con = conn.getConexion(); //asegura que estas conectado
-             ps=con.prepareStatement(verificaCorreo);
-             ps.setString(1, correo);
+             ps=con.prepareStatement(verificaId);
+             ps.setInt(1, id);
              rs=ps.executeQuery();
-             
-             
              if(rs.next()){
                   ps=con.prepareStatement(verificaTelefono);
                       ps.setString(1,telefono);
@@ -212,14 +201,15 @@ public class ClienteDAO{
                  if(!(rs.next())){
                         ps=con.prepareStatement(sql);
                         ps.setString(1, telefono);
-                        ps.setString(2, correo);
+                        ps.setInt(2, id);
                         actualizacion =(ps.executeUpdate()>0);
+                        if (actualizacion) {
+                            cliente.setTelefono(telefono);
+                        }
                  }else{
                      JOptionPane.showMessageDialog(null, "El telefono ya se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
                  }
-             }else{
-                 JOptionPane.showMessageDialog(null,"El correo no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
-             }
+                }
          }catch(SQLException e){
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
              System.out.println(e);
@@ -231,5 +221,31 @@ public class ClienteDAO{
             }
          }
          return actualizacion;
+     }
+     /**
+      * Devuelve los datos de nombre, correo y telefono teniendo un id
+      */
+     public String[] mostrarDatos(int id){
+         String datosCliente[]=new String[3];
+         String sql = "SELECT nombre, correo, telefono FROM cliente WHERE id=?";
+         try{
+             con= conn.getConexion();
+             ps=con.prepareStatement(sql);
+             ps.setInt(1,id);
+             ResultSet rs = ps.executeQuery();
+             datosCliente[0]=rs.getString("nombre");
+             datosCliente[1]=rs.getString("correo");
+             datosCliente[2]=rs.getString("telefono");            
+         }catch(SQLException e){
+             JOptionPane.showMessageDialog(null,"Error al buscar la informacion: "+e);
+             System.out.println(e);
+         }finally {
+             try {
+                conn.cerrarConexion();
+            }catch (Exception e) {
+                System.out.println(e.toString());
+            }
+         }
+         return datosCliente;
      }
 }
