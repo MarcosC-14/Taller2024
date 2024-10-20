@@ -25,6 +25,7 @@ public class Tarjeta {
         this.emisor = "";
         this.numero = "";
         this.codSeguridad = "";
+        this.reservas = new ArrayList<Reserva>();
     }
     
     /**
@@ -36,6 +37,7 @@ public class Tarjeta {
      * @param codSeguridad Es el codigo de seguridad de la tarjeta
      */
     public Tarjeta(String nombre, String emisor, String numero, String codSeguridad, Reserva reserva) {
+        this();
         this.nombre = nombre;   
         this.emisor = emisor;
         this.numero = numero;

@@ -14,7 +14,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import modelo.Capacidad;
+import modelo.Cliente;
 import modelo.Mesa;
+import modelo.Tarjeta;
 import modelo.Ubicacion;
 
 /**
@@ -131,5 +133,58 @@ public class ReservaDAO {
         }
         
         return mesas;
+    }
+    
+    public ArrayList<Reserva> obtenerReservasHistorial(Cliente c){
+        Connection con = conn.getConexion();
+        ResultSet rs;
+        PreparedStatement ps;
+        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+        String sql = "SELECT rTabla.*, mTabla.*, tTabla.*, "
+                + "tTabla.nombre AS nombre_tarjeta, tTabla.emisor,"
+                + "tTabla.numero AS numero_tarjeta, tTabla.cod_seguridad"
+                + " FROM reserva AS rTabla INNER JOIN mesa AS mTabla "
+                + "ON rTabla.num_mesa = mTabla.numero  "
+                + "LEFT JOIN tarjeta AS tTabla "
+                + "ON rTabla.id_tarjeta = tTabla.numero  "
+                + "WHERE id_cliente = ?";
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,c.getId());
+            
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Reserva reserva = new Reserva();
+                reserva.setCliente(c);
+                reserva.setComentario(rs.getString("comentario"));
+                reserva.setAsistencia(Boolean.valueOf(rs.getString("asistencia")));
+                
+                reserva.setFecha(LocalDate.parse(rs.getString("fecha"), 
+                        DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                reserva.setHora(LocalTime.parse(rs.getString("hora"), 
+                        DateTimeFormatter.ofPattern("HH:mm:ss")));
+                
+                int mesaNum = rs.getInt("numero");
+                Capacidad mesaUbi = Capacidad.valueOf(rs.getString("Capacidad"));
+                Ubicacion mesaCap = Ubicacion.valueOf(rs.getString("Ubicacion"));
+                
+                reserva.setMesa(new Mesa(mesaNum,mesaUbi,mesaCap,reserva));
+                
+                String tNombre = rs.getString("nombre_tarjeta");
+                String tNum = rs.getString("numero_tarjeta");
+                String tEmi = rs.getString("emisor");
+                String tCodSeguridad = rs.getString("cod_seguridad");
+                
+                reserva.setTarjeta(new Tarjeta(tNombre,tNum,tEmi,tCodSeguridad,reserva));
+                
+                reservas.add(reserva);
+            }
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }finally{
+            conn.cerrarConexion();
+        }
+        
+        return reservas;
     }
 }

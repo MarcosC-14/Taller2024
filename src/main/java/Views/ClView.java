@@ -4,11 +4,15 @@
  */
 package Views;
 
+import Controladores.ClienteController;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.table.DefaultTableModel;
 import modelo.Mesa;
 import persistencia.ClasesDao.ClienteDAO;
@@ -27,6 +31,7 @@ public class ClView extends javax.swing.JFrame {
      * Inicializa tabla de mesas
      */
     ArrayList<Mesa> mesas;
+    ArrayList<Reserva> reservas;
     LocalDate fechaBuscar;
     LocalTime horaBuscar;
     Cliente cliente1;
@@ -876,6 +881,27 @@ public class ClView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void actualizarTablaHistorial() {
+        ReservaDAO reservaDAO = new ReservaDAO();
+        
+        reservas = reservaDAO.obtenerReservasHistorial(cliente1);
+
+        DefaultTableModel model = (DefaultTableModel) jTable_historialCliente.getModel();
+        model.setRowCount(0); // Limpia todas las filas existentes
+        ordenarTablaHistorial();
+        
+        
+        for (Reserva res : reservas) {
+            String asistencia = res.getAsistencia()? "Sí": "No";
+            model.addRow(new Object[]{
+                res.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                res.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                res.getMesa().getNumero(),
+                asistencia
+            });
+        }
+    }
+    
     private void actualizarTablaMesas(){
         ReservaDAO reservaDAO = new ReservaDAO();
         
@@ -900,6 +926,20 @@ public class ClView extends javax.swing.JFrame {
             
         }
         
+    }
+    
+    private void ordenarTablaHistorial(){
+        Collections.sort(reservas, new Comparator<Reserva>() {
+            @Override
+            public int compare(Reserva r1, Reserva r2) {
+                int comparacionFecha = r1.getFecha().compareTo(r2.getFecha());
+                if(comparacionFecha == 0){
+                    return r1.getFecha().compareTo(r2.getFecha());
+                }else{
+                    return r1.getHora().compareTo(r2.getHora());
+                }
+            }
+        });
     }
     
     private void jToggleButton_cliente_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton_cliente_SalirActionPerformed
@@ -984,7 +1024,7 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxClienteReservaMesaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        this.actualizarTablaHistorial();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton_cliente_perfil_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_perfil_actualizarActionPerformed
@@ -1026,10 +1066,25 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void JButton_confirmarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_confirmarFechaActionPerformed
-        fechaBuscar = LocalDate.parse(jTextField_fechaNewReserva.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        String h = (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
-        horaBuscar = LocalTime.parse(h, DateTimeFormatter.ofPattern("HH:mm:ss"));
-        actualizarTablaMesas();
+        String auxFecha = jTextField_fechaNewReserva.getText();
+        String auxHora = (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
+        if(ClienteController.esFormatoFechaValido(auxFecha)){
+            try{
+            fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy").withResolverStyle(ResolverStyle.STRICT));
+            }catch(java.time.format.DateTimeParseException e){
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            if(fechaBuscar.isAfter(LocalDate.now())){
+                horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
+                actualizarTablaMesas();
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
         
     }//GEN-LAST:event_JButton_confirmarFechaActionPerformed
 
@@ -1130,7 +1185,7 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JTextPane jTextFieldClienteReservaEmiT;
     public javax.swing.JTextField jTextFieldClienteReservanNumT;
     public javax.swing.JTextField jTextField_cliente_fecha;
-    public javax.swing.JTextField jTextField_cliente_id;
+    private javax.swing.JTextField jTextField_cliente_id;
     public javax.swing.JTextField jTextField_cliente_mesa;
     public javax.swing.JTextField jTextField_cliente_reserva_buscar;
     public javax.swing.JTextArea jTextField_comentario;

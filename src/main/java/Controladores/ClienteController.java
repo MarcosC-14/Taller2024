@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import Views.ClRegisterView;
 import Views.ClView;
 import java.awt.event.ActionEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -73,4 +75,13 @@ public class ClienteController implements ActionListener{
     public static boolean esCorreoElectronicoValido(String correo) {
         return correo.contains("@");
     }
+    
+    public static boolean esFormatoFechaValido(String fecha) {
+        // Definimos el patrón del formato de fecha esperado (dd/mm/aa)
+        String formatoFecha = "\\d{2}/\\d{2}/\\d{4}";
+
+        // Comprobamos si la fecha ingresada coincide con el formato esperado
+        return fecha.matches(formatoFecha);
+    }
 }
+    

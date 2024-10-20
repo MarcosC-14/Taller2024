@@ -23,6 +23,7 @@ public class Mesa {
     }
     
     public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Reserva reserva) {
+        this();
         this.numero = numero;
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;   
