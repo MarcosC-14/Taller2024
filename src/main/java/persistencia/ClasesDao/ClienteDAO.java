@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistencia.ClasesDao;
-import persistencia.SQLiteManager;
 import Controladores.ClienteController;
 import modelo.Cliente;
 import persistencia.SQLiteManager;

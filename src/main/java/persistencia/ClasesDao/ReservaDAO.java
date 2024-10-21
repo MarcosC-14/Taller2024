@@ -47,9 +47,13 @@ public class ReservaDAO {
             ps.setString(6, reserva.getTarjeta().getNumero());
             realizado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            System.out.println("Prueba 1"+e.toString());
         } finally {
-            conn.cerrarConexion();
+           try {
+                conn.cerrarConexion();
+            }catch (Exception e) {
+                System.out.println(e.toString());
+            }
         }
         return realizado;
     }
@@ -71,7 +75,12 @@ public class ReservaDAO {
             }
         }catch(SQLException e){
             System.out.println(e.toString());
-        }
+        }try {
+                conn.cerrarConexion();
+            }catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        
         return disponible;
     }
     
@@ -129,7 +138,11 @@ public class ReservaDAO {
         }catch(SQLException e){
             System.out.println(e.toString());
         } finally{
-            conn.cerrarConexion();
+            try {
+                conn.cerrarConexion();
+            }catch (Exception e) {
+                System.out.println(e.toString());
+            }
         }
         
         return mesas;
@@ -180,7 +193,7 @@ public class ReservaDAO {
                 reservas.add(reserva);
             }
         }catch(SQLException e){
-            System.out.println(e.toString());
+            System.out.println("hola"+e.toString());
         }finally{
             conn.cerrarConexion();
         }

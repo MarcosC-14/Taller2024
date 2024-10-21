@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,9 +16,11 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Mesa;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.ReservaDAO;
+import persistencia.ClasesDao.TarjetaDAO;
 import modelo.Cliente;
 import modelo.Reserva;
 import modelo.Tarjeta;
+
 /**
  *
  * @author Rebechi
@@ -35,7 +36,10 @@ public class ClView extends javax.swing.JFrame {
     LocalDate fechaBuscar;
     LocalTime horaBuscar;
     Cliente cliente1;
+    Tarjeta tarjeta = new Tarjeta();
     Reserva reserva = new Reserva();
+    //intento desesperado
+    
     
     public ClView(Cliente cliente1) {
         initComponents();
@@ -983,8 +987,27 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_fechaNewReservaActionPerformed
 
     private void jButton_nuevaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_nuevaReservaActionPerformed
+        String auxFecha = jTextField_fechaNewReserva.getText();
+        String auxHora= (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
         ReservaDAO rDAO = new ReservaDAO();
         reserva.setCliente(cliente1);
+        if(ClienteController.esFormatoFechaValido(auxFecha)){
+            try{
+            fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }catch(java.time.format.DateTimeParseException e){
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            if(fechaBuscar.isAfter(LocalDate.now())){
+                horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
+                actualizarTablaMesas();
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
         reserva.setFecha(fechaBuscar);
         reserva.setHora(horaBuscar);
         reserva.setComentario(jTextField_comentario.getText());
@@ -993,16 +1016,21 @@ public class ClView extends javax.swing.JFrame {
         mesaR.setNumero(numM);
         reserva.setMesa(mesaR);
         
-        Tarjeta tarjetaR = new Tarjeta();
-        tarjetaR.setNombre(jTextFieldCienteReservaNombreT.getText());
-        tarjetaR.setEmisor(this.jTextFieldClienteReservaEmiT.getText());
-        tarjetaR.setNumero(this.jTextFieldClienteReservanNumT.getText());
-        tarjetaR.setCodSeguridad(this.jTextFieldClienteReservaCodSeg.getText());
+        TarjetaDAO tarjetaR = new TarjetaDAO();
+        tarjeta.setNombre(jTextFieldCienteReservaNombreT.getText());
+        tarjeta.setEmisor(this.jTextFieldClienteReservaEmiT.getText());
+        tarjeta.setNumero(this.jTextFieldClienteReservanNumT.getText());
+        tarjeta.setCodSeguridad(this.jTextFieldClienteReservaCodSeg.getText());
         
-        reserva.setTarjeta(tarjetaR);
+        reserva.setTarjeta(tarjeta);
+
         if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)){
             rDAO.realizarReserva(reserva);
+            
         }
+        
+        tarjetaR.guardarTarjeta(tarjeta);
+        
         
         
     }//GEN-LAST:event_jButton_nuevaReservaActionPerformed
@@ -1044,6 +1072,7 @@ public class ClView extends javax.swing.JFrame {
         }else{
             javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
+        
         
     }//GEN-LAST:event_JButton_confirmarFechaActionPerformed
 
