@@ -22,13 +22,13 @@ public class TarjetaDAO {
     private PreparedStatement ps;
     private ResultSet rs;
 //    
-//    public boolean verificarTarjeta(Tarjeta tarjeta){
-//        boolean coincide = false;
-//        con = conn.getConexion();
-//        ResultSet rs;
-//        String sql = "SELECT * FROM tarjeta WHERE num_mesa = ? AND fecha = ? AND hora = ?";
-//        
-//    }
+ //public boolean verificarTarjeta(Tarjeta tarjeta){
+  //      boolean coincide = false;
+    //    con = conn.getConexion();
+      //  ResultSet rs;
+        // String sql = "SELECT * FROM tarjeta WHERE  numero  = ?";
+        
+   // }
     public boolean guardarTarjeta(Tarjeta tarjeta){
         boolean realizado=false;
         con= conn.getConexion();
@@ -53,6 +53,9 @@ public class TarjetaDAO {
         return realizado;
     
     }
+    
+    
+    
     
      
 }

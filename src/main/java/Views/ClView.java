@@ -31,6 +31,7 @@ public class ClView extends javax.swing.JFrame {
      * Creates new form ClView 
      * Inicializa tabla de mesas
      */
+    ArrayList<Tarjeta> tarjetas;
     ArrayList<Mesa> mesas;
     ArrayList<Reserva> reservas;
     LocalDate fechaBuscar;
@@ -38,7 +39,7 @@ public class ClView extends javax.swing.JFrame {
     Cliente cliente1;
     Tarjeta tarjeta = new Tarjeta();
     Reserva reserva = new Reserva();
-    //intento desesperado
+    
     
     
     public ClView(Cliente cliente1) {
@@ -94,6 +95,8 @@ public class ClView extends javax.swing.JFrame {
         jButton_cliente_cancelar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         realizaReserva_cliente = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextField_fechaNewReserva = new javax.swing.JTextField();
@@ -396,6 +399,11 @@ public class ClView extends javax.swing.JFrame {
         jLabel11.setText("Mesa:");
 
         jButton_cliente_modificar_reserva.setText("Modificar");
+        jButton_cliente_modificar_reserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cliente_modificar_reservaActionPerformed(evt);
+            }
+        });
 
         jButton_cliente_eliminar_reserva.setText("Eliminar");
 
@@ -407,6 +415,10 @@ public class ClView extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel15.setText("Hora");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout historial_clienteLayout = new javax.swing.GroupLayout(historial_cliente);
         historial_cliente.setLayout(historial_clienteLayout);
@@ -429,11 +441,18 @@ public class ClView extends javax.swing.JFrame {
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField_cliente_id, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                             .addComponent(jTextField_cliente_fecha))
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_cliente_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(historial_clienteLayout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_cliente_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(historial_clienteLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jButton_cliente_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
@@ -456,7 +475,9 @@ public class ClView extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(jTextField_cliente_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField_cliente_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(historial_clienteLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton_cliente_eliminar_reserva)))
@@ -897,9 +918,11 @@ public class ClView extends javax.swing.JFrame {
                 res.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 res.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
                 res.getMesa().getNumero(),
-                asistencia
+                asistencia,res.getTarjeta().getEmisor()
+                    //estan intercambiados numero y emisor
             });
         }
+        
     }
     
     private void actualizarTablaMesas(){
@@ -1131,6 +1154,10 @@ public class ClView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
 
+    private void jButton_cliente_modificar_reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_modificar_reservaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_cliente_modificar_reservaActionPerformed
+
 
     
     
@@ -1145,9 +1172,10 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JButton jButton_cliente_cancelar;
     public javax.swing.JButton jButton_cliente_eliminar_reserva;
     public javax.swing.JButton jButton_cliente_modificar_reserva;
-    private javax.swing.JButton jButton_cliente_perfil_actualizar;
+    public javax.swing.JButton jButton_cliente_perfil_actualizar;
     private javax.swing.JButton jButton_mesasBuscar;
     public javax.swing.JButton jButton_nuevaReserva;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxClienteReservaCapacidad;
     public javax.swing.JComboBox<String> jComboBoxClienteReservaMesa;
     public javax.swing.JComboBox<String> jComboBoxClienteReservaUbicacion;
@@ -1160,6 +1188,7 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1215,8 +1244,8 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JTextArea jTextField_comentario;
     public javax.swing.JTextField jTextField_fechaNewReserva;
     public javax.swing.JToggleButton jToggleButton_cliente_Salir;
-    private javax.swing.JTextField jTxtClientePerfilNuevoCorreo;
-    private javax.swing.JTextField jTxtClientePerfilTelefono;
+    public javax.swing.JTextField jTxtClientePerfilNuevoCorreo;
+    public javax.swing.JTextField jTxtClientePerfilTelefono;
     private javax.swing.JTextField nombreClienteBase;
     private javax.swing.JPanel realizaReserva_cliente;
     private javax.swing.JTextField telefonoClienteBase;

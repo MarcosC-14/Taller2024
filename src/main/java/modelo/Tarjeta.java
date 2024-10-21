@@ -38,9 +38,9 @@ public class Tarjeta {
      */
     public Tarjeta(String nombre, String emisor, String numero, String codSeguridad, Reserva reserva) {
         this();
-        this.nombre = nombre;   
-        this.emisor = emisor;
+        this.nombre = nombre;  
         this.numero = numero;
+        this.emisor = emisor;
         this.codSeguridad = codSeguridad;
         this.reservas.add(reserva);
     }
