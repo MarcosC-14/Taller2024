@@ -89,7 +89,6 @@ public class ClView extends javax.swing.JFrame {
         jButton_cliente_eliminar_reserva = new javax.swing.JButton();
         jButton_cliente_cancelar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jTextField_cliente_reserva_buscar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         realizaReserva_cliente = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -373,11 +372,11 @@ public class ClView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Fecha", "Mesa", "Asistencia"
+                "Fecha", "Hora", "Mesa", "Asistencia", "Nro tarjeta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -414,8 +413,6 @@ public class ClView extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(15, 15, 15)
-                .addComponent(jTextField_cliente_reserva_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historial_clienteLayout.createSequentialGroup()
                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -464,7 +461,6 @@ public class ClView extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField_cliente_reserva_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -544,7 +540,7 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel6.setText("Hora");
 
-        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "18", "20", "22" }));
+        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
         jComboBox_horaBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -627,7 +623,7 @@ public class ClView extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
-                                .addGap(109, 109, 109)
+                                .addGap(106, 106, 106)
                                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
@@ -986,10 +982,6 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_fechaNewReservaActionPerformed
 
-    private void jTxtClientePerfilNuevoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtClientePerfilNuevoCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtClientePerfilNuevoCorreoActionPerformed
-
     private void jButton_nuevaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_nuevaReservaActionPerformed
         ReservaDAO rDAO = new ReservaDAO();
         reserva.setCliente(cliente1);
@@ -1027,39 +1019,6 @@ public class ClView extends javax.swing.JFrame {
         this.actualizarTablaHistorial();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton_cliente_perfil_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_perfil_actualizarActionPerformed
-        int idCliente=cliente1.getId();
-        String telefonoIngresado = jTxtClientePerfilTelefono.getText();
-        String correoIngresado = jTxtClientePerfilNuevoCorreo.getText();
-       
-        if(correoIngresado.isEmpty()&& telefonoIngresado.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese un correo o telefono para actualizar sus datos.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-            return;
-        
-        }
-        ClienteDAO cliente = new ClienteDAO();
-    // Llamar al método actualizarInformacion del objeto clienteDAO
-    boolean resultadoC=false;
-    boolean resultadoT=false;
-    
-    if(!(telefonoIngresado.isEmpty())){
-        resultadoT= cliente.actualizarTelefono(idCliente, telefonoIngresado);
-        if(resultadoT){
-        javax.swing.JOptionPane.showMessageDialog(this, "Telefono actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-    }else{
-        javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el telefono.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-    }
-    }
-    if(!(correoIngresado.isEmpty())){
-        resultadoC = cliente.actualizarCorreo(idCliente, correoIngresado);
-        if(resultadoC){
-        javax.swing.JOptionPane.showMessageDialog(this, "Correo actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-    }else{
-        javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el correo.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-    }
-    }
-    }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
-
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
@@ -1092,10 +1051,6 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_mesasBuscarActionPerformed
 
-    private void nombreClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteBaseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreClienteBaseActionPerformed
-
     private void jBVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerDatosActionPerformed
         //trae nombre, coreo y telefono y guarda
         int idCliente = cliente1.getId();
@@ -1105,6 +1060,47 @@ public class ClView extends javax.swing.JFrame {
         correoClienteBase.setText(vector[1]);
         telefonoClienteBase.setText(vector[2]);
     }//GEN-LAST:event_jBVerDatosActionPerformed
+
+    private void nombreClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteBaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreClienteBaseActionPerformed
+
+    private void jTxtClientePerfilNuevoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtClientePerfilNuevoCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtClientePerfilNuevoCorreoActionPerformed
+
+    private void jButton_cliente_perfil_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_perfil_actualizarActionPerformed
+        int idCliente=cliente1.getId();
+        String telefonoIngresado = jTxtClientePerfilTelefono.getText();
+        String correoIngresado = jTxtClientePerfilNuevoCorreo.getText();
+
+        if(correoIngresado.isEmpty()&& telefonoIngresado.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese un correo o telefono para actualizar sus datos.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+
+        }
+        ClienteDAO cliente = new ClienteDAO();
+        // Llamar al método actualizarInformacion del objeto clienteDAO
+        boolean resultadoC=false;
+        boolean resultadoT=false;
+
+        if(!(telefonoIngresado.isEmpty())){
+            resultadoT= cliente.actualizarTelefono(idCliente, telefonoIngresado);
+            if(resultadoT){
+                javax.swing.JOptionPane.showMessageDialog(this, "Telefono actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el telefono.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        if(!(correoIngresado.isEmpty())){
+            resultadoC = cliente.actualizarCorreo(idCliente, correoIngresado);
+            if(resultadoC){
+                javax.swing.JOptionPane.showMessageDialog(this, "Correo actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el correo.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
 
 
     
@@ -1120,7 +1116,7 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JButton jButton_cliente_cancelar;
     public javax.swing.JButton jButton_cliente_eliminar_reserva;
     public javax.swing.JButton jButton_cliente_modificar_reserva;
-    public javax.swing.JButton jButton_cliente_perfil_actualizar;
+    private javax.swing.JButton jButton_cliente_perfil_actualizar;
     private javax.swing.JButton jButton_mesasBuscar;
     public javax.swing.JButton jButton_nuevaReserva;
     private javax.swing.JComboBox<String> jComboBoxClienteReservaCapacidad;
@@ -1187,12 +1183,11 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField_cliente_fecha;
     public javax.swing.JTextField jTextField_cliente_id;
     public javax.swing.JTextField jTextField_cliente_mesa;
-    public javax.swing.JTextField jTextField_cliente_reserva_buscar;
     public javax.swing.JTextArea jTextField_comentario;
     public javax.swing.JTextField jTextField_fechaNewReserva;
     public javax.swing.JToggleButton jToggleButton_cliente_Salir;
-    public javax.swing.JTextField jTxtClientePerfilNuevoCorreo;
-    public javax.swing.JTextField jTxtClientePerfilTelefono;
+    private javax.swing.JTextField jTxtClientePerfilNuevoCorreo;
+    private javax.swing.JTextField jTxtClientePerfilTelefono;
     private javax.swing.JTextField nombreClienteBase;
     private javax.swing.JPanel realizaReserva_cliente;
     private javax.swing.JTextField telefonoClienteBase;

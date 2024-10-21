@@ -55,12 +55,6 @@ public class AdView extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_reservasAdmin = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField_administrador_reserva_busqueda_cliente = new javax.swing.JTextField();
-        busqueda_mesa_txt = new javax.swing.JTextField();
-        busqueda_fecha_txt = new javax.swing.JTextField();
         jTextField_administrador_reserva_id = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -68,59 +62,32 @@ public class AdView extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jTextField_administrador_reserva_cliente = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jTextField_administrador_reserva_mesa = new javax.swing.JTextField();
         jButton_administrador_reservas_agregar = new javax.swing.JButton();
-        jButton_administrador_reserva_modificar = new javax.swing.JButton();
-        jButton_administrador_reservas_eliminar = new javax.swing.JButton();
-        jButton_administrador_reservas_cancelar = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_clientesAdmin = new javax.swing.JTable();
-        busqueda_id_cliente = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jTextField_administrador_cliente_nombre = new javax.swing.JTextField();
-        jTextField_administrador_cliente_correo = new javax.swing.JTextField();
-        btn_administrador_cliente_modificar = new javax.swing.JButton();
-        btn_administrador_cliente_eliminar = new javax.swing.JButton();
-        btn_administrador_cliente_cancelar = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField_administrador_cliente_id = new javax.swing.JTextField();
-        jTextField_administrador_cliente_telefono = new javax.swing.JTextField();
-        btn_administrador_clientes_agregar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_mesasAdmin = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        busqueda_num_mesa = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jComboBox_administrador_mesas_ubi = new javax.swing.JComboBox<>();
         btn_administrador_mesa_modificar = new javax.swing.JButton();
         btn_administrador_mesa_eliminar = new javax.swing.JButton();
-        btn_administrador_mesa_cancelar = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jTextField_administrador_mesa_cliente = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField_administrador_mesa_numero = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jComboBox_administrador_mesas_dispo = new javax.swing.JComboBox<>();
-        jButton_administrador_mesas_agregar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        busqueda_empelado_id = new javax.swing.JTextField();
         jButton_administrador_empleado_agregar = new javax.swing.JButton();
-        jButton_administrador_empleado_eliminar = new javax.swing.JButton();
         jTextField_administrador_empleado_id = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_empleadosAdmin = new javax.swing.JTable();
-        jButton_administrador_empleado_modificar = new javax.swing.JButton();
-        jButton_administrador_empleado_cancelar = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jComboBox_administrador_empleado_rol = new javax.swing.JComboBox<>();
@@ -135,18 +102,13 @@ public class AdView extends javax.swing.JFrame {
         jButton_bloqueoMesas = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable_bloqueoMesas = new javax.swing.JTable();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jPasswordField_admin_nuevaContraseña = new javax.swing.JPasswordField();
-        jPasswordField_admin__confirmar_nuevaContraseña = new javax.swing.JPasswordField();
-        btn_administrador_actualizarContraseña = new javax.swing.JButton();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jTextField_administrador_perfil_nombre = new javax.swing.JTextField();
-        jTextField_administrador_perfil_correo = new javax.swing.JTextField();
-        jTextField_administrador_perfil_rol = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -437,25 +399,7 @@ public class AdView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_reservasAdmin);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 640, 170));
-
-        jLabel3.setText("Cliente: ");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
-
-        jLabel4.setText("Fecha:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
-
-        jLabel5.setText("Mesa:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
-
-        jTextField_administrador_reserva_busqueda_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_administrador_reserva_busqueda_clienteActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField_administrador_reserva_busqueda_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 130, -1));
-        jPanel4.add(busqueda_mesa_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 70, -1));
-        jPanel4.add(busqueda_fecha_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 70, -1));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 640, 250));
         jPanel4.add(jTextField_administrador_reserva_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 60, 20));
 
         jLabel27.setText("Id:");
@@ -471,19 +415,17 @@ public class AdView extends javax.swing.JFrame {
 
         jLabel30.setText("Mesa:");
         jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
-        jPanel4.add(jTextField_administrador_reserva_mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 60, 20));
 
-        jButton_administrador_reservas_agregar.setText("Agregar");
+        jButton_administrador_reservas_agregar.setText("Ver");
+        jButton_administrador_reservas_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_administrador_reservas_agregarActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton_administrador_reservas_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
 
-        jButton_administrador_reserva_modificar.setText("Modificar");
-        jPanel4.add(jButton_administrador_reserva_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, -1, -1));
-
-        jButton_administrador_reservas_eliminar.setText("Eliminar");
-        jPanel4.add(jButton_administrador_reservas_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
-
-        jButton_administrador_reservas_cancelar.setText("Cancelar");
-        jPanel4.add(jButton_administrador_reservas_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
         jTabbedPane2.addTab("Reservas", jPanel4);
 
@@ -512,110 +454,27 @@ public class AdView extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable_clientesAdmin);
 
-        busqueda_id_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                busqueda_id_clienteActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Buscar:");
-
-        jLabel16.setText("Nombre:");
-
-        jLabel18.setText("Correo:");
-
-        jTextField_administrador_cliente_nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_administrador_cliente_nombreActionPerformed(evt);
-            }
-        });
-
-        btn_administrador_cliente_modificar.setText("Modificar");
-
-        btn_administrador_cliente_eliminar.setText("Eliminar");
-
-        btn_administrador_cliente_cancelar.setText("Cancelar");
-
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(3, 3, 3)))
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(busqueda_id_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(jTextField_administrador_cliente_nombre))
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_administrador_cliente_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_administrador_cliente_modificar)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btn_administrador_cliente_cancelar)
-                                .addComponent(btn_administrador_cliente_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(34, 34, 34))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel18)
-                            .addComponent(jTextField_administrador_cliente_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_administrador_cliente_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btn_administrador_cliente_modificar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_administrador_cliente_eliminar)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(busqueda_id_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(29, 29, 29))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_administrador_cliente_cancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 250));
 
-        jLabel15.setText("Id:");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel17.setText("Telefono:");
-        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
-
-        jTextField_administrador_cliente_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_administrador_cliente_idActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField_administrador_cliente_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 80, 20));
-        jPanel5.add(jTextField_administrador_cliente_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 80, 20));
-
-        btn_administrador_clientes_agregar.setText("Agregar");
-        jPanel5.add(btn_administrador_clientes_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 90, -1));
+        jButton1.setText("Ver");
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
 
         jTabbedPane2.addTab("Clientes", jPanel5);
 
@@ -636,14 +495,6 @@ public class AdView extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable_mesasAdmin);
 
-        jLabel7.setText("Buscar:");
-
-        busqueda_num_mesa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                busqueda_num_mesaActionPerformed(evt);
-            }
-        });
-
         jLabel20.setText("Ubicacion:");
 
         jComboBox_administrador_mesas_ubi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Interior", "Exterior" }));
@@ -656,8 +507,6 @@ public class AdView extends javax.swing.JFrame {
                 btn_administrador_mesa_eliminarActionPerformed(evt);
             }
         });
-
-        btn_administrador_mesa_cancelar.setText("Cancelar");
 
         jLabel22.setText("Cliente:");
 
@@ -682,13 +531,9 @@ public class AdView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_administrador_mesa_modificar))
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(busqueda_num_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_administrador_mesa_cancelar)
-                                    .addComponent(btn_administrador_mesa_eliminar))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btn_administrador_mesa_eliminar)
+                                .addGap(2, 2, 2)))
                         .addGap(18, 18, 18)))
                 .addContainerGap())
         );
@@ -706,40 +551,23 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(btn_administrador_mesa_modificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_administrador_mesa_eliminar)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(busqueda_num_mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_administrador_mesa_cancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
 
         jPanel6.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 250));
 
-        jLabel19.setText("Mesa:");
+        jLabel19.setText("Numero");
         jPanel6.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-        jPanel6.add(jTextField_administrador_mesa_numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 60, 20));
 
-        jLabel21.setText("Disponible:");
-        jPanel6.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
-
-        jComboBox_administrador_mesas_dispo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reservada", "Disponible" }));
-        jPanel6.add(jComboBox_administrador_mesas_dispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
-
-        jButton_administrador_mesas_agregar.setText("Agregar");
-        jButton_administrador_mesas_agregar.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_administrador_mesas_agregarActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton_administrador_mesas_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
+        jPanel6.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         jTabbedPane2.addTab("Mesas", jPanel6);
 
@@ -748,17 +576,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(0, 51, 51));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jLabel8.setText("Buscar:");
-
-        busqueda_empelado_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                busqueda_empelado_idActionPerformed(evt);
-            }
-        });
-
         jButton_administrador_empleado_agregar.setText("Agregar");
-
-        jButton_administrador_empleado_eliminar.setText("Eliminar");
 
         jLabel23.setText("Id:");
 
@@ -780,25 +598,11 @@ public class AdView extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTable_empleadosAdmin);
 
-        jButton_administrador_empleado_modificar.setText("Modificar");
-        jButton_administrador_empleado_modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_administrador_empleado_modificarActionPerformed(evt);
-            }
-        });
-
-        jButton_administrador_empleado_cancelar.setText("Cancelar");
-        jButton_administrador_empleado_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_administrador_empleado_cancelarActionPerformed(evt);
-            }
-        });
-
         jLabel24.setText("Correo:");
 
         jLabel25.setText("Rol:");
 
-        jComboBox_administrador_empleado_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Mesero" }));
+        jComboBox_administrador_empleado_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Mesero", "Recepcionista" }));
 
         jTextField_administrador_empleado_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -822,28 +626,20 @@ public class AdView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField_administrador_empleado_id, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(97, 97, 97)
+                    .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField_administrador_empleado_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_administrador_empleado_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_administrador_empleado_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_administrador_empleado_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_administrador_empleado_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 133, Short.MAX_VALUE))
+                    .addComponent(jTextField_administrador_empleado_correo))
+                .addGap(18, 18, 18)
+                .addComponent(jButton_administrador_empleado_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(busqueda_empelado_id, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -859,24 +655,15 @@ public class AdView extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_administrador_empleado_modificar)
                             .addComponent(jLabel25)
                             .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_administrador_empleado_eliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_administrador_empleado_cancelar)
-                        .addGap(16, 16, 16))
+                        .addGap(112, 112, 112))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel26))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(busqueda_empelado_id, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
         );
@@ -907,7 +694,7 @@ public class AdView extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
+            .addGap(0, 670, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Balances", jPanel8);
@@ -915,7 +702,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_eventosEspeciales.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eventos Especiales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bloqueo / Eventos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel13.setText("Fecha:");
 
@@ -937,11 +724,11 @@ public class AdView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero", "Ubicacion", "Disponible"
+                "Mesa", "Fecha", "Hora Inicio", "Hora Fin"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -950,19 +737,48 @@ public class AdView extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jTable_bloqueoMesas);
 
+        jLabel4.setText("Hora Inicio");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+
+        jLabel5.setText("Hora Fin");
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+
+        jLabel6.setText("Mesa");
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
+
         javax.swing.GroupLayout jPanel_eventosEspecialesLayout = new javax.swing.GroupLayout(jPanel_eventosEspeciales);
         jPanel_eventosEspeciales.setLayout(jPanel_eventosEspecialesLayout);
         jPanel_eventosEspecialesLayout.setHorizontalGroup(
             jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
             .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_fechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_bloqueoMesas)
-                .addGap(32, 32, 32))
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_fechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_bloqueoMesas)
+                        .addGap(32, 32, 32))
+                    .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel_eventosEspecialesLayout.setVerticalGroup(
             jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -971,112 +787,32 @@ public class AdView extends javax.swing.JFrame {
                 .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jTextField_fechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_bloqueoMesas))
+                    .addComponent(jButton_bloqueoMesas)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTextField_fechaEvento.getAccessibleContext().setAccessibleName("");
 
         jPanel12.add(jPanel_eventosEspeciales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 300));
+        jPanel_eventosEspeciales.getAccessibleContext().setAccessibleName("Bloqueo eventos");
 
-        jTabbedPane2.addTab("Eventos Especiales", jPanel12);
-
-        jPanel13.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel13.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Nueva Contraseña");
-
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Confirmar Contraseña");
-
-        btn_administrador_actualizarContraseña.setText("Actualizar");
-        btn_administrador_actualizarContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_administrador_actualizarContraseñaActionPerformed(evt);
-            }
-        });
-
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("Nombre:");
-
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Correo:");
-
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Rol:");
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addGap(45, 45, 45)
-                        .addComponent(jTextField_administrador_perfil_rol))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(26, 26, 26)
-                        .addComponent(jTextField_administrador_perfil_correo))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(jLabel33)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_administrador_perfil_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel31))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField_admin_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField_admin__confirmar_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_administrador_actualizarContraseña)
-                        .addGap(114, 114, 114))))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(jTextField_administrador_perfil_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31)
-                    .addComponent(jPasswordField_admin_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(jTextField_administrador_perfil_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32)
-                    .addComponent(jPasswordField_admin__confirmar_nuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_administrador_actualizarContraseña)
-                    .addComponent(jLabel35)
-                    .addComponent(jTextField_administrador_perfil_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
-        );
-
-        jTabbedPane2.addTab("Perfil", jPanel13);
+        jTabbedPane2.addTab("Bloqueo / Eventos", jPanel12);
 
         getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 660, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTabbedPane2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTabbedPane2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane2KeyPressed
 
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
     if(evt.getSource()== jButton_Administrador_salir){
@@ -1085,22 +821,6 @@ public class AdView extends javax.swing.JFrame {
           login.setVisible(true);
     }
     }//GEN-LAST:event_jButton_Administrador_salirActionPerformed
-
-    private void jTextField_administrador_reserva_busqueda_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_reserva_busqueda_clienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_administrador_reserva_busqueda_clienteActionPerformed
-
-    private void busqueda_id_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busqueda_id_clienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_busqueda_id_clienteActionPerformed
-
-    private void busqueda_num_mesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busqueda_num_mesaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_busqueda_num_mesaActionPerformed
-
-    private void busqueda_empelado_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busqueda_empelado_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_busqueda_empelado_idActionPerformed
 
     private void txt_reservasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_reservasMouseEntered
         // TODO add your handling code here:
@@ -1146,14 +866,6 @@ public class AdView extends javax.swing.JFrame {
        jPanel_balances.setBackground(new Color(0, 102, 102));
     }//GEN-LAST:event_jPanel_balancesMouseExited
 
-    private void jTextField_fechaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_fechaEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_fechaEventoActionPerformed
-
-    private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_bloqueoMesasActionPerformed
-
     private void jPanel_eventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_eventosMouseEntered
           jPanel_eventos.setBackground(new Color(0, 152, 152));
     }//GEN-LAST:event_jPanel_eventosMouseEntered
@@ -1162,37 +874,33 @@ public class AdView extends javax.swing.JFrame {
          jPanel_eventos.setBackground(new Color(0, 102, 102));
     }//GEN-LAST:event_jPanel_eventosMouseExited
 
-    private void jTextField_administrador_cliente_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_cliente_idActionPerformed
+    private void jTabbedPane2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTabbedPane2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_administrador_cliente_idActionPerformed
+    }//GEN-LAST:event_jTabbedPane2KeyPressed
 
-    private void jTextField_administrador_cliente_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_cliente_nombreActionPerformed
+    private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_administrador_cliente_nombreActionPerformed
+    }//GEN-LAST:event_jButton_bloqueoMesasActionPerformed
 
-    private void btn_administrador_mesa_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrador_mesa_eliminarActionPerformed
+    private void jTextField_fechaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_fechaEventoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_administrador_mesa_eliminarActionPerformed
-
-    private void jButton_administrador_mesas_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_mesas_agregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_administrador_mesas_agregarActionPerformed
-
-    private void jButton_administrador_empleado_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_empleado_modificarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_administrador_empleado_modificarActionPerformed
-
-    private void jButton_administrador_empleado_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_empleado_cancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_administrador_empleado_cancelarActionPerformed
+    }//GEN-LAST:event_jTextField_fechaEventoActionPerformed
 
     private void jTextField_administrador_empleado_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_empleado_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_administrador_empleado_nombreActionPerformed
 
-    private void btn_administrador_actualizarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrador_actualizarContraseñaActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_administrador_actualizarContraseñaActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btn_administrador_mesa_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrador_mesa_eliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_administrador_mesa_eliminarActionPerformed
+
+    private void jButton_administrador_reservas_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_reservas_agregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_administrador_reservas_agregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1230,47 +938,29 @@ public class AdView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btn_administrador_actualizarContraseña;
-    public javax.swing.JButton btn_administrador_cliente_cancelar;
-    public javax.swing.JButton btn_administrador_cliente_eliminar;
-    public javax.swing.JButton btn_administrador_cliente_modificar;
-    public javax.swing.JButton btn_administrador_clientes_agregar;
-    public javax.swing.JButton btn_administrador_mesa_cancelar;
-    public javax.swing.JButton btn_administrador_mesa_eliminar;
-    public javax.swing.JButton btn_administrador_mesa_modificar;
-    public javax.swing.JTextField busqueda_empelado_id;
-    public javax.swing.JTextField busqueda_fecha_txt;
-    public javax.swing.JTextField busqueda_id_cliente;
-    public javax.swing.JTextField busqueda_mesa_txt;
-    public javax.swing.JTextField busqueda_num_mesa;
+    private javax.swing.JButton btn_administrador_mesa_eliminar;
+    private javax.swing.JButton btn_administrador_mesa_modificar;
+    private javax.swing.JButton jButton1;
     public javax.swing.JButton jButton_Administrador_salir;
-    public javax.swing.JButton jButton_administrador_empleado_agregar;
-    public javax.swing.JButton jButton_administrador_empleado_cancelar;
-    public javax.swing.JButton jButton_administrador_empleado_eliminar;
-    public javax.swing.JButton jButton_administrador_empleado_modificar;
-    public javax.swing.JButton jButton_administrador_mesas_agregar;
-    public javax.swing.JButton jButton_administrador_reserva_modificar;
-    public javax.swing.JButton jButton_administrador_reservas_agregar;
-    public javax.swing.JButton jButton_administrador_reservas_cancelar;
-    public javax.swing.JButton jButton_administrador_reservas_eliminar;
+    private javax.swing.JButton jButton_administrador_empleado_agregar;
+    private javax.swing.JButton jButton_administrador_reservas_agregar;
     private javax.swing.JButton jButton_bloqueoMesas;
-    public javax.swing.JComboBox<String> jComboBox_administrador_empleado_rol;
-    public javax.swing.JComboBox<String> jComboBox_administrador_mesas_dispo;
-    public javax.swing.JComboBox<String> jComboBox_administrador_mesas_ubi;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox_administrador_empleado_rol;
+    private javax.swing.JComboBox<String> jComboBox_administrador_mesas_ubi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1281,22 +971,14 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1312,37 +994,25 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_eventosEspeciales;
     private javax.swing.JPanel jPanel_mesas;
     private javax.swing.JPanel jPanel_reservas;
-    public javax.swing.JPasswordField jPasswordField_admin__confirmar_nuevaContraseña;
-    public javax.swing.JPasswordField jPasswordField_admin_nuevaContraseña;
-    public javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    public javax.swing.JTabbedPane jTabbedPane2;
-    public javax.swing.JTable jTable_bloqueoMesas;
-    public javax.swing.JTable jTable_clientesAdmin;
-    public javax.swing.JTable jTable_empleadosAdmin;
-    public javax.swing.JTable jTable_mesasAdmin;
-    public javax.swing.JTextField jTextField_administrador_cliente_correo;
-    public javax.swing.JTextField jTextField_administrador_cliente_id;
-    public javax.swing.JTextField jTextField_administrador_cliente_nombre;
-    public javax.swing.JTextField jTextField_administrador_cliente_telefono;
-    public javax.swing.JTextField jTextField_administrador_empleado_correo;
-    public javax.swing.JTextField jTextField_administrador_empleado_id;
-    public javax.swing.JTextField jTextField_administrador_empleado_nombre;
-    public javax.swing.JTextField jTextField_administrador_mesa_cliente;
-    public javax.swing.JTextField jTextField_administrador_mesa_numero;
-    public javax.swing.JTextField jTextField_administrador_perfil_correo;
-    public javax.swing.JTextField jTextField_administrador_perfil_nombre;
-    public javax.swing.JTextField jTextField_administrador_perfil_rol;
-    public javax.swing.JTextField jTextField_administrador_reserva_busqueda_cliente;
-    public javax.swing.JTextField jTextField_administrador_reserva_cliente;
-    public javax.swing.JTextField jTextField_administrador_reserva_fecha;
-    public javax.swing.JTextField jTextField_administrador_reserva_id;
-    public javax.swing.JTextField jTextField_administrador_reserva_mesa;
-    public javax.swing.JTextField jTextField_fechaEvento;
-    public javax.swing.JTable tabla_reservasAdmin;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTable jTable_bloqueoMesas;
+    private javax.swing.JTable jTable_clientesAdmin;
+    private javax.swing.JTable jTable_empleadosAdmin;
+    private javax.swing.JTable jTable_mesasAdmin;
+    private javax.swing.JTextField jTextField_administrador_empleado_correo;
+    private javax.swing.JTextField jTextField_administrador_empleado_id;
+    private javax.swing.JTextField jTextField_administrador_empleado_nombre;
+    private javax.swing.JTextField jTextField_administrador_mesa_cliente;
+    private javax.swing.JTextField jTextField_administrador_reserva_cliente;
+    private javax.swing.JTextField jTextField_administrador_reserva_fecha;
+    private javax.swing.JTextField jTextField_administrador_reserva_id;
+    private javax.swing.JTextField jTextField_fechaEvento;
+    private javax.swing.JTable tabla_reservasAdmin;
     private javax.swing.JLabel txt_reservas;
     // End of variables declaration//GEN-END:variables
 }

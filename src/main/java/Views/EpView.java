@@ -32,7 +32,6 @@ public class EpView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jToggleButton_empleado_salir = new javax.swing.JToggleButton();
@@ -41,29 +40,11 @@ public class EpView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaListadoMesasEmpleado = new javax.swing.JTable();
-        jTextField_empleado_busqueda = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField_empleado_mesa = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField_empleado_cliente = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField_empleado_comentario = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         btn_empleado_modificar = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField_empleado_perfil_nombre = new javax.swing.JTextField();
-        jTextField_empleado_perfil_correo = new javax.swing.JTextField();
-        jTextField_empleado_perfil_rol = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jPasswordField_empleado_perfil_nuevaContra = new javax.swing.JPasswordField();
-        jPasswordField_empleado_perfil__confirmar_nuevaContra = new javax.swing.JPasswordField();
-        jButton_empleado_perfil_actualizar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,21 +69,6 @@ public class EpView extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 60));
-
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 90, 340));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -148,135 +114,43 @@ public class EpView extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("Listado de Mesas ");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         tablaListadoMesasEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mesa", "Cliente", "Comentario", "Asistencia"
+                "Numero", "Cliente", "Comentario", "Asistencia"
             }
         ));
         jScrollPane1.setViewportView(tablaListadoMesasEmpleado);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 640, 160));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 630, 220));
 
-        jTextField_empleado_busqueda.addActionListener(new java.awt.event.ActionListener() {
+        btn_empleado_modificar.setText("Marcar asistencia");
+        btn_empleado_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_empleado_busquedaActionPerformed(evt);
+                btn_empleado_modificarActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField_empleado_busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 60, 20));
+        jPanel4.add(btn_empleado_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Buscar:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jButton1.setText("Mesas de hoy");
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        jLabel5.setText("Mesa:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-        jPanel4.add(jTextField_empleado_mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 20));
+        jButton2.setText("Inicio");
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
 
-        jLabel6.setText("Cliente:");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
-        jPanel4.add(jTextField_empleado_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 120, 20));
+        jButton3.setText("Fin");
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
 
-        jLabel7.setText("Comentario:");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-
-        jTextField_empleado_comentario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_empleado_comentarioActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField_empleado_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 140, 20));
-
-        jLabel8.setText("Asistencia:");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ausente", "Presente" }));
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
-
-        btn_empleado_modificar.setText("Modificar");
-        jPanel4.add(btn_empleado_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
+        jLabel4.setText("Hora");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         jTabbedPane1.addTab("Lista Mesas", jPanel4);
 
-        jPanel5.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-
-        jLabel9.setText("Nombre:");
-
-        jLabel10.setText("Correo:");
-
-        jLabel11.setText("Rol:");
-
-        jLabel12.setText("Nueva Contraseña:");
-
-        jLabel13.setText("Confirmar Contraseña:");
-
-        jButton_empleado_perfil_actualizar.setText("Actualizar");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(jTextField_empleado_perfil_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField_empleado_perfil_nombre)
-                            .addComponent(jTextField_empleado_perfil_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField_empleado_perfil_nuevaContra, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField_empleado_perfil__confirmar_nuevaContra, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton_empleado_perfil_actualizar)
-                        .addGap(92, 92, 92))))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField_empleado_perfil_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jPasswordField_empleado_perfil_nuevaContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField_empleado_perfil_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(jPasswordField_empleado_perfil__confirmar_nuevaContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_empleado_perfil_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jButton_empleado_perfil_actualizar))
-                .addGap(59, 59, 59))
-        );
-
-        jTabbedPane1.addTab("Perfil", jPanel5);
-
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 640, 340));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 720, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -289,13 +163,9 @@ public class EpView extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jToggleButton_empleado_salirActionPerformed
 
-    private void jTextField_empleado_busquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_empleado_busquedaActionPerformed
+    private void btn_empleado_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_empleado_modificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_empleado_busquedaActionPerformed
-
-    private void jTextField_empleado_comentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_empleado_comentarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_empleado_comentarioActionPerformed
+    }//GEN-LAST:event_btn_empleado_modificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,37 +204,18 @@ public class EpView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_empleado_modificar;
-    public javax.swing.JButton jButton_empleado_perfil_actualizar;
-    public javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    public javax.swing.JPasswordField jPasswordField_empleado_perfil__confirmar_nuevaContra;
-    public javax.swing.JPasswordField jPasswordField_empleado_perfil_nuevaContra;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JTextField jTextField_empleado_busqueda;
-    public javax.swing.JTextField jTextField_empleado_cliente;
-    public javax.swing.JTextField jTextField_empleado_comentario;
-    public javax.swing.JTextField jTextField_empleado_mesa;
-    public javax.swing.JTextField jTextField_empleado_perfil_correo;
-    public javax.swing.JTextField jTextField_empleado_perfil_nombre;
-    public javax.swing.JTextField jTextField_empleado_perfil_rol;
     private javax.swing.JToggleButton jToggleButton_empleado_salir;
     public javax.swing.JTable tablaListadoMesasEmpleado;
     // End of variables declaration//GEN-END:variables
