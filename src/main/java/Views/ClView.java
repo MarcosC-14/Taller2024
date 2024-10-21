@@ -544,7 +544,7 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel6.setText("Hora");
 
-        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "18:15", "20:30", "22:45" }));
+        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "18", "20", "22" }));
         jComboBox_horaBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -1070,7 +1070,7 @@ public class ClView extends javax.swing.JFrame {
         String auxHora = (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
         if(ClienteController.esFormatoFechaValido(auxFecha)){
             try{
-            fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy").withResolverStyle(ResolverStyle.STRICT));
+            fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }catch(java.time.format.DateTimeParseException e){
                 javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
@@ -1185,7 +1185,7 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JTextPane jTextFieldClienteReservaEmiT;
     public javax.swing.JTextField jTextFieldClienteReservanNumT;
     public javax.swing.JTextField jTextField_cliente_fecha;
-    private javax.swing.JTextField jTextField_cliente_id;
+    public javax.swing.JTextField jTextField_cliente_id;
     public javax.swing.JTextField jTextField_cliente_mesa;
     public javax.swing.JTextField jTextField_cliente_reserva_buscar;
     public javax.swing.JTextArea jTextField_comentario;
