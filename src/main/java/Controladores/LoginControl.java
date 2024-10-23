@@ -53,48 +53,6 @@ public class LoginControl implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Obtener datos de la vista
-        String correo = inicio.txt_username.getText().trim();
-        String pass = String.valueOf(inicio.txt_password.getPassword());
-        System.out.println("Prueba 1");
-        if (e.getSource() == inicio.jButton_ingreso) {
-            System.out.println("Prueba 2");
-            // validar que los campos no esten vacios 
-                
-            if (!correo.equals("") || !pass.equals("")) {
-                System.out.println("Prueba 3");
-                // pasar parametros al metodo login
-                if(cliente_dao!=null){
-                    cliente = cliente_dao.loginQuery(correo, pass);
-                    if (cliente.getCorreo().equals(correo)) {
-                        ClView aux = new ClView(cliente);
-                        aux.setVisible(true);
-                        this.inicio.dispose();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
-                    }
-                }
-                System.out.println(empleadoDao.loginQuery(correo, pass));
-                if(empleadoDao!=null){
-                    System.out.println("Prueba 4");
-                empleado = empleadoDao.loginQuery(correo, pass);
-                if(empleado.getCorreo().equals(correo)){
-                        EpView auxilio = new EpView(empleado);
-                        auxilio.setVisible(true);
-                        this.inicio.dispose();
-                } else{
-                    JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
-                }    }
-                System.out.println("Prueba 5");
-                   //verficar existencia de usuario
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
-            }
-        } else if (e.getSource() == inicio.jButton_registro) {
-            this.registro = new ClRegisterView();
-            this.registro.setVisible(true);
-            this.inicio.dispose();
 
-        }
     }
 }
