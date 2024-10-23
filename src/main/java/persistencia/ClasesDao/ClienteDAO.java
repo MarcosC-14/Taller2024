@@ -46,6 +46,7 @@ public class ClienteDAO{
         //que revise si el correo ya esta ingresado
         String sql = "INSERT into cliente (nombre,correo,contrasenia,telefono) VALUES(?,?,?,?)";
         try {
+            if(!existeCorreo(cliente.getCorreo())){
             con = conn.getConexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, cliente.getNombre());
@@ -53,6 +54,7 @@ public class ClienteDAO{
             ps.setString(3, cliente.getContrasenia());
             ps.setString(4, cliente.getTelefono());
             registrado = (ps.executeUpdate() > 0);
+            }
         } catch (SQLException e) {
             System.out.println(e.toString());
         }finally {
@@ -103,14 +105,8 @@ public class ClienteDAO{
      */
      public String recuperarContraseña(String correo){ 
          String contraseña="";
-         String query = "SELECT *FROM cliente WHERE correo = ?";
          try {
-            con = conn.getConexion();
-            ps = con.prepareStatement(query);
-            //Enviar parametros
-            ps.setString(1, correo);
-            rs = ps.executeQuery();
-            if (rs.next()) {
+            if (existeCorreo(correo)) {
                 contraseña = rs.getString("contrasenia");
             } else{
                 contraseña= "Correo no encontrado";
@@ -135,7 +131,6 @@ public class ClienteDAO{
      public boolean actualizarCorreo (int id, String correoNuevo){
         boolean actualizacion= false;
          String buscaId ="SELECT *  FROM cliente WHERE id= ?";
-         String buscarCorreo="SELECT * FROM cliente WHERE correo=?";
          String sql="UPDATE cliente SET correo = ? WHERE id = ?";
          try{
              con = conn.getConexion(); //asegura que estas conectado
@@ -144,10 +139,7 @@ public class ClienteDAO{
              rs=ps.executeQuery();
              if(rs.next()){    
                  if(ClienteController.esCorreoElectronicoValido(correoNuevo)){
-                      ps=con.prepareStatement(buscarCorreo);
-                      ps.setString(1,correoNuevo);
-                      rs=ps.executeQuery();
-                      if(!(rs.next())){
+                      if(!existeCorreo(correoNuevo)){
                         ps=con.prepareStatement(sql);
                         ps.setString(1, correoNuevo);
                         ps.setInt(2, id);
@@ -155,8 +147,7 @@ public class ClienteDAO{
                         if(actualizacion){
                             cliente.setCorreo(correoNuevo);
                         }
-                 }else{
-                     JOptionPane.showMessageDialog(null,"El nuevo correo coincide con un correo registrado", "Error",JOptionPane.ERROR_MESSAGE);
+               
                  }}else{
                      JOptionPane.showMessageDialog(null,"INGRESE UN CORREO ELECTRONICO VALIDO","Error", JOptionPane.ERROR_MESSAGE);
                  }
@@ -168,6 +159,31 @@ public class ClienteDAO{
             conn.cerrarConexion();
         }
          return actualizacion;
+     }
+     /**
+      * Verificar que el correo electronicoe este en la base de datos.
+      * @param  correoNuevo representa el correo el cual se va a verificar si esta
+      * en la base de datos
+      * @return  true en caso de que el correo este en la base de dato y false en
+      * caso contrario
+      */
+     public boolean existeCorreo(String correoNuevo){
+        String buscarCorreo="SELECT * FROM cliente WHERE correo=?";
+        boolean bandera= false;
+        try{
+            con= conn.getConexion();
+            ps=con.prepareStatement(buscarCorreo);
+            ps.setString(1,correoNuevo);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                bandera=true;
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+             conn.cerrarConexion();
+        } 
+        return bandera;
      }
      
      /**
