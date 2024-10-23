@@ -5,8 +5,10 @@
 package Views;
 
 import Controladores.LoginControl;
+import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.Empleado;
+import modelo.Persona;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.EmpleadoDAO;
 
@@ -19,6 +21,7 @@ public class Inicio extends javax.swing.JFrame {
     ClienteDAO cliente_dao= new ClienteDAO();
     Empleado empleado = new Empleado();
     EmpleadoDAO empleadoDao = new EmpleadoDAO();
+    Persona usuario;
     
     /**
      * Creates new form SystemView
@@ -191,11 +194,42 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_passwordActionPerformed
 
     private void jButton_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ingresoActionPerformed
-     
+        String correo = this.txt_username.getText().trim();
+        String pass = String.valueOf(this.txt_password.getPassword());
+        // validar que los campos no esten vacios 
+        if (!correo.equals("") || !pass.equals("")) {
+            // pasar parametros al metodo login
+            usuario = cliente_dao.loginQuery(correo, pass);
+            if(usuario.getCorreo().equals(correo)){
+                ClView aux = new ClView(cliente);
+                aux.setVisible(true);
+                this.dispose();
+            }else{
+                usuario = empleadoDao.loginQuery(correo, pass);
+                if(usuario.getCorreo().equals(correo)){
+                    if(((Empleado)usuario).getRol().toString().equals("Administrador")){
+                        AdView adView = new AdView();
+                        adView.setVisible(true);
+                        this.dispose();
+                    }else{
+                    EpView epView = new EpView(empleado);
+                    epView.setVisible(true);
+                    this.dispose();
+                    }
+                }else{
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+        } 
+        
     }//GEN-LAST:event_jButton_ingresoActionPerformed
 
     private void jButton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registroActionPerformed
-      
+            ClRegisterView viewCl = new ClRegisterView();
+            viewCl.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_jButton_registroActionPerformed
 
     private void jButton_recuperarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_recuperarContraseñaActionPerformed

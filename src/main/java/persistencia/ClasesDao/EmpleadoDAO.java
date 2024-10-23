@@ -21,7 +21,7 @@ public class EmpleadoDAO {
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
-    private Empleado empleado;
+    private Empleado empleado = new Empleado();
 
 /**
  * Se encarga de verificar que el usuario y contraseña ingresados sean los de un 
