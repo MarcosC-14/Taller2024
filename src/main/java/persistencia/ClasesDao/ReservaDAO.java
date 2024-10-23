@@ -234,17 +234,21 @@ public class ReservaDAO {
         PreparedStatement ps;
         LocalDate hoy = LocalDate.now();
         String sql = "SELECT * FROM reserva WHERE fecha=?";
+        String baseCliente="SELECT * FROM reserva ";
         ArrayList<Reserva> reservasDeHoy = new ArrayList<Reserva>();
         try{
              ps = con.prepareStatement(sql);
              ps.setString(1, hoy.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             rs = ps.executeQuery();
+            System.out.println("hola");
             while (rs.next()) {
+                System.out.println("hola2");
                 Mesa mesa = obtenerMesaPorNumero(rs.getInt("num_mesa"));
                 ClienteDAO cliente = new ClienteDAO();
                 String [] vector = new  String [3];
                 vector = cliente.mostrarDatos(rs.getInt("id_cliente")); //nombre, correo, telefono
                 Cliente clienteActual = new Cliente(); 
+                System.out.println("Cliente: "+vector[0]);
                 clienteActual.setNombre(vector[0]);
                 clienteActual.setCorreo(vector[1]);
                 clienteActual.setTelefono(vector[2]);
@@ -260,10 +264,18 @@ public class ReservaDAO {
                 reserva1.setMesa(mesa);
                 reserva1.setHora(LocalTime.parse(rs.getString("hora"), 
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
+                if(!rs.getString("hora_fin").equals("")){
                 reserva1.setTiempoFinalizacion(LocalTime.parse(rs.getString("hora_fin"), 
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
+                }else{
+                    reserva1.setTiempoFinalizacion(null);
+                }
+                if(!rs.getString("hora_inicio").equals("")){
                 reserva1.setTiempoOcupacion(LocalTime.parse(rs.getString("hora_inicio"), 
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
+                }else{
+                    reserva1.setTiempoOcupacion(null);
+                }
                 reservasDeHoy.add(reserva1);
             }
         }catch (SQLException e) {
@@ -292,8 +304,8 @@ public class ReservaDAO {
              
              while(rs.next()){
                  int numero = rs.getInt("numero");
-                 Ubicacion ubicacion =  Ubicacion.valueOf(rs.getString("ubicacion").toUpperCase());
-                 Capacidad capacidad =  Capacidad.valueOf(rs.getString("capacidad").toUpperCase());
+                 Ubicacion ubicacion =  Ubicacion.valueOf(rs.getString("ubicacion"));
+                 Capacidad capacidad =  Capacidad.valueOf(rs.getString("capacidad"));
                  mesa.setNumero(numero);
                  mesa.setUbicacion(ubicacion);
                  mesa.setCapacidad(capacidad);

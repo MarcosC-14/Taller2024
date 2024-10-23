@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EpView extends javax.swing.JFrame {
     private DefaultTableModel tabla;
-    private Object[] o = new Object [4];
+   
     private Empleado empleado;
     /**
      * Creates new form EpView
@@ -187,6 +187,7 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecepcionistaAsistenciaActionPerformed
 
     private void jButtonMesasHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMesasHoyActionPerformed
+    Object[] o = new Object [4];
     ReservaDAO reserva= new ReservaDAO();
     ArrayList<Reserva> reservas = new ArrayList<Reserva>();
     reservas= reserva.obtenerReservasDeHoy();
