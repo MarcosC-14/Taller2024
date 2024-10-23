@@ -2,13 +2,17 @@
 package modelo;
 
 /**
-* Esta enumeración representa la ubicacion que tiene cada mesa.
-* Las ubicaciones posibles son:
-* Interior: significa que una mesa se ubica en el interior del restaurante.
-* Exterior: significa que una mesa se ubica en el exterior del restaurante.
+* Esta enumeración representa la diferentes ubicaciones que tiene cada mesa.
 * @author Marcos Ramon Caraballo, Angelina María Vialle,
 * @version 27/10/2024 
 */
 public enum Ubicacion {
-    Interior, Exterior
+    /**
+     * Ubicacion dentro del restaurante.
+     */
+    Interior, 
+    /**
+     * Ubicacion fuera del restaurante.
+     */
+    Exterior
 }

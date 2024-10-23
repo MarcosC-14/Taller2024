@@ -20,11 +20,16 @@ import modelo.Tarjeta;
 import modelo.Ubicacion;
 
 /**
- *
- * @author marco
- */
-
-
+* Esta clase se encarga de realizar operaciones sobre la tabla reservas de la base
+* de datos. 
+* Tales como guardar los datos de la reserva, indicar si una mesa está disponible
+* para una fecha y hora determinada, obtener un listado de mesas, obtener el historial
+* de reservas de un cliente.
+* Se encarga de conectar a la base de datos y manejar las consultas necesarias para
+* gestionar las reservas.
+* @author Marcos Ramon Caraballo, Angelina María Vialle,
+* @version 27/10/2024
+*/
 public class ReservaDAO {
     
     private SQLiteManager conn = new SQLiteManager();
@@ -32,6 +37,19 @@ public class ReservaDAO {
     private PreparedStatement ps;
     private ResultSet rs;
     
+    /**
+     * Constructor por defecto de la clase ReservaDAO.
+     */
+    public ReservaDAO(){}
+  
+    /**
+    * Este método se encarga de guardar los datos de la reserva en la base de datos,
+    * en su correspondiente tabla.
+    * @param    reserva es un objeto de tipo reserva con todos los datos necesarios
+    * para hacer una reserva.
+    * @return   true si se guardaron los datos en la base de datos, false en caso
+    * contrario
+    */
     public boolean realizarReserva(Reserva reserva){
          boolean realizado = false;
          con = conn.getConexion();
@@ -48,16 +66,19 @@ public class ReservaDAO {
             realizado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
             System.out.println("Prueba 1"+e.toString());
-        } finally {
-           try {
-                conn.cerrarConexion();
-            }catch (Exception e) {
-                System.out.println(e.toString());
-            }
-        }
+        }finally {
+            conn.cerrarConexion();
+        } 
         return realizado;
     }
     
+    /**
+    * Este método te indica si la mesa se encuentra disponible en una fecha y hora determinada
+    * @param    numMesa indica el número de la mesa que se revisara si esta disponible
+    * @param    fecha indica la fecha en la que se revisara si esta disponible la mesa
+    * @param    hora indica la hora que se revisara para saber si la mesa está disponible
+    * @return   true en caso de que la mesa este disponible, en caso contrario false
+    */
     public boolean mesaDisponible(int numMesa, LocalDate fecha, LocalTime hora){
         boolean disponible = false;
         Connection con = conn.getConexion();
@@ -75,15 +96,18 @@ public class ReservaDAO {
             }
         }catch(SQLException e){
             System.out.println(e.toString());
-        }try {
-                conn.cerrarConexion();
-            }catch (Exception e) {
-                System.out.println(e.toString());
-            }
+        }finally {
+            conn.cerrarConexion();
+        }
         
         return disponible;
     }
     
+    /**
+    * Se encarga de guardar todas las mesas de la base de datos en un ArrayList 
+    * de tipo Mesa.
+    * return    una lista con todas las mesas.
+    */
     public ArrayList<Mesa> mesas(){
         Connection con = conn.getConexion();
         ResultSet rs;
@@ -131,23 +155,22 @@ public class ReservaDAO {
                         break;
                 }
                 mesa.setUbicacion(u);
-                
                 mesas.add(mesa);
             }
-            
         }catch(SQLException e){
             System.out.println(e.toString());
-        } finally{
-            try {
-                conn.cerrarConexion();
-            }catch (Exception e) {
-                System.out.println(e.toString());
-            }
+        }finally {
+           conn.cerrarConexion();
         }
-        
         return mesas;
     }
     
+    /**
+    * Se encarga de obtener el historial de reservas de un cliente. 
+    * @param    c es un objeto de tipo cliente que indican todos los datos de un 
+    * cliente.
+    * @return   una lista con el historia de las reservas de ese cliente.
+    */
     public ArrayList<Reserva> obtenerReservasHistorial(Cliente c){
         Connection con = conn.getConexion();
         ResultSet rs;
@@ -197,7 +220,6 @@ public class ReservaDAO {
         }finally{
             conn.cerrarConexion();
         }
-        
         return reservas;
     }
 }
