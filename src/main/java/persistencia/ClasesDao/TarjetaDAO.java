@@ -12,23 +12,25 @@ import java.sql.SQLException;
 
 
 /**
- *
- * @author marco
- */
+* Esta clase se encarga de gestionar la conexión con la base de datos de las tarjetas.
+* Tiene un método que se encarga de guardar las tarjetas en la base de datos 
+* @author Marcos Ramon Caraballo, Angelina María Vialle,
+ * @version 27/10/2024
+*/
 public class TarjetaDAO {
     
     private SQLiteManager conn = new SQLiteManager();
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
-//    
- //public boolean verificarTarjeta(Tarjeta tarjeta){
-  //      boolean coincide = false;
-    //    con = conn.getConexion();
-      //  ResultSet rs;
-        // String sql = "SELECT * FROM tarjeta WHERE  numero  = ?";
-        
-   // }
+    
+    /**
+    * Se encarga de guardar los datos de las tarjetas de crédito en la base de datos.
+    * @param    tarjeta es un objeto de tipo Tarjeta que representa la tarjeta del 
+    * cliente.
+    * @return   true en caso de que se haya realizado el guardado con éxito, false 
+    * en caso contrario.
+    */
     public boolean guardarTarjeta(Tarjeta tarjeta){
         boolean realizado=false;
         con= conn.getConexion();
@@ -44,11 +46,7 @@ public class TarjetaDAO {
         }catch(SQLException e){
             System.out.println("hola"+e.toString());
         } finally {
-            try {
-                conn.cerrarConexion();
-            }catch (Exception e) {
-                System.out.println(e.toString());
-            }
+            conn.cerrarConexion();
         }
         return realizado;
     
