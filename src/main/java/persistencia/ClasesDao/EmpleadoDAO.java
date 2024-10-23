@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
 import modelo.Rol;
@@ -61,4 +62,30 @@ public class EmpleadoDAO {
             conn.cerrarConexion();
         }
         return empleado;
-}}
+}
+//    
+//    private ArrayList<Empleado> obtenerEmpleados(){
+//        Connection con = conn.getConexion();
+//        ResultSet rs;
+//        PreparedStatement ps;
+//        ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+//        String sql = "SELECT * FROM empleado";
+//        try{
+//            ps = con.prepareStatement(sql);
+//            rs = ps.executeQuery();
+//            while(rs.next()){
+//                Empleado e = new Empleado();
+//                e.setContrasenia(rs.getString("contraseña"));
+//                e.setCorreo(rs.getString("correo"));
+//                e.setId(rs.getInt("id"));
+//                e.setRol(Rol.valueOf(rs.getString("rol")));
+//                empleados.add(e);
+//            }
+//        }catch(SQLException e){
+//            System.out.println(e.toString());
+//    }
+//    }
+
+
+
+}

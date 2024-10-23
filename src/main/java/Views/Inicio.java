@@ -6,6 +6,7 @@ package Views;
 
 import Controladores.LoginControl;
 import javax.swing.JOptionPane;
+import modelo.Administrador;
 import modelo.Cliente;
 import modelo.Empleado;
 import modelo.Persona;
@@ -201,18 +202,18 @@ public class Inicio extends javax.swing.JFrame {
             // pasar parametros al metodo login
             usuario = cliente_dao.loginQuery(correo, pass);
             if(usuario.getCorreo().equals(correo)){
-                ClView aux = new ClView(cliente);
+                ClView aux = new ClView((Cliente) usuario);
                 aux.setVisible(true);
                 this.dispose();
             }else{
                 usuario = empleadoDao.loginQuery(correo, pass);
                 if(usuario.getCorreo().equals(correo)){
                     if(((Empleado)usuario).getRol().toString().equals("Administrador")){
-                        AdView adView = new AdView();
+                        AdView adView = new AdView((Administrador) usuario);
                         adView.setVisible(true);
                         this.dispose();
                     }else{
-                    EpView epView = new EpView(empleado);
+                    EpView epView = new EpView((Empleado) usuario);
                     epView.setVisible(true);
                     this.dispose();
                     }
