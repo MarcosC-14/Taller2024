@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Views;
 import persistencia.ClasesDao.ClienteDAO;
 /**
@@ -11,7 +8,9 @@ import persistencia.ClasesDao.ClienteDAO;
 public class ClRecuperarC extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClRecuperarC
+     * Constructor por defecto de la ventana grafica.
+     * Se encarga de inicializar y configurar los componentes de la interfaz gráfica
+     * de usuario
      */
     public ClRecuperarC() {
         initComponents();
@@ -109,7 +108,13 @@ public class ClRecuperarC extends javax.swing.JFrame {
     private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_correoActionPerformed
-
+    /**
+    * Método llamado cuando el usuario presionar el botón enviar.
+    * Revisa que el campo de correo electronico no esté vacío, en caso de no estar
+    * vacio llama el metodo recuperarContraseña de la clase ClienteDAO y muestra 
+    * en pantalla el resultado de llamar a ese metodo.
+    * @param evt representa el evento que se genera al presionar el boton enviar. 
+    */
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
         String correoIngreso = correo.getText();
         if (correoIngreso.isEmpty()) {
@@ -124,7 +129,11 @@ public class ClRecuperarC extends javax.swing.JFrame {
     // Mostrar el resultado en un JOptionPane
     javax.swing.JOptionPane.showMessageDialog(this, resultado, "Recuperar Contraseña", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_enviarActionPerformed
-
+    /**
+    ** Se encarga de generar una nueva ventana Inicio, hacerla visible y cerrar 
+    * la ventana actual.
+    * @param evt el evento generado al presionar el boton "Atras".
+    */
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         Inicio inicio = new Inicio();
         inicio.setVisible(true);
