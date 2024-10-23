@@ -124,10 +124,14 @@ public class ClRecuperarC extends javax.swing.JFrame {
     }
         ClienteDAO cliente = new ClienteDAO();
     // Llamar al método recuperarContrasenia del objeto clienteDAO
-    String resultado = cliente.recuperarContraseña(correoIngreso);
+    if(cliente.existeCorreo(correoIngreso)){
+        String resultado = cliente.recuperarContraseña(correoIngreso);
 
     // Mostrar el resultado en un JOptionPane
     javax.swing.JOptionPane.showMessageDialog(this, resultado, "Recuperar Contraseña", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }else{
+        javax.swing.JOptionPane.showMessageDialog(this, "El correo no se encuentra en la base de datos", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_enviarActionPerformed
     /**
     ** Se encarga de generar una nueva ventana Inicio, hacerla visible y cerrar 

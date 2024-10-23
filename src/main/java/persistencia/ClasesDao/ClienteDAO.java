@@ -105,8 +105,13 @@ public class ClienteDAO{
      */
      public String recuperarContraseña(String correo){ 
          String contraseña="";
+         String recuperaC="SELECT *FROM cliente WHERE correo = ?";
          try {
-            if (existeCorreo(correo)) {
+             con=conn.getConexion();
+             ps=con.prepareStatement(recuperaC);
+             ps.setString(1,correo);
+             rs=ps.executeQuery();
+            if (rs.next()) {
                 contraseña = rs.getString("contrasenia");
             } else{
                 contraseña= "Correo no encontrado";
