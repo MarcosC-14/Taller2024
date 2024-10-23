@@ -14,9 +14,10 @@ import javax.swing.JOptionPane;
 import java.util.Arrays;
 /**
  * La clase ClienteDAO ofrece los metodos necesarios para realizar las operaciones
- * necesarias con la base de datos que afecten a los clientes como Registrar a un 
+ * necesarias con la base de datos que afecten a los clientes como registrar a un 
  * cliente, permitir que el cliente se registre, ofrecerle un metodo para que recupere
- * su contraseña y permitir que actualice su numero de telefono y su correo electronico.
+ * su contraseña, permitir que actualice su numero de telefono y su correo electronico
+ * y obtener los datos del cliente.
  * Se utiliza la clase SQLiteManager para concectarse a la base de datos.
  * @author Marcos Ramon Caraballo, Angelina María Vialle,
  * @version 27/10/2024 
@@ -28,14 +29,17 @@ public class ClienteDAO{
     private PreparedStatement ps;
     private ResultSet rs;
     
-    // variables para enviar datos entre interfaces
-    
     private Cliente cliente= new Cliente();
+    /**
+     *Constructor por defecto de la clase ClienteDAO.
+     */
+    public ClienteDAO(){
+    }
     
     /**
      * Este metodo se encarga de registrar a un nuevo cliente en la base de datos.
-     * @param cliente, representa a un objeto cliente, el cual contiene los datos a registrar
-     * @return true si se pudo registrar el cliente, false en caso contrario
+     * @param   cliente, representa a un objeto cliente, el cual contiene los datos a registrar.
+     * @return  es true si se pudo registrar el cliente, false en caso contrario.
      */
     public boolean registrarCliente(Cliente cliente){
         boolean registrado = false;
@@ -49,25 +53,24 @@ public class ClienteDAO{
             ps.setString(3, cliente.getContrasenia());
             ps.setString(4, cliente.getTelefono());
             registrado = (ps.executeUpdate() > 0);
-
         } catch (SQLException e) {
             System.out.println(e.toString());
         }finally {
             conn.cerrarConexion();
         }
-        return registrado;
-        
+        return registrado;  
     }
 
     /**
      * Se encarga de revisar que el usuario y la contraseña ingresados sean validos,
      * en caso que sea asi, permite el acceso.
-     * @param user, representa el correo electronico del cliente.
-     * @param password, representa la contraseña del cliente
-     * @return devuelve un objeto cliente con las informacion de cliente en caso 
-     * de que el usuario y la contraseña sean validos, si no devuelve un objeto vacio
+     * @param   user, representa el correo electronico del cliente.
+     * @param   password, representa la contraseña del cliente.
+     * @return  devuelve un objeto de tipo Cliente con la informacion del cliente 
+     * en caso de que de que el usuario y la contraseña sean validos, si no devuelve
+     * un objeto vacio.
      */
-    public Cliente loginQuery(String user, String password) {
+    public Cliente loginQuery(String user, String password){
         String query = "SELECT *FROM cliente WHERE correo = ? AND contrasenia = ?";
         
         try {
@@ -77,19 +80,12 @@ public class ClienteDAO{
             ps.setString(1, user);
             ps.setString(2, password);
             rs = ps.executeQuery();
-
-            
             if (rs.next()) {
                 cliente.setNombre(rs.getString("nombre"));
-                
                 cliente.setCorreo(rs.getString("correo"));
-                
                 cliente.setContrasenia(rs.getString("contrasenia"));
-                
                 cliente.setTelefono(rs.getString("telefono"));
-                
                 cliente.setId(rs.getInt("id"));
-
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener Empleado" + e);
@@ -101,12 +97,11 @@ public class ClienteDAO{
     
     /**
      * Recupera la contraseña de un cliente a traves de su correo electronico.
-     * @param correo, es el correo electronico del cliente.
-     *@return Devuelve la contraseña de un cliente en caso de que el correo electronico
+     * @param   correo, es el correo electronico del cliente.
+     * @return  Devuelve la contraseña de un cliente en caso de que el correo electronico
      * sea valido o un mensaje avisando que no encontro el correo.
      */
-    
-     public String recuperarContraseña(String correo) { 
+     public String recuperarContraseña(String correo){ 
          String contraseña="";
          String query = "SELECT *FROM cliente WHERE correo = ?";
          try {
@@ -115,7 +110,6 @@ public class ClienteDAO{
             //Enviar parametros
             ps.setString(1, correo);
             rs = ps.executeQuery();
-
             if (rs.next()) {
                 contraseña = rs.getString("contrasenia");
             } else{
@@ -131,13 +125,14 @@ public class ClienteDAO{
      
      /**
       * Actualiza el correo del cliente en la base de datos.
-      * Verifica que el correo electronico actual este en la base de datos y el nuevo correo electronico tenga un @ y no este en la base de datos
-      * @param correoActual, representa el correo electronico que se tiene actualmente
-      * @param correoNuevo, representa el nuevo correo electronico
-      * @return true en caso de se haya podido actualizar correctamente el correo, false en 
-      * caso contrario.
+      * Verifica que el correo electronico actual este en la base de datos y el 
+      * nuevo correo electronico tenga un @ y no este en la base de datos.
+      * @param  correoNuevo representa el nuevo correo electronico.
+      * @param  id representa el numero de identificacion del cliente.
+      * @return true en caso de se haya podido actualizar correctamente el correo,
+      * false en caso contrario.
       */
-     public boolean actualizarCorreo(int id, String correoNuevo){
+     public boolean actualizarCorreo (int id, String correoNuevo){
         boolean actualizacion= false;
          String buscaId ="SELECT *  FROM cliente WHERE id= ?";
          String buscarCorreo="SELECT * FROM cliente WHERE correo=?";
@@ -177,9 +172,10 @@ public class ClienteDAO{
      
      /**
       * Actualiza el numero de telefono del cliente en la base de datos.
-      * Verifica que el correo este en la base de datos y que el nuevo telefono no coincida con el numero de telefono de alguien más.
-      * @param correo, representa el correo electronico del cliente.
-      * @param telefono, representa el nuevo numero de telefono
+      * Verifica que el correo este en la base de datos y que el nuevo telefono 
+      * no coincida con el numero de telefono de alguien más.
+      * @param  id representa el numero que identifica a un cliente.
+      * @param  telefono representa el nuevo número de telefono.
       * @return true en caso de se haya podido actualizar correctamente el correo, false en 
       * caso contrario.
       */
@@ -213,17 +209,19 @@ public class ClienteDAO{
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
              System.out.println(e);
          }finally {
-             try {
-                conn.cerrarConexion();
-            }catch (Exception e) {
-                System.out.println(e.toString());
-            }
+             conn.cerrarConexion();
          }
          return actualizacion;
      }
      /**
-      * Devuelve los datos de nombre, correo y telefono teniendo un id
-      */
+    * Este método se encarga de buscar en la base de datos el nombre, correo y teléfono
+    * de un cliente a través de su id, devolviendo un arreglo de String con esos valores.
+    * @param    id, es el id que corresponde al cliente.
+    * @return   un arreglo de String con la siguiente información:
+    *  datosCliente[0]: nombre del cliente.
+    *  datosCliente[1]: correo electronico del cliente.
+    *  datosCliente[2]: teléfono del cliente.
+    */
      public String[] mostrarDatos(int id){
          String datosCliente[]=new String[3];
          String sql = "SELECT nombre, correo, telefono FROM cliente WHERE id=?";
@@ -239,11 +237,7 @@ public class ClienteDAO{
              JOptionPane.showMessageDialog(null,"Error al buscar la informacion: "+e);
              System.out.println(e);
          }finally {
-             try {
-                conn.cerrarConexion();
-            }catch (Exception e) {
-                System.out.println(e.toString());
-            }
+             conn.cerrarConexion();
          }
          return datosCliente;
      }
