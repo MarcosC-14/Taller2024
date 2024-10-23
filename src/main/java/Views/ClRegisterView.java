@@ -6,7 +6,7 @@ package Views;
 
 import Controladores.ClienteController;
 import modelo.Cliente;
-import modelo.ConectorSql;
+import persistencia.SQLiteManager;
 import persistencia.ClasesDao.ClienteDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +19,7 @@ import java.sql.ResultSet;
  */
 public class ClRegisterView extends javax.swing.JFrame {
       // instanciar coneccion
-    ConectorSql cn = new ConectorSql();
+    SQLiteManager cn = new SQLiteManager();
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
