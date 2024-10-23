@@ -6,8 +6,9 @@ package Views;
 
 import Controladores.LoginControl;
 import modelo.Cliente;
+import modelo.Empleado;
 import persistencia.ClasesDao.ClienteDAO;
-
+import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
  *
@@ -16,6 +17,9 @@ import persistencia.ClasesDao.ClienteDAO;
 public class Inicio extends javax.swing.JFrame {
     Cliente cliente = new Cliente();
     ClienteDAO cliente_dao= new ClienteDAO();
+    Empleado empleado = new Empleado();
+    EmpleadoDAO empleadoDao = new EmpleadoDAO();
+    
     /**
      * Creates new form SystemView
      */
@@ -23,6 +27,8 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         LoginControl cliente_login = new LoginControl(cliente, cliente_dao);
         cliente_login.setInicio(this);
+        LoginControl empleadoLogin = new LoginControl(empleado, empleadoDao);
+        empleadoLogin.setInicio(this);
     }
 
     /**

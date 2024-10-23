@@ -7,9 +7,12 @@ package Controladores;
 import Views.AdView;
 import Views.ClRegisterView;
 import Views.ClView;
+import Views.EpView;
 import Views.Inicio;
 import modelo.Cliente;
+import modelo.Empleado;
 import persistencia.ClasesDao.ClienteDAO;
+import persistencia.ClasesDao.EmpleadoDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -24,10 +27,20 @@ public class LoginControl implements ActionListener {
     private ClienteDAO cliente_dao;
     private Inicio inicio;
     private ClRegisterView registro;
-
+    private Empleado empleado;
+    private EmpleadoDAO empleadoDao;
+    
     public LoginControl(Cliente cliente, ClienteDAO cliente_Dao) {
         this.cliente = cliente;
         this.cliente_dao = cliente_Dao;
+    }
+    public LoginControl(Empleado empleado, EmpleadoDAO empleadoDao){
+        this.empleado= empleado;
+            System.out.println(empleado);
+
+        this.empleadoDao= empleadoDao;
+            System.out.println(empleadoDao);
+
     }
 
     public void setInicio(Inicio i){
@@ -42,21 +55,38 @@ public class LoginControl implements ActionListener {
         // Obtener datos de la vista
         String correo = inicio.txt_username.getText().trim();
         String pass = String.valueOf(inicio.txt_password.getPassword());
-
+        System.out.println("Prueba 1");
         if (e.getSource() == inicio.jButton_ingreso) {
+            System.out.println("Prueba 2");
             // validar que los campos no esten vacios 
                 
             if (!correo.equals("") || !pass.equals("")) {
+                System.out.println("Prueba 3");
                 // pasar parametros al metodo login
-                cliente = cliente_dao.loginQuery(correo, pass);
-                //verficar existencia de usuario
-                if (cliente.getCorreo().equals(correo)) {
-                    ClView aux = new ClView(cliente);
-                    aux.setVisible(true);
-                    this.inicio.dispose();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+                if(cliente_dao!=null){
+                    cliente = cliente_dao.loginQuery(correo, pass);
+                    if (cliente.getCorreo().equals(correo)) {
+                        ClView aux = new ClView(cliente);
+                        aux.setVisible(true);
+                        this.inicio.dispose();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+                    }
                 }
+                System.out.println(empleadoDao.loginQuery(correo, pass));
+                if(empleadoDao!=null){
+                    System.out.println("Prueba 4");
+                empleado = empleadoDao.loginQuery(correo, pass);
+                if(empleado.getCorreo().equals(correo)){
+                        EpView auxilio = new EpView(empleado);
+                        auxilio.setVisible(true);
+                        this.inicio.dispose();
+                } else{
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+                }    }
+                System.out.println("Prueba 5");
+                   //verficar existencia de usuario
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
             }

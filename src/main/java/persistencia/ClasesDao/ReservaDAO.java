@@ -18,14 +18,14 @@ import modelo.Cliente;
 import modelo.Mesa;
 import modelo.Tarjeta;
 import modelo.Ubicacion;
-import java.sql.Date;
 
 /**
 * Esta clase se encarga de realizar operaciones sobre la tabla reservas de la base
 * de datos. 
 * Tales como guardar los datos de la reserva, indicar si una mesa está disponible
 * para una fecha y hora determinada, obtener un listado de mesas, obtener el historial
-* de reservas de un cliente.
+* de reservas de un cliente, obtener todas las reservas del dia de hoy y obtener la mesa
+* por el numero de mesa.
 * Se encarga de conectar a la base de datos y manejar las consultas necesarias para
 * gestionar las reservas.
 * @author Marcos Ramon Caraballo, Angelina María Vialle,
@@ -225,7 +225,8 @@ public class ReservaDAO {
     }
     
     /**
-     * Obtener todas las reservas del dia de hoy
+     * Te devuelve una lista de reservas de dia de hoy.
+     * @return  las reservas de clientes del dia de hoy.
      */
      public ArrayList<Reserva> obtenerReservasDeHoy() {
         Connection con = conn.getConexion();
@@ -234,8 +235,6 @@ public class ReservaDAO {
         LocalDate hoy = LocalDate.now();
         String sql = "SELECT * FROM reserva WHERE fecha=?";
         ArrayList<Reserva> reservasDeHoy = new ArrayList<Reserva>();
-        
-        
         try{
              ps = con.prepareStatement(sql);
              ps.setString(1, hoy.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
@@ -250,19 +249,23 @@ public class ReservaDAO {
                 clienteActual.setCorreo(vector[1]);
                 clienteActual.setTelefono(vector[2]);
                 Reserva reserva1 = new Reserva();
+                reserva1.setFecha(hoy);
+                reserva1.setComentario(rs.getString("comentario"));
                 reserva1.setCliente(clienteActual);
-                /**
-                Reserva reserva = new Reserva(
-                        mesa,
-                        rs.getString("cliente"),
-                        LocalDateTime.parse(rs.getString("hora_inicio")),
-                        LocalDateTime.parse(rs.getString("hora_fin")),
-                        rs.getBoolean("asistido")
-                );
-                */
+                if(rs.getInt("asistencia")==1){
+                    reserva1.setAsistencia(true);
+                }else{
+                    reserva1.setAsistencia(false);
+                }
+                reserva1.setMesa(mesa);
+                reserva1.setHora(LocalTime.parse(rs.getString("hora"), 
+                        DateTimeFormatter.ofPattern("HH:mm:ss")));
+                reserva1.setTiempoFinalizacion(LocalTime.parse(rs.getString("hora_fin"), 
+                        DateTimeFormatter.ofPattern("HH:mm:ss")));
+                reserva1.setTiempoOcupacion(LocalTime.parse(rs.getString("hora_inicio"), 
+                        DateTimeFormatter.ofPattern("HH:mm:ss")));
                 reservasDeHoy.add(reserva1);
             }
-        
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally{

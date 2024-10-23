@@ -28,8 +28,8 @@ public class ClienteDAO{
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
-    
     private Cliente cliente= new Cliente();
+    
     /**
      *Constructor por defecto de la clase ClienteDAO.
      */

@@ -4,6 +4,15 @@ import java.util.ArrayList;
 //tiene que toString traer datos de clientes y mesas?
 public class Empleado extends Persona {
     private Rol rol;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     private ArrayList<Cliente> clientes;
     private ArrayList<Mesa> mesas;
    
