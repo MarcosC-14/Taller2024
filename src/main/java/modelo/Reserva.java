@@ -34,16 +34,20 @@ public class Reserva {
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
     }
-
+//fehca, comentario,asistencia, numeromesa,idcliente, idtarjetahora, horainicio, horafin
     /**
      * Constructor parametrizado de Reserva
      * 
-     * @param fecha Fecha de la reserva
-     * @param hora Hora de la reserva
-     * @param comentario Comentario del cliente
-     * 
+     * @param   fecha Fecha de la reserva
+     * @param   hora Hora de la reserva
+     * @param   comentario Comentario del cliente
+     * @param   cliente los datos del cliente
+     * @param   tarjeta los datos de la tarjeta con la que se hace la reserva
+     * @param   mesa los datos de la mesa.
+     * @param   tiempoOcupacion la hora de inicio de la ocupacion de la mesa
+     * @param   tiempoFinalizacion la hora de finalizacion de la ocupacion de la mesa
      */
-    public Reserva(LocalDate fecha, LocalTime hora, String comentario,Cliente cliente, Tarjeta tarjeta, Mesa mesa) {
+    public Reserva(LocalDate fecha, LocalTime hora, String comentario,Cliente cliente, Tarjeta tarjeta, Mesa mesa, LocalDate tiempoOcupacion, LocalDate tiempoFinalizacion) {
         this.fecha = fecha;
         this.hora = hora;
         this.comentario = comentario;
@@ -67,7 +71,10 @@ public class Reserva {
         this.tiempoFinalizacion = null;     
     }
     */
-    
+    public boolean isAsistencia() {    
+        return asistencia;
+    }
+
     /**
      * Getter del atributo fecha
      * @return 

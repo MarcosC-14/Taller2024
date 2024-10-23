@@ -43,7 +43,6 @@ public class SQLiteManager {
      * Se encarga de cerrar la conexion a la base de datos.
      * Si hay una conexion a la base de datos la cierra.
      */
-    // Método para cerrar la conexión a la base de datos
     public void cerrarConexion() {
         try {
             if (connection != null) {

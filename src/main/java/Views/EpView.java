@@ -137,9 +137,19 @@ public class EpView extends javax.swing.JFrame {
         jPanel4.add(btn_empleado_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
 
         jButton1.setText("Mesas de hoy");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         jButton2.setText("Inicio");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
 
         jButton3.setText("Fin");
@@ -166,6 +176,14 @@ public class EpView extends javax.swing.JFrame {
     private void btn_empleado_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_empleado_modificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_empleado_modificarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -22,6 +22,18 @@ public class Mesa {
         this.reservas= new ArrayList<Reserva>();
     }
     
+    /**
+     * Contructor de mesa para el numero, capacidad y ubicacion.
+     * @param    numero el numero que identifica la mesa.
+     * @param    capacidad que indica cuantas personas maximo se pueden sentar en esa mesa.
+     * @param    ubicacion que indica donde se ubica la mesa.
+     */
+    public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion){
+        this.numero=numero;
+        this.capacidad=capacidad;
+        this.ubicacion=ubicacion;
+    }
+    
     public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Reserva reserva) {
         this();
         this.numero = numero;

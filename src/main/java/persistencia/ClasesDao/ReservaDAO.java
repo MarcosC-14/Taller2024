@@ -18,6 +18,7 @@ import modelo.Cliente;
 import modelo.Mesa;
 import modelo.Tarjeta;
 import modelo.Ubicacion;
+import java.sql.Date;
 
 /**
 * Esta clase se encarga de realizar operaciones sobre la tabla reservas de la base
@@ -222,4 +223,83 @@ public class ReservaDAO {
         }
         return reservas;
     }
+    
+    /**
+     * Obtener todas las reservas del dia de hoy
+     */
+     public ArrayList<Reserva> obtenerReservasDeHoy() {
+        Connection con = conn.getConexion();
+        ResultSet rs;
+        PreparedStatement ps;
+        LocalDate hoy = LocalDate.now();
+        String sql = "SELECT * FROM reserva WHERE fecha=?";
+        ArrayList<Reserva> reservasDeHoy = new ArrayList<Reserva>();
+        
+        
+        try{
+             ps = con.prepareStatement(sql);
+             ps.setString(1, hoy.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Mesa mesa = obtenerMesaPorNumero(rs.getInt("num_mesa"));
+                ClienteDAO cliente = new ClienteDAO();
+                String [] vector = new  String [3];
+                vector = cliente.mostrarDatos(rs.getInt("id_cliente")); //nombre, correo, telefono
+                Cliente clienteActual = new Cliente(); 
+                clienteActual.setNombre(vector[0]);
+                clienteActual.setCorreo(vector[1]);
+                clienteActual.setTelefono(vector[2]);
+                Reserva reserva1 = new Reserva();
+                reserva1.setCliente(clienteActual);
+                /**
+                Reserva reserva = new Reserva(
+                        mesa,
+                        rs.getString("cliente"),
+                        LocalDateTime.parse(rs.getString("hora_inicio")),
+                        LocalDateTime.parse(rs.getString("hora_fin")),
+                        rs.getBoolean("asistido")
+                );
+                */
+                reservasDeHoy.add(reserva1);
+            }
+        
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally{
+            conn.cerrarConexion();
+        }
+        return reservasDeHoy;
+    }
+     
+     /**
+      * Metodo que se encarga de buscar una mesa por su numero de mesa.
+      * @param  num representa el numero de mesa
+      * @return una mesa con numero, capacidad y ubicacion.
+      */
+     public Mesa obtenerMesaPorNumero(int num){
+         Connection con = conn.getConexion();
+         ResultSet rs;
+         PreparedStatement ps;
+         Mesa mesa = new Mesa();
+         String sql= "SELECT * FROM mesa WHERE numero=?";
+         try{
+             ps=con.prepareStatement(sql);
+             ps.setInt(1,num);
+             rs=ps.executeQuery();
+             
+             while(rs.next()){
+                 int numero = rs.getInt("numero");
+                 Ubicacion ubicacion =  Ubicacion.valueOf(rs.getString("ubicacion").toUpperCase());
+                 Capacidad capacidad =  Capacidad.valueOf(rs.getString("capacidad").toUpperCase());
+                 mesa.setNumero(numero);
+                 mesa.setUbicacion(ubicacion);
+                 mesa.setCapacidad(capacidad);
+             }
+         }catch(SQLException e){
+             System.out.println(e.getMessage());
+         }finally{
+             conn.cerrarConexion();    
+         }
+         return mesa;
+     }
 }
