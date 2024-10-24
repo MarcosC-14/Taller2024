@@ -28,6 +28,9 @@ public class AdView extends javax.swing.JFrame {
     private Administrador administrador;
     private EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     private ClienteDAO clienteDAO = new ClienteDAO();
+    ArrayList<BloqueoMesaEventoEspecial> bmes = new ArrayList<BloqueoMesaEventoEspecial>();
+    BloqueoMesaEventoEspecial bme;
+    
     /**
      * Creates new form AdView
      */
@@ -127,6 +130,8 @@ public class AdView extends javax.swing.JFrame {
         jComboBoxHoraFin = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jComboBoxMesas = new javax.swing.JComboBox<>();
+        jButtonVerBloqueMesaEvento = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -807,6 +812,20 @@ public class AdView extends javax.swing.JFrame {
 
         jComboBoxMesas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
 
+        jButtonVerBloqueMesaEvento.setText("Ver");
+        jButtonVerBloqueMesaEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerBloqueMesaEventoActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_eventosEspecialesLayout = new javax.swing.GroupLayout(jPanel_eventosEspeciales);
         jPanel_eventosEspeciales.setLayout(jPanel_eventosEspecialesLayout);
         jPanel_eventosEspecialesLayout.setHorizontalGroup(
@@ -816,27 +835,35 @@ public class AdView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_fechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_bloqueoMesas)
-                        .addGap(32, 32, 32))
-                    .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_eventosEspecialesLayout.createSequentialGroup()
+                        .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton2)
+                                .addGap(35, 35, 35)
+                                .addComponent(jButtonVerBloqueMesaEvento)
+                                .addGap(12, 12, 12))
+                            .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_fechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton_bloqueoMesas)))
+                        .addGap(32, 32, 32))))
         );
         jPanel_eventosEspecialesLayout.setVerticalGroup(
             jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -855,7 +882,11 @@ public class AdView extends javax.swing.JFrame {
                 .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboBoxMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVerBloqueMesaEvento)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -872,6 +903,39 @@ public class AdView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void actualizarTablaBloqueoMesaEvento(){
+          
+        bmes = empleadoDAO.obtenerBloqueosMesasEventosEspeciales();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable_bloqueoMesas.getModel();
+        model.setRowCount(0); //Elimina las filas existentes;
+
+        
+        for(BloqueoMesaEventoEspecial b: bmes){
+            String horaInicio;
+            if(b.getHoraInicio()== null){
+                horaInicio = "";
+            }else{
+                horaInicio = b.getHoraInicio().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            }
+            String horaFin;
+            if(b.getHoraFin()== null){
+                horaFin = "";
+            }else{
+                horaFin = b.getHoraFin().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            }
+            model.addRow(new Object[]{
+                b.getNumMesa()== 0? "Todas":b.getNumMesa(),
+                b.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                horaInicio,
+                horaFin
+            });
+            }
+        
+            
+        
+    }
+    
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
         dispose();
         Inicio login = new Inicio();
@@ -1042,16 +1106,7 @@ public class AdView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el bloqueo de mesa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        actualizarTablaBloqueoMesaEvento();
     }//GEN-LAST:event_jButton_bloqueoMesasActionPerformed
 
     private void jTextField_fechaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_fechaEventoActionPerformed
@@ -1130,12 +1185,30 @@ public class AdView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jButtonVerBloqueMesaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerBloqueMesaEventoActionPerformed
+        actualizarTablaBloqueoMesaEvento();
+    }//GEN-LAST:event_jButtonVerBloqueMesaEventoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        bme = bmes.get(jTable_bloqueoMesas.getSelectedRow());
+        
+        if(empleadoDAO.eliminarBloqueoEvento(bme)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Bloqueo o evento eliminado con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                this.actualizarTablaBloqueoMesaEvento();
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar bloqueo o evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_administrador_mesa_eliminar;
     public javax.swing.JButton btn_administrador_mesa_modificar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonVerBloqueMesaEvento;
     private javax.swing.JButton jButtonVerEmpleados;
     public javax.swing.JButton jButton_Administrador_salir;
     public javax.swing.JButton jButton_administrador_empleado_agregar;
