@@ -948,7 +948,7 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_administrador_reservas_agregarActionPerformed
 
     private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
-        actualizarTablaEmpleados();
+       // actualizarTablaEmpleados();
     }//GEN-LAST:event_jButtonVerEmpleadosActionPerformed
 
 
