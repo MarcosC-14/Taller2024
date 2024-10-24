@@ -318,17 +318,15 @@ public class ReservaDAO {
          return mesa;
      }
      /**
-      * Sirve para cambiar la asistencia d euna reserva. (cambiar)
-      * @param  filaSeleccionada la fila que se presiono.
+      * Sirve para que cambiar la asistencia de una reserva. 
+      * @param  numMesa representa el numero de mesa.
+      * @param  hora representa la hora de la reserva.
+      * @param asistencia representa la asistencia anterior que tenia
       * @return true si la cambio, false si no la cambio.
       */
-     public boolean cambiarAsistencia(int filaSeleccionada, ArrayList<Reserva> reservas){
-         Reserva reserva= new Reserva();
-         reserva= reservas.get(filaSeleccionada);
-         int numMesa=reserva.getMesa().getNumero();
-         boolean asistencia=reserva.getAsistencia();
+     public boolean cambiarAsistencia( int numMesa, LocalTime hora, boolean asistencia){
+        
          boolean actualizacion=false;
-         LocalTime hora = reserva.getHora();
          Connection con = conn.getConexion();
          ResultSet rs;
          PreparedStatement ps;
@@ -343,9 +341,6 @@ public class ReservaDAO {
              ps.setInt(2,numMesa);
              ps.setString(3, hora.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
              actualizacion=(ps.executeUpdate()>0);
-             if(actualizacion){
-                 reserva.setAsistencia(asistencia);
-             }
          }catch(SQLException e){
              System.out.println(e.getMessage());
          }finally{

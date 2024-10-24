@@ -59,8 +59,6 @@ public class EpView extends javax.swing.JFrame {
         jButtonMeseroHoraInicio = new javax.swing.JButton();
         jButtonMeseroHoraFin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTxtHoraInicio = new javax.swing.JTextField();
-        jTxtHoraFin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -187,14 +185,6 @@ public class EpView extends javax.swing.JFrame {
 
         jLabel4.setText("Hora");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-        jPanel4.add(jTxtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, -1));
-
-        jTxtHoraFin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtHoraFinActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTxtHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, -1));
 
         jTabbedPane1.addTab("Lista Mesas", jPanel4);
 
@@ -235,20 +225,28 @@ public class EpView extends javax.swing.JFrame {
           login.setVisible(true);
     }
     }//GEN-LAST:event_jToggleButton_empleado_salirActionPerformed
-
+    /**
+     * Boton que se activa cuando un recepcionista trata de cambiar la asistencia
+     * de un cliente.
+     * Revisa que quien intente cambiar la asistenica sea un recepcionista. Si no 
+     * es un recepcionista le muentra un mensaje indicandole que no es un recepcionista 
+     * @param evt accion que ocurre
+     */
     private void btnRecepcionistaAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistaAsistenciaActionPerformed
-      //falta revisar si el empleado es recepcionista
-      //revisar en la base de datos? o con el objeto cliente?
+
       if(esRecepcionista()){
         int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
        if (filaSeleccionada != -1) {
            reservas=reservaDAO.obtenerReservasDeHoy();
-            String asistenciaActual = (String) tabla.getValueAt(filaSeleccionada, 3); // Asistencia actual
-
-            // Cambiar el estado de "asistencia" en la base de datos
+            String asistenciaActual = (String) tabla.getValueAt(filaSeleccionada, 3);
             int nuevoEstado = asistenciaActual.equals("Asistio") ? 0 : 1;
-            boolean actualizado =reservaDAO.cambiarAsistencia(filaSeleccionada, reservas);
+            Reserva reserva= reservas.get(filaSeleccionada);
+         int numMesa=reserva.getMesa().getNumero();
+          boolean asistencia=reserva.getAsistencia();
+         LocalTime hora = reserva.getHora();
+            boolean actualizado =reservaDAO.cambiarAsistencia(numMesa, hora, asistencia);
             if(actualizado){
+                reserva.setAsistencia(actualizado);
                 javax.swing.JOptionPane.showMessageDialog(this, "Asistencia actualizada", "Asistencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 this.actualizarTablaMesasDeHoy();
             }else{
@@ -276,10 +274,6 @@ public class EpView extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "No sos mesero", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);  
        }
     }//GEN-LAST:event_jButtonMeseroHoraInicioActionPerformed
-
-    private void jTxtHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtHoraFinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtHoraFinActionPerformed
 
     private void jButtonMeseroHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraFinActionPerformed
         if(esMesero()){
@@ -332,8 +326,6 @@ public class EpView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToggleButton jToggleButton_empleado_salir;
-    private javax.swing.JTextField jTxtHoraFin;
-    private javax.swing.JTextField jTxtHoraInicio;
     public javax.swing.JTable tablaListadoMesasEmpleado;
     // End of variables declaration//GEN-END:variables
 }
