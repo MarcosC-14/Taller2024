@@ -465,7 +465,7 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel6.setText("Hora");
 
-        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBox_horaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22" }));
         jComboBox_horaBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
