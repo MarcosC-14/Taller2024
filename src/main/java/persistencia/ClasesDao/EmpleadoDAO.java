@@ -12,10 +12,13 @@ import modelo.Rol;
 import persistencia.SQLiteManager;
 
 /**
- *
- * @author Charly Cimino
- * Aprendé más Java en mi canal: https://www.youtube.com/c/CharlyCimino
- * Encontrá más código en mi repo de GitHub: https://github.com/CharlyCimino
+ * Esta clase se encarga de relacionarse con la base de datos de empleado, tiene 
+ * metodos que permitenel ingreso de un empleado con sus correspondientes credenciales
+ * (usuario y contraseña), de vuelve un lista de todos los empleados en la base 
+ * de datos, permite registrar a un empleado, revisa si un correo existe en la tabla
+ * de empleados, ademas de revisar si el empleado es mesero o recepcionista.
+ * @author 
+ * 
  */
 public class EmpleadoDAO {
      private SQLiteManager conn = new SQLiteManager();
@@ -93,7 +96,12 @@ public class EmpleadoDAO {
         }
         return empleados;
     }
-
+    /**
+     * Se encarga de guardar en la base de datos a un nuevo empleado.
+     * @param   emp representa a un empleado.
+     * @return  false si no se pudo registrar, true en caso de que si se haya podido
+     * guardar en la base de datos
+     */
     public boolean registrarEmpleado(Empleado emp) {
         boolean registrado = false;
         //que revise si el correo ya esta ingresado
