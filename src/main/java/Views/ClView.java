@@ -166,7 +166,7 @@ public class ClView extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jBVer = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -940,10 +940,10 @@ public class ClView extends javax.swing.JFrame {
         });
         jScrollPane9.setViewportView(jTable2);
 
-        jButton1.setText("VER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBVer.setText("VER");
+        jBVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBVerActionPerformed(evt);
             }
         });
 
@@ -975,7 +975,7 @@ public class ClView extends javax.swing.JFrame {
                                     .addGroup(historial_clienteLayout.createSequentialGroup()
                                         .addComponent(jLabel33)
                                         .addGap(1, 1, 1)
-                                        .addComponent(jButton1))
+                                        .addComponent(jBVer))
                                     .addGroup(historial_clienteLayout.createSequentialGroup()
                                         .addComponent(jLabel39)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1010,9 +1010,10 @@ public class ClView extends javax.swing.JFrame {
                     .addGroup(historial_clienteLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(historial_clienteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historial_clienteLayout.createSequentialGroup()
                                 .addComponent(jLabel37)
@@ -1023,7 +1024,6 @@ public class ClView extends javax.swing.JFrame {
                                 .addComponent(jButton_cliente_eliminar_reserva, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(historial_clienteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(historial_clienteLayout.createSequentialGroup()
@@ -1081,7 +1081,7 @@ public class ClView extends javax.swing.JFrame {
                             .addGroup(historial_clienteLayout.createSequentialGroup()
                                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel33)
-                                    .addComponent(jButton1))
+                                    .addComponent(jBVer))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1388,11 +1388,33 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_cliente_eliminar_reservaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
 
+        /**
+         * String auxFecha = jTextField_fechaNewReserva.getText();
+        String auxHora = (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
+        if(ClienteController.esFormatoFechaValido(auxFecha)){
+            try{
+            fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }catch(java.time.format.DateTimeParseException e){
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            if(fechaBuscar.isAfter(LocalDate.now())){
+                horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
+                actualizarTablaMesas();
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
         
-                // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+         */
+          
+    }//GEN-LAST:event_jBVerActionPerformed
 
     private void jTxtEmisorTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmisorTarjetaActionPerformed
         // TODO add your handling code here:
@@ -1411,8 +1433,8 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JButton JButton_confirmarFecha;
     private javax.swing.JTextField correoClienteBase;
     private javax.swing.JPanel historial_cliente;
+    private javax.swing.JButton jBVer;
     private javax.swing.JButton jBVerDatos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton_cliente_eliminar_reserva;
     public javax.swing.JButton jButton_cliente_modificar_reserva;

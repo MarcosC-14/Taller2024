@@ -240,7 +240,7 @@ public class ReservaDAO {
              ps = con.prepareStatement(sql);
              ps.setString(1, hoy.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             rs = ps.executeQuery();
-            System.out.println("hola");
+            
             while (rs.next()) {
                 System.out.println("hola2");
                 Mesa mesa = obtenerMesaPorNumero(rs.getInt("num_mesa"));
@@ -316,5 +316,37 @@ public class ReservaDAO {
              conn.cerrarConexion();    
          }
          return mesa;
+     }
+     
+     public boolean cambiarAsistencia(int filaSeleccionada, ArrayList<Reserva> reservas){
+         Reserva reserva= new Reserva();
+         reserva= reservas.get(filaSeleccionada);
+         int numMesa=reserva.getMesa().getNumero();
+         boolean asistencia=reserva.getAsistencia();
+         boolean actualizacion=false;
+         LocalTime hora = reserva.getHora();
+         Connection con = conn.getConexion();
+         ResultSet rs;
+         PreparedStatement ps;
+         String sql ="UPDATE reserva SET asistencia = ? WHERE num_mesa=? AND hora=?";
+         try{
+             ps=con.prepareStatement(sql);
+             if(asistencia){
+             ps.setInt(1,0);
+             }else{
+             ps.setInt(1, 1);
+             }
+             ps.setInt(2,numMesa);
+             ps.setString(3, hora.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+             actualizacion=(ps.executeUpdate()>0);
+             if(actualizacion){
+                 reserva.setAsistencia(asistencia);
+             }
+         }catch(SQLException e){
+             System.out.println(e.getMessage());
+         }finally{
+             conn.cerrarConexion();
+         }
+         return actualizacion;
      }
 }

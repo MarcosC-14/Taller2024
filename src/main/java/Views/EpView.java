@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EpView extends javax.swing.JFrame {
     private DefaultTableModel tabla;
+    private ReservaDAO reserva;
+    private ArrayList<Reserva> reservas;
    
     private Empleado empleado;
     /**
@@ -21,7 +23,7 @@ public class EpView extends javax.swing.JFrame {
      */
     public EpView(Empleado empleado) {
         initComponents();
-         setSize(729, 400);
+         setSize(1000, 600);
                 setResizable(false);
                 setTitle("Sistema de Clientes");
                 setLocationRelativeTo(null);
@@ -54,6 +56,9 @@ public class EpView extends javax.swing.JFrame {
         jButtonMeseroHoraInicio = new javax.swing.JButton();
         jButtonMeseroHoraFin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,7 +103,7 @@ public class EpView extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
                 .addComponent(jToggleButton_empleado_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -122,6 +127,7 @@ public class EpView extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Listado de Mesas ");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
@@ -159,17 +165,28 @@ public class EpView extends javax.swing.JFrame {
                 jButtonMeseroHoraInicioActionPerformed(evt);
             }
         });
-        jPanel4.add(jButtonMeseroHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+        jPanel4.add(jButtonMeseroHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jButtonMeseroHoraFin.setText("Fin");
-        jPanel4.add(jButtonMeseroHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
+        jPanel4.add(jButtonMeseroHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         jLabel4.setText("Hora");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
+        jLabel5.setText("Donde se guarda la fehca y la hora?");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+
         jTabbedPane1.addTab("Lista Mesas", jPanel4);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 720, 340));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 820, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,15 +200,29 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton_empleado_salirActionPerformed
 
     private void btnRecepcionistaAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistaAsistenciaActionPerformed
-        // TODO add your handling code here:
+       int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
+       if (filaSeleccionada != -1) {
+           reservas=reserva.obtenerReservasDeHoy();
+            String asistenciaActual = (String) tabla.getValueAt(filaSeleccionada, 3); // Asistencia actual
+
+            // Cambiar el estado de "asistencia" en la base de datos
+            int nuevoEstado = asistenciaActual.equals("Asistio") ? 0 : 1;
+            boolean actualizado =reserva.cambiarAsistencia(filaSeleccionada, reservas);
+            if(actualizado){
+                javax.swing.JOptionPane.showMessageDialog(this, "Asistencia actualizada", "Asistencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar la asistencia", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+       }
     }//GEN-LAST:event_btnRecepcionistaAsistenciaActionPerformed
 
     private void jButtonMesasHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMesasHoyActionPerformed
+    tabla.setRowCount(0);
     Object[] o = new Object [4];
-    ReservaDAO reserva= new ReservaDAO();
-    ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+    reserva= new ReservaDAO();
+    reservas = new ArrayList<Reserva>();
     reservas= reserva.obtenerReservasDeHoy();
-    for(Reserva reserva1: reservas){
+    for(Reserva reserva1: reservas){   
         o[0]=reserva1.getMesa().getNumero();
         o[1]=reserva1.getCliente().getNombre();
         o[2]=reserva1.getComentario();
@@ -208,6 +239,10 @@ public class EpView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonMeseroHoraInicioActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -219,11 +254,14 @@ public class EpView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton_empleado_salir;
     public javax.swing.JTable tablaListadoMesasEmpleado;
     // End of variables declaration//GEN-END:variables

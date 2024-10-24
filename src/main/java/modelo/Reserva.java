@@ -21,7 +21,7 @@ public class Reserva {
     private LocalTime tiempoFinalizacion;
     private Mesa mesa;
     private Cliente cliente;
-    private Tarjeta tarjeta;    //necesita estar en el metodo realizar reserva de cliente?
+    private Tarjeta tarjeta;    
 
     /**
      * Constructor por defecto de Reserva
