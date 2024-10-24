@@ -195,7 +195,7 @@ public class ReservaDAO {
                 reserva.setId(rs.getInt("id"));
                 reserva.setCliente(c);
                 reserva.setComentario(rs.getString("comentario"));
-                reserva.setAsistencia(Boolean.valueOf(rs.getString("asistencia")));
+                reserva.setAsistencia(rs.getBoolean("asistencia"));
                 
                 reserva.setFecha(LocalDate.parse(rs.getString("fecha"), 
                         DateTimeFormatter.ofPattern("dd/MM/yyyy")));
