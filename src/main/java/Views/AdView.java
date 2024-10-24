@@ -845,25 +845,25 @@ public class AdView extends javax.swing.JFrame {
 
     
     private void actualizarTablaEmpleado(){
-//        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-//        
-//        empleadoDAO = EmpleadoDAO.obtenerReservasHistorial();
-//
-//        DefaultTableModel model = (DefaultTableModel) jTable_historialCliente.getModel();
-//        model.setRowCount(0); // Limpia todas las filas existentes
-//        ordenarTablaHistorial();
-//        
-//        
-//        for (Reserva res : reservas) {
-//            String asistencia = res.getAsistencia()? "Sí": "No";
-//            model.addRow(new Object[]{
-//                res.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-//                res.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
-//                res.getMesa().getNumero(),
-//                asistencia,res.getTarjeta().getEmisor()
-//                    //estan intercambiados numero y emisor
-//            });
-//        }
+        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+        
+        empleadoDAO = EmpleadoDAO.obtenerReservasHistorial();
+
+        DefaultTableModel model = (DefaultTableModel) jTable_historialCliente.getModel();
+        model.setRowCount(0); // Limpia todas las filas existentes
+        ordenarTablaHistorial();
+        
+        
+        for (Reserva res : reservas) {
+            String asistencia = res.getAsistencia()? "Sí": "No";
+            model.addRow(new Object[]{
+                res.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                res.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                res.getMesa().getNumero(),
+                asistencia,res.getTarjeta().getEmisor()
+                    //estan intercambiados numero y emisor
+            });
+        }
         
         
     }
