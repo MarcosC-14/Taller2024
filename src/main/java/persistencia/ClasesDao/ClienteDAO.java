@@ -44,11 +44,15 @@ public class ClienteDAO{
      */
     public boolean registrarCliente(Cliente cliente){
         boolean registrado = false;
+        String buscarCorreo="SELECT * FROM cliente WHERE correo=?";
+        String correo= cliente.getContrasenia();
         //que revise si el correo ya esta ingresado
         String sql = "INSERT into cliente (nombre,correo,contrasenia,telefono) VALUES(?,?,?,?)";
         try {
-            if(!existeCorreo(cliente.getCorreo())){
             con = conn.getConexion();
+            ps= con.prepareStatement(buscarCorreo);
+            ps.setString(1, correo);
+            if(!rs.next()){
             ps = con.prepareStatement(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getCorreo());
@@ -106,7 +110,7 @@ public class ClienteDAO{
      */
      public String recuperarContraseña(String correo){ 
          String contraseña="";
-         String recuperaC="SELECT *FROM cliente WHERE correo = ?";
+         String recuperaC="SELECT * FROM cliente WHERE correo = ?";
          try {
              con=conn.getConexion();
              ps=con.prepareStatement(recuperaC);
@@ -136,28 +140,36 @@ public class ClienteDAO{
       */
      public boolean actualizarCorreo (int id, String correoNuevo){
         boolean actualizacion= false;
-         String buscaId ="SELECT *  FROM cliente WHERE id= ?";
+         String buscaId ="SELECT * FROM cliente WHERE id = ?";
          String sql="UPDATE cliente SET correo = ? WHERE id = ?";
+         String correoBuscar="SELECT * FROM cliente WHERE correo= ?";
          try{
              con = conn.getConexion(); //asegura que estas conectado
              ps=con.prepareStatement(buscaId);
+             System.out.println("Hola");
              ps.setInt(1, id);
              rs=ps.executeQuery();
+             System.out.println("Hola2");
              if(rs.next()){    
+                 System.out.println("Hola3");
                  if(ClienteController.esCorreoElectronicoValido(correoNuevo)){
-                      if(!existeCorreo(correoNuevo)){
-                        ps=con.prepareStatement(sql);
+                     System.out.println("Hola2");
+                        ps=con.prepareStatement(correoBuscar);
+                        ps.setString(1,correoNuevo);
+                        rs=ps.executeQuery();
+                        if(!rs.next()){
+                            ps=con.prepareStatement(sql);
                         ps.setString(1, correoNuevo);
                         ps.setInt(2, id);
                         actualizacion =(ps.executeUpdate()>0);
                         if(actualizacion){
                             cliente.setCorreo(correoNuevo);
                         }
-               
-                 }}else{
+                        }
+                        }else{
                      JOptionPane.showMessageDialog(null,"INGRESE UN CORREO ELECTRONICO VALIDO","Error", JOptionPane.ERROR_MESSAGE);
-                 }
-             }
+                 }}
+             
          }catch(SQLException e){
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
              System.out.println(e);
@@ -166,31 +178,7 @@ public class ClienteDAO{
         }
          return actualizacion;
      }
-     /**
-      * Verificar que el correo electronicoe este en la base de datos.
-      * @param  correoNuevo representa el correo el cual se va a verificar si esta
-      * en la base de datos
-      * @return  true en caso de que el correo este en la base de dato y false en
-      * caso contrario
-      */
-     public boolean existeCorreo(String correoNuevo){
-        String buscarCorreo="SELECT * FROM cliente WHERE correo=?";
-        boolean bandera= false;
-        try{
-            con= conn.getConexion();
-            ps=con.prepareStatement(buscarCorreo);
-            ps.setString(1,correoNuevo);
-            rs=ps.executeQuery();
-            if(rs.next()){
-                bandera=true;
-            }
-        }catch(SQLException e){
-            System.out.println(e);
-        }finally{
-             conn.cerrarConexion();
-        } 
-        return bandera;
-     }
+     
      
      /**
       * Actualiza el numero de telefono del cliente en la base de datos.

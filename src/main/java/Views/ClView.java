@@ -1361,6 +1361,7 @@ public class ClView extends javax.swing.JFrame {
             }
         }
         if(!(correoIngresado.isEmpty())){
+            
             resultadoC = cliente.actualizarCorreo(idCliente, correoIngresado);
             if(resultadoC){
                 javax.swing.JOptionPane.showMessageDialog(this, "Correo actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
