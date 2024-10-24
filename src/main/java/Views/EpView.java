@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Views;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import persistencia.ClasesDao.ReservaDAO;
 import modelo.Reserva;
 import modelo.Empleado;
@@ -14,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EpView extends javax.swing.JFrame {
     private DefaultTableModel tabla;
-    private ReservaDAO reserva;
+    private ReservaDAO reservaDAO;
     private ArrayList<Reserva> reservas;
    
     private Empleado empleado;
@@ -175,6 +177,11 @@ public class EpView extends javax.swing.JFrame {
         jPanel4.add(jButtonMeseroHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jButtonMeseroHoraFin.setText("Fin");
+        jButtonMeseroHoraFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMeseroHoraFinActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButtonMeseroHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         jLabel4.setText("Hora");
@@ -195,6 +202,31 @@ public class EpView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void actualizarTablaMesasDeHoy(){
+        tabla.setRowCount(0);
+        Object[] o = new Object [6];
+        reservaDAO= new ReservaDAO();
+        reservas = new ArrayList<Reserva>();
+        reservas= reservaDAO.obtenerReservasDeHoy();
+        for(Reserva reserva1: reservas){   
+            o[0]=reserva1.getMesa().getNumero();
+            o[1]=reserva1.getCliente().getNombre();
+            o[2]=reserva1.getComentario();
+            if(reserva1.getAsistencia()){
+                o[3]="Asistio";
+            }else{
+                o[3]="No asistio";
+            }
+            if(reserva1.getTiempoOcupacion() != null){
+                o[4]= reserva1.getTiempoOcupacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            }
+            if(reserva1.getTiempoFinalizacion() != null){
+                o[5]= reserva1.getTiempoFinalizacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            }
+            tabla.addRow(o);
+        }
+        
+    }
     private void jToggleButton_empleado_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton_empleado_salirActionPerformed
         if(evt.getSource()== jToggleButton_empleado_salir){
           dispose();
@@ -208,14 +240,15 @@ public class EpView extends javax.swing.JFrame {
       //revisar en la base de datos? o con el objeto cliente?
         int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
        if (filaSeleccionada != -1) {
-           reservas=reserva.obtenerReservasDeHoy();
+           reservas=reservaDAO.obtenerReservasDeHoy();
             String asistenciaActual = (String) tabla.getValueAt(filaSeleccionada, 3); // Asistencia actual
 
             // Cambiar el estado de "asistencia" en la base de datos
             int nuevoEstado = asistenciaActual.equals("Asistio") ? 0 : 1;
-            boolean actualizado =reserva.cambiarAsistencia(filaSeleccionada, reservas);
+            boolean actualizado =reservaDAO.cambiarAsistencia(filaSeleccionada, reservas);
             if(actualizado){
                 javax.swing.JOptionPane.showMessageDialog(this, "Asistencia actualizada", "Asistencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                this.actualizarTablaMesasDeHoy();
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar la asistencia", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
@@ -223,31 +256,29 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecepcionistaAsistenciaActionPerformed
 
     private void jButtonMesasHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMesasHoyActionPerformed
-    tabla.setRowCount(0);
-    Object[] o = new Object [4];
-    reserva= new ReservaDAO();
-    reservas = new ArrayList<Reserva>();
-    reservas= reserva.obtenerReservasDeHoy();
-    for(Reserva reserva1: reservas){   
-        o[0]=reserva1.getMesa().getNumero();
-        o[1]=reserva1.getCliente().getNombre();
-        o[2]=reserva1.getComentario();
-        if(reserva1.getAsistencia()){
-            o[3]="Asistio";
-        }else{
-            o[3]="No asistio";
-        }
-        tabla.addRow(o);
-    }
+        actualizarTablaMesasDeHoy();
     }//GEN-LAST:event_jButtonMesasHoyActionPerformed
 
     private void jButtonMeseroHoraInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraInicioActionPerformed
-        // TODO add your handling code here:
+        Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
+        reserva.setTiempoOcupacion(LocalTime.now());
+        if(reservaDAO.modificarTiempoOcupacionFin(reserva)){
+            System.out.println("todo bien");
+        }
+        actualizarTablaMesasDeHoy();
     }//GEN-LAST:event_jButtonMeseroHoraInicioActionPerformed
 
     private void jTxtHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtHoraFinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtHoraFinActionPerformed
+
+    private void jButtonMeseroHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraFinActionPerformed
+        Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
+        reserva.setTiempoFinalizacion(LocalTime.now());
+        if(reservaDAO.modificarTiempoOcupacionFin(reserva))
+            System.out.println("tobo bien");
+        actualizarTablaMesasDeHoy();
+    }//GEN-LAST:event_jButtonMeseroHoraFinActionPerformed
 
     
 

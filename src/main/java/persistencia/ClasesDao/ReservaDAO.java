@@ -243,18 +243,17 @@ public class ReservaDAO {
             rs = ps.executeQuery();
             
             while (rs.next()) {
-                System.out.println("hola2");
                 Mesa mesa = obtenerMesaPorNumero(rs.getInt("num_mesa"));
                 ClienteDAO cliente = new ClienteDAO();
                 String [] vector = new  String [3];
                 vector = cliente.mostrarDatos(rs.getInt("id_cliente")); //nombre, correo, telefono
                 Cliente clienteActual = new Cliente(); 
-                System.out.println("Cliente: "+vector[0]);
                 clienteActual.setNombre(vector[0]);
                 clienteActual.setCorreo(vector[1]);
                 clienteActual.setTelefono(vector[2]);
                 Reserva reserva1 = new Reserva();
                 reserva1.setFecha(hoy);
+                reserva1.setId(rs.getInt("id"));
                 reserva1.setComentario(rs.getString("comentario"));
                 reserva1.setCliente(clienteActual);
                 if(rs.getInt("asistencia")==1){
@@ -265,14 +264,14 @@ public class ReservaDAO {
                 reserva1.setMesa(mesa);
                 reserva1.setHora(LocalTime.parse(rs.getString("hora"), 
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
-                if(!rs.getString("hora_fin").equals("")){
-                reserva1.setTiempoFinalizacion(LocalTime.parse(rs.getString("hora_fin"), 
+                if(rs.getString("hora_fin")!= null){
+                    reserva1.setTiempoFinalizacion(LocalTime.parse(rs.getString("hora_fin"), 
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
                 }else{
                     reserva1.setTiempoFinalizacion(null);
                 }
-                if(!rs.getString("hora_inicio").equals("")){
-                reserva1.setTiempoOcupacion(LocalTime.parse(rs.getString("hora_inicio"), 
+                if(rs.getString("hora_inicio")!= null){
+                    reserva1.setTiempoOcupacion(LocalTime.parse(rs.getString("hora_inicio"), 
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
                 }else{
                     reserva1.setTiempoOcupacion(null);
@@ -392,5 +391,38 @@ public class ReservaDAO {
             conn.cerrarConexion();
         } 
         return eliminado;
+     }
+     
+     public boolean modificarTiempoOcupacionFin(Reserva reserva){
+         boolean modificado = false;
+         con = conn.getConexion();
+         ResultSet rs;
+         String sql = "UPDATE reserva SET hora_inicio = ?,"
+                 + " hora_fin = ?"
+                 + " WHERE id = ?";
+         try {
+             
+             System.out.println(reserva.getTiempoOcupacion());
+             System.out.println(reserva.getTiempoFinalizacion());
+            ps = con.prepareStatement(sql);
+            if(reserva.getTiempoOcupacion() != null){
+                ps.setString(1, reserva.getTiempoOcupacion().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            }else{
+                ps.setString(1,null);
+            }
+            if(reserva.getTiempoFinalizacion()!= null){
+                ps.setString(2,reserva.getTiempoFinalizacion().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            }else{
+                ps.setString(2,null);
+            }
+            ps.setInt(3, reserva.getId());
+             System.out.println(reserva.getId());
+            modificado = (ps.executeUpdate() > 0);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }finally {
+            conn.cerrarConexion();
+        } 
+        return modificado;
      }
 }
