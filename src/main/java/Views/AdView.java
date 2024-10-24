@@ -33,7 +33,7 @@ public class AdView extends javax.swing.JFrame {
      */
     public AdView(Administrador administrador) {
         initComponents();
-        setSize(729, 420);
+        setSize(1290, 820);
         setResizable(false);
         setTitle("Panel de administracion");
         setLocationRelativeTo(null);
