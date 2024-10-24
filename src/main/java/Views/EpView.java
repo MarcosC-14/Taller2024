@@ -56,7 +56,6 @@ public class EpView extends javax.swing.JFrame {
         jButtonMeseroHoraInicio = new javax.swing.JButton();
         jButtonMeseroHoraFin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
 
@@ -136,12 +135,20 @@ public class EpView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero", "Cliente", "Comentario", "Asistencia"
+                "Numero", "Cliente", "Comentario", "Asistencia", "Hora Inicio", "Hora Fin"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaListadoMesasEmpleado);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 630, 220));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 650, 220));
 
         btnRecepcionistaAsistencia.setText("Marcar asistencia");
         btnRecepcionistaAsistencia.addActionListener(new java.awt.event.ActionListener() {
@@ -172,17 +179,14 @@ public class EpView extends javax.swing.JFrame {
 
         jLabel4.setText("Hora");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        jLabel5.setText("Donde se guarda la fehca y la hora?");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, -1));
 
         jTabbedPane1.addTab("Lista Mesas", jPanel4);
 
@@ -200,7 +204,9 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton_empleado_salirActionPerformed
 
     private void btnRecepcionistaAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistaAsistenciaActionPerformed
-       int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
+      //falta revisar si el empleado es recepcionista
+      //revisar en la base de datos? o con el objeto cliente?
+        int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
        if (filaSeleccionada != -1) {
            reservas=reserva.obtenerReservasDeHoy();
             String asistenciaActual = (String) tabla.getValueAt(filaSeleccionada, 3); // Asistencia actual
@@ -254,7 +260,6 @@ public class EpView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
