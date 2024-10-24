@@ -317,7 +317,11 @@ public class ReservaDAO {
          }
          return mesa;
      }
-     
+     /**
+      * Sirve para cambiar la asistencia d euna reserva. (cambiar)
+      * @param  filaSeleccionada la fila que se presiono.
+      * @return true si la cambio, false si no la cambio.
+      */
      public boolean cambiarAsistencia(int filaSeleccionada, ArrayList<Reserva> reservas){
          Reserva reserva= new Reserva();
          reserva= reservas.get(filaSeleccionada);

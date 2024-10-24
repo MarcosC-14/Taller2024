@@ -10,6 +10,7 @@ import modelo.Reserva;
 import modelo.Empleado;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.Rol;
 /**
  *
  * @author Rebechi
@@ -238,6 +239,7 @@ public class EpView extends javax.swing.JFrame {
     private void btnRecepcionistaAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistaAsistenciaActionPerformed
       //falta revisar si el empleado es recepcionista
       //revisar en la base de datos? o con el objeto cliente?
+      if(esRecepcionista()){
         int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
        if (filaSeleccionada != -1) {
            reservas=reservaDAO.obtenerReservasDeHoy();
@@ -253,6 +255,9 @@ public class EpView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar la asistencia", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
        }
+      }else{
+        javax.swing.JOptionPane.showMessageDialog(this, "No sos recepcionista", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+      }
     }//GEN-LAST:event_btnRecepcionistaAsistenciaActionPerformed
 
     private void jButtonMesasHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMesasHoyActionPerformed
@@ -260,12 +265,16 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMesasHoyActionPerformed
 
     private void jButtonMeseroHoraInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraInicioActionPerformed
+       if(esMesero()){
         Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
         reserva.setTiempoOcupacion(LocalTime.now());
         if(reservaDAO.modificarTiempoOcupacionFin(reserva)){
             System.out.println("todo bien");
         }
         actualizarTablaMesasDeHoy();
+       } else{
+            javax.swing.JOptionPane.showMessageDialog(this, "No sos mesero", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);  
+       }
     }//GEN-LAST:event_jButtonMeseroHoraInicioActionPerformed
 
     private void jTxtHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtHoraFinActionPerformed
@@ -273,14 +282,40 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTxtHoraFinActionPerformed
 
     private void jButtonMeseroHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraFinActionPerformed
+        if(esMesero()){
         Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
         reserva.setTiempoFinalizacion(LocalTime.now());
         if(reservaDAO.modificarTiempoOcupacionFin(reserva))
             System.out.println("tobo bien");
         actualizarTablaMesasDeHoy();
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "No sos mesero", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);  
+       }
     }//GEN-LAST:event_jButtonMeseroHoraFinActionPerformed
 
-    
+/**
+ * Revisa si es un mesero, aun no terminado.
+ * @return  true en caso que lo encuentre, false si no
+ */
+    public boolean esMesero(){
+        boolean bandera=false;
+        if(empleado.getRol().equals(Rol.Mesero)){
+            bandera=true;
+        }
+        return bandera;
+    }
+ 
+/**
+ * Revisa si es un recepcionista. Aun no terminado.
+ * @return  true en caso que lo encuentre, false si no
+ */
+    public boolean esRecepcionista(){
+        boolean bandera=false;
+        if(empleado.getRol().equals(Rol.Recepcionista)){
+            bandera=true;
+        }
+        return bandera;
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRecepcionistaAsistencia;

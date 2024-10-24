@@ -150,33 +150,15 @@ public class EmpleadoDAO {
         } 
         return bandera;
      }
-
-/**
- * Revisa si es un mesero, aun no terminado.
- * @return  true en caso que lo encuentre, false si no
- */
-    public boolean esMesero(){
-        boolean bandera=false;
-        return bandera;
-    }
- 
-/**
- * Revisa si es un recepcionista. Aun no terminado.
- * @return  true en caso que lo encuentre, false si no
- */
-    public boolean esRecepcionista(){
-        boolean bandera=false;
-        return bandera;
-    }
-
     
     /**
      *guardar en la base de datos las mesas bloqueadas o en evento especial
      * @param   numMesa representa el numero de mesa. 
      * @param   fecha representa la fecha en la que se bloque.   
      * @param   horaInicio representa la hora de inicio del bloqueo o evento especial.
-     * @return  horaFin representa la hora en la que finaliza el bloque o evento 
-     * especial.
+     * @param  horaFin representa la hora en la que finaliza el bloque o evento 
+     * especial
+     * @return true si se pudo bloquear, false en caso de que no se pueda
      */
     public boolean bloquearMesaEventoEspecial(int numMesa, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
         boolean bloqueo = false;
