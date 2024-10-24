@@ -1480,9 +1480,9 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_cliente_eliminar_reservaActionPerformed
 
     private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
-
+        
         String auxFecha = jTxt_cliente_fecha.getText();
-        String auxHora = (String) jComboBoxHoraBuscarMod.getSelectedItem() + ":00:00";
+        String auxHora = (String) jComboBoxHoraBuscarMod.getSelectedItem();
         if(ClienteController.esFormatoFechaValido(auxFecha)){
             try{
             fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -1490,10 +1490,34 @@ public class ClView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
-            if(fechaBuscar.isAfter(LocalDate.now())){
-                if((long) (reserva.getHora().until(LocalTime.now(),ChronoUnit.HOURS))  >= 24)
+            if(!auxHora.equals("No cambiar")){
+                auxHora += ":00:00";
                 horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
+            }else{
+                System.out.println(reserva.getHora());
+                if(reserva.getHora() == null){
+                    if(reservas != null){
+                        if(jTable_historialCliente.getSelectedRow() != -1){
+                            reserva = reservas.get(jTable_historialCliente.getSelectedRow());
+                            horaBuscar = reserva.getHora();
+                            System.out.println(horaBuscar);
+                            System.out.println("Ayuda");
+                        }else{
+                            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                            return;
+                        }
+                    }else{
+                        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }else{
+                    horaBuscar = reserva.getHora();
+                }
+            }
+            System.out.println(horaBuscar);
+            if(((long) (LocalDateTime.now().until(LocalDateTime.of(fechaBuscar, horaBuscar),ChronoUnit.HOURS)))  >= 24){
                 actualizarTablaMesas(jTable_mesasDisponiblesMod);
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);

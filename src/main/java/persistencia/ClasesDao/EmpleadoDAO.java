@@ -191,4 +191,30 @@ public class EmpleadoDAO {
         }
         return bloqueo; 
     }
+//    
+//    public ArrayList<BloqueoMesaEventoEspecial> obtenerBloqueosMesasEventosEspeciales() {
+//        Connection con = conn.getConexion();
+//        ResultSet rs;
+//        PreparedStatement ps;
+//        ArrayList<BloqueoMesaEventoEspecial> bs = new ArrayList<BloqueoMesaEventoEspecial>();
+//        String sql = "SELECT * FROM bloqueo_evento";
+//        try{
+//            ps = con.prepareStatement(sql);
+//            rs = ps.executeQuery();
+//            while(rs.next()){
+//                BloqueoMesaEventoEspecial b = new BloqueoMesaEventoEspecial();
+//                b.setNumMesa(rs.getInt("mesa"));
+////                b.setFecha(LocalDate.)rs.getString("fecha"));
+////                b.setNombre(rs.getString("nombre"));
+////                b.setId(rs.getInt("id"));
+////                b.setRol(Rol.valueOf(rs.getString("rol")));
+////                bs.add(b);
+//            }
+//        }catch(SQLException e){
+//            System.out.println(e.toString());
+//        }finally{
+//            conn.cerrarConexion();
+//        }
+//        return empleados;
+//        
 }
