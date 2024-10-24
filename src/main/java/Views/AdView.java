@@ -6,9 +6,13 @@ package Views;
 
 import Controladores.ClienteController;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Administrador;
+import modelo.BloqueoMesaEventoEspecial;
 import modelo.Cliente;
 import modelo.Empleado;
 import modelo.Rol;
@@ -118,11 +122,11 @@ public class AdView extends javax.swing.JFrame {
         jTable_bloqueoMesas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBoxHoraInicio = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBoxHoraFin = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBoxMesas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -390,7 +394,7 @@ public class AdView extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reservas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -443,7 +447,7 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Reservas", jPanel4);
 
-        jPanel5.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel5.setBackground(new java.awt.Color(0, 102, 102));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -497,12 +501,12 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Clientes", jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel6.setBackground(new java.awt.Color(0, 102, 102));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mesas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel10.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel10.setBackground(new java.awt.Color(0, 102, 102));
 
         jTable_mesasAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -600,7 +604,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(0, 51, 51));
 
-        jPanel11.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel11.setBackground(new java.awt.Color(0, 102, 102));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jButton_administrador_empleado_agregar.setText("Agregar");
@@ -746,7 +750,7 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel_eventosEspeciales.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel_eventosEspeciales.setBackground(new java.awt.Color(0, 102, 102));
         jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bloqueo / Eventos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel13.setText("Fecha:");
@@ -784,15 +788,15 @@ public class AdView extends javax.swing.JFrame {
 
         jLabel4.setText("Hora Inicio");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBoxHoraInicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
 
         jLabel5.setText("Hora Fin");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBoxHoraFin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
 
         jLabel6.setText("Mesa");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBoxMesas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
 
         javax.swing.GroupLayout jPanel_eventosEspecialesLayout = new javax.swing.GroupLayout(jPanel_eventosEspeciales);
         jPanel_eventosEspeciales.setLayout(jPanel_eventosEspecialesLayout);
@@ -809,11 +813,11 @@ public class AdView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -822,7 +826,7 @@ public class AdView extends javax.swing.JFrame {
                     .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel_eventosEspecialesLayout.setVerticalGroup(
@@ -835,13 +839,13 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jButton_bloqueoMesas)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -975,6 +979,69 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane2KeyPressed
 
     private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
+        BloqueoMesaEventoEspecial b = new BloqueoMesaEventoEspecial();
+        String auxFecha = jTextField_fechaEvento.getText();
+                
+        LocalDate fechaBloqueoEvento;
+        if(ClienteController.esFormatoFechaValido(auxFecha)){
+            try{
+            fechaBloqueoEvento = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }catch(java.time.format.DateTimeParseException e){
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        
+        b.setFecha(fechaBloqueoEvento);
+        
+        String auxNumMesa = jComboBoxMesas.getSelectedItem().toString();
+        
+        String auxHoraInicio = jComboBoxHoraInicio.getSelectedItem().toString() + ":00:00";
+        String auxHoraFin = jComboBoxHoraFin.getSelectedItem().toString() +":00:00";
+        
+        int numeroMesa;
+        LocalTime horaInicio;
+        LocalTime horaFin;
+        if(auxNumMesa.equals("Todas")){
+            numeroMesa = 0;
+            horaInicio = LocalTime.parse(auxHoraInicio, 
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
+            horaFin = LocalTime.parse(auxHoraFin, 
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
+            
+            b.setNumMesa(numeroMesa);
+            b.setHoraInicio(horaInicio);
+            b.setHoraFin(horaFin);
+            
+            if (empleadoDAO.bloquearMesaEventoEspecial(b)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el evento.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            numeroMesa = Integer.parseInt(auxNumMesa);
+            b.setNumMesa(numeroMesa);
+            if (empleadoDAO.bloquearMesaEventoEspecial(b)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el bloqueo de mesa.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el bloqueo de mesa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     }//GEN-LAST:event_jButton_bloqueoMesasActionPerformed
 
@@ -1063,9 +1130,9 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JButton jButton_bloqueoMesas;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBoxHoraFin;
+    private javax.swing.JComboBox<String> jComboBoxHoraInicio;
+    private javax.swing.JComboBox<String> jComboBoxMesas;
     public javax.swing.JComboBox<String> jComboBox_administrador_empleado_rol;
     public javax.swing.JComboBox<String> jComboBox_administrador_mesas_ubi;
     private javax.swing.JLabel jLabel1;
