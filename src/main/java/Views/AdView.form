@@ -607,7 +607,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="530" y="10" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="580" y="40" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1310,7 +1310,7 @@
                               <Component id="jComboBoxMesas" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButtonVerBloqueMesaEvento" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton2" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>

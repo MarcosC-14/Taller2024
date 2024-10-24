@@ -451,7 +451,7 @@ public class AdView extends javax.swing.JFrame {
                 jButton_administrador_reservas_agregarActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton_administrador_reservas_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+        jPanel4.add(jButton_administrador_reservas_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
         jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
@@ -883,9 +883,9 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jComboBoxMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVerBloqueMesaEvento)
-                    .addComponent(jButton2))
+                .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonVerBloqueMesaEvento, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1128,7 +1128,7 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_administrador_mesa_eliminarActionPerformed
 
     private void jButton_administrador_reservas_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_reservas_agregarActionPerformed
-        // TODO add your handling code here:
+        actualizarTablaCliente();
     }//GEN-LAST:event_jButton_administrador_reservas_agregarActionPerformed
 
     private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed

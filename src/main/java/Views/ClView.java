@@ -1131,8 +1131,7 @@ public class ClView extends javax.swing.JFrame {
                 res.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 res.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
                 res.getMesa().getNumero(),
-                asistencia,res.getTarjeta().getEmisor()
-                    //estan intercambiados numero y emisor
+                asistencia,res.getTarjeta().getNumero()
             });
         }
         
