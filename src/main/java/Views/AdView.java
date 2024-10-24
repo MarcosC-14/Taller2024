@@ -23,6 +23,7 @@ public class AdView extends javax.swing.JFrame {
     private DefaultTableModel tabla;
     private Administrador administrador;
     private EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    private ClienteDAO clienteDAO = new ClienteDAO();
     /**
      * Creates new form AdView
      */
@@ -865,7 +866,6 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_Administrador_salirActionPerformed
 
     private void actualizarTablaMesas(){
-        ClienteDAO clienteDAO = new ClienteDAO();
         
         ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
 
@@ -883,7 +883,7 @@ public class AdView extends javax.swing.JFrame {
         
     }
     private void actualizarTablaCliente(){
-        ClienteDAO clienteDAO = new ClienteDAO();
+        
         
         ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
 
@@ -901,7 +901,6 @@ public class AdView extends javax.swing.JFrame {
         
     }
     private void actualizarTablaEmpleado(){
-        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         
         ArrayList<Empleado> empleados = empleadoDAO.obtenerEmpleados();
 
@@ -976,7 +975,7 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane2KeyPressed
 
     private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton_bloqueoMesasActionPerformed
 
     private void jTextField_fechaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_fechaEventoActionPerformed

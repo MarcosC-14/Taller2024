@@ -350,7 +350,11 @@ public class ReservaDAO {
          return actualizacion;
      }
      
-     
+     /**
+      * Se encarga de modificar una reserva existente de un cliente
+      * @param reserva representa la reserva a modificar
+      * @return false si no se pudo modificar, true si se modificó con éxito
+      */
      public boolean modificarReserva(Reserva reserva){
          boolean realizado = false;
          con = conn.getConexion();
@@ -375,7 +379,11 @@ public class ReservaDAO {
         } 
         return realizado;
      }
-     
+     /**
+      * Se encarga de eliminar una reserva de la base de datos
+      * @param reserva representa la reserva a eliminar
+      * @return false si no se pudo eliminar, true si se eliminó con éxito
+      */
      public boolean eliminarReserva(Reserva reserva){
          boolean eliminado = false;
          con = conn.getConexion();
@@ -393,6 +401,12 @@ public class ReservaDAO {
         return eliminado;
      }
      
+     /**
+      * Método que guarda el tiempo de ocupación y el de finalización en caso
+      * de que hayan sido modificados
+      * @param reserva representa la reserva a modificar
+      * @return false si no se pudo modificar, true si modificó con éxito
+      */
      public boolean modificarTiempoOcupacionFin(Reserva reserva){
          boolean modificado = false;
          con = conn.getConexion();
