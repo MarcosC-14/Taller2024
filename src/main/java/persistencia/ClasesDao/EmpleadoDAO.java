@@ -77,6 +77,7 @@ public class EmpleadoDAO {
                 Empleado e = new Empleado();
                 e.setContrasenia(rs.getString("contraseña"));
                 e.setCorreo(rs.getString("correo"));
+                e.setNombre(rs.getString("nombre"));
                 e.setId(rs.getInt("id"));
                 e.setRol(Rol.valueOf(rs.getString("rol")));
                 empleados.add(e);
@@ -88,6 +89,47 @@ public class EmpleadoDAO {
         }
         return empleados;
     }
+
+    public boolean registrarEmpleado(Empleado emp) {
+        boolean registrado = false;
+        //que revise si el correo ya esta ingresado
+        String sql = "INSERT into empleado (nombre,correo,contraseña,rol) VALUES(?,?,?,?)";
+        try {
+            if(!existeCorreo(empleado.getCorreo())){
+            con = conn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, emp.getNombre());
+            ps.setString(2, emp.getCorreo());
+            ps.setString(3, emp.getContrasenia());
+            ps.setString(4, emp.getRol().toString());
+            registrado = (ps.executeUpdate() > 0);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }finally {
+            conn.cerrarConexion();
+        }
+        return registrado; 
+    }
+    
+    public boolean existeCorreo(String correoNuevo){
+        String buscarCorreo="SELECT * FROM empleado WHERE correo=?";
+        boolean bandera= false;
+        try{
+            con= conn.getConexion();
+            ps=con.prepareStatement(buscarCorreo);
+            ps.setString(1,correoNuevo);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                bandera=true;
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+             conn.cerrarConexion();
+        } 
+        return bandera;
+     }
 
 
 

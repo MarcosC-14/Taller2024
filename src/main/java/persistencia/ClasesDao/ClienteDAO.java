@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 /**
@@ -262,4 +263,30 @@ public class ClienteDAO{
          }
          return datosCliente;
      }
+
+    public ArrayList<Cliente> obtenerClientes() {
+        Connection con = conn.getConexion();
+        ResultSet rs;
+        PreparedStatement ps;
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        String sql = "SELECT * FROM cliente";
+        try{
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Cliente c = new Cliente();
+                c.setContrasenia(rs.getString("contrasenia"));
+                c.setCorreo(rs.getString("correo"));
+                c.setNombre(rs.getString("nombre"));
+                c.setId(rs.getInt("id"));
+                c.setTelefono(rs.getString("telefono"));
+                clientes.add(c);
+            }
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }finally{
+            conn.cerrarConexion();
+        }
+        return clientes;
+    }
 }
