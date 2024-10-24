@@ -63,7 +63,11 @@ public class EmpleadoDAO {
         }
         return empleado;
 }
-    
+    /**
+     *Devuelve una lista de todos los empleados
+     * @return  ArrayList de todos los empleados con su contraseña, correo, nombre,
+     * id y rol.
+     */
     public ArrayList<Empleado> obtenerEmpleados(){
         Connection con = conn.getConexion();
         ResultSet rs;
@@ -111,7 +115,12 @@ public class EmpleadoDAO {
         }
         return registrado; 
     }
-    
+    /**
+     * Se encarga de revisar si el correo ingresado se encuentra en la base de datos.
+     * Devuelve true si se encuentra en la base de datos, false si no esta en la base de datos
+     * @param   correoNuevo representa al correo del empleado a revisar
+     * @return  true si lo encuentra, false si no
+     */
     public boolean existeCorreo(String correoNuevo){
         String buscarCorreo="SELECT * FROM empleado WHERE correo=?";
         boolean bandera= false;
@@ -131,6 +140,22 @@ public class EmpleadoDAO {
         return bandera;
      }
 
-
+/**
+ * Revisa si es un mesero, aun no terminado.
+ * @return  true en caso que lo encuentre, false si no
+ */
+    public boolean esMesero(){
+        boolean bandera=false;
+        return bandera;
+    }
+ 
+/**
+ * Revisa si es un recepcionista. Aun no terminado.
+ * @return  true en caso que lo encuentre, false si no
+ */
+    public boolean esRecepcionista(){
+        boolean bandera=false;
+        return bandera;
+    }
 
 }

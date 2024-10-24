@@ -56,8 +56,8 @@ public class EpView extends javax.swing.JFrame {
         jButtonMeseroHoraInicio = new javax.swing.JButton();
         jButtonMeseroHoraFin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTxtHoraInicio = new javax.swing.JTextField();
+        jTxtHoraFin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -179,14 +179,14 @@ public class EpView extends javax.swing.JFrame {
 
         jLabel4.setText("Hora");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, -1));
+        jPanel4.add(jTxtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTxtHoraFin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTxtHoraFinActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, -1));
+        jPanel4.add(jTxtHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, -1));
 
         jTabbedPane1.addTab("Lista Mesas", jPanel4);
 
@@ -245,9 +245,9 @@ public class EpView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonMeseroHoraInicioActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTxtHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtHoraFinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTxtHoraFinActionPerformed
 
     
 
@@ -265,9 +265,9 @@ public class EpView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton_empleado_salir;
+    private javax.swing.JTextField jTxtHoraFin;
+    private javax.swing.JTextField jTxtHoraInicio;
     public javax.swing.JTable tablaListadoMesasEmpleado;
     // End of variables declaration//GEN-END:variables
 }
