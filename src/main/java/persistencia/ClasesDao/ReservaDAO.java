@@ -92,8 +92,39 @@ public class ReservaDAO {
             ps.setString(3, hora.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
             
             rs = ps.executeQuery();
+            
             if(!rs.next()){
                 disponible = true;
+                sql = "SELECT * FROM bloqueo_evento WHERE fecha = ?";
+                ps = con.prepareStatement(sql);
+                ps.setString(1,fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    if(rs.getInt("mesa") == numMesa){
+                        disponible = false;
+                        break;
+                    }else{
+                        if(rs.getString("hora_inicio") != null
+                                && rs.getString("hora_fin") != null){
+                            
+                            LocalTime auxHoraI = LocalTime.parse(rs.getString("hora_inicio"), 
+                            DateTimeFormatter.ofPattern("HH:mm:ss"));
+                        
+                            LocalTime auxHoraF = LocalTime.parse(rs.getString("hora_fin"), 
+                            DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+                            if((auxHoraI.isBefore(hora)
+                                && auxHoraF.isAfter(hora))
+                                    || hora.equals(auxHoraI)
+                                    || hora.equals(auxHoraF)){
+                                disponible = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
             }
         }catch(SQLException e){
             System.out.println(e.toString());
