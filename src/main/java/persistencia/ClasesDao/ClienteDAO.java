@@ -49,10 +49,14 @@ public class ClienteDAO{
         //que revise si el correo ya esta ingresado
         String sql = "INSERT into cliente (nombre,correo,contrasenia,telefono) VALUES(?,?,?,?)";
         try {
+            System.out.println("Holi");
             con = conn.getConexion();
             ps= con.prepareStatement(buscarCorreo);
             ps.setString(1, correo);
+            rs=ps.executeQuery();
+             System.out.println("Holi2");
             if(!rs.next()){
+                 System.out.println("Holi3");
             ps = con.prepareStatement(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getCorreo());
