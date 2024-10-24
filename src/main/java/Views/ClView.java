@@ -864,7 +864,12 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel15.setText("Hora");
 
-        jComboBoxHoraBuscarMod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBoxHoraBuscarMod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22" }));
+        jComboBoxHoraBuscarMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHoraBuscarModActionPerformed(evt);
+            }
+        });
 
         jLabel32.setText("Historial de Reservas");
 
@@ -1512,6 +1517,10 @@ public class ClView extends javax.swing.JFrame {
     private void telefonoClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoClienteBaseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_telefonoClienteBaseActionPerformed
+
+    private void jComboBoxHoraBuscarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHoraBuscarModActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxHoraBuscarModActionPerformed
 
 
     

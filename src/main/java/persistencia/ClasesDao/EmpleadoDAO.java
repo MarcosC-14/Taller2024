@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import modelo.Empleado;
 import modelo.Rol;
 import persistencia.SQLiteManager;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Esta clase se encarga de relacionarse con la base de datos de empleado, tiene 
@@ -166,4 +169,34 @@ public class EmpleadoDAO {
         return bandera;
     }
 
+    
+    /**
+     *guardar en la base de datos las mesas bloqueadas o en evento especial
+     * @param   numMesa representa el numero de mesa. 
+     * @param   fecha representa la fecha en la que se bloque.   
+     * @param   horaInicio representa la hora de inicio del bloqueo o evento especial.
+     * @return  horaFin representa la hora en la que finaliza el bloque o evento 
+     * especial.
+     */
+    public boolean bloquearMesaEventoEspecial(int numMesa, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
+        boolean bloqueo = false;
+        
+        String sql = "INSERT into bloqueo_evento (mesa,fecha,hora_inicio,hora_fin) VALUES(?,?,?,?)";
+        try {
+            
+            con = conn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, numMesa);
+            ps.setString(2, fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            ps.setString(3, horaInicio.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            ps.setString(4, horaInicio.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            bloqueo = (ps.executeUpdate() > 0);
+            
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }finally {
+            conn.cerrarConexion();
+        }
+        return bloqueo; 
+    }
 }
