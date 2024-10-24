@@ -25,6 +25,7 @@ public class Reserva {
     private int id;
     private boolean multa;
 
+   
     public boolean getMulta() {
         return multa;
     }
@@ -70,24 +71,16 @@ public class Reserva {
     }
     
     /**
-     * public Reserva(LocalDate fecha, LocalTime hora, String comentario, Cliente cliente, Tarjeta tarjeta) {
-        this.fecha = fecha;
-        this.hora = hora;
-        this.comentario = comentario;
-        this.asistencia = false;
-        this.cliente = cliente;
-        this.tarjeta = tarjeta;
-        this.tiempoOcupacion = null;
-        this.tiempoFinalizacion = null;     
-    }
+     * Se encarga de retornar el valor de la asistencia.     
+     * @return  true en caso de que asista, false en caso contrario 
     */
-    public boolean isAsistencia() {    
+    public boolean getAsistencia() {    
         return asistencia;
     }
 
     /**
-     * Getter del atributo fecha
-     * @return 
+     * Devuelve la fecha
+     * @return la fecha de de la reserva 
      */
     public LocalDate getFecha() {
         return fecha;
@@ -134,14 +127,6 @@ public class Reserva {
     }
 
     /**
-     * Getter del atributo asistencia
-     * @return devuelve el atributo asistencia
-     */
-    public boolean getAsistencia() {
-        return asistencia;
-    }
-
-    /**
      * Setter del atributo asistencia
      * @param asistencia Se asigna al atributo asistencia
      */
@@ -181,14 +166,24 @@ public class Reserva {
         this.tiempoFinalizacion = tiempoFinalizacion;
     }
     
-    //get y set tarjeta
+    /**
+     * Permite cambiar el valor de mesa de la reserva.
+     * @param mesa un objeto de tipo mesa
+     */
     public void setMesa(Mesa mesa){
         this.mesa=mesa;
     }
+    /**
+     * Devuelve una mesa.
+     * @return devuelve la mesa relacionada con la reserva.
+     */
     public Mesa getMesa(){
         return mesa;
     }
-    
+    /**
+     * permite cambiar el atributo cliente de reserva
+     * @param cliente representa al cliente que esta relacionado con la reserva
+     */
     public void setCliente (Cliente cliente){
         this.cliente=cliente;
     }
