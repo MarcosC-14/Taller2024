@@ -17,8 +17,8 @@ import persistencia.SQLiteManager;
  * (usuario y contraseña), de vuelve un lista de todos los empleados en la base 
  * de datos, permite registrar a un empleado, revisa si un correo existe en la tabla
  * de empleados, ademas de revisar si el empleado es mesero o recepcionista.
- * @author 
- * 
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,
+ * @version 27/10/2024
  */
 public class EmpleadoDAO {
      private SQLiteManager conn = new SQLiteManager();

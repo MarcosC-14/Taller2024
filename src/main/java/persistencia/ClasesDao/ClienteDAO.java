@@ -263,7 +263,10 @@ public class ClienteDAO{
          }
          return datosCliente;
      }
-
+     /**
+      * Se encaraga de obtener una lista de todos los clientes en la base de datos.
+      * @return un ArrayList de todos los clientes.
+      */
     public ArrayList<Cliente> obtenerClientes() {
         Connection con = conn.getConexion();
         ResultSet rs;
