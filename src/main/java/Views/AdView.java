@@ -4,11 +4,15 @@
  */
 package Views;
 
+import Controladores.ClienteController;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Administrador;
+import modelo.Cliente;
 import modelo.Empleado;
+import modelo.Rol;
+import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
@@ -18,6 +22,7 @@ import persistencia.ClasesDao.EmpleadoDAO;
 public class AdView extends javax.swing.JFrame {
     private DefaultTableModel tabla;
     private Administrador administrador;
+    private EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     /**
      * Creates new form AdView
      */
@@ -91,7 +96,6 @@ public class AdView extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jButton_administrador_empleado_agregar = new javax.swing.JButton();
-        jTextField_administrador_empleado_id = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_empleadosAdmin = new javax.swing.JTable();
@@ -102,6 +106,7 @@ public class AdView extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jTextField_administrador_empleado_correo = new javax.swing.JTextField();
         jButtonVerEmpleados = new javax.swing.JButton();
+        jTextField_administrador_empleado_contrasenia = new javax.swing.JPasswordField();
         jPanel8 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel_eventosEspeciales = new javax.swing.JPanel();
@@ -482,6 +487,11 @@ public class AdView extends javax.swing.JFrame {
         jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 250));
 
         jButton1.setText("Ver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
 
         jTabbedPane2.addTab("Clientes", jPanel5);
@@ -498,9 +508,17 @@ public class AdView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero", "Ubicacion", "Disponible", "Cliente"
+                "Numero", "Ubicacion", "Capacidad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable_mesasAdmin);
 
         jLabel20.setText("Ubicacion:");
@@ -585,8 +603,13 @@ public class AdView extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jButton_administrador_empleado_agregar.setText("Agregar");
+        jButton_administrador_empleado_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_administrador_empleado_agregarActionPerformed(evt);
+            }
+        });
 
-        jLabel23.setText("Id:");
+        jLabel23.setText("Contraseña: ");
 
         jTable_empleadosAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -631,63 +654,62 @@ public class AdView extends javax.swing.JFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel23))
-                    .addComponent(jLabel26))
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel26)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField_administrador_empleado_id, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jButtonVerEmpleados)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_administrador_empleado_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                        .addGap(138, 138, 138))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 133, Short.MAX_VALUE))
-                            .addComponent(jTextField_administrador_empleado_correo))
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_administrador_empleado_contrasenia)
                         .addGap(18, 18, 18)
                         .addComponent(jButton_administrador_empleado_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jButtonVerEmpleados)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_administrador_empleado_agregar)
-                    .addComponent(jTextField_administrador_empleado_id, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23)
                     .addComponent(jLabel24)
-                    .addComponent(jTextField_administrador_empleado_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel25)
-                            .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(77, 77, 77)
-                        .addComponent(jButtonVerEmpleados)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                    .addComponent(jTextField_administrador_empleado_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel23)
+                    .addComponent(jButton_administrador_empleado_agregar)
+                    .addComponent(jTextField_administrador_empleado_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jButtonVerEmpleados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -837,20 +859,53 @@ public class AdView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
-    if(evt.getSource()== jButton_Administrador_salir){
-          dispose();
-          Inicio login = new Inicio();
-          login.setVisible(true);
-    }
+        dispose();
+        Inicio login = new Inicio();
+        login.setVisible(true);
     }//GEN-LAST:event_jButton_Administrador_salirActionPerformed
 
-    
+    private void actualizarTablaMesas(){
+        ClienteDAO clienteDAO = new ClienteDAO();
+        
+        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
+
+        DefaultTableModel model = (DefaultTableModel) this.jTable_clientesAdmin.getModel();
+        model.setRowCount(0); // Limpia todas las filas existentes        
+        
+        for (Cliente c : clientes) {
+            model.addRow(new Object[]{
+                c.getId(),
+                c.getNombre(),
+                c.getTelefono(),
+                c.getCorreo()
+            });
+        }
+        
+    }
+    private void actualizarTablaCliente(){
+        ClienteDAO clienteDAO = new ClienteDAO();
+        
+        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
+
+        DefaultTableModel model = (DefaultTableModel) this.jTable_clientesAdmin.getModel();
+        model.setRowCount(0); // Limpia todas las filas existentes        
+        
+        for (Cliente c : clientes) {
+            model.addRow(new Object[]{
+                c.getId(),
+                c.getNombre(),
+                c.getTelefono(),
+                c.getCorreo()
+            });
+        }
+        
+    }
     private void actualizarTablaEmpleado(){
         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         
         ArrayList<Empleado> empleados = empleadoDAO.obtenerEmpleados();
 
-        DefaultTableModel model = (DefaultTableModel) jTable_empleadosAdmin.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.jTable_empleadosAdmin.getModel();
         model.setRowCount(0); // Limpia todas las filas existentes        
         
         for (Empleado e : empleados) {
@@ -945,8 +1000,56 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_administrador_reservas_agregarActionPerformed
 
     private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
-       // actualizarTablaEmpleados();
+       actualizarTablaEmpleado();
     }//GEN-LAST:event_jButtonVerEmpleadosActionPerformed
+
+    private void jButton_administrador_empleado_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_empleado_agregarActionPerformed
+        String nombre = this.jTextField_administrador_empleado_nombre.getText();
+        String correo = this.jTextField_administrador_empleado_correo.getText();
+        String contrasenia = String.valueOf(this.jTextField_administrador_empleado_contrasenia.getPassword());
+        Rol rol = null;
+        switch(this.jComboBox_administrador_empleado_rol.getSelectedItem().toString()){
+            case "Administrador":
+                rol = Rol.Administrador;
+                break;
+            case "Mesero":
+                rol = Rol.Mesero;
+                break;
+            case "Recepcionista": 
+                rol = Rol.Recepcionista;
+                break;
+            case "Cocinero":
+                rol = Rol.Cocinero;
+                break;
+            default:
+                break;
+        }
+        if(nombre.equals("")
+                || correo.equals("")
+                || contrasenia.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+            }else{
+            if(ClienteController.esCorreoElectronicoValido(correo)){
+                Empleado emp = new Empleado();
+                emp.setNombre(nombre);
+                emp.setCorreo(correo);
+                emp.setContrasenia(contrasenia);
+                emp.setRol(rol);
+                System.out.println(emp);
+                if(empleadoDAO.registrarEmpleado(emp)){
+                    javax.swing.JOptionPane.showMessageDialog(null,"Registrado exitosamente");
+                    actualizarTablaEmpleado();
+                }
+            } else{
+                javax.swing.JOptionPane.showMessageDialog(null,"Ingrese un correo electronico valido");
+            }
+
+        }
+    }//GEN-LAST:event_jButton_administrador_empleado_agregarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        actualizarTablaCliente();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
 
@@ -1018,8 +1121,8 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JTable jTable_clientesAdmin;
     public javax.swing.JTable jTable_empleadosAdmin;
     public javax.swing.JTable jTable_mesasAdmin;
+    private javax.swing.JPasswordField jTextField_administrador_empleado_contrasenia;
     public javax.swing.JTextField jTextField_administrador_empleado_correo;
-    public javax.swing.JTextField jTextField_administrador_empleado_id;
     public javax.swing.JTextField jTextField_administrador_empleado_nombre;
     public javax.swing.JTextField jTextField_administrador_mesa_cliente;
     public javax.swing.JTextField jTextField_administrador_reserva_cliente;
