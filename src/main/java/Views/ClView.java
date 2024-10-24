@@ -7,8 +7,10 @@ package Views;
 import Controladores.ClienteController;
 import java.awt.Color;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -142,30 +144,30 @@ public class ClView extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxHoraBuscarMod = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxCapMod = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBoxUbiMod = new javax.swing.JComboBox<>();
+        jComboBoxMesaMod = new javax.swing.JComboBox<>();
         jLabel36 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jTextField_comentarioMod = new javax.swing.JTextArea();
         jLabel37 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        jTxtNombreTarjeta = new javax.swing.JTextField();
-        jTxtEmisorTarjeta = new javax.swing.JTextField();
-        jTxtNumeroTarjeta = new javax.swing.JTextField();
-        jTxtCodigoTarjeta = new javax.swing.JTextField();
+        jTxtNombreTarjetaMod = new javax.swing.JTextField();
+        jTxtEmisorTarjetaMod = new javax.swing.JTextField();
+        jTxtNumeroTarjetaMod = new javax.swing.JTextField();
+        jTxtCodigoTarjetaMod = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable_mesasDisponiblesMod = new javax.swing.JTable();
         jBVer = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
@@ -862,7 +864,7 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel15.setText("Hora");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxHoraBuscarMod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
 
         jLabel32.setText("Historial de Reservas");
 
@@ -870,29 +872,29 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel34.setText("Capacidad");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cualquiera", "dos", "cuatro", "seis", "ocho", "diez" }));
+        jComboBoxCapMod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cualquiera", "dos", "cuatro", "seis", "ocho", "diez" }));
 
         jLabel35.setText("Ubicacion");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cualquiera", "Interior", "Exterior" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxUbiMod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cualquiera", "Interior", "Exterior" }));
+        jComboBoxUbiMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                jComboBoxUbiModActionPerformed(evt);
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxMesaMod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBoxMesaMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                jComboBoxMesaModActionPerformed(evt);
             }
         });
 
         jLabel36.setText("Comentario");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane6.setViewportView(jTextArea2);
+        jTextField_comentarioMod.setColumns(20);
+        jTextField_comentarioMod.setRows(5);
+        jScrollPane6.setViewportView(jTextField_comentarioMod);
 
         jLabel37.setText("id");
 
@@ -907,15 +909,15 @@ public class ClView extends javax.swing.JFrame {
 
         jLabel41.setText("Codigo");
 
-        jTxtEmisorTarjeta.addActionListener(new java.awt.event.ActionListener() {
+        jTxtEmisorTarjetaMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtEmisorTarjetaActionPerformed(evt);
+                jTxtEmisorTarjetaModActionPerformed(evt);
             }
         });
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mesas.png"))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_mesasDisponiblesMod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -938,7 +940,7 @@ public class ClView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane9.setViewportView(jTable2);
+        jScrollPane9.setViewportView(jTable_mesasDisponiblesMod);
 
         jBVer.setText("VER");
         jBVer.addActionListener(new java.awt.event.ActionListener() {
@@ -960,7 +962,7 @@ public class ClView extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel38)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtNombreTarjeta))
+                                .addComponent(jTxtNombreTarjetaMod))
                             .addGroup(historial_clienteLayout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -979,32 +981,32 @@ public class ClView extends javax.swing.JFrame {
                                     .addGroup(historial_clienteLayout.createSequentialGroup()
                                         .addComponent(jLabel39)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTxtEmisorTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jTxtEmisorTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel40)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtNumeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTxtNumeroTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel41)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtCodigoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTxtCodigoTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(historial_clienteLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel34)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxCapMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxMesaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxUbiMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxHoraBuscarMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel36))))
                     .addGroup(historial_clienteLayout.createSequentialGroup()
@@ -1012,17 +1014,14 @@ public class ClView extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historial_clienteLayout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField_cliente_id, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(668, 668, 668))
                     .addGroup(historial_clienteLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historial_clienteLayout.createSequentialGroup()
-                                .addComponent(jLabel37)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField_cliente_id, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(668, 668, 668))
-                            .addGroup(historial_clienteLayout.createSequentialGroup()
-                                .addComponent(jButton_cliente_eliminar_reserva, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButton_cliente_eliminar_reserva, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(historial_clienteLayout.createSequentialGroup()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -1055,26 +1054,26 @@ public class ClView extends javax.swing.JFrame {
                                     .addComponent(jLabel10)
                                     .addComponent(jTxt_cliente_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel34)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxCapMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxUbiMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel35)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxMesaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel15)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxHoraBuscarMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel36))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel38)
-                                    .addComponent(jTxtNombreTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTxtNombreTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel39)
-                                    .addComponent(jTxtEmisorTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTxtEmisorTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel40)
-                                    .addComponent(jTxtNumeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTxtNumeroTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel41)
-                                    .addComponent(jTxtCodigoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTxtCodigoTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(7, 7, 7)
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1139,11 +1138,11 @@ public class ClView extends javax.swing.JFrame {
         
     }
     
-    private void actualizarTablaMesas(){
+    private void actualizarTablaMesas(javax.swing.JTable tabla){
         ReservaDAO reservaDAO = new ReservaDAO();
         
         mesas = reservaDAO.mesas();
-        DefaultTableModel model = (DefaultTableModel) jTable_mesasDisponibles.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model.setRowCount(0); //Elimina las filas existentes;
         String filtroUbi =(String)(jComboBoxClienteReservaUbicacion.getSelectedItem());
         String filtroCap =(String)(jComboBoxClienteReservaCapacidad.getSelectedItem());
@@ -1238,7 +1237,7 @@ public class ClView extends javax.swing.JFrame {
             
             if(fechaBuscar.isAfter(LocalDate.now())){
                 horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
-                actualizarTablaMesas();
+                actualizarTablaMesas(jTable_mesasDisponibles);
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
@@ -1302,7 +1301,7 @@ public class ClView extends javax.swing.JFrame {
             
             if(fechaBuscar.isAfter(LocalDate.now())){
                 horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
-                actualizarTablaMesas();
+                actualizarTablaMesas(jTable_mesasDisponibles);
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
@@ -1369,30 +1368,120 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
 
     private void jButton_cliente_modificar_reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_modificar_reservaActionPerformed
-        // TODO add your handling code here:
+        reserva = reservas.get(jTable_historialCliente.getSelectedRow());
+        ReservaDAO rDAO = new ReservaDAO();
+
+        if(!reserva.getFecha().isAfter(LocalDate.now())){
+            if(! ((long) (reserva.getHora().until(LocalTime.now(),ChronoUnit.HOURS))  >= 24)){
+                javax.swing.JOptionPane.showMessageDialog(this, "No puede modificar una reserva con menos de 24 horas de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            javax.swing.JOptionPane.showMessageDialog(this, "No puede modificar una reserva con menos de 24 horas de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String auxFecha = jTxt_cliente_fecha.getText();
+        String auxHora= (String) jComboBoxHoraBuscarMod.getSelectedItem() + ":00:00";
+        reserva.setCliente(cliente1);
+        System.out.println(reserva.getTarjeta().getNumero());
+        
+        fechaBuscar = reserva.getFecha();
+        horaBuscar = reserva.getHora();
+        if(!auxFecha.equals("")){
+            if(ClienteController.esFormatoFechaValido(auxFecha)){
+                try{
+                fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                }catch(java.time.format.DateTimeParseException e){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                if(fechaBuscar.isAfter(LocalDate.now())){
+                    reserva.setFecha(fechaBuscar);
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+        if(!auxHora.equals("")){
+            horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
+            reserva.setHora(horaBuscar);
+        }
+        
+    
+        if(jTextField_comentarioMod.getText().equals("")){
+            reserva.setComentario(jTextField_comentarioMod.getText());
+        }
+        Mesa mesaR = new Mesa();
+        int numM = Integer.parseInt((String)jComboBoxMesaMod.getSelectedItem());
+        mesaR.setNumero(numM);
+        reserva.setMesa(mesaR);
+        
+        if(!jTxtNombreTarjetaMod.getText().equals("") |
+            !jTxtEmisorTarjetaMod.getText().equals("") |
+            !jTxtNumeroTarjetaMod.getText().equals("") |
+            !jTxtCodigoTarjetaMod.getText().equals("")){
+                
+                tarjeta.setNombre(jTxtNombreTarjetaMod.getText());
+                tarjeta.setEmisor(jTxtEmisorTarjetaMod.getText());
+                tarjeta.setNumero(jTxtNumeroTarjetaMod.getText());
+                tarjeta.setCodSeguridad(jTxtCodigoTarjetaMod.getText());
+                TarjetaDAO tarjetaR = new TarjetaDAO();
+                if(tarjetaR.guardarTarjeta(tarjeta)){
+                    reserva.setTarjeta(tarjeta);
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos de la tarjeta son incorrectos", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                }
+        }
+    
+
+        if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)){
+            if(rDAO.modificarReserva(reserva)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo realizar la reserva.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        actualizarTablaMesas(jTable_mesasDisponibles);
+        this.actualizarTablaHistorial();
     }//GEN-LAST:event_jButton_cliente_modificar_reservaActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void jComboBoxUbiModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUbiModActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_jComboBoxUbiModActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    private void jComboBoxMesaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesaModActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+    }//GEN-LAST:event_jComboBoxMesaModActionPerformed
 
     private void jTxtClientePerfilTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtClientePerfilTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtClientePerfilTelefonoActionPerformed
 
     private void jButton_cliente_eliminar_reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_eliminar_reservaActionPerformed
-        // TODO add your handling code here:
+        reserva = reservas.get(jTable_historialCliente.getSelectedRow());
+        ReservaDAO rDAO = new ReservaDAO();
+        if(((long) (LocalDateTime.now().until(LocalDateTime.of(reserva.getFecha(), reserva.getHora()),ChronoUnit.HOURS)))  >= 24){
+                if(rDAO.eliminarReserva(reserva)){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Reserva eliminada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    this.actualizarTablaHistorial();
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar reserva", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
+        }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "No puede eliminar una reserva con menos de 24 horas de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        
     }//GEN-LAST:event_jButton_cliente_eliminar_reservaActionPerformed
 
     private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
 
-        /**
-         * String auxFecha = jTextField_fechaNewReserva.getText();
-        String auxHora = (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
+        String auxFecha = jTxt_cliente_fecha.getText();
+        String auxHora = (String) jComboBoxHoraBuscarMod.getSelectedItem() + ":00:00";
         if(ClienteController.esFormatoFechaValido(auxFecha)){
             try{
             fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -1403,7 +1492,7 @@ public class ClView extends javax.swing.JFrame {
             
             if(fechaBuscar.isAfter(LocalDate.now())){
                 horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
-                actualizarTablaMesas();
+                actualizarTablaMesas(jTable_mesasDisponiblesMod);
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
@@ -1412,13 +1501,13 @@ public class ClView extends javax.swing.JFrame {
         }
         
         
-         */
+         
           
     }//GEN-LAST:event_jBVerActionPerformed
 
-    private void jTxtEmisorTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmisorTarjetaActionPerformed
+    private void jTxtEmisorTarjetaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmisorTarjetaModActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtEmisorTarjetaActionPerformed
+    }//GEN-LAST:event_jTxtEmisorTarjetaModActionPerformed
 
     private void telefonoClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoClienteBaseActionPerformed
         // TODO add your handling code here:
@@ -1441,13 +1530,13 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JButton jButton_cliente_perfil_actualizar;
     private javax.swing.JButton jButton_mesasBuscar;
     public javax.swing.JButton jButton_nuevaReserva;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBoxCapMod;
     private javax.swing.JComboBox<String> jComboBoxClienteReservaCapacidad;
     public javax.swing.JComboBox<String> jComboBoxClienteReservaMesa;
     public javax.swing.JComboBox<String> jComboBoxClienteReservaUbicacion;
+    private javax.swing.JComboBox<String> jComboBoxHoraBuscarMod;
+    private javax.swing.JComboBox<String> jComboBoxMesaMod;
+    private javax.swing.JComboBox<String> jComboBoxUbiMod;
     private javax.swing.JComboBox<String> jComboBox_horaBuscar;
     private javax.swing.JLabel jLNuevoCorreo;
     private javax.swing.JLabel jLTelefono;
@@ -1513,25 +1602,25 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane_cliente;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     public javax.swing.JTable jTable_historialCliente;
     private javax.swing.JTable jTable_mesasDisponibles;
+    private javax.swing.JTable jTable_mesasDisponiblesMod;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     public javax.swing.JTextPane jTextFieldCienteReservaNombreT;
     private javax.swing.JTextField jTextFieldClienteReservaCodSeg;
     public javax.swing.JTextPane jTextFieldClienteReservaEmiT;
     public javax.swing.JTextField jTextFieldClienteReservanNumT;
     public javax.swing.JTextField jTextField_cliente_id;
     public javax.swing.JTextArea jTextField_comentario;
+    private javax.swing.JTextArea jTextField_comentarioMod;
     public javax.swing.JTextField jTextField_fechaNewReserva;
     public javax.swing.JToggleButton jToggleButton_cliente_Salir;
     public javax.swing.JTextField jTxtClientePerfilNuevoCorreo;
     public javax.swing.JTextField jTxtClientePerfilTelefono;
-    private javax.swing.JTextField jTxtCodigoTarjeta;
-    private javax.swing.JTextField jTxtEmisorTarjeta;
-    private javax.swing.JTextField jTxtNombreTarjeta;
-    private javax.swing.JTextField jTxtNumeroTarjeta;
+    private javax.swing.JTextField jTxtCodigoTarjetaMod;
+    private javax.swing.JTextField jTxtEmisorTarjetaMod;
+    private javax.swing.JTextField jTxtNombreTarjetaMod;
+    private javax.swing.JTextField jTxtNumeroTarjetaMod;
     public javax.swing.JTextField jTxt_cliente_fecha;
     private javax.swing.JTextField nombreClienteBase;
     private javax.swing.JPanel realizaReserva_cliente;

@@ -192,6 +192,7 @@ public class ReservaDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 Reserva reserva = new Reserva();
+                reserva.setId(rs.getInt("id"));
                 reserva.setCliente(c);
                 reserva.setComentario(rs.getString("comentario"));
                 reserva.setAsistencia(Boolean.valueOf(rs.getString("asistencia")));
@@ -212,7 +213,7 @@ public class ReservaDAO {
                 String tEmi = rs.getString("emisor");
                 String tCodSeguridad = rs.getString("cod_seguridad");
                 
-                reserva.setTarjeta(new Tarjeta(tNombre,tNum,tEmi,tCodSeguridad,reserva));
+                reserva.setTarjeta(new Tarjeta(tNombre,tEmi,tNum,tCodSeguridad,reserva));
                 
                 reservas.add(reserva);
             }
@@ -348,5 +349,48 @@ public class ReservaDAO {
              conn.cerrarConexion();
          }
          return actualizacion;
+     }
+     
+     
+     public boolean modificarReserva(Reserva reserva){
+         boolean realizado = false;
+         con = conn.getConexion();
+         ResultSet rs;
+         String sql = "UPDATE reserva SET fecha = ?, hora = ?, "
+                 + "comentario = ?, num_mesa = ?, id_cliente= ?,"
+                 + " id_tarjeta = ? WHERE id = ?";
+         try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, reserva.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            ps.setString(2,reserva.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            ps.setString(3, reserva.getComentario());
+            ps.setInt(4, reserva.getMesa().getNumero());
+            ps.setInt(5,reserva.getCliente().getId());
+            ps.setString(6, reserva.getTarjeta().getNumero());
+            ps.setInt(7, reserva.getId());
+            realizado = (ps.executeUpdate() > 0);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }finally {
+            conn.cerrarConexion();
+        } 
+        return realizado;
+     }
+     
+     public boolean eliminarReserva(Reserva reserva){
+         boolean eliminado = false;
+         con = conn.getConexion();
+         ResultSet rs;
+         String sql = "DELETE FROM reserva WHERE id = ?";
+         try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, reserva.getId());
+            eliminado = (ps.executeUpdate() > 0);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }finally {
+            conn.cerrarConexion();
+        } 
+        return eliminado;
      }
 }

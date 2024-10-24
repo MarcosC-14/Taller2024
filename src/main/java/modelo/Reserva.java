@@ -22,6 +22,7 @@ public class Reserva {
     private Mesa mesa;
     private Cliente cliente;
     private Tarjeta tarjeta;    
+    private int id;
 
     /**
      * Constructor por defecto de Reserva
@@ -214,5 +215,12 @@ public class Reserva {
         
     }
     
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }
