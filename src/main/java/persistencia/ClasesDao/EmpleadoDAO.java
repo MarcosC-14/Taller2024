@@ -64,7 +64,7 @@ public class EmpleadoDAO {
         return empleado;
 }
     
-    private ArrayList<Empleado> obtenerEmpleados(){
+    public ArrayList<Empleado> obtenerEmpleados(){
         Connection con = conn.getConexion();
         ResultSet rs;
         PreparedStatement ps;

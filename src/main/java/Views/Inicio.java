@@ -20,7 +20,6 @@ import persistencia.ClasesDao.EmpleadoDAO;
 public class Inicio extends javax.swing.JFrame {
     Cliente cliente = new Cliente();
     ClienteDAO cliente_dao= new ClienteDAO();
-    Empleado empleado = new Empleado();
     EmpleadoDAO empleadoDao = new EmpleadoDAO();
     Persona usuario;
     
@@ -31,8 +30,6 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         LoginControl cliente_login = new LoginControl(cliente, cliente_dao);
         cliente_login.setInicio(this);
-        LoginControl empleadoLogin = new LoginControl(empleado, empleadoDao);
-        empleadoLogin.setInicio(this);
     }
 
     /**
@@ -206,10 +203,15 @@ public class Inicio extends javax.swing.JFrame {
                 aux.setVisible(true);
                 this.dispose();
             }else{
+                usuario = null;
                 usuario = empleadoDao.loginQuery(correo, pass);
+                System.out.println(usuario);
                 if(usuario.getCorreo().equals(correo)){
-                    if(((Empleado)usuario).getRol().toString().equals("Administrador")){
-                        AdView adView = new AdView((Administrador) usuario);
+                    Empleado emp = (Empleado) usuario;
+                    if(((Empleado) usuario).getRol().toString().equals("Administrador")){
+                        
+                        Administrador admin = new Administrador(emp);
+                        AdView adView = new AdView(admin);
                         adView.setVisible(true);
                         this.dispose();
                     }else{

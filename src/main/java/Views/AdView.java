@@ -5,6 +5,7 @@
 package Views;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Administrador;
 import modelo.Empleado;
@@ -847,21 +848,17 @@ public class AdView extends javax.swing.JFrame {
     private void actualizarTablaEmpleado(){
         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         
-        empleadoDAO = EmpleadoDAO.obtenerReservasHistorial();
+        ArrayList<Empleado> empleados = empleadoDAO.obtenerEmpleados();
 
-        DefaultTableModel model = (DefaultTableModel) jTable_historialCliente.getModel();
-        model.setRowCount(0); // Limpia todas las filas existentes
-        ordenarTablaHistorial();
+        DefaultTableModel model = (DefaultTableModel) jTable_empleadosAdmin.getModel();
+        model.setRowCount(0); // Limpia todas las filas existentes        
         
-        
-        for (Reserva res : reservas) {
-            String asistencia = res.getAsistencia()? "Sí": "No";
+        for (Empleado e : empleados) {
             model.addRow(new Object[]{
-                res.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                res.getHora().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
-                res.getMesa().getNumero(),
-                asistencia,res.getTarjeta().getEmisor()
-                    //estan intercambiados numero y emisor
+                e.getId(),
+                e.getNombre(),
+                e.getCorreo(),
+                e.getRol().toString()
             });
         }
         
