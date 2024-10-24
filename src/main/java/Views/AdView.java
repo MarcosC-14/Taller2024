@@ -806,7 +806,7 @@ public class AdView extends javax.swing.JFrame {
 
         jLabel5.setText("Hora Fin");
 
-        jComboBoxHoraFin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBoxHoraFin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22" }));
 
         jLabel6.setText("Mesa");
 
@@ -1073,17 +1073,23 @@ public class AdView extends javax.swing.JFrame {
         
         String auxNumMesa = jComboBoxMesas.getSelectedItem().toString();
         
-        String auxHoraInicio = jComboBoxHoraInicio.getSelectedItem().toString() + ":00:00";
-        String auxHoraFin = jComboBoxHoraFin.getSelectedItem().toString() +":00:00";
+        String auxHoraInicio = jComboBoxHoraInicio.getSelectedItem().toString();
+        String auxHoraFin = jComboBoxHoraFin.getSelectedItem().toString();
+        
+        
         
         int numeroMesa;
         LocalTime horaInicio;
         LocalTime horaFin;
         if(auxNumMesa.equals("Todas")){
+            if(Integer.parseInt(auxHoraInicio) > Integer.parseInt(auxHoraFin)){
+                javax.swing.JOptionPane.showMessageDialog(this, "La hora de inicio del evento debe ser menor a la hora de su finalización", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             numeroMesa = 0;
-            horaInicio = LocalTime.parse(auxHoraInicio, 
+            horaInicio = LocalTime.parse(auxHoraInicio + ":00:00", 
                     DateTimeFormatter.ofPattern("HH:mm:ss"));
-            horaFin = LocalTime.parse(auxHoraFin, 
+            horaFin = LocalTime.parse(auxHoraFin + ":00:00", 
                     DateTimeFormatter.ofPattern("HH:mm:ss"));
             
             b.setNumMesa(numeroMesa);
