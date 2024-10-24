@@ -23,6 +23,15 @@ public class Reserva {
     private Cliente cliente;
     private Tarjeta tarjeta;    
     private int id;
+    private boolean multa;
+
+    public boolean getMulta() {
+        return multa;
+    }
+
+    public void setMulta(boolean multa) {
+        this.multa = multa;
+    }
 
     /**
      * Constructor por defecto de Reserva
