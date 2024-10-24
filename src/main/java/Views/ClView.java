@@ -1503,10 +1503,12 @@ public class ClView extends javax.swing.JFrame {
                             System.out.println(horaBuscar);
                             System.out.println("Ayuda");
                         }else{
+                            System.out.println("error1");
                             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                     }else{
+                        System.out.println("error2");
                         javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                         return;
                     }
@@ -1517,11 +1519,18 @@ public class ClView extends javax.swing.JFrame {
                 }
             }
             System.out.println(horaBuscar);
-            if(((long) (LocalDateTime.now().until(LocalDateTime.of(fechaBuscar, horaBuscar),ChronoUnit.HOURS)))  >= 24){
-                actualizarTablaMesas(jTable_mesasDisponiblesMod);
+            System.out.println(LocalDateTime.of(fechaBuscar, horaBuscar));
+            if(LocalDateTime.now().isBefore(LocalDateTime.of(fechaBuscar, horaBuscar))){
+                if(((long) (LocalDateTime.now().until(LocalDateTime.of(fechaBuscar, horaBuscar),ChronoUnit.HOURS)))  >= 24){
+                    
+                    actualizarTablaMesas(jTable_mesasDisponiblesMod);
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
             }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-            }
+                    javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
+            
         }else{
             javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
