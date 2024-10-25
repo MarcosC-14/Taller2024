@@ -256,7 +256,7 @@ public class ClienteDAO{
          return datosCliente;
      }
      /**
-      * Se encaraga de obtener una lista de todos los clientes en la base de datos.
+      * Se encarga de obtener una lista de todos los clientes en la base de datos.
       * @return un ArrayList de todos los clientes.
       */
     public ArrayList<Cliente> obtenerClientes() {
@@ -283,5 +283,41 @@ public class ClienteDAO{
             conn.cerrarConexion();
         }
         return clientes;
+    }
+    /**
+     * con un correo retorna un cliente
+     * @param   correo del cliente.
+     * @return un objeto cliente en caso de que este en la base de datos.
+     */
+    public Cliente obtenerCliente(String correo){
+        Cliente cliente = new Cliente();
+        Connection con = conn.getConexion();
+        ResultSet rs;
+        PreparedStatement ps;
+        String sql="SELECT * FROM cliente WHERE correo=?";
+        try{
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1,correo);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+               
+                cliente.setContrasenia(rs.getString("contrasenia"));
+                cliente.setCorreo(rs.getString("correo"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setId(rs.getInt("id"));
+                cliente.setTelefono(rs.getString("telefono"));
+               
+            }
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }finally{
+            conn.cerrarConexion();
+        }
+        
+        return cliente;
     }
 }
