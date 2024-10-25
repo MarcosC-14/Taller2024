@@ -15,8 +15,11 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author marco
+ * La clase ClienteController se encarga de manejar el correcto registro de los clientes,
+ * brindando metodos y controles de seguridad para que todos los datos que este ingresen
+ * sean validos
+ * @author Marcos Ramon Caraballo, Angelina María Vialle
+ * @version 27/10/2024
  */
 public class ClienteController implements ActionListener{
     private Cliente cliente;
@@ -24,23 +27,44 @@ public class ClienteController implements ActionListener{
     private ClRegisterView view;
     private ClView view2;
 
+    /**
+     * *Constructor por defecto de la clase ClienteController.
+     */
+    
     public ClienteController() {
     }
     
-    
+    /**
+     * Este metodo se encarga de registrar a un nuevo cliente en la base de datos.
+     * @param   cliente, representa a un objeto cliente, el cual contendrá los datos a registrar.
+     * @param   clienteDao, contiene los metodos que interactuan entre cliente y la base de datos.
+     */
     public ClienteController(Cliente cliente, ClienteDAO clienteDAO){
         this.cliente = cliente;
         this.clienteDAO = clienteDAO;
         
     }
-    
+    /**
+     * 
+     * @param view hace referencia a la interfaz grafica que se le muestra al cliente al momento de registrarse
+     * Tambien se pone el boton de confirmar en escucha para que cuando sea oprimido ejecute su metodo correspondiente.
+     * 
+     */
     public void setClRegisterView(ClRegisterView view){
         this.view = view;
         this.view.jButton_confirmarRegistroCliente.addActionListener(this);
     }
-    
+    /**
+     * actionPerformed es el metodo que se ejecuta cuando se aprieta el boton de registrar 
+     * @param e es el evento que activa el boton de registrar
+     */
     @Override
     public void actionPerformed(ActionEvent e){
+       /**
+        * En este if se controla que todos los datos ingresados dentro de los campos mostrados
+        * sean validos, si es asi confirma el registro, de lo contrario muestra una alerta solicitando
+        * que se completen todos los campos solicitados de forma adecuada.
+        */
         if(e.getSource().equals(view.jButton_confirmarRegistroCliente)){
             String nombre = view.jTextField_registroNombreCliente.getText();
             String correo = view.jTextField_correoRegistroCliente.getText();
@@ -72,10 +96,19 @@ public class ClienteController implements ActionListener{
             
         }
     }
+   /**
+    * 
+    * @param correo es el correo ingresado por el usuario
+    * @return true si el correo ingresado contiene un @, de lo contrario retorna false
+    */
     public static boolean esCorreoElectronicoValido(String correo) {
         return correo.contains("@");
     }
-    
+    /**
+     * Ni idea que hace el metodo()
+     * @param fecha
+     * @return 
+     */
     public static boolean esFormatoFechaValido(String fecha) {
         // Definimos el patrón del formato de fecha esperado (dd/mm/aa)
         String formatoFecha = "\\d{2}/\\d{2}/\\d{4}";

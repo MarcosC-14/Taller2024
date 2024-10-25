@@ -24,14 +24,26 @@ import modelo.Reserva;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.EmpleadoDAO;
 import persistencia.ClasesDao.ReservaDAO;
+
 /**
+ * Jframe AdView al cual solo acceden los usuarios que son Administradores.
+ * Dentro de esta interfaz grafica el usuario puede visualizar todas las
+ * reservas, o filtarlas segun diferentes criterios. observar todos los cliente
+ * y filtrarlos por su no asistencia o ver el mejor cliente. Observar todas las
+ * mesas y realizar modificaciones en ellas como agreagar, eliminar, quitar
+ * sillas,cambiar mesas de lugar o eliminar una mesa. Puede realizar el bloqueo
+ * de mesas cuando estas son requeridas para un evento especial Puede visualizar
+ * un analisis durante un periodo de tiempo. El administrador puede visualizar,
+ * agregar o eliminar empleados.
  *
  * @author Rebechi
+ * @version 27/10/2024
  */
 public class AdView extends javax.swing.JFrame {
+
     private DefaultTableModel tabla;
     private Administrador administrador;
-    private EmpleadoDAO empleadoDAO = new EmpleadoDAO(); 
+    private EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     private ClienteDAO clienteDAO = new ClienteDAO();
     private Cliente cliente = new Cliente();
     private ReservaDAO reservaDAO = new ReservaDAO();
@@ -40,9 +52,10 @@ public class AdView extends javax.swing.JFrame {
     ArrayList<Reserva> reservas;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
-    
+
     /**
      * Creates new form AdView
+     *
      */
     public AdView(Administrador administrador) {
         initComponents();
@@ -52,10 +65,9 @@ public class AdView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.administrador = administrador;
         tabla = (DefaultTableModel) jTableReporteReservas.getModel();
-                
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -965,48 +977,53 @@ public class AdView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+     * /**
+     * el metodo actualizarTablaBloqueoEvento se encarga de generar una
+     * actualizacion a la tabla que muestra los datos de los eventos cuando
+     * surge alguna modificacion para que estos datos se muestren de forma
+     * correcta
+     */
 
-    private void actualizarTablaBloqueoMesaEvento(){
-          
+    private void actualizarTablaBloqueoMesaEvento() {
+
         bmes = empleadoDAO.obtenerBloqueosMesasEventosEspeciales();
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable_bloqueoMesas.getModel();
         model.setRowCount(0); //Elimina las filas existentes;
 
-        
-        for(BloqueoMesaEventoEspecial b: bmes){
+        for (BloqueoMesaEventoEspecial b : bmes) {
             String horaInicio;
-            if(b.getHoraInicio()== null){
+            if (b.getHoraInicio() == null) {
                 horaInicio = "";
-            }else{
+            } else {
                 horaInicio = b.getHoraInicio().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             }
             String horaFin;
-            if(b.getHoraFin()== null){
+            if (b.getHoraFin() == null) {
                 horaFin = "";
-            }else{
+            } else {
                 horaFin = b.getHoraFin().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             }
             model.addRow(new Object[]{
-                b.getNumMesa()== 0? "Todas":b.getNumMesa(),
+                b.getNumMesa() == 0 ? "Todas" : b.getNumMesa(),
                 b.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 horaInicio,
                 horaFin
             });
-            }
-        
-            
-        
+        }
+
     }
+
     /**
-     * con el array list de obtenerReservasHistorial. los que tengan una fecha anterior
-     * a localdatetime.now los remueve del arrayList<reserva>, ReservaDAo local.
-     * guarda en la tabla, al inicio limpiar la tabla
-    */
-   
+     * con el array list de obtenerReservasHistorial. los que tengan una fecha
+     * anterior a localdatetime.now los remueve del arrayList<reserva>,
+     * ReservaDAo local. guarda en la tabla, al inicio limpiar la tabla
+     */
     /**
-     * con obtenerClientes de cliente dao, llama a la funcion para tener las asistencias
-     * y guarda en una varibles y luego compara con el siguiente, si es mayor cambia, si no queda igual
+     * con obtenerClientes de cliente dao, llama a la funcion para tener las
+     * asistencias y guarda en una varibles y luego compara con el siguiente, si
+     * es mayor cambia, si no queda igual
      */
     /**
      * esta en reservaDAo
@@ -1015,22 +1032,29 @@ public class AdView extends javax.swing.JFrame {
      * metodo reservaDAo
      */
     /**
-    *arrayList.size para la estacion
-    */
-    
+     * arrayList.size para la estacion /** Evento del boton salir, para que
+     * cuando sea oprimido cierre el jFrame de AdView y abra el Inicio
+     *
+     * @param evt es evento de presionar el boton
+     */
+
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
         dispose();
         Inicio login = new Inicio();
         login.setVisible(true);
     }//GEN-LAST:event_jButton_Administrador_salirActionPerformed
+    /**
+     * el metodo actualizarTablaMesas se encarga de generar una actualizacion a
+     * la tabla que muestra los datos de las mesas cuando surge alguna
+     * modificacion para que estos datos se muestren de forma correcta
+     */
+    private void actualizarTablaMesas() {
 
-    private void actualizarTablaMesas(){
-        
         ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
 
         DefaultTableModel model = (DefaultTableModel) this.jTable_clientesAdmin.getModel();
         model.setRowCount(0); // Limpia todas las filas existentes        
-        
+
         for (Cliente c : clientes) {
             model.addRow(new Object[]{
                 c.getId(),
@@ -1039,15 +1063,19 @@ public class AdView extends javax.swing.JFrame {
                 c.getCorreo()
             });
         }
-        
+
     }
-    private void actualizarTablaCliente(ArrayList<Cliente> clientes){
-        
-        
-        
+
+    /**
+     * el metodo actualizarTablaCliente se encarga de generar una actualizacion
+     * a la tabla que muestra los datos de los clientes cuando surge alguna
+     * modificacion para que estos datos se muestren de forma correcta
+     */
+    private void actualizarTablaCliente(ArrayList<Cliente> clientes) {
+
         DefaultTableModel model = (DefaultTableModel) this.jTable_clientesAdmin.getModel();
         model.setRowCount(0); // Limpia todas las filas existentes        
-        
+
         for (Cliente c : clientes) {
             model.addRow(new Object[]{
                 c.getId(),
@@ -1056,15 +1084,21 @@ public class AdView extends javax.swing.JFrame {
                 c.getCorreo()
             });
         }
-        
+
     }
-    private void actualizarTablaEmpleado(){
-        
+
+    /**
+     * el metodo actualizarTablaEmpleado se encarga de generar una actualizacion
+     * a la tabla que muestra los datos de los empleados cuando surge alguna
+     * modificacion para que estos datos se muestren de forma correcta
+     */
+    private void actualizarTablaEmpleado() {
+
         ArrayList<Empleado> empleados = empleadoDAO.obtenerEmpleados();
 
         DefaultTableModel model = (DefaultTableModel) this.jTable_empleadosAdmin.getModel();
         model.setRowCount(0); // Limpia todas las filas existentes        
-        
+
         for (Empleado e : empleados) {
             model.addRow(new Object[]{
                 e.getId(),
@@ -1074,21 +1108,27 @@ public class AdView extends javax.swing.JFrame {
             });
         }
     }
-    
+
+    /**
+     * el metodo actualizarTablaReservasCliente encarga de generar una
+     * actualizacion a la tabla que muestra los datos de las reservas cuando
+     * surge alguna modificacion para que estos datos se muestren de forma
+     * correcta
+     */
     private void actualizarTablaReservasCliente() {
-        
+
         DefaultTableModel model = (DefaultTableModel) jTableReporteReservas.getModel();
         model.setRowCount(0); // Limpia todas las filas existentes        
 
         for (Reserva res : reservas) {
             String auxHoraInicio = "";
             String auxHoraFin = "";
-            if(res.getTiempoOcupacion() != null){
-                auxHoraInicio= res.getTiempoOcupacion()
+            if (res.getTiempoOcupacion() != null) {
+                auxHoraInicio = res.getTiempoOcupacion()
                         .format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             }
-            if(res.getTiempoFinalizacion() != null){
-                auxHoraFin= res.getTiempoFinalizacion()
+            if (res.getTiempoFinalizacion() != null) {
+                auxHoraFin = res.getTiempoFinalizacion()
                         .format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             }
             model.addRow(new Object[]{
@@ -1101,42 +1141,63 @@ public class AdView extends javax.swing.JFrame {
                 res.getMesa().getCapacidad()
             });
         }
-        
+
     }
-    
-    
+
+
     private void jTabbedPane2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTabbedPane2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane2KeyPressed
-
+    /**
+     * Evento que se ejecuta cuando se aprieta el boton de eliminar en
+     * bloqueo/eventos
+     *
+     * @param evt es evento de apretar el boton eliminar
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         bme = bmes.get(jTable_bloqueoMesas.getSelectedRow());
-
-        if(empleadoDAO.eliminarBloqueoEvento(bme)){
+        /**
+         * Se envia un mensaje al usuario, de confirmacion si el bloqueo se
+         * elimina correctamente o de error en caso contrario
+         */
+        if (empleadoDAO.eliminarBloqueoEvento(bme)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Bloqueo o evento eliminado con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             this.actualizarTablaBloqueoMesaEvento();
-        }else{
+        } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar bloqueo o evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+     * Evento que se ejecuta cuando se aprieta el boton Se llama al metodo
+     * actualizarTablaBloqueoMesaEvento
+     *
+     * @param evt es evento de apretar el boton actualizar
+     */
     private void jButtonVerBloqueMesaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerBloqueMesaEventoActionPerformed
         actualizarTablaBloqueoMesaEvento();
     }//GEN-LAST:event_jButtonVerBloqueMesaEventoActionPerformed
-
+    /**
+     * Evento que se ejecuta cuando se aprieta el boton bloquear Se realiza el
+     * bloqueo de la mesa si todo sale correctamente, de lo contrario si la
+     * fecha ingresada no tiene el formato requerido, el horario de finalizacion
+     * es mayor que el de inicio, se muestra un cartel de advertencia
+     * solicitando corregir estos datos.
+     *
+     * @param evt es el evento de apretar el boton bloquear
+     */
     private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
         BloqueoMesaEventoEspecial b = new BloqueoMesaEventoEspecial();
         String auxFecha = jTextField_fechaEvento.getText();
 
         LocalDate fechaBloqueoEvento;
-        if(ClienteController.esFormatoFechaValido(auxFecha)){
-            try{
+        if (ClienteController.esFormatoFechaValido(auxFecha)) {
+            try {
                 fechaBloqueoEvento = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            }catch(java.time.format.DateTimeParseException e){
+            } catch (java.time.format.DateTimeParseException e) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
-        }else{
+        } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -1151,34 +1212,32 @@ public class AdView extends javax.swing.JFrame {
         int numeroMesa;
         LocalTime horaInicio;
         LocalTime horaFin;
-        if(auxNumMesa.equals("Todas")){
-            if(Integer.parseInt(auxHoraInicio) > Integer.parseInt(auxHoraFin)){
+        if (auxNumMesa.equals("Todas")) {
+            if (Integer.parseInt(auxHoraInicio) > Integer.parseInt(auxHoraFin)) {
                 javax.swing.JOptionPane.showMessageDialog(this, "La hora de inicio del evento debe ser menor a la hora de su finalización", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
             numeroMesa = 0;
             horaInicio = LocalTime.parse(auxHoraInicio + ":00:00",
-                DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
             horaFin = LocalTime.parse(auxHoraFin + ":00:00",
-                DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
 
             b.setNumMesa(numeroMesa);
             b.setHoraInicio(horaInicio);
             b.setHoraFin(horaFin);
 
-            if (empleadoDAO.bloquearMesaEventoEspecial(b)){
+            if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el evento.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            }
-            else{
+            } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
-        }else{
+        } else {
             numeroMesa = Integer.parseInt(auxNumMesa);
             b.setNumMesa(numeroMesa);
-            if (empleadoDAO.bloquearMesaEventoEspecial(b)){
+            if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el bloqueo de mesa.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            }
-            else{
+            } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el bloqueo de mesa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -1196,99 +1255,125 @@ public class AdView extends javax.swing.JFrame {
     private void jTxtFechaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFechaInicialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtFechaInicialActionPerformed
-
+    /**
+     * Es el evento que se produce al oprimir el boton ReservasFechas Se
+     * verifica que la fecha ingresada sea del formato solicitado de lo
+     * contrario se muestra una advertencia En el panel existen el filtro de
+     * fecha inicial y final, se controla que la fecha final no sea menor a la
+     * inicial Se muestran en la tabla todas las reservas realizadas dentro de
+     * las fechas inicial y final
+     *
+     * @param evt es evento de apretar el boton ReservasFecha
+     */
     private void jBReservasFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFechaActionPerformed
-        
-        if(verificarCliente()){
+
+        if (verificarCliente()) {
             String auxFechaI = jTxtFechaInicial.getText();
             String auxFechaF = jTxtFechaFinal.getText();
-            if(!ClienteController.esFormatoFechaValido(auxFechaI)
-                    | !ClienteController.esFormatoFechaValido(auxFechaF)){
+            if (!ClienteController.esFormatoFechaValido(auxFechaI)
+                    | !ClienteController.esFormatoFechaValido(auxFechaF)) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                    return;
-            }else{
-                try{
-                 fechaInicial = LocalDate.parse(auxFechaI, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                 fechaFinal = LocalDate.parse(auxFechaF, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                }catch(java.time.format.DateTimeParseException e){
+                return;
+            } else {
+                try {
+                    fechaInicial = LocalDate.parse(auxFechaI, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    fechaFinal = LocalDate.parse(auxFechaF, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                } catch (java.time.format.DateTimeParseException e) {
                     javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas válidas", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                if(fechaInicial.isAfter(fechaFinal)){
+                if (fechaInicial.isAfter(fechaFinal)) {
                     javax.swing.JOptionPane.showMessageDialog(this, "La fecha inicial no puede ser mayor a la fecha final", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                     return;
-                }else{
-
+                } else {
 
                     reservas = reservaDAO.obtenerReservasHistorial(cliente);
 
-                    for(int i = 0; i < reservas.size();i++){
-                            Reserva res = reservas.get(i);
-                            if(res.getFecha().isBefore(fechaInicial) 
-                                    || res.getFecha().isAfter(fechaFinal)){
-                                reservas.remove(res);
-                                i--;
-                            }
-                }
-                actualizarTablaReservasCliente();
+                    for (int i = 0; i < reservas.size(); i++) {
+                        Reserva res = reservas.get(i);
+                        if (res.getFecha().isBefore(fechaInicial)
+                                || res.getFecha().isAfter(fechaFinal)) {
+                            reservas.remove(res);
+                            i--;
+                        }
+                    }
+                    actualizarTablaReservasCliente();
 
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jBReservasFechaActionPerformed
 
+
+    }//GEN-LAST:event_jBReservasFechaActionPerformed
+    /**
+     * Es el evento que se produce al oprimir el boton Todas las Reservas. Como
+     * resultado muestra en la tabla todas las reservas realizadas
+     *
+     * @param evt evento de presionar el boton Todas las Reservas
+     *
+     */
     private void jBTodasLasReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodasLasReservasActionPerformed
-        
-        if(verificarCliente()){
+
+        if (verificarCliente()) {
             reservas = reservaDAO.obtenerReservasHistorial(cliente);
             actualizarTablaReservasCliente();
         }
     }//GEN-LAST:event_jBTodasLasReservasActionPerformed
-
-    private boolean verificarCliente(){
-        if(jTxtCorreo.getText().equals("")){
+    /**
+     * el metodo verificarCliente se encarga de controlar si el cliente buscado
+     * se encuentra dentro de nuestro registro
+     *
+     * @return true si el cliente se encuentra registrado, false si el cliente
+     * no esta
+     */
+    private boolean verificarCliente() {
+        if (jTxtCorreo.getText().equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Ingrese un cliente", "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        
+
         cliente = clienteDAO.obtenerCliente(jTxtCorreo.getText());
-            
-        if(!cliente.getCorreo().equals(jTxtCorreo.getText())){
+
+        if (!cliente.getCorreo().equals(jTxtCorreo.getText())) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "No existe un cliente con el correo ingresado", "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        
+
         return true;
     }
-    
+
+    /**
+     * Es el evento que se produce al oprimir el boton Reservas futuras. Como
+     * resultado muestra en la tabla todas las reservas que se realizaron para
+     * fechas futuras a la actual
+     *
+     * @param evt evento de presionar el boton Reservas Futuras
+     */
     private void jBReservasFuturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFuturasActionPerformed
-        if(verificarCliente()){
+        if (verificarCliente()) {
             reservas = reservaDAO.obtenerReservasHistorial(cliente);
-            
-            for(int i = 0; i < reservas.size();i++){
+
+            for (int i = 0; i < reservas.size(); i++) {
                 Reserva res = reservas.get(i);
-                if(LocalDateTime.of(res.getFecha(),res.getHora())
-                        .isBefore(LocalDateTime.now())){
+                if (LocalDateTime.of(res.getFecha(), res.getHora())
+                        .isBefore(LocalDateTime.now())) {
                     reservas.remove(res);
                     i--;
                 }
             }
-            
-            
+
             actualizarTablaReservasCliente();
         }
     }//GEN-LAST:event_jBReservasFuturasActionPerformed
-
+    /**
+     * Se llama al metodo de actualizarTablaEmpleado al presionar el boton ver
+     *
+     * @param evt es el evento de presionar el boton ver
+     */
     private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
         actualizarTablaEmpleado();
     }//GEN-LAST:event_jButtonVerEmpleadosActionPerformed
@@ -1300,46 +1385,54 @@ public class AdView extends javax.swing.JFrame {
     private void jComboBox_administrador_empleado_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_administrador_empleado_rolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_administrador_empleado_rolActionPerformed
-
+    /**
+     * es el evento que se produce al apretar el boton agregar. Aqui se verifica
+     * que los datos ingresados para la creacion del nuevo usuario sean validos.
+     * Si existe un error en alguno de ellos se mostraran distintas advertencias
+     * por pantalla. Si el nuevo usuario es agregado correctamente se muestra
+     * por pantalla una confirmacion.
+     *
+     * @param evt es el evento de presionar el boton agregar
+     */
     private void jButton_administrador_empleado_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_empleado_agregarActionPerformed
         String nombre = this.jTextField_administrador_empleado_nombre.getText();
         String correo = this.jTextField_administrador_empleado_correo.getText();
         String contrasenia = String.valueOf(this.jTextField_administrador_empleado_contrasenia.getPassword());
         Rol rol = null;
-        switch(this.jComboBox_administrador_empleado_rol.getSelectedItem().toString()){
+        switch (this.jComboBox_administrador_empleado_rol.getSelectedItem().toString()) {
             case "Administrador":
-            rol = Rol.Administrador;
-            break;
+                rol = Rol.Administrador;
+                break;
             case "Mesero":
-            rol = Rol.Mesero;
-            break;
+                rol = Rol.Mesero;
+                break;
             case "Recepcionista":
-            rol = Rol.Recepcionista;
-            break;
+                rol = Rol.Recepcionista;
+                break;
             case "Cocinero":
-            rol = Rol.Cocinero;
-            break;
+                rol = Rol.Cocinero;
+                break;
             default:
-            break;
+                break;
         }
-        if(nombre.equals("")
-            || correo.equals("")
-            || contrasenia.equals("")){
+        if (nombre.equals("")
+                || correo.equals("")
+                || contrasenia.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
-        }else{
-            if(ClienteController.esCorreoElectronicoValido(correo)){
+        } else {
+            if (ClienteController.esCorreoElectronicoValido(correo)) {
                 Empleado emp = new Empleado();
                 emp.setNombre(nombre);
                 emp.setCorreo(correo);
                 emp.setContrasenia(contrasenia);
                 emp.setRol(rol);
                 System.out.println(emp);
-                if(empleadoDAO.registrarEmpleado(emp)){
-                    javax.swing.JOptionPane.showMessageDialog(null,"Registrado exitosamente");
+                if (empleadoDAO.registrarEmpleado(emp)) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Registrado exitosamente");
                     actualizarTablaEmpleado();
                 }
-            } else{
-                javax.swing.JOptionPane.showMessageDialog(null,"Ingrese un correo electronico valido");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "Ingrese un correo electronico valido");
             }
 
         }
@@ -1355,117 +1448,120 @@ public class AdView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
-        
+
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton_administrador_reservas_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_reservas_verActionPerformed
-        
+
     }//GEN-LAST:event_jButton_administrador_reservas_verActionPerformed
 
     private void jTextFieldVeranoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldVeranoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldVeranoActionPerformed
-
+/**
+ * Nose que es Jbutton7
+ * @param evt 
+ */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
         int maxAsistencias = 0;
-        for(int i = 0;i<clientes.size();i++){
+        for (int i = 0; i < clientes.size(); i++) {
             Cliente auxCliente = clientes.get(i);
             int auxAsistencia = reservaDAO.cantidadAsistencias(auxCliente);
-            if(auxAsistencia < maxAsistencias){
+            if (auxAsistencia < maxAsistencias) {
                 clientes.remove(i);
                 i--;
-            }else if(auxAsistencia > maxAsistencias){
+            } else if (auxAsistencia > maxAsistencias) {
                 maxAsistencias = auxAsistencia;
-                i=-1;
+                i = -1;
             }
         }
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton7ActionPerformed
-
+/**
+ * Nose que es Jbutton3
+ * @param evt 
+ */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
-        for(Cliente cliente: clientes){
+        for (Cliente cliente : clientes) {
             cliente.setReservas(reservaDAO.obtenerReservasHistorial(cliente));
         }
-        
+
         int conti = 0;
-        for(int i = 0;i<clientes.size();i++){
+        for (int i = 0; i < clientes.size(); i++) {
             System.out.println(conti++);
-            
+
             Cliente auxCliente = clientes.get(i);
             ArrayList<Reserva> auxReservas = auxCliente.getReservas();
-            if(auxReservas.isEmpty()){
+            if (auxReservas.isEmpty()) {
                 clientes.remove(i);
                 i--;
-            }else{
+            } else {
                 boolean inasistenciaEnAño = false;
-                for(Reserva res : auxReservas){
-                    LocalDateTime auxF = LocalDateTime.of(res.getFecha(),res.getHora());
+                for (Reserva res : auxReservas) {
+                    LocalDateTime auxF = LocalDateTime.of(res.getFecha(), res.getHora());
                     System.out.println(auxF);
                     System.out.println(res.getCliente().getNombre());
-                    System.out.println("" +res.getAsistencia());
-                    if(auxF.isAfter(LocalDateTime.now().minusYears(1)) 
-                            && auxF.isBefore(LocalDateTime.now())){
-                        if(!res.getAsistencia()){
+                    System.out.println("" + res.getAsistencia());
+                    if (auxF.isAfter(LocalDateTime.now().minusYears(1))
+                            && auxF.isBefore(LocalDateTime.now())) {
+                        if (!res.getAsistencia()) {
                             inasistenciaEnAño = true;
                             break;
                         }
                     }
                 }
-                if(!inasistenciaEnAño){
+                if (!inasistenciaEnAño) {
                     clientes.remove(i);
                     i--;
                 }
             }
-            
+
         }
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+/**
+ * nose que es Jbutton8
+ * @param evt 
+ */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         reservas = reservaDAO.obtenerReservas();
-        
-        MonthDay verano = MonthDay.of(12,20);
-        MonthDay primavera = MonthDay.of(11,20);
-        MonthDay invierno = MonthDay.of(6,20);
-        MonthDay otoño = MonthDay.of(3,20);
 
-        
+        MonthDay verano = MonthDay.of(12, 20);
+        MonthDay primavera = MonthDay.of(11, 20);
+        MonthDay invierno = MonthDay.of(6, 20);
+        MonthDay otoño = MonthDay.of(3, 20);
+
         int cantVerano = 0;
         int cantPrimavera = 0;
         int cantInvierno = 0;
         int cantOtoño = 0;
-        for(Reserva res : reservas){
+        for (Reserva res : reservas) {
             LocalDate aux = res.getFecha();
             MonthDay MesDiaR = MonthDay.of(aux.getMonth(),
                     aux.getDayOfMonth());
-            if(MesDiaR.isAfter(verano)){
+            if (MesDiaR.isAfter(verano)) {
                 cantVerano++;
-            }else if(MesDiaR.isAfter(primavera)){
-                        cantPrimavera++;
-                        }
-            else if(MesDiaR.isAfter(invierno)){
-                        cantInvierno++;
-                        }
-            else if(MesDiaR.isAfter(otoño)){
-                        cantOtoño++;
-                        }
-            else{
+            } else if (MesDiaR.isAfter(primavera)) {
+                cantPrimavera++;
+            } else if (MesDiaR.isAfter(invierno)) {
+                cantInvierno++;
+            } else if (MesDiaR.isAfter(otoño)) {
+                cantOtoño++;
+            } else {
                 cantVerano++;
             }
         }
-        
+
         this.jTextFieldVerano.setText(String.valueOf(cantVerano));
         this.jTextFieldOtoño.setText(String.valueOf(cantOtoño));
         this.jTextFieldInvierno.setText(String.valueOf(cantInvierno));
         this.jTextFieldPrimavera.setText(String.valueOf(cantPrimavera));
-        
-        
-        
-    }//GEN-LAST:event_jButton8ActionPerformed
 
+
+    }//GEN-LAST:event_jButton8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1561,5 +1657,4 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JTable tabla_reservasAdmin;
     // End of variables declaration//GEN-END:variables
 
-    
 }
