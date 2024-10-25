@@ -103,9 +103,9 @@ public class EpView extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 472, Short.MAX_VALUE)
                 .addComponent(jToggleButton_empleado_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(127, 127, 127))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +117,7 @@ public class EpView extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 640, 60));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 910, 60));
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 102, 102));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -149,7 +149,7 @@ public class EpView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaListadoMesasEmpleado);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 650, 220));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 800, 370));
 
         btnRecepcionistaAsistencia.setText("Marcar asistencia");
         btnRecepcionistaAsistencia.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +165,7 @@ public class EpView extends javax.swing.JFrame {
                 jButtonMesasHoyActionPerformed(evt);
             }
         });
-        jPanel4.add(jButtonMesasHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jPanel4.add(jButtonMesasHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jButtonMeseroHoraInicio.setText("Inicio");
         jButtonMeseroHoraInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class EpView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Lista Mesas", jPanel4);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 820, 450));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 990, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
