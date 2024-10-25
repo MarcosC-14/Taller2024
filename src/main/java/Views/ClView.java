@@ -6,6 +6,7 @@ package Views;
 
 import Controladores.ClienteController;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -46,10 +47,11 @@ public class ClView extends javax.swing.JFrame {
     
     public ClView(Cliente cliente1) {
         initComponents();
-        setSize(1500, 1500);
+        setSize(850, 600);
                 setResizable(false);
                 setTitle("Sistema de Clientes");
                 setLocationRelativeTo(null);
+                
         this.cliente1= cliente1;
                 
     }
@@ -234,9 +236,9 @@ public class ClView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 508, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
                 .addComponent(jToggleButton_cliente_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(144, 144, 144))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,7 +394,7 @@ public class ClView extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 90, 430));
 
         jTabbedPane_cliente.setBackground(new java.awt.Color(0, 102, 102));
-        jTabbedPane_cliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jTabbedPane_cliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
         realizaReserva_cliente.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -673,7 +675,7 @@ public class ClView extends javax.swing.JFrame {
         jTabbedPane_cliente.addTab("Nueva Reserva", realizaReserva_cliente);
 
         jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Perfil"));
 
         jLNuevoCorreo.setText("Nuevo Correo:");
 
@@ -817,7 +819,7 @@ public class ClView extends javax.swing.JFrame {
         jTabbedPane_cliente.addTab("Perfil", jPanel4);
 
         historial_cliente.setBackground(new java.awt.Color(0, 102, 102));
-        historial_cliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mis Reservas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        historial_cliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Mis Reservas"));
 
         jTable_historialCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -865,6 +867,11 @@ public class ClView extends javax.swing.JFrame {
         jLabel15.setText("Hora");
 
         jComboBoxHoraBuscarMod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No cambiar", "12", "14", "16", "18", "20", "22" }));
+        jComboBoxHoraBuscarMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHoraBuscarModActionPerformed(evt);
+            }
+        });
 
         jLabel32.setText("Historial de Reservas");
 
@@ -1105,7 +1112,7 @@ public class ClView extends javax.swing.JFrame {
                     .addGroup(historial_clienteLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane_cliente.addTab("Historial", historial_cliente);
