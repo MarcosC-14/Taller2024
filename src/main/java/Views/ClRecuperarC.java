@@ -11,10 +11,12 @@ public class ClRecuperarC extends javax.swing.JFrame {
     /**
      * Constructor por defecto de la ventana grafica.
      * Se encarga de inicializar y configurar los componentes de la interfaz gráfica
-     * de usuario
+     * de usuario. Tambien de centrarla
      */
     public ClRecuperarC() {
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
     /**
