@@ -44,7 +44,7 @@ public class AdView extends javax.swing.JFrame {
      */
     public AdView(Administrador administrador) {
         initComponents();
-        setSize(900, 550);
+        setSize(800, 500);
         setResizable(false);
         setTitle("Panel de administracion");
         setLocationRelativeTo(null);
@@ -66,21 +66,6 @@ public class AdView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton_Administrador_salir = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel_reservas = new javax.swing.JPanel();
-        txt_reservas = new javax.swing.JLabel();
-        jPanel_clientes = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel_mesas = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel_empleados = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jPanel_balances = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel_eventos = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -173,7 +158,7 @@ public class AdView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(204, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(204, 0, 0))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -195,9 +180,9 @@ public class AdView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 428, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
                 .addComponent(jButton_Administrador_salir)
-                .addGap(83, 83, 83))
+                .addGap(71, 71, 71))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,234 +191,13 @@ public class AdView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton_Administrador_salir))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 810, 60));
-
-        jLabel2.setText("Logo");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel2)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 50));
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel_reservas.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_reservas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_reservasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_reservasMouseExited(evt);
-            }
-        });
-
-        txt_reservas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txt_reservas.setText("Reservas");
-        txt_reservas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txt_reservasMouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel_reservasLayout = new javax.swing.GroupLayout(jPanel_reservas);
-        jPanel_reservas.setLayout(jPanel_reservasLayout);
-        jPanel_reservasLayout.setHorizontalGroup(
-            jPanel_reservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_reservasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txt_reservas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel_reservasLayout.setVerticalGroup(
-            jPanel_reservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_reservasLayout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(txt_reservas))
-        );
-
-        jPanel3.add(jPanel_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 30));
-
-        jPanel_clientes.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_clientesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_clientesMouseExited(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("Clientes");
-
-        javax.swing.GroupLayout jPanel_clientesLayout = new javax.swing.GroupLayout(jPanel_clientes);
-        jPanel_clientes.setLayout(jPanel_clientesLayout);
-        jPanel_clientesLayout.setHorizontalGroup(
-            jPanel_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_clientesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        jPanel_clientesLayout.setVerticalGroup(
-            jPanel_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_clientesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel_clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 90, 30));
-
-        jPanel_mesas.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_mesas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_mesasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_mesasMouseExited(evt);
-            }
-        });
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Mesas");
-
-        javax.swing.GroupLayout jPanel_mesasLayout = new javax.swing.GroupLayout(jPanel_mesas);
-        jPanel_mesas.setLayout(jPanel_mesasLayout);
-        jPanel_mesasLayout.setHorizontalGroup(
-            jPanel_mesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_mesasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        jPanel_mesasLayout.setVerticalGroup(
-            jPanel_mesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_mesasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(jPanel_mesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 90, 30));
-
-        jPanel_empleados.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_empleados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_empleadosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_empleadosMouseExited(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Empleados");
-
-        javax.swing.GroupLayout jPanel_empleadosLayout = new javax.swing.GroupLayout(jPanel_empleados);
-        jPanel_empleados.setLayout(jPanel_empleadosLayout);
-        jPanel_empleadosLayout.setHorizontalGroup(
-            jPanel_empleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_empleadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-        jPanel_empleadosLayout.setVerticalGroup(
-            jPanel_empleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_empleadosLayout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(jLabel11))
-        );
-
-        jPanel3.add(jPanel_empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 90, 30));
-
-        jPanel_balances.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_balances.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_balancesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_balancesMouseExited(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("Balances");
-
-        javax.swing.GroupLayout jPanel_balancesLayout = new javax.swing.GroupLayout(jPanel_balances);
-        jPanel_balances.setLayout(jPanel_balancesLayout);
-        jPanel_balancesLayout.setHorizontalGroup(
-            jPanel_balancesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_balancesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jPanel_balancesLayout.setVerticalGroup(
-            jPanel_balancesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_balancesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(jPanel_balances, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 90, 30));
-
-        jPanel_eventos.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_eventos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_eventosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_eventosMouseExited(evt);
-            }
-        });
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("Eventos");
-
-        javax.swing.GroupLayout jPanel_eventosLayout = new javax.swing.GroupLayout(jPanel_eventos);
-        jPanel_eventos.setLayout(jPanel_eventosLayout);
-        jPanel_eventosLayout.setHorizontalGroup(
-            jPanel_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_eventosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel14)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        jPanel_eventosLayout.setVerticalGroup(
-            jPanel_eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_eventosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(jPanel_eventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, -1, 30));
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 90, 450));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 60));
 
         jTabbedPane2.setBackground(new java.awt.Color(0, 102, 102));
-        jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Administrador"));
         jTabbedPane2.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -442,7 +206,7 @@ public class AdView extends javax.swing.JFrame {
         });
 
         jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reservas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Reservas"));
         jPanel4.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -495,7 +259,7 @@ public class AdView extends javax.swing.JFrame {
         jTabbedPane2.addTab("Reservas", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Perfil Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Perfil Clientes"));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel9.setBackground(new java.awt.Color(0, 51, 51));
@@ -560,7 +324,7 @@ public class AdView extends javax.swing.JFrame {
         jTabbedPane2.addTab("Reporte Clientes", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mesas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Mesas"));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -662,7 +426,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(0, 51, 51));
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleados"));
 
         jButton_administrador_empleado_agregar.setText("Agregar");
         jButton_administrador_empleado_agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -722,38 +486,37 @@ public class AdView extends javax.swing.JFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(jButtonVerEmpleados)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_administrador_empleado_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_administrador_empleado_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(207, 207, 207))))
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addComponent(jButtonVerEmpleados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_administrador_empleado_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_administrador_empleado_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton_administrador_empleado_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox_administrador_empleado_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel24)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_administrador_empleado_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(191, 191, 191)))))
-                .addGap(16, 16, 16))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,14 +531,15 @@ public class AdView extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(jLabel23)
-                    .addComponent(jButton_administrador_empleado_agregar)
                     .addComponent(jTextField_administrador_empleado_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_administrador_empleado_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(jButtonVerEmpleados)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVerEmpleados)
+                    .addComponent(jButton_administrador_empleado_agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -870,64 +634,67 @@ public class AdView extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(47, 47, 47)
+                        .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBTodasLasReservas)
                             .addComponent(jBReservasFuturas)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTxtFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jBReservasFecha)
-                                    .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel7)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jBReservasFecha)))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBReservasFuturas)
-                .addGap(18, 18, 18)
-                .addComponent(jBTodasLasReservas)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBReservasFecha)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBReservasFuturas)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBTodasLasReservas)
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTxtFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBReservasFecha)))
                 .addGap(47, 47, 47))
         );
 
@@ -936,7 +703,7 @@ public class AdView extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_eventosEspeciales.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bloqueo / Eventos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel_eventosEspeciales.setBorder(javax.swing.BorderFactory.createTitledBorder("Bloqueo / Eventos"));
 
         jLabel13.setText("Fecha:");
 
@@ -1001,7 +768,6 @@ public class AdView extends javax.swing.JFrame {
         jPanel_eventosEspeciales.setLayout(jPanel_eventosEspecialesLayout);
         jPanel_eventosEspecialesLayout.setHorizontalGroup(
             jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
             .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1015,9 +781,8 @@ public class AdView extends javax.swing.JFrame {
                             .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton2)
-                                .addGap(35, 35, 35)
-                                .addComponent(jButtonVerBloqueMesaEvento)
-                                .addGap(12, 12, 12))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonVerBloqueMesaEvento))
                             .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1032,9 +797,12 @@ public class AdView extends javax.swing.JFrame {
                                 .addComponent(jComboBoxHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                                 .addComponent(jButton_bloqueoMesas)))
-                        .addGap(32, 32, 32))))
+                        .addGap(83, 83, 83))))
+            .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
+                .addComponent(jScrollPane5)
+                .addGap(83, 83, 83))
         );
         jPanel_eventosEspecialesLayout.setVerticalGroup(
             jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1054,12 +822,12 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jComboBoxMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonVerBloqueMesaEvento, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVerBloqueMesaEvento)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTextField_fechaEvento.getAccessibleContext().setAccessibleName("");
@@ -1127,7 +895,7 @@ public class AdView extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(240, 240, 240)
                         .addComponent(jLabel32)))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1152,7 +920,7 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -1174,7 +942,7 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Analisis Periodos Tiempo ", jPanel13);
 
-        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 810, 440));
+        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 810, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1319,58 +1087,6 @@ public class AdView extends javax.swing.JFrame {
     }
     
     
-    private void txt_reservasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_reservasMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_reservasMouseEntered
-
-    private void jPanel_reservasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_reservasMouseExited
-        jPanel_reservas.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_reservasMouseExited
-
-    private void jPanel_reservasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_reservasMouseEntered
-        jPanel_reservas.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_reservasMouseEntered
-
-    private void jPanel_clientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_clientesMouseEntered
-        jPanel_clientes.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_clientesMouseEntered
-
-    private void jPanel_clientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_clientesMouseExited
-        jPanel_clientes.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_clientesMouseExited
-
-    private void jPanel_mesasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mesasMouseEntered
-          jPanel_mesas.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_mesasMouseEntered
-
-    private void jPanel_mesasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mesasMouseExited
-        jPanel_mesas.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_mesasMouseExited
-
-    private void jPanel_empleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_empleadosMouseEntered
-         jPanel_empleados.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_empleadosMouseEntered
-
-    private void jPanel_empleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_empleadosMouseExited
-         jPanel_empleados.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_empleadosMouseExited
-
-    private void jPanel_balancesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_balancesMouseEntered
-       jPanel_balances.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_balancesMouseEntered
-
-    private void jPanel_balancesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_balancesMouseExited
-       jPanel_balances.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_balancesMouseExited
-
-    private void jPanel_eventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_eventosMouseEntered
-          jPanel_eventos.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_eventosMouseEntered
-
-    private void jPanel_eventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_eventosMouseExited
-         jPanel_eventos.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_eventosMouseExited
-
     private void jTabbedPane2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTabbedPane2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane2KeyPressed
@@ -1661,17 +1377,12 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboBox_administrador_empleado_rol;
     public javax.swing.JComboBox<String> jComboBox_administrador_mesas_ubi;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1691,28 +1402,19 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPanel jPanel_balances;
-    private javax.swing.JPanel jPanel_clientes;
-    private javax.swing.JPanel jPanel_empleados;
-    private javax.swing.JPanel jPanel_eventos;
     private javax.swing.JPanel jPanel_eventosEspeciales;
-    private javax.swing.JPanel jPanel_mesas;
-    private javax.swing.JPanel jPanel_reservas;
     public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1741,7 +1443,6 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JTextField jTxtFechaFinal;
     private javax.swing.JTextField jTxtFechaInicial;
     public javax.swing.JTable tabla_reservasAdmin;
-    private javax.swing.JLabel txt_reservas;
     // End of variables declaration//GEN-END:variables
 
     
