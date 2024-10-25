@@ -16,6 +16,7 @@ import modelo.BloqueoMesaEventoEspecial;
 import modelo.Cliente;
 import modelo.Empleado;
 import modelo.Rol;
+import modelo.Reserva;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.EmpleadoDAO;
 import persistencia.ClasesDao.ReservaDAO;
@@ -41,9 +42,39 @@ public class AdView extends javax.swing.JFrame {
         setTitle("Panel de administracion");
         setLocationRelativeTo(null);
         this.administrador = administrador;
+        tabla = (DefaultTableModel) jTReporteReservas.getModel();
                 
     }
+ /**
+     * obtenerReservasHistorial a la tabla
+     */
+    public void guardarReservasClientesVida(){
+        Cliente cliente = new Cliente();
+        System.out.println("GuardarREsrvasClientesVida1");
+        ClienteDAO clienteDao = new ClienteDAO();
+        ReservaDAO reservaDao= new ReservaDAO();
+        ArrayList<Reserva> reservas =new ArrayList<Reserva>();
+        String correo=jTxtCorreo.getText();
+        System.out.println("Corre "+correo);
+         tabla.setRowCount(0);
+        Object[] o = new Object [6];
+        cliente =clienteDao.obtenerCliente(correo);
+        System.out.println("GuardarREsrvasClientesVida2");
+       
+        //aun no lo guarda en la tabla 
+        /**
+          o[0]= numero mesa
+          o[0]=fecha
+          o[0]= hora inicio
+          o[0]=hora fim
+          o[0]= correo;
+          o[0]= cantidad de comensales (capacidad mesa)
+         */
 
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,7 +149,7 @@ public class AdView extends javax.swing.JFrame {
         jTextField_administrador_empleado_contrasenia = new javax.swing.JPasswordField();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTReporteReservas = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jBReservasFuturas = new javax.swing.JButton();
         jBTodasLasReservas = new javax.swing.JButton();
@@ -495,11 +526,11 @@ public class AdView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Telefono", "Correo"
+                "Nombre", "Telefono", "Correo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -777,12 +808,9 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(0, 102, 102));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTReporteReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mesa", "Fecha", "Hora Inicio", "Hora Fin", "Cliente", "Comensales"
@@ -796,7 +824,7 @@ public class AdView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(jTable1);
+        jScrollPane6.setViewportView(jTReporteReservas);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -1199,8 +1227,23 @@ public class AdView extends javax.swing.JFrame {
         
     }
     /**
-     * con el array list de obtenerReservasHistorial revisamos que la fecha coincida
-     * 
+     * con el array list de obtenerReservasHistorial. los que tengan una fecha anterior
+     * a localdatetime.now los remueve del arrayList<reserva>, ReservaDAo local.
+     * guarda en la tabla, al inicio limpiar la tabla
+    */
+   
+    /**
+     * con obtenerClientes de cliente dao, llama a la funcion para tener las asistencias
+     * y guarda en una varibles y luego compara con el siguiente, si es mayor cambia, si no queda igual
+     */
+    /**
+     * esta en reservaDAo
+     */
+    /**
+     * metodo reservaDAo
+     */
+    /**
+    *arrayList.size para la estacion
     */
     
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
@@ -1411,7 +1454,7 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBReservasFechaActionPerformed
 
     private void jBTodasLasReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodasLasReservasActionPerformed
-        // TODO add your handling code here:
+        guardarReservasClientesVida();
     }//GEN-LAST:event_jBTodasLasReservasActionPerformed
 
     private void jBReservasFuturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFuturasActionPerformed
@@ -1578,8 +1621,8 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable jTReporteReservas;
     public javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     public javax.swing.JTable jTable_bloqueoMesas;
     public javax.swing.JTable jTable_clientesAdmin;
     public javax.swing.JTable jTable_empleadosAdmin;
