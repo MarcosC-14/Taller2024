@@ -555,4 +555,31 @@ public class ReservaDAO {
 		return cobrar;
 	  } 
           
+          
+          public int cantidadAsistencias(Cliente cliente){
+              Connection con = conn.getConexion();
+              ResultSet rs;
+              PreparedStatement ps;
+              String sql ="SELECT COUNT(*) FROM reserva"
+                      + " WHERE id_cliente = ? AND asistencia = 1";
+              int cantidad = 0;
+              try{
+                  ps=con.prepareStatement(sql);
+                  ps.setInt(1, cliente.getId());
+               
+                  rs = ps.executeQuery();
+                  if(rs.next()){
+                      cantidad = rs.getInt(1);
+                  }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }finally{
+                conn.cerrarConexion();
+            }
+            return cantidad;
+              
+              
+            
+          }
+          
 }

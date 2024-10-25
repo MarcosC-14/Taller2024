@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import modelo.Administrador;
 import modelo.BloqueoMesaEventoEspecial;
@@ -92,7 +93,7 @@ public class AdView extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jTextField_administrador_reserva_cliente = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jButton_administrador_reservas_agregar = new javax.swing.JButton();
+        jButton_administrador_reservas_ver = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -481,13 +482,13 @@ public class AdView extends javax.swing.JFrame {
         jLabel30.setText("Mesa:");
         jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
 
-        jButton_administrador_reservas_agregar.setText("Ver");
-        jButton_administrador_reservas_agregar.addActionListener(new java.awt.event.ActionListener() {
+        jButton_administrador_reservas_ver.setText("Ver");
+        jButton_administrador_reservas_ver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_administrador_reservas_agregarActionPerformed(evt);
+                jButton_administrador_reservas_verActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton_administrador_reservas_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, -1, -1));
+        jPanel4.add(jButton_administrador_reservas_ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
         jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
@@ -555,6 +556,11 @@ public class AdView extends javax.swing.JFrame {
         jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
 
         jButton3.setText("Clientes que no asistieron en el último año");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         jTabbedPane2.addTab("Reporte Clientes", jPanel5);
@@ -1254,11 +1260,10 @@ public class AdView extends javax.swing.JFrame {
         }
         
     }
-    private void actualizarTablaCliente(){
+    private void actualizarTablaCliente(ArrayList<Cliente> clientes){
         
         
-        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
-
+        
         DefaultTableModel model = (DefaultTableModel) this.jTable_clientesAdmin.getModel();
         model.setRowCount(0); // Limpia todas las filas existentes        
         
@@ -1556,6 +1561,7 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBReservasFuturasActionPerformed
 
     private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
+        actualizarTablaEmpleado();
     }//GEN-LAST:event_jButtonVerEmpleadosActionPerformed
 
     private void jTextField_administrador_empleado_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_empleado_nombreActionPerformed
@@ -1619,20 +1625,75 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_administrador_mesa_eliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        actualizarTablaCliente();
+        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
+        
+        actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton_administrador_reservas_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_reservas_agregarActionPerformed
-        actualizarTablaCliente();
-    }//GEN-LAST:event_jButton_administrador_reservas_agregarActionPerformed
+    private void jButton_administrador_reservas_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_reservas_verActionPerformed
+        
+    }//GEN-LAST:event_jButton_administrador_reservas_verActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
+        int maxAsistencias = 0;
+        for(int i = 0;i<clientes.size();i++){
+            Cliente auxCliente = clientes.get(i);
+            int auxAsistencia = reservaDAO.cantidadAsistencias(auxCliente);
+            if(auxAsistencia < maxAsistencias){
+                clientes.remove(i);
+                i--;
+            }else if(auxAsistencia > maxAsistencias){
+                maxAsistencias = auxAsistencia;
+                i=-1;
+            }
+        }
+        actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
+        for(Cliente cliente: clientes){
+            cliente.setReservas(reservaDAO.obtenerReservasHistorial(cliente));
+        }
+        
+        int conti = 0;
+        for(int i = 0;i<clientes.size();i++){
+            System.out.println(conti++);
+            
+            Cliente auxCliente = clientes.get(i);
+            ArrayList<Reserva> auxReservas = auxCliente.getReservas();
+            if(auxReservas.isEmpty()){
+                clientes.remove(i);
+                i--;
+            }else{
+                boolean inasistenciaEnAño = false;
+                for(Reserva res : auxReservas){
+                    LocalDateTime auxF = LocalDateTime.of(res.getFecha(),res.getHora());
+                    System.out.println(auxF);
+                    System.out.println(res.getCliente().getNombre());
+                    System.out.println("" +res.getAsistencia());
+                    if(auxF.isAfter(LocalDateTime.now().minusYears(1)) 
+                            && auxF.isBefore(LocalDateTime.now())){
+                        if(!res.getAsistencia()){
+                            inasistenciaEnAño = true;
+                            break;
+                        }
+                    }
+                }
+                if(!inasistenciaEnAño){
+                    clientes.remove(i);
+                    i--;
+                }
+            }
+            
+        }
+        actualizarTablaCliente(clientes);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
 
@@ -1651,7 +1712,7 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerEmpleados;
     public javax.swing.JButton jButton_Administrador_salir;
     public javax.swing.JButton jButton_administrador_empleado_agregar;
-    public javax.swing.JButton jButton_administrador_reservas_agregar;
+    public javax.swing.JButton jButton_administrador_reservas_ver;
     private javax.swing.JButton jButton_bloqueoMesas;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

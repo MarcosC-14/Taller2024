@@ -210,9 +210,13 @@ public class EpView extends javax.swing.JFrame {
             }
             if(reserva1.getTiempoOcupacion() != null){
                 o[4]= reserva1.getTiempoOcupacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            }else{
+                o[4]= "";
             }
             if(reserva1.getTiempoFinalizacion() != null){
                 o[5]= reserva1.getTiempoFinalizacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            }else{
+                o[4]= "";
             }
             tabla.addRow(o);
         }
