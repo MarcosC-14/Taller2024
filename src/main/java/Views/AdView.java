@@ -18,7 +18,7 @@ import modelo.Empleado;
 import modelo.Rol;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.EmpleadoDAO;
-
+import persistencia.ClasesDao.ReservaDAO;
 /**
  *
  * @author Rebechi
@@ -89,6 +89,7 @@ public class AdView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_clientesAdmin = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -119,14 +120,15 @@ public class AdView extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jBReservasFuturas = new javax.swing.JButton();
+        jBTodasLasReservas = new javax.swing.JButton();
+        jBReservasFecha = new javax.swing.JButton();
+        jTxtFechaInicial = new javax.swing.JTextField();
+        jTxtFechaFinal = new javax.swing.JTextField();
+        jTxtCorreo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jPanel_eventosEspeciales = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -143,6 +145,18 @@ public class AdView extends javax.swing.JFrame {
         jComboBoxMesas = new javax.swing.JComboBox<>();
         jButtonVerBloqueMesaEvento = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -513,15 +527,18 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 250));
 
-        jButton1.setText("Ver");
+        jButton1.setText("Peores Clientes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
-        jTabbedPane2.addTab("Clientes", jPanel5);
+        jButton7.setText("Mejor Cliente");
+        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+
+        jTabbedPane2.addTab("Reporte Clientes", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 102));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mesas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -785,43 +802,48 @@ public class AdView extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Correo");
 
-        jButton3.setText("Buscar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBReservasFuturas.setText("Reservas Futuras");
+        jBReservasFuturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBReservasFuturasActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Rservas Futuras");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBTodasLasReservas.setText("Todas las reservas ");
+        jBTodasLasReservas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBTodasLasReservasActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Todas las reservas ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBReservasFecha.setText("Reservas Fecha");
+        jBReservasFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBReservasFechaActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Reservas Fecha");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jTxtFechaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jTxtFechaInicialActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTxtFechaFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTxtFechaFinalActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Fechas");
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Inicial");
+
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Final");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -840,30 +862,31 @@ public class AdView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(83, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addGap(102, 102, 102))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jBReservasFecha)
+                                .addGap(102, 102, 102))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTxtFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jButton3))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(104, 104, 104)
-                                .addComponent(jButton5))
+                                .addComponent(jBTodasLasReservas))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(93, 93, 93)
-                                .addComponent(jButton4)))
+                                .addComponent(jBReservasFuturas)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel8Layout.setVerticalGroup(
@@ -877,25 +900,25 @@ public class AdView extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addComponent(jButton3)
-                        .addGap(40, 40, 40)
-                        .addComponent(jButton4)
+                            .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addComponent(jBReservasFuturas)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)
+                        .addComponent(jBTodasLasReservas)
                         .addGap(27, 27, 27)
                         .addComponent(jLabel8)
                         .addGap(7, 7, 7)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTxtFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6)))
+                        .addComponent(jBReservasFecha)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Balances", jPanel8);
+        jTabbedPane2.addTab("Reporte Reservas", jPanel8);
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1033,6 +1056,111 @@ public class AdView extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Bloqueo / Eventos", jPanel12);
 
+        jPanel14.setBackground(new java.awt.Color(0, 102, 102));
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel17.setText("Verano");
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel18.setText("Otoño");
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setText("Invierno");
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel31.setText("Primavera");
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel32.setText("Concurrencia por estacion");
+
+        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton8.setText("Ver");
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel14Layout.createSequentialGroup()
+                                    .addComponent(jLabel31)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel14Layout.createSequentialGroup()
+                                    .addComponent(jLabel21)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel14Layout.createSequentialGroup()
+                                    .addComponent(jLabel18)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel14Layout.createSequentialGroup()
+                                    .addComponent(jLabel17)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(jButton8))))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jLabel32)))
+                .addContainerGap(271, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel32)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton8)
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Analisis Periodos Tiempo ", jPanel13);
+
         getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 810, 440));
 
         pack();
@@ -1070,6 +1198,10 @@ public class AdView extends javax.swing.JFrame {
             
         
     }
+    /**
+     * con el array list de obtenerReservasHistorial revisamos que la fecha coincida
+     * 
+    */
     
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
         dispose();
@@ -1186,14 +1318,29 @@ public class AdView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane2KeyPressed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        bme = bmes.get(jTable_bloqueoMesas.getSelectedRow());
+
+        if(empleadoDAO.eliminarBloqueoEvento(bme)){
+            javax.swing.JOptionPane.showMessageDialog(this, "Bloqueo o evento eliminado con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            this.actualizarTablaBloqueoMesaEvento();
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar bloqueo o evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButtonVerBloqueMesaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerBloqueMesaEventoActionPerformed
+        actualizarTablaBloqueoMesaEvento();
+    }//GEN-LAST:event_jButtonVerBloqueMesaEventoActionPerformed
+
     private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
         BloqueoMesaEventoEspecial b = new BloqueoMesaEventoEspecial();
         String auxFecha = jTextField_fechaEvento.getText();
-                
+
         LocalDate fechaBloqueoEvento;
         if(ClienteController.esFormatoFechaValido(auxFecha)){
             try{
-            fechaBloqueoEvento = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                fechaBloqueoEvento = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }catch(java.time.format.DateTimeParseException e){
                 javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
@@ -1202,17 +1349,14 @@ public class AdView extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        
+
         b.setFecha(fechaBloqueoEvento);
-        
+
         String auxNumMesa = jComboBoxMesas.getSelectedItem().toString();
-        
+
         String auxHoraInicio = jComboBoxHoraInicio.getSelectedItem().toString();
         String auxHoraFin = jComboBoxHoraFin.getSelectedItem().toString();
-        
-        
-        
+
         int numeroMesa;
         LocalTime horaInicio;
         LocalTime horaFin;
@@ -1222,15 +1366,15 @@ public class AdView extends javax.swing.JFrame {
                 return;
             }
             numeroMesa = 0;
-            horaInicio = LocalTime.parse(auxHoraInicio + ":00:00", 
-                    DateTimeFormatter.ofPattern("HH:mm:ss"));
-            horaFin = LocalTime.parse(auxHoraFin + ":00:00", 
-                    DateTimeFormatter.ofPattern("HH:mm:ss"));
-            
+            horaInicio = LocalTime.parse(auxHoraInicio + ":00:00",
+                DateTimeFormatter.ofPattern("HH:mm:ss"));
+            horaFin = LocalTime.parse(auxHoraFin + ":00:00",
+                DateTimeFormatter.ofPattern("HH:mm:ss"));
+
             b.setNumMesa(numeroMesa);
             b.setHoraInicio(horaInicio);
             b.setHoraFin(horaFin);
-            
+
             if (empleadoDAO.bloquearMesaEventoEspecial(b)){
                 javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el evento.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1254,21 +1398,37 @@ public class AdView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_fechaEventoActionPerformed
 
+    private void jTxtFechaFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFechaFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtFechaFinalActionPerformed
+
+    private void jTxtFechaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFechaInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtFechaInicialActionPerformed
+
+    private void jBReservasFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBReservasFechaActionPerformed
+
+    private void jBTodasLasReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodasLasReservasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBTodasLasReservasActionPerformed
+
+    private void jBReservasFuturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFuturasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBReservasFuturasActionPerformed
+
+    private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
+        actualizarTablaEmpleado();
+    }//GEN-LAST:event_jButtonVerEmpleadosActionPerformed
+
     private void jTextField_administrador_empleado_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_empleado_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_administrador_empleado_nombreActionPerformed
 
-    private void btn_administrador_mesa_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrador_mesa_eliminarActionPerformed
+    private void jComboBox_administrador_empleado_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_administrador_empleado_rolActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_administrador_mesa_eliminarActionPerformed
-
-    private void jButton_administrador_reservas_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_reservas_agregarActionPerformed
-        actualizarTablaCliente();
-    }//GEN-LAST:event_jButton_administrador_reservas_agregarActionPerformed
-
-    private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
-       actualizarTablaEmpleado();
-    }//GEN-LAST:event_jButtonVerEmpleadosActionPerformed
+    }//GEN-LAST:event_jComboBox_administrador_empleado_rolActionPerformed
 
     private void jButton_administrador_empleado_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_empleado_agregarActionPerformed
         String nombre = this.jTextField_administrador_empleado_nombre.getText();
@@ -1277,25 +1437,25 @@ public class AdView extends javax.swing.JFrame {
         Rol rol = null;
         switch(this.jComboBox_administrador_empleado_rol.getSelectedItem().toString()){
             case "Administrador":
-                rol = Rol.Administrador;
-                break;
+            rol = Rol.Administrador;
+            break;
             case "Mesero":
-                rol = Rol.Mesero;
-                break;
-            case "Recepcionista": 
-                rol = Rol.Recepcionista;
-                break;
+            rol = Rol.Mesero;
+            break;
+            case "Recepcionista":
+            rol = Rol.Recepcionista;
+            break;
             case "Cocinero":
-                rol = Rol.Cocinero;
-                break;
+            rol = Rol.Cocinero;
+            break;
             default:
-                break;
+            break;
         }
         if(nombre.equals("")
-                || correo.equals("")
-                || contrasenia.equals("")){
+            || correo.equals("")
+            || contrasenia.equals("")){
             javax.swing.JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
-            }else{
+        }else{
             if(ClienteController.esCorreoElectronicoValido(correo)){
                 Empleado emp = new Empleado();
                 emp.setNombre(nombre);
@@ -1314,65 +1474,38 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_administrador_empleado_agregarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        actualizarTablaCliente();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jComboBox_administrador_empleado_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_administrador_empleado_rolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox_administrador_empleado_rolActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButtonVerBloqueMesaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerBloqueMesaEventoActionPerformed
-        actualizarTablaBloqueoMesaEvento();
-    }//GEN-LAST:event_jButtonVerBloqueMesaEventoActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        bme = bmes.get(jTable_bloqueoMesas.getSelectedRow());
-        
-        if(empleadoDAO.eliminarBloqueoEvento(bme)){
-                javax.swing.JOptionPane.showMessageDialog(this, "Bloqueo o evento eliminado con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                this.actualizarTablaBloqueoMesaEvento();
-            }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar bloqueo o evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-            }
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_administrador_mesa_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrador_mesa_eliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn_administrador_mesa_eliminarActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        actualizarTablaCliente();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jButton_administrador_reservas_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_reservas_agregarActionPerformed
+        actualizarTablaCliente();
+    }//GEN-LAST:event_jButton_administrador_reservas_agregarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_administrador_mesa_eliminar;
     public javax.swing.JButton btn_administrador_mesa_modificar;
+    private javax.swing.JButton jBReservasFecha;
+    private javax.swing.JButton jBReservasFuturas;
+    private javax.swing.JButton jBTodasLasReservas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonVerBloqueMesaEvento;
     private javax.swing.JButton jButtonVerEmpleados;
     public javax.swing.JButton jButton_Administrador_salir;
@@ -1392,9 +1525,14 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1405,6 +1543,8 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1415,6 +1555,8 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1442,9 +1584,10 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JTable jTable_clientesAdmin;
     public javax.swing.JTable jTable_empleadosAdmin;
     public javax.swing.JTable jTable_mesasAdmin;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JPasswordField jTextField_administrador_empleado_contrasenia;
     public javax.swing.JTextField jTextField_administrador_empleado_correo;
     public javax.swing.JTextField jTextField_administrador_empleado_nombre;
@@ -1453,6 +1596,9 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField_administrador_reserva_fecha;
     public javax.swing.JTextField jTextField_administrador_reserva_id;
     public javax.swing.JTextField jTextField_fechaEvento;
+    private javax.swing.JTextField jTxtCorreo;
+    private javax.swing.JTextField jTxtFechaFinal;
+    private javax.swing.JTextField jTxtFechaInicial;
     public javax.swing.JTable tabla_reservasAdmin;
     private javax.swing.JLabel txt_reservas;
     // End of variables declaration//GEN-END:variables
