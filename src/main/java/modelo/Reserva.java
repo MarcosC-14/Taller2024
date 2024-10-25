@@ -226,5 +226,10 @@ public class Reserva {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" + "fecha=" + fecha + ", hora=" + hora + ", comentario=" + comentario + ", asistencia=" + asistencia + ", tiempoOcupacion=" + tiempoOcupacion + ", tiempoFinalizacion=" + tiempoFinalizacion + ", mesa=" + mesa + ", cliente=" + cliente + ", tarjeta=" + tarjeta + ", id=" + id + ", multa=" + multa + '}';
+    }
     
 }

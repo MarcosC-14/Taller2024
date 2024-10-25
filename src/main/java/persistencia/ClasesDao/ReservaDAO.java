@@ -469,4 +469,71 @@ public class ReservaDAO {
         } 
         return modificado;
      }
+     	  /**
+	  *ArrayList que devuelva todas las reservas pasadas, si su fecha es menor a hoy lo guarda en su arrayList
+	  */
+	  public ArrayList<Reserva> obtenerReservasPasadas(){
+		Connection con = conn.getConexion();
+                ResultSet rs;
+                PreparedStatement ps;
+		LocalDate hoy = LocalDate.now();
+		ArrayList<Reserva> reservasPasadas = new ArrayList<Reserva>();
+		String sql="SELECT * FROM reserva WHERE fecha < ?";
+                DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		 try{
+                    ps = con.prepareStatement(sql);
+                    ps.setString(1, hoy.format(formatoFecha));
+                    rs = ps.executeQuery();
+			 while (rs.next()) {
+				Reserva reserva = new Reserva();
+				reserva.setId(rs.getInt("id"));
+                                String fechaString = rs.getString("fecha");
+                                LocalDate fechaReserva = LocalDate.parse(fechaString, formatoFecha);
+                                reserva.setFecha(fechaReserva);
+				reserva.setComentario(rs.getString("comentario"));
+                                reserva.setHora(LocalTime.parse(rs.getString("hora")));
+				if(rs.getInt("asistencia")==0&&(rs.getInt("multa"))==0){
+                                    reserva.setAsistencia(false);
+                                    reserva.setMulta(false);
+                                    reservasPasadas.add(reserva);
+				}
+			}
+			}catch(SQLException e){
+				System.out.println(e.getMessage());
+			}finally{
+				conn.cerrarConexion();
+			}
+		
+	  
+	  return reservasPasadas;
+	  }
+         /**
+            * Cobrar la multa al dia siguiente (automatico), cambie el estado de
+            * multa de Reserva= true, se guarda en base de datos como 1
+      */
+	  public boolean cobrarMulta(ArrayList<Reserva> reservas){
+              Connection con = conn.getConexion();
+                ResultSet rs;
+                PreparedStatement ps;
+		String sql="UPDATE reserva SET multa = ? WHERE id = ?";
+		boolean cobrar= false;
+                for(Reserva reserva: reservas){
+                    if(reserva.getAsistencia()==false && reserva.getMulta()==false){
+                        reserva.setMulta(true);
+                        
+                    try{
+                    ps = con.prepareStatement(sql);
+                    ps.setInt(1,1);
+                    ps.setInt(2, reserva.getId());
+                    cobrar =(ps.executeUpdate()>0);				
+                    }catch(SQLException e){
+			System.out.println(e.getMessage());
+                    }finally{
+			conn.cerrarConexion();
+                    }   
+                    }
+                    }
+		return cobrar;
+	  } 
+          
 }
