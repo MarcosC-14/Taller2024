@@ -36,6 +36,8 @@ public class AdView extends javax.swing.JFrame {
     ArrayList<BloqueoMesaEventoEspecial> bmes = new ArrayList<BloqueoMesaEventoEspecial>();
     BloqueoMesaEventoEspecial bme;
     ArrayList<Reserva> reservas;
+    private LocalDate fechaInicial;
+    private LocalDate fechaFinal;
     
     /**
      * Creates new form AdView
@@ -49,34 +51,6 @@ public class AdView extends javax.swing.JFrame {
         this.administrador = administrador;
         tabla = (DefaultTableModel) jTableReporteReservas.getModel();
                 
-    }
- /**
-     * obtenerReservasHistorial a la tabla
-     */
-    public void guardarReservasClientesVida(){
-        Cliente cliente = new Cliente();
-        System.out.println("GuardarREsrvasClientesVida1");
-        ClienteDAO clienteDao = new ClienteDAO();
-        ReservaDAO reservaDao= new ReservaDAO();
-        ArrayList<Reserva> reservas =new ArrayList<Reserva>();
-        String correo=jTxtCorreo.getText();
-        System.out.println("Corre "+correo);
-         tabla.setRowCount(0);
-        Object[] o = new Object [6];
-        cliente =clienteDao.obtenerCliente(correo);
-        System.out.println("GuardarREsrvasClientesVida2");
-       
-        //aun no lo guarda en la tabla 
-        /**
-          o[0]= numero mesa
-          o[0]=fecha
-          o[0]= hora inicio
-          o[0]=hora fim
-          o[0]= correo;
-          o[0]= cantidad de comensales (capacidad mesa)
-         */
-
-        
     }
     
     
@@ -1491,13 +1465,52 @@ public class AdView extends javax.swing.JFrame {
 
     private void jBReservasFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFechaActionPerformed
         
-        this.verificarCliente();
+        if(verificarCliente()){
+            String auxFechaI = jTxtFechaInicial.getText();
+            String auxFechaF = jTxtFechaFinal.getText();
+            if(!ClienteController.esFormatoFechaValido(auxFechaI)
+                    | !ClienteController.esFormatoFechaValido(auxFechaF)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+            }else{
+                try{
+                 fechaInicial = LocalDate.parse(auxFechaI, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                 fechaFinal = LocalDate.parse(auxFechaF, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                }catch(java.time.format.DateTimeParseException e){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas válidas", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                if(fechaInicial.isAfter(fechaFinal)){
+                    javax.swing.JOptionPane.showMessageDialog(this, "La fecha inicial no puede ser mayor a la fecha final", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }else{
+
+
+                    reservas = reservaDAO.obtenerReservasHistorial(cliente);
+
+                    for(int i = 0; i < reservas.size();i++){
+                            Reserva res = reservas.get(i);
+                            if(res.getFecha().isBefore(fechaInicial) 
+                                    || res.getFecha().isAfter(fechaFinal)){
+                                reservas.remove(res);
+                                i--;
+                            }
+                }
+                actualizarTablaReservasCliente();
+
+                }
+            }
+        }
         
-        actualizarTablaReservasCliente();
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jBReservasFechaActionPerformed
 
     private void jBTodasLasReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodasLasReservasActionPerformed
-        guardarReservasClientesVida();
+        
         if(verificarCliente()){
             reservas = reservaDAO.obtenerReservasHistorial(cliente);
             actualizarTablaReservasCliente();
