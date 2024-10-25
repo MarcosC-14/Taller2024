@@ -1152,6 +1152,10 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
 
     private void jButton_cliente_modificar_reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_modificar_reservaActionPerformed
+        if(reservas == null){
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         reserva = reservas.get(jTable_historialCliente.getSelectedRow());
         ReservaDAO rDAO = new ReservaDAO();
 
@@ -1277,8 +1281,6 @@ public class ClView extends javax.swing.JFrame {
                         javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                    javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                    return;
                 }else{
                     horaBuscar = reserva.getHora();
                 }
