@@ -233,6 +233,19 @@ public class ReservaDAO {
                 reserva.setHora(LocalTime.parse(rs.getString("hora"), 
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
                 
+                if(rs.getString("hora_fin")!= null){
+                    reserva.setTiempoFinalizacion(LocalTime.parse(rs.getString("hora_fin"), 
+                        DateTimeFormatter.ofPattern("HH:mm:ss")));
+                }else{
+                    reserva.setTiempoFinalizacion(null);
+                }
+                if(rs.getString("hora_inicio")!= null){
+                    reserva.setTiempoOcupacion(LocalTime.parse(rs.getString("hora_inicio"), 
+                        DateTimeFormatter.ofPattern("HH:mm:ss")));
+                }else{
+                    reserva.setTiempoOcupacion(null);
+                }
+                
                 int mesaNum = rs.getInt("numero");
                 Capacidad mesaUbi = Capacidad.valueOf(rs.getString("Capacidad"));
                 Ubicacion mesaCap = Ubicacion.valueOf(rs.getString("Ubicacion"));
