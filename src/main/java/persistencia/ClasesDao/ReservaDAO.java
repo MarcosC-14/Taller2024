@@ -478,35 +478,40 @@ public class ReservaDAO {
                 PreparedStatement ps;
 		LocalDate hoy = LocalDate.now();
 		ArrayList<Reserva> reservasPasadas = new ArrayList<Reserva>();
-		String sql="SELECT * FROM reserva WHERE fecha < ?";
-                DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String sql="SELECT * FROM reserva WHERE asistencia = 0 AND multa = 0";
 		 try{
                     ps = con.prepareStatement(sql);
-                    ps.setString(1, hoy.format(formatoFecha));
                     rs = ps.executeQuery();
+                    DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    
 			 while (rs.next()) {
-				Reserva reserva = new Reserva();
-				reserva.setId(rs.getInt("id"));
-                                String fechaString = rs.getString("fecha");
-                                LocalDate fechaReserva = LocalDate.parse(fechaString, formatoFecha);
-                                reserva.setFecha(fechaReserva);
-				reserva.setComentario(rs.getString("comentario"));
-                                reserva.setHora(LocalTime.parse(rs.getString("hora")));
-				if(rs.getInt("asistencia")==0&&(rs.getInt("multa"))==0){
-                                    reserva.setAsistencia(false);
-                                    reserva.setMulta(false);
-                                    reservasPasadas.add(reserva);
-				}
-			}
-			}catch(SQLException e){
+                                if(LocalDate.parse(rs.getString("fecha"),formatoFecha).isBefore(hoy)){
+                                    
+                                    Reserva reserva = new Reserva();
+                                    reserva.setId(rs.getInt("id"));
+                                    String fechaString = rs.getString("fecha");
+                                    LocalDate fechaReserva = LocalDate.parse(fechaString, formatoFecha);
+                                    reserva.setFecha(fechaReserva);
+                                    reserva.setComentario(rs.getString("comentario"));
+                                    reserva.setHora(LocalTime.parse(rs.getString("hora")));
+                                    if(rs.getInt("asistencia")==0&&(rs.getInt("multa"))==0){
+                                        reserva.setAsistencia(false);
+                                        reserva.setMulta(false);
+                                        reservasPasadas.add(reserva);
+                                    
+                                }
+                         
+                                }
+                         }
+                 }catch(SQLException e){
 				System.out.println(e.getMessage());
 			}finally{
 				conn.cerrarConexion();
 			}
 		
 	  
-	  return reservasPasadas;
-	  }
+            return reservasPasadas;
+        }
          /**
             * Cobrar la multa al dia siguiente (automatico), cambie el estado de
             * multa de Reserva= true, se guarda en base de datos como 1
