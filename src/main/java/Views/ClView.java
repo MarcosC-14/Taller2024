@@ -47,7 +47,7 @@ public class ClView extends javax.swing.JFrame {
     
     public ClView(Cliente cliente1) {
         initComponents();
-        setSize(925, 700);
+        setSize(825, 670);
                 setResizable(false);
                 setTitle("Sistema de Clientes");
                 setLocationRelativeTo(null);
@@ -71,19 +71,9 @@ public class ClView extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jToggleButton_cliente_Salir = new javax.swing.JToggleButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel_historial = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel_nuevaReserva = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel_cliente_menu_perfil = new javax.swing.JPanel();
-        jPanel_cancelar = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jTabbedPane_cliente = new javax.swing.JTabbedPane();
         realizaReserva_cliente = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -170,7 +160,7 @@ public class ClView extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         jTable_mesasDisponiblesMod = new javax.swing.JTable();
         jBVer = new javax.swing.JButton();
-        jButton_cliente_eliminar_reserva = new javax.swing.JButton();
+        jButton_cliente_eliminar_reserva1 = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -194,27 +184,6 @@ public class ClView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Logo");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 60));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,148 +219,7 @@ public class ClView extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 860, 40));
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
-
-        jPanel_historial.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_historial.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_historialMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_historialMouseExited(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Historial");
-
-        javax.swing.GroupLayout jPanel_historialLayout = new javax.swing.GroupLayout(jPanel_historial);
-        jPanel_historial.setLayout(jPanel_historialLayout);
-        jPanel_historialLayout.setHorizontalGroup(
-            jPanel_historialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_historialLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel_historialLayout.setVerticalGroup(
-            jPanel_historialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_historialLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel4)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        jPanel_nuevaReserva.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_nuevaReserva.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_nuevaReservaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_nuevaReservaMouseExited(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Nueva Reserva");
-
-        javax.swing.GroupLayout jPanel_nuevaReservaLayout = new javax.swing.GroupLayout(jPanel_nuevaReserva);
-        jPanel_nuevaReserva.setLayout(jPanel_nuevaReservaLayout);
-        jPanel_nuevaReservaLayout.setHorizontalGroup(
-            jPanel_nuevaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_nuevaReservaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel_nuevaReservaLayout.setVerticalGroup(
-            jPanel_nuevaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_nuevaReservaLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(16, 16, 16))
-        );
-
-        jPanel_cliente_menu_perfil.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_cliente_menu_perfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_cliente_menu_perfilMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_cliente_menu_perfilMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel_cliente_menu_perfilLayout = new javax.swing.GroupLayout(jPanel_cliente_menu_perfil);
-        jPanel_cliente_menu_perfil.setLayout(jPanel_cliente_menu_perfilLayout);
-        jPanel_cliente_menu_perfilLayout.setHorizontalGroup(
-            jPanel_cliente_menu_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
-        jPanel_cliente_menu_perfilLayout.setVerticalGroup(
-            jPanel_cliente_menu_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
-        );
-
-        jPanel_cancelar.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel_cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_cancelarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_cancelarMouseExited(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Cancelar");
-
-        javax.swing.GroupLayout jPanel_cancelarLayout = new javax.swing.GroupLayout(jPanel_cancelar);
-        jPanel_cancelar.setLayout(jPanel_cancelarLayout);
-        jPanel_cancelarLayout.setHorizontalGroup(
-            jPanel_cancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_cancelarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel_cancelarLayout.setVerticalGroup(
-            jPanel_cancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_cancelarLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(15, 15, 15))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel_nuevaReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_cliente_menu_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_historial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jPanel_historial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel_nuevaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jPanel_cliente_menu_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jPanel_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 90, 430));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 60));
 
         jTabbedPane_cliente.setBackground(new java.awt.Color(0, 102, 102));
         jTabbedPane_cliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
@@ -563,7 +391,7 @@ public class ClView extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(551, 551, 551)
                 .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
             .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                 .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
@@ -572,7 +400,7 @@ public class ClView extends javax.swing.JFrame {
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jTextFieldClienteReservanNumT, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                         .addContainerGap()
@@ -949,6 +777,13 @@ public class ClView extends javax.swing.JFrame {
             }
         });
 
+        jButton_cliente_eliminar_reserva1.setText("Eliminar");
+        jButton_cliente_eliminar_reserva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cliente_eliminar_reserva1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout historial_clienteLayout = new javax.swing.GroupLayout(historial_cliente);
         historial_cliente.setLayout(historial_clienteLayout);
         historial_clienteLayout.setHorizontalGroup(
@@ -963,11 +798,18 @@ public class ClView extends javax.swing.JFrame {
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addGroup(historial_clienteLayout.createSequentialGroup()
-                                .addComponent(jLabel34)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBoxCapMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
+                                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                                        .addComponent(jButton_cliente_modificar_reserva)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton_cliente_eliminar_reserva1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6))
+                                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                                        .addComponent(jLabel34)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBoxCapMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel11)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBoxMesaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1015,10 +857,8 @@ public class ClView extends javax.swing.JFrame {
                             .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(historial_clienteLayout.createSequentialGroup()
                                 .addComponent(jLabel32)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton_cliente_modificar_reserva)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
@@ -1039,7 +879,8 @@ public class ClView extends javax.swing.JFrame {
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32)
                             .addComponent(jButton2)
-                            .addComponent(jButton_cliente_modificar_reserva)))
+                            .addComponent(jButton_cliente_modificar_reserva)
+                            .addComponent(jButton_cliente_eliminar_reserva1)))
                     .addComponent(jLabel30))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1082,15 +923,7 @@ public class ClView extends javax.swing.JFrame {
 
         jTabbedPane_cliente.addTab("Historial", historial_cliente);
 
-        getContentPane().add(jTabbedPane_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 1410, 630));
-
-        jButton_cliente_eliminar_reserva.setText("Eliminar");
-        jButton_cliente_eliminar_reserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_cliente_eliminar_reservaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_cliente_eliminar_reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 730, 83, -1));
+        getContentPane().add(jTabbedPane_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1410, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1164,38 +997,6 @@ public class ClView extends javax.swing.JFrame {
           login.setVisible(true);
     }
     }//GEN-LAST:event_jToggleButton_cliente_SalirActionPerformed
-
-    private void jPanel_historialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_historialMouseEntered
-        jPanel_historial.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_historialMouseEntered
-
-    private void jPanel_historialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_historialMouseExited
-        jPanel_historial.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_historialMouseExited
-
-    private void jPanel_nuevaReservaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_nuevaReservaMouseEntered
-      jPanel_nuevaReserva.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_nuevaReservaMouseEntered
-
-    private void jPanel_nuevaReservaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_nuevaReservaMouseExited
-      jPanel_nuevaReserva.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_nuevaReservaMouseExited
-
-    private void jPanel_cliente_menu_perfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cliente_menu_perfilMouseEntered
-        jPanel_cliente_menu_perfil.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_cliente_menu_perfilMouseEntered
-
-    private void jPanel_cliente_menu_perfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cliente_menu_perfilMouseExited
-       jPanel_cliente_menu_perfil.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_cliente_menu_perfilMouseExited
-
-    private void jPanel_cancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cancelarMouseEntered
-         jPanel_cancelar.setBackground(new Color(0, 152, 152));
-    }//GEN-LAST:event_jPanel_cancelarMouseEntered
-
-    private void jPanel_cancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cancelarMouseExited
-         jPanel_cancelar.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_jPanel_cancelarMouseExited
 
     private void jTextField_fechaNewReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_fechaNewReservaActionPerformed
         // TODO add your handling code here:
@@ -1443,22 +1244,6 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtClientePerfilTelefonoActionPerformed
 
-    private void jButton_cliente_eliminar_reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_eliminar_reservaActionPerformed
-        reserva = reservas.get(jTable_historialCliente.getSelectedRow());
-        ReservaDAO rDAO = new ReservaDAO();
-        if(((long) (LocalDateTime.now().until(LocalDateTime.of(reserva.getFecha(), reserva.getHora()),ChronoUnit.HOURS)))  >= 24){
-                if(rDAO.eliminarReserva(reserva)){
-                    javax.swing.JOptionPane.showMessageDialog(this, "Reserva eliminada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                    this.actualizarTablaHistorial();
-                }else{
-                    javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar reserva", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                }
-        }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "No puede eliminar una reserva con menos de 24 horas de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-            }
-        
-    }//GEN-LAST:event_jButton_cliente_eliminar_reservaActionPerformed
-
     private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
         
         String auxFecha = jTxt_cliente_fecha.getText();
@@ -1532,6 +1317,21 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxHoraBuscarModActionPerformed
 
+    private void jButton_cliente_eliminar_reserva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_eliminar_reserva1ActionPerformed
+        reserva = reservas.get(jTable_historialCliente.getSelectedRow());
+        ReservaDAO rDAO = new ReservaDAO();
+        if(((long) (LocalDateTime.now().until(LocalDateTime.of(reserva.getFecha(), reserva.getHora()),ChronoUnit.HOURS)))  >= 24){
+            if(rDAO.eliminarReserva(reserva)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Reserva eliminada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                this.actualizarTablaHistorial();
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar reserva", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "No puede eliminar una reserva con menos de 24 horas de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton_cliente_eliminar_reserva1ActionPerformed
+
 
     
     
@@ -1544,7 +1344,7 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JButton jBVer;
     private javax.swing.JButton jBVerDatos;
     private javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton_cliente_eliminar_reserva;
+    public javax.swing.JButton jButton_cliente_eliminar_reserva1;
     public javax.swing.JButton jButton_cliente_modificar_reserva;
     public javax.swing.JButton jButton_cliente_perfil_actualizar;
     private javax.swing.JButton jButton_mesasBuscar;
@@ -1559,7 +1359,6 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox_horaBuscar;
     private javax.swing.JLabel jLNuevoCorreo;
     private javax.swing.JLabel jLTelefono;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1592,22 +1391,13 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel_cancelar;
-    private javax.swing.JPanel jPanel_cliente_menu_perfil;
-    private javax.swing.JPanel jPanel_historial;
-    private javax.swing.JPanel jPanel_nuevaReserva;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
