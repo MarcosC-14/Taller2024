@@ -250,7 +250,7 @@ public class ClView extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 860, 40));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 860, 60));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
