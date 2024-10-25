@@ -13,14 +13,16 @@ import java.util.ArrayList;
 public class main {
     public static void main(String[] args) {
        Inicio login = new Inicio();
-        login.setVisible(true); 
+        login.setVisible(true);
         ReservaDAO reservaDao = new ReservaDAO();
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         reservas= reservaDao.obtenerReservasPasadas();
+        
         boolean bandera= reservaDao.cobrarMulta(reservas);
         System.out.println("Cobro multa: "+bandera);
+        }
        //ClRegisterView registro = new ClRegisterView();
       // registro.setVisible(true);
-    }
-        
 }
+        
+

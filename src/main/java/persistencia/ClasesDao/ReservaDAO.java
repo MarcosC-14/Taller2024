@@ -533,11 +533,12 @@ public class ReservaDAO {
                     cobrar =(ps.executeUpdate()>0);				
                     }catch(SQLException e){
 			System.out.println(e.getMessage());
-                    }finally{
-			conn.cerrarConexion();
-                    }   
+                    } 
                     }
                     }
+                
+		conn.cerrarConexion();
+                      
 		return cobrar;
 	  } 
           
