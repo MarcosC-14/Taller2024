@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.MonthDay;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -144,10 +145,10 @@ public class AdView extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        jTextFieldVerano = new javax.swing.JTextField();
+        jTextFieldOtoño = new javax.swing.JTextField();
+        jTextFieldInvierno = new javax.swing.JTextField();
+        jTextFieldPrimavera = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -159,7 +160,7 @@ public class AdView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(204, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(204, 0, 0))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -845,11 +846,18 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel14.setBackground(new java.awt.Color(0, 102, 102));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldVerano.setEditable(false);
+        jTextFieldVerano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldVeranoActionPerformed(evt);
             }
         });
+
+        jTextFieldOtoño.setEditable(false);
+
+        jTextFieldInvierno.setEditable(false);
+
+        jTextFieldPrimavera.setEditable(false);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setText("Verano");
@@ -868,6 +876,11 @@ public class AdView extends javax.swing.JFrame {
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton8.setText("Ver");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -882,19 +895,19 @@ public class AdView extends javax.swing.JFrame {
                                 .addGroup(jPanel14Layout.createSequentialGroup()
                                     .addComponent(jLabel31)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldPrimavera, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel14Layout.createSequentialGroup()
                                     .addComponent(jLabel21)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldInvierno, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel14Layout.createSequentialGroup()
                                     .addComponent(jLabel18)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldOtoño, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel14Layout.createSequentialGroup()
                                     .addComponent(jLabel17)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextFieldVerano, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addGap(79, 79, 79)
                                 .addComponent(jButton8))))
@@ -910,19 +923,19 @@ public class AdView extends javax.swing.JFrame {
                 .addComponent(jLabel32)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldVerano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldOtoño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldInvierno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldPrimavera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8)
@@ -1350,9 +1363,9 @@ public class AdView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton_administrador_reservas_verActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldVeranoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldVeranoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldVeranoActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
@@ -1410,6 +1423,48 @@ public class AdView extends javax.swing.JFrame {
         }
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        reservas = reservaDAO.obtenerReservas();
+        
+        MonthDay verano = MonthDay.of(12,20);
+        MonthDay primavera = MonthDay.of(11,20);
+        MonthDay invierno = MonthDay.of(6,20);
+        MonthDay otoño = MonthDay.of(3,20);
+
+        
+        int cantVerano = 0;
+        int cantPrimavera = 0;
+        int cantInvierno = 0;
+        int cantOtoño = 0;
+        for(Reserva res : reservas){
+            LocalDate aux = res.getFecha();
+            MonthDay MesDiaR = MonthDay.of(aux.getMonth(),
+                    aux.getDayOfMonth());
+            if(MesDiaR.isAfter(verano)){
+                cantVerano++;
+            }else if(MesDiaR.isAfter(primavera)){
+                        cantPrimavera++;
+                        }
+            else if(MesDiaR.isAfter(invierno)){
+                        cantInvierno++;
+                        }
+            else if(MesDiaR.isAfter(otoño)){
+                        cantOtoño++;
+                        }
+            else{
+                cantVerano++;
+            }
+        }
+        
+        this.jTextFieldVerano.setText(String.valueOf(cantVerano));
+        this.jTextFieldOtoño.setText(String.valueOf(cantOtoño));
+        this.jTextFieldInvierno.setText(String.valueOf(cantInvierno));
+        this.jTextFieldPrimavera.setText(String.valueOf(cantPrimavera));
+        
+        
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
 
 
 
@@ -1488,10 +1543,10 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JTable jTable_clientesAdmin;
     public javax.swing.JTable jTable_empleadosAdmin;
     public javax.swing.JTable jTable_mesasAdmin;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextFieldInvierno;
+    private javax.swing.JTextField jTextFieldOtoño;
+    private javax.swing.JTextField jTextFieldPrimavera;
+    private javax.swing.JTextField jTextFieldVerano;
     private javax.swing.JPasswordField jTextField_administrador_empleado_contrasenia;
     public javax.swing.JTextField jTextField_administrador_empleado_correo;
     public javax.swing.JTextField jTextField_administrador_empleado_nombre;
