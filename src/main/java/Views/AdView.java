@@ -1466,29 +1466,43 @@ public class AdView extends javax.swing.JFrame {
     private void jBReservasFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFechaActionPerformed
         
         if(verificarCliente()){
-            
-            actualizarTablaReservasCliente();
-        }
-        String auxFechaI = jTxtFechaInicial.getText();
-        String auxFechaF = jTxtFechaFinal.getText();
-        if(!ClienteController.esFormatoFechaValido(auxFechaI)
-                | !ClienteController.esFormatoFechaValido(auxFechaF)){
-            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
-        }else{
-            try{
-             fechaInicial = LocalDate.parse(auxFechaI, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-             fechaFinal = LocalDate.parse(auxFechaI, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            }catch(java.time.format.DateTimeParseException e){
-                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas válidas", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
+            String auxFechaI = jTxtFechaInicial.getText();
+            String auxFechaF = jTxtFechaFinal.getText();
+            if(!ClienteController.esFormatoFechaValido(auxFechaI)
+                    | !ClienteController.esFormatoFechaValido(auxFechaF)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+            }else{
+                try{
+                 fechaInicial = LocalDate.parse(auxFechaI, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                 fechaFinal = LocalDate.parse(auxFechaF, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                }catch(java.time.format.DateTimeParseException e){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Ingrese fechas válidas", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                if(fechaInicial.isAfter(fechaFinal)){
+                    javax.swing.JOptionPane.showMessageDialog(this, "La fecha inicial no puede ser mayor a la fecha final", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }else{
+
+
+                    reservas = reservaDAO.obtenerReservasHistorial(cliente);
+
+                    for(int i = 0; i < reservas.size();i++){
+                            Reserva res = reservas.get(i);
+                            if(res.getFecha().isBefore(fechaInicial) 
+                                    || res.getFecha().isAfter(fechaFinal)){
+                                reservas.remove(res);
+                                i--;
+                            }
+                }
+                actualizarTablaReservasCliente();
+
+                }
             }
-            
-            if(fechaInicial.isAfter(fechaFinal)){
-                javax.swing.JOptionPane.showMessageDialog(this, "La fecha inicial no puede ser mayor a la fecha final", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
-            }
         }
+        
+        
         
         
         
