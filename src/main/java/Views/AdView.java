@@ -47,7 +47,7 @@ public class AdView extends javax.swing.JFrame {
         setTitle("Panel de administracion");
         setLocationRelativeTo(null);
         this.administrador = administrador;
-        tabla = (DefaultTableModel) jTReporteReservas.getModel();
+        tabla = (DefaultTableModel) jTableReporteReservas.getModel();
                 
     }
  /**
@@ -1706,7 +1706,6 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTReporteReservas;
     public javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTableReporteReservas;
     public javax.swing.JTable jTable_bloqueoMesas;
