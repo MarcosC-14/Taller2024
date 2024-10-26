@@ -7,10 +7,11 @@ package modelo;
 import java.util.ArrayList;
 
 /**
- * Clase cliente que hereda atributos y metodos de la clase Persona, ademas de
- * aplicar los propios.
+ * Clase cliente que hereda de Persona, contiene sus constructores por defecto y
+ * parametrizados, ademas de los metodos necesarios para obtener y guardar los datos
+ * de los atributos.
  *
- * @author Marcos Ramon Caraballo
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Ian Franco Caraballo, Valentin Rebechi.
  * @version 27/10/2024
  */
 public class Cliente extends Persona {
@@ -20,7 +21,7 @@ public class Cliente extends Persona {
     private ArrayList<Reserva> reservas;
 
     /**
-     * Constructor predeterminado de Cliente
+     * Constructor por defecto de Cliente
      */
     public Cliente() {
         super();
@@ -29,33 +30,18 @@ public class Cliente extends Persona {
     }
 
     /**
-     * Constructor por defecto de Cliente
+     * Devuelve el id del cliente.
      *
-     * @param n Es el nombre del cliente
-     * @param c Es el correo del cliente
-     * @param cn Es la contrasenia del cliente
-     * @param tel Es el telefono del cliente
-     */
-    public Cliente(int id, String n, String c, String cn, String tel, ArrayList<Reserva> reservas) {
-        super(n, c, cn);
-        this.id = id;
-        this.telefono = tel;
-        this.reservas = reservas;
-    }
-
-    /**
-     * Retorno del id del cliente
-     *
-     * @return codigo del cliente
+     * @return  numero de identificacion del cliente
      */
     public int getId() {
         return id;
     }
 
     /**
-     * metodo Setter del Id
+     * Metodo Setter del Id
      *
-     * @param id es el codigo de cliente
+     * @param   id es el numero de identificacion del cliente
      */
     public void setId(int id) {
         this.id = id;
@@ -83,7 +69,7 @@ public class Cliente extends Persona {
     /**
      * Método getter del atributo telefono
      *
-     * @return Devuelve el telefono almacenado
+     * @return  devuelve el telefono almacenado
      */
     public String getTelefono() {
         return telefono;
@@ -92,7 +78,7 @@ public class Cliente extends Persona {
     /**
      * Método setter del atributo telefono
      *
-     * @param telefono Se guardará el String ingresado por parámetro en telefono
+     * @param   telefono representa un numero de telefono
      */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
@@ -111,20 +97,10 @@ public class Cliente extends Persona {
     }
 
     /**
-     * Método para que el usuario inicie sesión en el sistema
-     *
-     * @param con Representa la contraseña ingresada
-     * @param correo Representa el correo ingresado
-     */
-    public void iniciarSesion(String con, String correo) {
-
-    }
-
-    /**
      * Método para actualizar los atributos del cliente
      *
-     * @param cor Correo
-     * @param tel Telefono
+     * @param   correo representa el correo de un cliente.
+     * @param   telefono representa el telefono de un cliente.
      */
     public void actualizarInformacion(String correo, String telefono) {
         this.setCorreo(correo);

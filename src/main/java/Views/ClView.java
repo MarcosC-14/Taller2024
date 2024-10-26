@@ -1269,10 +1269,13 @@ public class ClView extends javax.swing.JFrame {
         // Llamar al método actualizarInformacion del objeto clienteDAO
         boolean resultadoC=false;
         boolean resultadoT=false;
-
+        
+        
         if(!(telefonoIngresado.isEmpty())){
             resultadoT= cliente.actualizarTelefono(idCliente, telefonoIngresado);
+            
             if(resultadoT){
+                cliente1.actualizarInformacion(cliente1.getCorreo(), telefonoIngresado);
                 javax.swing.JOptionPane.showMessageDialog(this, "Telefono actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el telefono.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
@@ -1282,6 +1285,7 @@ public class ClView extends javax.swing.JFrame {
             
             resultadoC = cliente.actualizarCorreo(idCliente, correoIngresado);
             if(resultadoC){
+                cliente1.actualizarInformacion(correoIngresado, cliente1.getTelefono());
                 javax.swing.JOptionPane.showMessageDialog(this, "Correo actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el correo.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);

@@ -12,6 +12,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -45,14 +46,18 @@ public class CrearExcel {
 
         row.createCell(0).setCellValue(reservas.get(i).getMesa().getNumero());
 
-        row.createCell(1).setCellValue(reservas.get(i).getFecha());
+        row.createCell(1).setCellValue(reservas.get(i).getFecha().
+                format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
         row.createCell(2).setCellValue(reservas.get(i).getHora().getHour());
         
-        row.createCell(3).setCellValue(reservas.get(i).getAsistencia());
-        
+        if(!(reservas.get(i).getTiempoOcupacion()==null)){
+            row.createCell(3).setCellValue(reservas.get(i).getTiempoOcupacion().
+                format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        }
         if(!(reservas.get(i).getTiempoFinalizacion()==null)){
-          row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().getHour());  
+          row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion()
+                  .format(DateTimeFormatter.ofPattern("HH:mm:ss")));  
         }
         
         
