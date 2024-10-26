@@ -13,6 +13,7 @@ import persistencia.SQLiteManager;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import modelo.AgendaRestaurante;
 import modelo.BloqueoMesaEventoEspecial;
 
 /**
@@ -244,6 +245,48 @@ public class EmpleadoDAO {
         } 
         return eliminado;
     }
+
+    public boolean definirHoraAperturaCierre(LocalTime horaAp, LocalTime horaCi) {
+        boolean modificado=false;
+         Connection con = conn.getConexion();
+         ResultSet rs;
+         PreparedStatement ps;
+         String sql ="UPDATE agenda_restaurante SET hora_apertura = ?, "
+                 + " hora_cierre = ? WHERE id = 1";
+         try{
+             ps=con.prepareStatement(sql);
+             ps.setString(1, horaAp.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+             ps.setString(2, horaCi.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+             modificado=(ps.executeUpdate()>0);
+         }catch(SQLException e){
+             System.out.println(e.getMessage());
+         }finally{
+             conn.cerrarConexion();
+         }
+         return modificado;
+    }
+    
+    public AgendaRestaurante obtenerHoraAperturaCierre(){
+        String sql="SELECT * FROM agenda_restaurante WHERE id = 1";
+        AgendaRestaurante aR = new AgendaRestaurante();
+        con= conn.getConexion();
+        try{
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                
+                aR.setHoraApertura(LocalTime.parse(rs.getString("hora_apertura")
+                        ,DateTimeFormatter.ofPattern("HH:mm:ss")));
+                aR.setHoraCierre(LocalTime.parse(rs.getString("hora_cierre")
+                        ,DateTimeFormatter.ofPattern("HH:mm:ss")));
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+             conn.cerrarConexion();
+        } 
+        return aR;
+     }
         
 }
     

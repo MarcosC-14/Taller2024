@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import modelo.Administrador;
+import modelo.AgendaRestaurante;
 import modelo.BloqueoMesaEventoEspecial;
 import modelo.Cliente;
 import modelo.CreadorPdf;
@@ -56,6 +57,7 @@ public class AdView extends javax.swing.JFrame {
     private LocalDate fechaFinal;
     private String tituloPdfReservas; 
     private String tituloPdfClientes; 
+    private AgendaRestaurante agendaR;
     
 
     /**
@@ -70,6 +72,8 @@ public class AdView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.administrador = administrador;
         tabla = (DefaultTableModel) jTableReporteReservas.getModel();
+        agendaR = empleadoDAO.obtenerHoraAperturaCierre();
+        mostrarHorarioAperturaCierre();
 
     }
 
@@ -151,6 +155,11 @@ public class AdView extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabelHoraCierre = new javax.swing.JLabel();
+        jLabelHoraApertura = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jComboBoxHoraApertura = new javax.swing.JComboBox<>();
+        jComboBoxHoraCierre = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -626,6 +635,11 @@ public class AdView extends javax.swing.JFrame {
         jLabel6.setText("Mesa");
 
         jComboBoxMesas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBoxMesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMesasActionPerformed(evt);
+            }
+        });
 
         jButtonVerBloqueMesaEvento.setText("Ver");
         jButtonVerBloqueMesaEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -833,16 +847,64 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
+        jLabelHoraCierre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelHoraCierre.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelHoraCierre.setText("Hora de Cierre:");
+
+        jLabelHoraApertura.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelHoraApertura.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelHoraApertura.setText("Hora de apertura:");
+
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton5.setText("Modificar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jComboBoxHoraApertura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jComboBoxHoraApertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+
+        jComboBoxHoraCierre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jComboBoxHoraCierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBoxHoraApertura, jComboBoxHoraCierre, jLabelHoraApertura});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBoxHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBoxHoraApertura, jComboBoxHoraCierre, jLabelHoraApertura, jLabelHoraCierre});
 
         jTabbedPane2.addTab("Apertura y Cierre", jPanel2);
 
@@ -860,12 +922,12 @@ public class AdView extends javax.swing.JFrame {
 
     private void actualizarTablaBloqueoMesaEvento() {
 
-        bmes = empleadoDAO.obtenerBloqueosMesasEventosEspeciales();
+        agendaR.setFechasEspecial(empleadoDAO.obtenerBloqueosMesasEventosEspeciales());
 
         DefaultTableModel model = (DefaultTableModel) jTable_bloqueoMesas.getModel();
         model.setRowCount(0); //Elimina las filas existentes;
 
-        for (BloqueoMesaEventoEspecial b : bmes) {
+        for (BloqueoMesaEventoEspecial b : agendaR.getFechasEspecial()) {
             String horaInicio;
             if (b.getHoraInicio() == null) {
                 horaInicio = "";
@@ -1028,7 +1090,7 @@ public class AdView extends javax.swing.JFrame {
      * @param evt es evento de apretar el boton eliminar
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        bme = bmes.get(jTable_bloqueoMesas.getSelectedRow());
+        bme = agendaR.getFechasEspecial().get(jTable_bloqueoMesas.getSelectedRow());
         /**
          * Se envia un mensaje al usuario, de confirmacion si el bloqueo se
          * elimina correctamente o de error en caso contrario
@@ -1061,7 +1123,7 @@ public class AdView extends javax.swing.JFrame {
     private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
         BloqueoMesaEventoEspecial b = new BloqueoMesaEventoEspecial();
         String auxFecha = jTextField_fechaEvento.getText();
-
+        
         LocalDate fechaBloqueoEvento;
         if (ClienteController.esFormatoFechaValido(auxFecha)) {
             try {
@@ -1459,6 +1521,97 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonExportarClientesActionPerformed
 
+    private void mostrarHorarioAperturaCierre(){
+        System.out.println(agendaR.getHoraApertura());
+        System.out.println(agendaR.getHoraCierre());
+        switch(agendaR.getHoraApertura().format(DateTimeFormatter.ofPattern("HH:mm:ss"))){
+            case "12:00:00":
+                jComboBoxHoraApertura.setSelectedIndex(0);
+                break;
+            case "14:00:00":
+                jComboBoxHoraApertura.setSelectedIndex(1);
+                break;
+            case "16:00:00":
+                jComboBoxHoraApertura.setSelectedIndex(2);
+                break;
+            case "18:00:00":
+                jComboBoxHoraApertura.setSelectedIndex(3);
+                break;
+            case "20:00:00":
+                jComboBoxHoraApertura.setSelectedIndex(4);
+                break;
+            case "22:00:00":
+                jComboBoxHoraApertura.setSelectedIndex(5);
+                break;
+            case "23:59:59":
+                jComboBoxHoraApertura.setSelectedIndex(6);
+                break;
+                
+        }
+        switch(agendaR.getHoraCierre().format(DateTimeFormatter.ofPattern("HH:mm:ss"))){
+            case "12:00:00":
+                jComboBoxHoraCierre.setSelectedIndex(0);
+                break;
+            case "14:00:00":
+                jComboBoxHoraCierre.setSelectedIndex(1);
+                break;
+            case "16:00:00":
+                jComboBoxHoraCierre.setSelectedIndex(2);
+                break;
+            case "18:00:00":
+                jComboBoxHoraCierre.setSelectedIndex(3);
+                break;
+            case "20:00:00":
+                jComboBoxHoraCierre.setSelectedIndex(4);
+                break;
+            case "22:00:00":
+                jComboBoxHoraCierre.setSelectedIndex(5);
+                break;
+            case "23:59:59":
+                jComboBoxHoraCierre.setSelectedIndex(6);
+                break;
+                
+        }
+    }
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String auxHoraAp = jComboBoxHoraApertura.getSelectedItem().toString()+":00:00";
+        String auxHoraCi = jComboBoxHoraCierre.getSelectedItem().toString()+":00:00";
+        if(auxHoraCi.equals("00:00:00")){
+            auxHoraCi = "23:59:59";
+        }
+        LocalTime horaAp = LocalTime.parse(auxHoraAp
+            ,DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime horaCi = LocalTime.parse(auxHoraCi
+            ,DateTimeFormatter.ofPattern("HH:mm:ss"));
+         if (horaAp.isAfter(horaCi) || horaAp.equals(horaCi)){
+            javax.swing.JOptionPane.showMessageDialog(this, "La fecha inicial no puede ser mayor o igual a la fecha final", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+         }else{
+             
+             if(empleadoDAO.definirHoraAperturaCierre(horaAp,horaCi)){
+                 javax.swing.JOptionPane.showMessageDialog(this, "Horario modificado con éxito", "Advertencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                 agendaR.setHoraApertura(horaAp);
+                 agendaR.setHoraCierre(horaCi);
+                 mostrarHorarioAperturaCierre();
+             }else{
+                 javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un problema", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+             }
+         }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jComboBoxMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesasActionPerformed
+        // TODO add your handling code here:
+        if(!jComboBoxMesas.getSelectedItem().toString().equals("Todas")){
+            jComboBoxHoraInicio.setSelectedIndex(0);
+            jComboBoxHoraFin.setSelectedIndex(5);
+            jComboBoxHoraInicio.setEnabled(false);
+            jComboBoxHoraFin.setEnabled(false);
+        }else{
+            
+            jComboBoxHoraInicio.setEnabled(true);
+            jComboBoxHoraFin.setEnabled(true);
+        }
+    }//GEN-LAST:event_jComboBoxMesasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBReservasFecha;
@@ -1468,6 +1621,7 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonExportarClientes;
@@ -1476,6 +1630,8 @@ public class AdView extends javax.swing.JFrame {
     public javax.swing.JButton jButton_Administrador_salir;
     public javax.swing.JButton jButton_administrador_empleado_agregar;
     private javax.swing.JButton jButton_bloqueoMesas;
+    private javax.swing.JComboBox<String> jComboBoxHoraApertura;
+    private javax.swing.JComboBox<String> jComboBoxHoraCierre;
     private javax.swing.JComboBox<String> jComboBoxHoraFin;
     private javax.swing.JComboBox<String> jComboBoxHoraInicio;
     private javax.swing.JComboBox<String> jComboBoxMesas;
@@ -1499,6 +1655,8 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelHoraApertura;
+    private javax.swing.JLabel jLabelHoraCierre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;

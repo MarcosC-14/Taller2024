@@ -114,7 +114,6 @@ public class MensajeReserva extends javax.swing.JFrame {
         jTxtFecha.setEditable(false);
 
         jTxtHora.setEditable(false);
-        jTxtHora.setForeground(new java.awt.Color(255, 255, 255));
 
         jTxtNumeroMesa.setEditable(false);
 

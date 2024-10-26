@@ -26,6 +26,8 @@ import modelo.Reserva;
 import modelo.Tarjeta;
 import modelo.Ubicacion;
 import Views.MensajeReserva;
+import modelo.AgendaRestaurante;
+import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
  *
@@ -45,6 +47,7 @@ public class ClView extends javax.swing.JFrame {
     Cliente cliente1;
     Tarjeta tarjeta = new Tarjeta();
     Reserva reserva = new Reserva();
+    AgendaRestaurante agendaR = new AgendaRestaurante();
     
     
     
@@ -686,7 +689,7 @@ public class ClView extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Buscar");
+        jButton2.setText("Ver");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -926,7 +929,7 @@ public class ClView extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addGap(444, 444, 444)
                         .addComponent(jLabel4)))
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         historial_clienteLayout.setVerticalGroup(
             historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1054,8 +1057,13 @@ public class ClView extends javax.swing.JFrame {
         String filtroCap =(String)(jComboBoxClienteReservaCapacidad.getSelectedItem());
         
         for(Mesa m : mesas){
-            String disponible = reservaDAO.mesaDisponible(m.getNumero(),
-                    fechaBuscar,horaBuscar)? "Sí":"No";
+            String disponible = "No";
+            agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
+            if(reservaDAO.mesaDisponible(m.getNumero(),fechaBuscar,horaBuscar) 
+                    && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
+                    && horaBuscar.isBefore(agendaR.getHoraCierre())){
+                disponible = "Sí";
+            }
             if(filtroUbi.equals("Cualquiera") || filtroUbi.equals(String.valueOf(m.getUbicacion()))){
                 if(filtroCap.equals("Cualquiera") || filtroCap.equals(String.valueOf(m.getCapacidad())))
                     model.addRow(new Object[]{
@@ -1165,19 +1173,23 @@ public class ClView extends javax.swing.JFrame {
         tarjeta.setCodSeguridad(this.jTextFieldClienteReservaCodSeg.getText());
         
         reserva.setTarjeta(tarjeta);
-
-        if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)){
+        agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
+        if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar) 
+                && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
+                && horaBuscar.isBefore(agendaR.getHoraCierre())){
             boolean reservaHecha=rDAO.realizarReserva(reserva);
             //si no existe el numero de tarjeta debe guardar la tarjeta
             if(reservaHecha){
                 
             tarjetaR.guardarTarjeta(tarjeta);
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            
+            this.actualizarTablaMesas(jTable_mesasDisponibles);
             MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, numM, mesaR.getCapacidad(), mesaR.getUbicacion(), tarjeta.getNumero(), reserva.getComentario(), this);
             this.setVisible(false);
             }
-        }
+        }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "La mesa no se encuentra disponible en la fecha y hora ingresada.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
         
         
         
@@ -1350,14 +1362,16 @@ public class ClView extends javax.swing.JFrame {
                 }
         }
     
-
-        if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)){
+        agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
+        if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)
+                && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
+                && horaBuscar.isBefore(agendaR.getHoraCierre())){
             if(rDAO.modificarReserva(reserva)){
-                javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo realizar la reserva.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "Reserva modificada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }
-        }
+        }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "La mesa no se encuentra disponible", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
         actualizarTablaMesas(jTable_mesasDisponibles);
         this.actualizarTablaHistorial();
     }//GEN-LAST:event_jButton_cliente_modificar_reservaActionPerformed
@@ -1389,7 +1403,6 @@ public class ClView extends javax.swing.JFrame {
                 auxHora += ":00:00";
                 horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
             }else{
-                System.out.println(reserva.getHora());
                 if(reserva.getHora() == null){
                     if(reservas != null){
                         if(jTable_historialCliente.getSelectedRow() != -1){
@@ -1398,12 +1411,10 @@ public class ClView extends javax.swing.JFrame {
                             System.out.println(horaBuscar);
                             System.out.println("Ayuda");
                         }else{
-                            System.out.println("error1");
                             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                     }else{
-                        System.out.println("error2");
                         javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
                         return;
                     }
