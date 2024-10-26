@@ -31,6 +31,8 @@ public class Inicio extends javax.swing.JFrame {
         setResizable(false);
         LoginControl cliente_login = new LoginControl(cliente, cliente_dao);
         cliente_login.setInicio(this);
+        setLocationRelativeTo(null);
+
     }
 
     /**
