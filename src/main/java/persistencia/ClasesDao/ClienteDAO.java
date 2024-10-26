@@ -150,12 +150,9 @@ public class ClienteDAO{
          try{
              con = conn.getConexion(); //asegura que estas conectado
              ps=con.prepareStatement(buscaId);
-             System.out.println("Hola");
              ps.setInt(1, id);
              rs=ps.executeQuery();
-             System.out.println("Hola2");
              if(rs.next()){    
-                 System.out.println("Hola3");
                  if(ClienteController.esCorreoElectronicoValido(correoNuevo)){
                      System.out.println("Hola2");
                         ps=con.prepareStatement(correoBuscar);
@@ -176,7 +173,7 @@ public class ClienteDAO{
              
          }catch(SQLException e){
              JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
-             System.out.println(e);
+             System.out.println(e.getMessage());
          }finally {
             conn.cerrarConexion();
         }

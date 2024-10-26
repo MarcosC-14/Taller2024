@@ -34,7 +34,6 @@ public class TarjetaDAO {
     public boolean guardarTarjeta(Tarjeta tarjeta){
         boolean realizado=false;
         con= conn.getConexion();
-        ResultSet rs;
         String sql= "INSERT into tarjeta (nombre, emisor, numero, cod_seguridad) VALUES (?,?,?,?)";
         try{
             ps = con.prepareStatement(sql);
@@ -51,7 +50,29 @@ public class TarjetaDAO {
         return realizado;
     
     }
-    
+    /**
+     * Se encarga de revisar si un numero de tarjeta esta en la base de datos.
+     * @return  true en caso de que encuentre el numero de la tarjeta, false si 
+     * no lo encontro.
+     */
+    public boolean existeTarjeta(String numeroTarjeta){
+        boolean bandera= false;
+        String buscarNumTarjeta = "SELECT * FROM tarjeta WHERE numero = ?";
+        con = conn.getConexion();
+        try{
+            ps=con.prepareStatement(buscarNumTarjeta);
+            ps.setString(1,numeroTarjeta);
+            rs=ps.executeQuery();
+            if(rs.next()){    
+                bandera=true;
+            }
+        }catch(SQLException e){
+             System.out.println("Error buscar tarjeta: "+e.getMessage());
+         }finally {
+            conn.cerrarConexion();
+        }
+        return bandera;
+    }
     
     
     

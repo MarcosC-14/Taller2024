@@ -1167,12 +1167,16 @@ public class ClView extends javax.swing.JFrame {
         reserva.setTarjeta(tarjeta);
 
         if(rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)){
-            rDAO.realizarReserva(reserva);
+            boolean reservaHecha=rDAO.realizarReserva(reserva);
+            //si no existe el numero de tarjeta debe guardar la tarjeta
+            if(reservaHecha){
+                
             tarjetaR.guardarTarjeta(tarjeta);
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
             MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, numM, mesaR.getCapacidad(), mesaR.getUbicacion(), tarjeta.getNumero(), reserva.getComentario(), this);
             this.setVisible(false);
+            }
         }
         
         
