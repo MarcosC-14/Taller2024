@@ -194,7 +194,7 @@ public class ClView extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Restaurante Floripa");
+        jLabel2.setText("Delicias Gourmet");
 
         jToggleButton_cliente_Salir.setText("Salir");
         jToggleButton_cliente_Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +210,7 @@ public class ClView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 484, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 751, Short.MAX_VALUE)
                 .addComponent(jToggleButton_cliente_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -224,7 +224,7 @@ public class ClView extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 60));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 60));
 
         jTabbedPane_cliente.setBackground(new java.awt.Color(0, 102, 102));
         jTabbedPane_cliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));

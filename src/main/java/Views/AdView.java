@@ -162,7 +162,7 @@ public class AdView extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Restaurante Floripa");
+        jLabel1.setText("Delicias Gourmet");
 
         jButton_Administrador_salir.setText("Salir");
         jButton_Administrador_salir.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class AdView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 463, Short.MAX_VALUE)
                 .addComponent(jButton_Administrador_salir)
                 .addGap(71, 71, 71))
         );

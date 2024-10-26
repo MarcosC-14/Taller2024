@@ -64,7 +64,7 @@ public class EpView extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Restaurante Floripa");
+        jLabel2.setText("Delicias Gourmet");
 
         jToggleButton_empleado_salir.setText("Salir");
         jToggleButton_empleado_salir.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +80,7 @@ public class EpView extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 622, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 649, Short.MAX_VALUE)
                 .addComponent(jToggleButton_empleado_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -97,7 +97,7 @@ public class EpView extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 102, 102));
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(0, 120, 120));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Mesa"));
