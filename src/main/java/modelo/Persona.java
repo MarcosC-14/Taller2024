@@ -5,19 +5,17 @@
 package modelo;
 
 /**
- * Esta clase abstracta representa a una persona. Sirve para dar base a las
- * clases Empleado y cliente
+ * Esta clase abstracta representa a una persona. 
+ * Tiene un constructor por defecto y otro parametrizado, los getters y setters 
+ * de cada atributo y un metodo toString de todos los atributos.
  *
- * @author Ian Caraballo,Valentin Rebechi
- * @version 20/10/2027
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Ian Franco Caraballo, Valentin Rebechi.
+ * @version 27/10/2024
  */
 abstract public class Persona {
 
-    //atributo que representa el nombre y apellido de una persona
     private String nombre;
-    //atributo que representa el correo electronico de una persona
     private String correo;
-    //atributo que representa la contraseña de una persona
     private String contrasenia;
 
     /**
@@ -32,10 +30,10 @@ abstract public class Persona {
     /**
      * Constructor parametrizado de la clase Persona
      *
-     * @param nombre indica el nombre y apellido de la persona
-     * @param correo indica el correo electronico de la persona
-     * @param contrasenia indica la contrasenia que tiene la persona El
-     * constructor solo permite correos electronicos que tengan @
+     * @param   nombre indica el nombre y apellido de la persona.
+     * @param   correo indica el correo electronico de la persona.
+     * @param   contrasenia indica la contrasenia que tiene la persona. Llama al 
+     * metodo SetCorreo para controlar que el correo tenga @.
      */
     public Persona(String nombre, String correo, String contrasenia) {
         this.nombre = nombre;
@@ -44,59 +42,59 @@ abstract public class Persona {
     }
 
     /**
-     *Metodo getter de nombre
-     * @return nombre de la persona
+     * Metodo getter de nombre.
+     * @return  nombre de la persona.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     *Metodo Setter de persona
-     * @param nombre de la persona
+     * Metodo Setter de persona.
+     * @param   nombre de la persona.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * Metodo Getter de correo
-     * @return correo de persona
+     * Metodo Getter de correo.
+     * @return  correo de persona.
      */
     public String getCorreo() {
         return correo;
     }
 
     /**
-     * Metodo Setter de correo
+     * Metodo Setter de correo.
      *
-     * @param correo de la persona
+     * @param   correo de la person.a
      */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
     /**
-     *Metodo Getter de contrasenia
-     * @return contrasenia de persona
+     * Metodo Getter de contrasenia.
+     * @return  contrasenia de persona.
      */
     public String getContrasenia() {
         return contrasenia;
     }
 
     /**
-     * Metodo Setter de contrasenia
+     * Metodo Setter de contrasenia.
      *
-     * @param contrasenia de la persona
+     * @param   contrasenia de la persona.
      */
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
 
     /**
-     * Metodo toString que retorna los datos de la persona
+     * Metodo toString que retorna los datos de la persona.
      *
-     * @return cadena con los datos de la persona
+     * @return  cadena de texto con los datos de la persona.
      */
     @Override
     public String toString() {
