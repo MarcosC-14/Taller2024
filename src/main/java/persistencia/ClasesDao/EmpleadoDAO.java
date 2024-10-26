@@ -154,12 +154,9 @@ public class EmpleadoDAO {
      }
     
     /**
-     *guardar en la base de datos las mesas bloqueadas o en evento especial
-     * @param   numMesa representa el numero de mesa. 
-     * @param   fecha representa la fecha en la que se bloque.   
-     * @param   horaInicio representa la hora de inicio del bloqueo o evento especial.
-     * @param  horaFin representa la hora en la que finaliza el bloque o evento 
-     * especial
+     * Guardar en la base de datos la mesa bloqueada o un evento especial
+     * dependiendo los datos ingresados
+     * @param   b representa el bloque o evento que se guardará en la base de datos
      * @return true si se pudo bloquear, false en caso de que no se pueda
      */
     public boolean bloquearMesaEventoEspecial(BloqueoMesaEventoEspecial b) {
@@ -192,7 +189,10 @@ public class EmpleadoDAO {
         }
         return bloqueo; 
     }
-    
+    /**
+     * Obtiene el listado de bloqueos y eventos especiales de la base de datos
+     * @return ArrayList de todos los bloqueos y eventos
+     */
     public ArrayList<BloqueoMesaEventoEspecial> obtenerBloqueosMesasEventosEspeciales() {
         Connection con = conn.getConexion();
         ResultSet rs;
@@ -229,7 +229,11 @@ public class EmpleadoDAO {
         }
         return bs;
     }
-
+    /**
+     * Elimina un bloqueo de mesa o evento especial de la base de datos
+     * @param bme representa el bloqueo o evento a eliminar
+     * @return true si se pudo eliminar, falso si no se pudo eliminar
+     */
     public boolean eliminarBloqueoEvento(BloqueoMesaEventoEspecial bme) {
         boolean eliminado = false;
          con = conn.getConexion();
@@ -246,6 +250,13 @@ public class EmpleadoDAO {
         return eliminado;
     }
 
+    /**
+     * Guarda en la base de datos la hora de apertura y la hora de cierre
+     * definidas por un administrador
+     * @param horaAp    representa la hora de apertura
+     * @param horaCi    representa la hora de cierre
+     * @return  true si se pudo guardar, false si no se pudo guardar
+     */
     public boolean definirHoraAperturaCierre(LocalTime horaAp, LocalTime horaCi) {
         boolean modificado=false;
          Connection con = conn.getConexion();
@@ -265,7 +276,12 @@ public class EmpleadoDAO {
          }
          return modificado;
     }
-    
+    /**
+     * Obtiene un objeto AgendaRestaurante con la hora de apertura
+     * y la hora de cierre como atributos
+     * @return un objeto AgendaRestaurante con los datos guardados en 
+     * la base de datos
+     */
     public AgendaRestaurante obtenerHoraAperturaCierre(){
         String sql="SELECT * FROM agenda_restaurante WHERE id = 1";
         AgendaRestaurante aR = new AgendaRestaurante();

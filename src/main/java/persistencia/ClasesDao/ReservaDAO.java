@@ -557,7 +557,13 @@ public class ReservaDAO {
 		return cobrar;
 	  } 
           
-          
+          /**
+           * Cuenta todas las asistencias en la base de datos
+           * de un cliente pasado por parámetro
+           * @param cliente representa el cliente al que se contarán
+           * sus asistencias
+           * @return    un entero que representa la cantidad de asistencias
+           */
           public int cantidadAsistencias(Cliente cliente){
               Connection con = conn.getConexion();
               ResultSet rs;

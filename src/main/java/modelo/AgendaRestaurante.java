@@ -9,10 +9,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
- * la clase AgendaRestaurtante se encarga del almacenamiento de las fechas
- * especiales, horarios y reservas
- *
- * @author Ian Caraballo
+ * la clase AgendaRestaurtante se encarga del almacenamiento de
+ * la hora de apertura y cierre, fechas especiales, horarios y reservas
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Ian Caraballo, Valentin Rebechi
  */
 public class AgendaRestaurante {
 
