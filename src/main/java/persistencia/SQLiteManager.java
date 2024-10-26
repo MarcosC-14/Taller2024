@@ -32,7 +32,6 @@ public class SQLiteManager {
 
                 // Conecta a la base de datos
                 connection = DriverManager.getConnection(url);
-                System.out.println("Conexión exitosa a la base de datos SQLite.");
             } catch (SQLException e) {
                 System.err.println("Error de conexión: " + e.getMessage());
             }
@@ -47,7 +46,6 @@ public class SQLiteManager {
         try {
             if (connection != null) {
                 connection.close();
-                System.out.println("Conexión cerrada.");
             }
         } catch (SQLException e) {
             System.err.println("Error al cerrar la conexión: " + e.getMessage());

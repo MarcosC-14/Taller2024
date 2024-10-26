@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Administrador;
 import modelo.BloqueoMesaEventoEspecial;
 import modelo.Cliente;
+import modelo.CreadorPdf;
 import modelo.Empleado;
 import modelo.Reserva;
 import modelo.Rol;
@@ -50,8 +51,12 @@ public class AdView extends javax.swing.JFrame {
     ArrayList<BloqueoMesaEventoEspecial> bmes = new ArrayList<BloqueoMesaEventoEspecial>();
     BloqueoMesaEventoEspecial bme;
     ArrayList<Reserva> reservas;
+    ArrayList<Cliente> clientes;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
+    private String tituloPdfReservas; 
+    private String tituloPdfClientes; 
+    
 
     /**
      * Creates new form AdView
@@ -100,6 +105,7 @@ public class AdView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButtonExportarClientes = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -139,6 +145,7 @@ public class AdView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel_eventosEspeciales = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -213,6 +220,11 @@ public class AdView extends javax.swing.JFrame {
         jTabbedPane2.setBackground(new java.awt.Color(0, 102, 102));
         jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Administrador"));
         jTabbedPane2.setForeground(new java.awt.Color(0, 0, 0));
+        jTabbedPane2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                jTabbedPane2ComponentMoved(evt);
+            }
+        });
         jTabbedPane2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTabbedPane2KeyPressed(evt);
@@ -339,6 +351,14 @@ public class AdView extends javax.swing.JFrame {
             }
         });
         jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+
+        jButtonExportarClientes.setText("Exportar a PDF");
+        jButtonExportarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportarClientesActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButtonExportarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
         jTabbedPane2.addTab("Reporte Clientes", jPanel5);
 
@@ -558,7 +578,7 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jButton_administrador_empleado_agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -647,44 +667,56 @@ public class AdView extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Final");
 
+        jButton4.setText("Exportar a PDF");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBTodasLasReservas)
-                            .addComponent(jBReservasFuturas)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16))
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel8))
+                                .addGap(47, 47, 47)
+                                .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(104, 104, 104)
+                                .addComponent(jLabel7))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(73, 73, 73)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jBTodasLasReservas)
+                                    .addComponent(jBReservasFuturas)))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jBReservasFecha)))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                                .addGap(57, 57, 57)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16))
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(jLabel8))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTxtFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTxtFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jBReservasFecha))))))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jButton4)))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -714,7 +746,9 @@ public class AdView extends javax.swing.JFrame {
                             .addComponent(jLabel16))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBReservasFecha)))
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18))
         );
 
         jTabbedPane2.addTab("Reporte Reservas", jPanel8);
@@ -951,7 +985,7 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -1297,6 +1331,10 @@ public class AdView extends javax.swing.JFrame {
                             i--;
                         }
                     }
+                    
+                    tituloPdfReservas = "Reservas de "+cliente.getNombre()+" entre fechas";
+                    
+                            
                     actualizarTablaReservasCliente();
 
                 }
@@ -1316,6 +1354,7 @@ public class AdView extends javax.swing.JFrame {
 
         if (verificarCliente()) {
             reservas = reservaDAO.obtenerReservasHistorial(cliente);
+            tituloPdfReservas = "Todas las reservas de " + cliente.getNombre();
             actualizarTablaReservasCliente();
         }
     }//GEN-LAST:event_jBTodasLasReservasActionPerformed
@@ -1365,7 +1404,7 @@ public class AdView extends javax.swing.JFrame {
                     i--;
                 }
             }
-
+            tituloPdfReservas = "Reservas Futuras de "+ cliente.getNombre();
             actualizarTablaReservasCliente();
         }
     }//GEN-LAST:event_jBReservasFuturasActionPerformed
@@ -1447,8 +1486,8 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_administrador_mesa_eliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
-
+        clientes = clienteDAO.obtenerClientes();
+        this.tituloPdfClientes = "Lista de clientes";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1464,7 +1503,7 @@ public class AdView extends javax.swing.JFrame {
  * @param evt 
  */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
+        clientes = clienteDAO.obtenerClientes();
         int maxAsistencias = 0;
         for (int i = 0; i < clientes.size(); i++) {
             Cliente auxCliente = clientes.get(i);
@@ -1477,6 +1516,7 @@ public class AdView extends javax.swing.JFrame {
                 i = -1;
             }
         }
+        this.tituloPdfClientes = "Cliente(s) con mayor cantidad asistencias";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton7ActionPerformed
 /**
@@ -1484,7 +1524,7 @@ public class AdView extends javax.swing.JFrame {
  * @param evt 
  */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ArrayList<Cliente> clientes = clienteDAO.obtenerClientes();
+        clientes = clienteDAO.obtenerClientes();
         for (Cliente cliente : clientes) {
             cliente.setReservas(reservaDAO.obtenerReservasHistorial(cliente));
         }
@@ -1520,6 +1560,7 @@ public class AdView extends javax.swing.JFrame {
             }
 
         }
+        this.tituloPdfClientes = "Clientes que no asistieron en el último año";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton3ActionPerformed
 /**
@@ -1539,6 +1580,9 @@ public class AdView extends javax.swing.JFrame {
         int cantInvierno = 0;
         int cantOtoño = 0;
         for (Reserva res : reservas) {
+            if(res.getAsistencia()){
+                continue;
+            }
             LocalDate aux = res.getFecha();
             MonthDay MesDiaR = MonthDay.of(aux.getMonth(),
                     aux.getDayOfMonth());
@@ -1563,6 +1607,31 @@ public class AdView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(reservas == null || reservas.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }else if(tituloPdfReservas.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar nuevamente la tabla para volver a imprimir", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }else{
+            CreadorPdf.hacerPdfReserva(tituloPdfReservas, reservas);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTabbedPane2ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane2ComponentMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane2ComponentMoved
+
+    private void jButtonExportarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarClientesActionPerformed
+        
+        if(clientes == null || clientes.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }else if(tituloPdfClientes.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }else{
+            CreadorPdf.hacerPdfCliente(tituloPdfClientes, clientes);
+        }
+    }//GEN-LAST:event_jButtonExportarClientesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_administrador_mesa_eliminar;
@@ -1573,8 +1642,10 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButtonExportarClientes;
     private javax.swing.JButton jButtonVerBloqueMesaEvento;
     private javax.swing.JButton jButtonVerEmpleados;
     public javax.swing.JButton jButton_Administrador_salir;
