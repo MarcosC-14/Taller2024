@@ -7,8 +7,8 @@ import modelo.Reserva;
 import persistencia.ClasesDao.ReservaDAO;
 import java.util.ArrayList;
 /**
- *
- * @author Uvenk
+ *La clase main es la que contiene el metodo main que es donde se ejecuta todo el programa
+ * @author Ian Caraballo
  */
 public class main {
     public static void main(String[] args) {
@@ -21,8 +21,7 @@ public class main {
         boolean bandera= reservaDao.cobrarMulta(reservas);
         System.out.println("Cobro multa: "+bandera);
         }
-       //ClRegisterView registro = new ClRegisterView();
-      // registro.setVisible(true);
+   
 }
         
 
