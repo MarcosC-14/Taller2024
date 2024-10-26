@@ -1678,13 +1678,22 @@ public class AdView extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
             }
-            javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a excel en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }        
  
     }//GEN-LAST:event_ExcelActionPerformed
 
     private void ExcelclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelclienteActionPerformed
-        // TODO add your handling code here:
+        if(clientes == null || clientes.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE); 
+        }else{
+            try {
+                CrearExcel.hacerExcelCliente(clientes);
+            } catch (Exception ex) {
+                Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a excel en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }        
     }//GEN-LAST:event_ExcelclienteActionPerformed
 
 
