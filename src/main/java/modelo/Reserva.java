@@ -9,8 +9,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
- *
- * @author marco
+ *La clase Reserva 
+ * @author Marcos Caraballo
+ * @version 27/10/2024
  */
 public class Reserva {
     private LocalDate fecha;
@@ -25,11 +26,17 @@ public class Reserva {
     private int id;
     private boolean multa;
 
-   
+   /**
+    * 
+    * @return 
+    */
     public boolean getMulta() {
         return multa;
     }
-
+/**
+ * 
+ * @param multa 
+ */
     public void setMulta(boolean multa) {
         this.multa = multa;
     }
@@ -45,7 +52,6 @@ public class Reserva {
         this.tiempoOcupacion = null;
         this.tiempoFinalizacion = null;
     }
-//fehca, comentario,asistencia, numeromesa,idcliente, idtarjetahora, horainicio, horafin
     /**
      * Constructor parametrizado de Reserva
      * 
@@ -187,13 +193,24 @@ public class Reserva {
     public void setCliente (Cliente cliente){
         this.cliente=cliente;
     }
+  /**
+   * Metodo Getter de cliente
+   * @return cliente
+   */
     public Cliente getCliente(){
         return cliente;
     }
-    
+    /**
+     * Metodo Setter de tarjeta
+     * @param tarjeta utilizada para realizar la reserva
+     */
     public void setTarjeta(Tarjeta tarjeta){
         this.tarjeta=tarjeta;
     }
+    /**
+     * Metodo Getter de tarjeta
+     * @return tarjeta con la que se realizó la reserva
+     */
     public Tarjeta getTarjeta(){
         return tarjeta;
     }
@@ -202,31 +219,43 @@ public class Reserva {
      * Método para enviar recordatorio al cliente de su reserva 
      */
     public void enviarRecordatorio(){
-        //envía recordatorio al cliente de la reserva
+      
     }
-    
+    /**
+     * Metodo que permite modificar una reserva al cliente
+     * @param reserva que se quiere modificar
+     */
     public void editarReserva(Reserva reserva){
         this.fecha = reserva.getFecha();
         this.hora = reserva.getHora();
         this.comentario = reserva.getComentario();
         
-        //falta modificar la mesa
+       
     }
         
-    
+    //Este queda? 
     public void muestraResMesa(){
         //Si muestra reservaciones de mesas, debería estar en cliente? tal vez organizacionMEsas
         
     }
-    
+    /**
+     * Metodo Getter de id
+     * @return codigo de reserva
+     */
     public int getId() {
         return id;
     }
-
+/**
+ * Metodo Setter de id
+ * @param id codigo de reserva
+ */
     public void setId(int id) {
         this.id = id;
     }
-
+/**
+ *  Metodo toString que retorna los datos de la reserva
+ * @return cadena con los datos de la reserva
+ */
     @Override
     public String toString() {
         return "Reserva{" + "fecha=" + fecha + ", hora=" + hora + ", comentario=" + comentario + ", asistencia=" + asistencia + ", tiempoOcupacion=" + tiempoOcupacion + ", tiempoFinalizacion=" + tiempoFinalizacion + ", mesa=" + mesa + ", cliente=" + cliente + ", tarjeta=" + tarjeta + ", id=" + id + ", multa=" + multa + '}';

@@ -11,7 +11,8 @@ import java.time.LocalTime;
  * la clase BloqueoMesaEventoEspecial se encarga de la reserva forzada por el
  * administrador cuando existe un evento especial en el restaurante.
  *
- * @author marco
+ * @author Marcos Ramon Caraballo
+ * @version 27/10/2024
  */
 public class BloqueoMesaEventoEspecial {
 

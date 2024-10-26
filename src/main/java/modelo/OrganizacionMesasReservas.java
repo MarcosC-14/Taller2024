@@ -5,10 +5,19 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Iterator;
 import java.util.ArrayList; 
+/**
+ * Nose bien que hace...
+ * @author 
+ * @version 27/10/2024
+ */
 public class OrganizacionMesasReservas {
     private ArrayList<Mesa> mesas;
     private ArrayList<Reserva> reservas;
-    
+   /**
+    * 
+    * @param ubicacion
+    * @return 
+    */ 
     public ArrayList <Mesa> filtroUbi(Ubicacion ubicacion){
         ArrayList<Mesa> nuevaM = new ArrayList();
         //si la ubicacion es igual, lo guarda en otro arrayList
@@ -21,6 +30,11 @@ public class OrganizacionMesasReservas {
         }
         return nuevaM;
     }
+   /**
+    * 
+    * @param capacidad
+    * @return 
+    */
     public ArrayList <Mesa> filtroCapa(Capacidad capacidad){
         ArrayList<Mesa> nuevaM = new ArrayList();
         //si la capacidad es igual, lo guarda en otro arraylist
@@ -33,6 +47,13 @@ public class OrganizacionMesasReservas {
         }
         return nuevaM;
     }
+  /**
+   * 
+   * @param numero
+   * @param dia
+   * @param hora
+   * @return 
+   */
     public boolean mesaDisponible(int numero, LocalDate dia, LocalTime hora){
         boolean disponible=true;
             for(Iterator it = reservas.iterator();it.hasNext();){
@@ -45,7 +66,12 @@ public class OrganizacionMesasReservas {
         return disponible;
     }
 
-    
+    /**
+     * 
+     * @param dia
+     * @param hora
+     * @return 
+     */
     public ArrayList<Mesa> mesasDisponibles(LocalDate dia, LocalTime hora){
         ArrayList<Mesa> nuevaM = new ArrayList();
         for(Iterator it = mesas.iterator();it.hasNext();){
