@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.table.DefaultTableModel;
+import modelo.Capacidad;
 import modelo.Mesa;
 import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.ReservaDAO;
@@ -23,6 +24,8 @@ import persistencia.ClasesDao.TarjetaDAO;
 import modelo.Cliente;
 import modelo.Reserva;
 import modelo.Tarjeta;
+import modelo.Ubicacion;
+import Views.MensajeReserva;
 
 /**
  *
@@ -1019,8 +1022,12 @@ public class ClView extends javax.swing.JFrame {
         reserva.setHora(horaBuscar);
         reserva.setComentario(jTextField_comentario.getText());
         Mesa mesaR = new Mesa();
+        Capacidad capacidad =Capacidad.valueOf((String)this.jComboBoxClienteReservaCapacidad.getSelectedItem());
+        Ubicacion ubicacion = Ubicacion.valueOf((String)this.jComboBoxClienteReservaUbicacion.getSelectedItem());
         int numM = Integer.parseInt((String)jComboBoxClienteReservaMesa.getSelectedItem());
         mesaR.setNumero(numM);
+        mesaR.setCapacidad(capacidad);
+        mesaR.setUbicacion(ubicacion);
         reserva.setMesa(mesaR);
         
         TarjetaDAO tarjetaR = new TarjetaDAO();
@@ -1035,6 +1042,9 @@ public class ClView extends javax.swing.JFrame {
             rDAO.realizarReserva(reserva);
             tarjetaR.guardarTarjeta(tarjeta);
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, numM, capacidad, ubicacion, tarjeta.getNumero(), reserva.getComentario(), this);
+            this.setVisible(false);
         }
         
         

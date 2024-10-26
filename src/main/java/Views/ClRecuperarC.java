@@ -135,7 +135,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_enviarActionPerformed
     /**
-    ** Se encarga de generar una nueva ventana Inicio, hacerla visible y cerrar 
+    * Se encarga de generar una nueva ventana Inicio, hacerla visible y cerrar 
     * la ventana actual.
     * @param evt el evento generado al presionar el boton "Atras".
     */
