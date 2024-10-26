@@ -1,0 +1,97 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package modelo;
+
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+
+/**
+ *
+ * @author Uvenk
+ */ 
+public class CrearExcel {
+    
+    public static void hacerExcelReserva(ArrayList<Reserva> reservas) throws Exception {
+       HSSFWorkbook workBook = new HSSFWorkbook();
+       FileOutputStream fos = new FileOutputStream("/Users/Documents/11.xls");
+       HSSFSheet Sheet = workBook.createSheet("Reservas");
+
+    // Create the first row corresponding to the header
+    Row header = Sheet.createRow(0);
+    header.createCell(0).setCellValue("Mesa");
+    header.createCell(1).setCellValue("Fecha");
+    header.createCell(2).setCellValue("Hora");
+    header.createCell(3).setCellValue("Ocupacion");
+    header.createCell(4).setCellValue("Finalizacion");
+    header.createCell(5).setCellValue("Cliente");
+    header.createCell(6).setCellValue("Comentario");
+    
+    
+    // Iterate over all the list an create the rows of data
+    for(int i = 0; i < reservas.size(); i++){
+        // Create the current starting from 1 to al.size()
+        HSSFRow row = Sheet.createRow((short) i + 1);
+
+        row.createCell(0).setCellValue(reservas.get(i).getMesa().getNumero());
+
+        row.createCell(1).setCellValue(reservas.get(i).getFecha());
+
+        row.createCell(2).setCellValue(reservas.get(i).getHora().getHour());
+        
+        row.createCell(3).setCellValue(reservas.get(i).getAsistencia());
+        
+        row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().getHour());
+        
+        row.createCell(5).setCellValue(reservas.get(i).getCliente().getNombre());
+        
+        row.createCell(6).setCellValue(reservas.get(i).getComentario());
+    }
+    // Write the result into the file
+        workBook.write(fos);
+        
+        
+    }
+    
+    
+    public static void hacerExcelCliente(ArrayList<Cliente> cliente) throws Exception {
+       HSSFWorkbook workBook = new HSSFWorkbook();
+       FileOutputStream fos = new FileOutputStream("/Users/Documents/11.xls");
+       HSSFSheet Sheet = workBook.createSheet("Reservas");
+
+    // Create the first row corresponding to the header
+    Row header = Sheet.createRow(0);
+    header.createCell(0).setCellValue("Mesa");
+    header.createCell(1).setCellValue("Fecha");
+    header.createCell(2).setCellValue("Hora");
+   
+    
+    
+    // Iterate over all the list an create the rows of data
+    for(int i = 0; i < cliente.size(); i++){
+         //Create the current starting from 1 to al.size()
+        HSSFRow row = Sheet.createRow((short) i + 1);
+
+        row.createCell(0).setCellValue(cliente.get(i).getMesa().getNumero());
+
+        row.createCell(1).setCellValue(cliente.get(i).getFecha());
+
+       row.createCell(2).setCellValue(cliente.get(i).getHora().getHour());
+        
+       
+    }
+    // Write the result into the file
+        workBook.write(fos);
+        
+        
+    }
+    
+    
+     
+    
+}
