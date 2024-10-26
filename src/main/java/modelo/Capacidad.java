@@ -1,10 +1,11 @@
-
 package modelo;
 
 /**
  * Enum que representa las diferentes capacidades disponibles.
- * @author Marcos Ramon Caraballo, Angelina María Vialle,
- * @version 27/10/2024 
+ *
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
+ * @version 27/10/2024
  */
 public enum Capacidad {
     /**

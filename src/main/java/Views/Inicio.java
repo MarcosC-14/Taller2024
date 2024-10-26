@@ -14,15 +14,19 @@ import persistencia.ClasesDao.ClienteDAO;
 import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
+ * Clase inicio es un Jframe que se presenta al inicio para que el usuario pueda
+ * acceder al sistema, recuperar su contrasñea o registrarse si es un cliente
  *
- * @author Valentin
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  */
 public class Inicio extends javax.swing.JFrame {
+
     Cliente cliente = new Cliente();
-    ClienteDAO cliente_dao= new ClienteDAO();
+    ClienteDAO cliente_dao = new ClienteDAO();
     EmpleadoDAO empleadoDao = new EmpleadoDAO();
     Persona usuario;
-    
+
     /**
      * Creates new form SystemView
      */
@@ -34,7 +38,6 @@ public class Inicio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -194,7 +197,12 @@ public class Inicio extends javax.swing.JFrame {
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_passwordActionPerformed
-
+    /**
+     *Metodo que se ejecuta cuando se aprieta el boton de ingresar.
+     * Verifica que los datos ingresados sean validos y compara
+     * con que tipo de usuario corresponde para dirigirlo a su panel.
+     * @param evt es el evento de apretar el boton de ingresar
+     */
     private void jButton_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ingresoActionPerformed
         String correo = this.txt_username.getText().trim();
         String pass = String.valueOf(this.txt_password.getPassword());
@@ -202,48 +210,55 @@ public class Inicio extends javax.swing.JFrame {
         if (!correo.equals("") || !pass.equals("")) {
             // pasar parametros al metodo login
             usuario = cliente_dao.loginQuery(correo, pass);
-            if(usuario.getCorreo().equals(correo)){
+            if (usuario.getCorreo().equals(correo)) {
                 ClView aux = new ClView((Cliente) usuario);
                 aux.setVisible(true);
                 this.dispose();
-            }else{
+            } else {
                 usuario = null;
                 usuario = empleadoDao.loginQuery(correo, pass);
                 System.out.println(usuario);
-                if(usuario.getCorreo().equals(correo)){
+                if (usuario.getCorreo().equals(correo)) {
                     Empleado emp = (Empleado) usuario;
-                    if(((Empleado) usuario).getRol().toString().equals("Administrador")){
-                        
+                    if (((Empleado) usuario).getRol().toString().equals("Administrador")) {
+
                         Administrador admin = new Administrador(emp);
                         AdView adView = new AdView(admin);
                         adView.setVisible(true);
                         this.dispose();
-                    }else{
-                    EpView epView = new EpView((Empleado) usuario);
-                    epView.setVisible(true);
-                    this.dispose();
+                    } else {
+                        EpView epView = new EpView((Empleado) usuario);
+                        epView.setVisible(true);
+                        this.dispose();
                     }
-                }else{
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
                 }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
-        } 
-        
+        }
+
     }//GEN-LAST:event_jButton_ingresoActionPerformed
-
+    /**
+     * Metodo que se ejecuta cuando se aprieta el boton de registro cliente.
+     * Lleva al usuario a la ventana de registro
+     * @param evt es el evento de apretar el boton registro cliente
+     */
     private void jButton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registroActionPerformed
-            ClRegisterView viewCl = new ClRegisterView();
-            viewCl.setVisible(true);
-            this.dispose();
+        ClRegisterView viewCl = new ClRegisterView();
+        viewCl.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton_registroActionPerformed
-
+    /**
+     *Metodo que se ejecuta cuando se aprieta el boton de recuperar contraseña.
+     * @param evt es el evento de apretar el boton recuperar contraseña
+     */
     private void jButton_recuperarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_recuperarContraseñaActionPerformed
         ClRecuperarC ventanaContraseña = new ClRecuperarC();
         ventanaContraseña.setVisible(true);
         this.dispose();
-// enviarlo a otra ventana que le pida su correo y le devuelva su contraseña
+
     }//GEN-LAST:event_jButton_recuperarContraseñaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

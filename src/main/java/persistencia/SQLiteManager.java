@@ -11,7 +11,8 @@ import java.sql.SQLException;
 /**
  * La clase SQLiteManager se encarga manejar la apertura y cierre de la base de 
  * datos. Dandote metodos para abrir y cerrar la conexion de manera segura.
- * @author Marcos Ramon Caraballo, Angelina María Vialle,
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class SQLiteManager {

@@ -3,7 +3,8 @@ package Views;
 import persistencia.ClasesDao.ClienteDAO;
 /**
  * Ventana grafica que permite recuperar la contraseña de un cliente
- * @author Marcos Ramon Caraballo, Angelina María Vialle,
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class ClRecuperarC extends javax.swing.JFrame {
@@ -12,6 +13,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
      * Constructor por defecto de la ventana grafica.
      * Se encarga de inicializar y configurar los componentes de la interfaz gráfica
      * de usuario. Tambien de centrarla
+     * 
      */
     public ClRecuperarC() {
         initComponents();

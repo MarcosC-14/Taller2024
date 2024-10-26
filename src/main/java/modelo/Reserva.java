@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * La clase Reserva se encarga de generar y almacenar la reservacion de una mesa
  * especifica en fecha y horario especifico
  *
- * @author Marcos Caraballo
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class Reserva {

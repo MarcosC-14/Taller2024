@@ -10,7 +10,8 @@ import java.util.ArrayList;
  * La clase tarjeta se encarga de almacenar la informacion de la tarjeta con la
  * que el usuario realiza una reserva
  *
- * @author Marcos Ramon Caraballo
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class Tarjeta {

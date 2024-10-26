@@ -16,7 +16,8 @@ import java.sql.ResultSet;
 /**
  * la clase ClRegisterView es un jFrame donde se muestra la interfaz grafica para 
  * que el nuevo cliente pueda registrarse de forma correcta
- * @author 
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  */
 public class ClRegisterView extends javax.swing.JFrame {
       /**

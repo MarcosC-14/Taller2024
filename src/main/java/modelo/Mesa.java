@@ -11,7 +11,8 @@ import java.util.Date;
  * La clase mesa crea la estructura necesaria para almacenar la informacion de
  * cada mesa dentro del restaurte.
  *
- * @author Valentin
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class Mesa {

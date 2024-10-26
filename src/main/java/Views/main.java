@@ -8,7 +8,8 @@ import persistencia.ClasesDao.ReservaDAO;
 import java.util.ArrayList;
 /**
  *La clase main es la que contiene el metodo main que es donde se ejecuta todo el programa
- * @author Ian Caraballo
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  */
 public class main {
     public static void main(String[] args) {
