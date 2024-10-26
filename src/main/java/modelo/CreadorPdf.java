@@ -198,4 +198,48 @@ public class CreadorPdf {
             paragraph.add(new Paragraph(" "));
         }
     }
+
+    public static void hacerPdfEstaciones(String titulo, String[] valores) {
+        FILE = "PDFsExportados/"+titulo+".pdf";
+        try {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream(FILE));
+            document.open();
+            addMetaData(document);
+            addTitlePage(document,titulo);
+            createTableEstaciones(document, valores);
+            
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void createTableEstaciones(Document document, String[] valores) throws DocumentException {
+        PdfPTable table = new PdfPTable(4);
+        table.setWidths(new int[]{3,3,3,3});
+        table.setWidthPercentage(100);
+        PdfPCell c1 = new PdfPCell(new Phrase("Verano"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Otoño"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Invierno"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Primavera"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+        
+        for(String v : valores){
+           table.addCell(v);
+        }
+            
+        
+        document.add(table);
+    }
 }

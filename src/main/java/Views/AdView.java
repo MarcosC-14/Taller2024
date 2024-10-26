@@ -1626,7 +1626,19 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxMesasActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        String verano = jTextFieldVerano.getText();
+        String otoño = jTextFieldOtoño.getText();
+        String invierno = jTextFieldInvierno.getText();
+        String primavera = jTextFieldPrimavera.getText();
+        if(verano.equals("")
+                || otoño.equals("")
+                || invierno.equals("")
+                || primavera.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }else{
+            CreadorPdf.hacerPdfEstaciones("ConcurrenciasPorEstacion", new String [] {verano,otoño,invierno,primavera});
+            javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
 

@@ -19,7 +19,7 @@ public class OrganizacionMesasReservas {
     * @return 
     */ 
     public ArrayList <Mesa> filtroUbi(Ubicacion ubicacion){
-        ArrayList<Mesa> nuevaM = new ArrayList();
+        ArrayList<Mesa> nuevaM = new ArrayList<Mesa>();
         //si la ubicacion es igual, lo guarda en otro arrayList
         for(Iterator it=mesas.iterator();it.hasNext();){
             Object objeto = it.next();
@@ -36,7 +36,7 @@ public class OrganizacionMesasReservas {
     * @return 
     */
     public ArrayList <Mesa> filtroCapa(Capacidad capacidad){
-        ArrayList<Mesa> nuevaM = new ArrayList();
+        ArrayList<Mesa> nuevaM = new ArrayList<Mesa>();
         //si la capacidad es igual, lo guarda en otro arraylist
         for(Iterator it = mesas.iterator();it.hasNext();){
             Object o = it.next();
@@ -73,7 +73,7 @@ public class OrganizacionMesasReservas {
      * @return 
      */
     public ArrayList<Mesa> mesasDisponibles(LocalDate dia, LocalTime hora){
-        ArrayList<Mesa> nuevaM = new ArrayList();
+        ArrayList<Mesa> nuevaM = new ArrayList<Mesa>();
         for(Iterator it = mesas.iterator();it.hasNext();){
             Object o = it.next();
             Mesa m= (Mesa) o;
