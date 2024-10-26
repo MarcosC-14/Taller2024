@@ -1614,6 +1614,7 @@ public class AdView extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar nuevamente la tabla para volver a imprimir", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }else{
             CreadorPdf.hacerPdfReserva(tituloPdfReservas, reservas);
+            javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1629,6 +1630,7 @@ public class AdView extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }else{
             CreadorPdf.hacerPdfCliente(tituloPdfClientes, clientes);
+            javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonExportarClientesActionPerformed
 
