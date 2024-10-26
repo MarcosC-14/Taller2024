@@ -282,7 +282,7 @@ public class ClienteDAO{
         return clientes;
     }
     /**
-     * con un correo retorna un cliente
+     * Retorna un cliente de la base de datos con un correo
      * @param   correo del cliente.
      * @return un objeto cliente en caso de que este en la base de datos.
      */
