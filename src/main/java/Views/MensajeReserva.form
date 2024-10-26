@@ -120,9 +120,9 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTxtNumeroMesa" min="-2" max="-2" attributes="0"/>
                                               <Component id="jTxtHora" min="-2" pref="128" max="-2" attributes="0"/>
                                               <Component id="jTxtCapacidad" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
+                                              <Component id="jTxtNumeroMesa" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
