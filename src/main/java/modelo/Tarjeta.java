@@ -7,10 +7,14 @@ package modelo;
 import java.util.ArrayList;
 
 /**
+ * La clase tarjeta se encarga de almacenar la informacion de la tarjeta con la
+ * que el usuario realiza una reserva
  *
- * @author marco
+ * @author Marcos Ramon Caraballo
+ * @version 27/10/2024
  */
 public class Tarjeta {
+
     private String nombre;
     private String emisor;
     private String numero;
@@ -21,13 +25,13 @@ public class Tarjeta {
      * Constructor por defecto de Tarjeta
      */
     public Tarjeta() {
-        this.nombre = "";   
+        this.nombre = "";
         this.emisor = "";
         this.numero = "";
         this.codSeguridad = "";
         this.reservas = new ArrayList<Reserva>();
     }
-    
+
     /**
      * Constructor parametrizado de Tarjeta
      *
@@ -38,7 +42,7 @@ public class Tarjeta {
      */
     public Tarjeta(String nombre, String emisor, String numero, String codSeguridad, Reserva reserva) {
         this();
-        this.nombre = nombre;  
+        this.nombre = nombre;
         this.numero = numero;
         this.emisor = emisor;
         this.codSeguridad = codSeguridad;
@@ -47,14 +51,16 @@ public class Tarjeta {
 
     /**
      * Getter del atributo nombre
+     *
      * @return devuelve el atributo nombre
      */
     public String getNombre() {
         return nombre;
     }
-    
+
     /**
-     *  Setter del atributo nombre
+     * Setter del atributo nombre
+     *
      * @param nombre Se asigna en el atributo nombre
      */
     public void setNombre(String nombre) {
@@ -63,14 +69,16 @@ public class Tarjeta {
 
     /**
      * Getter del atributo emisor
+     *
      * @return devuelve el atributo emisor
      */
     public String getEmisor() {
         return emisor;
     }
-    
+
     /**
      * Setter del atributo emisor
+     *
      * @param emisor Se asigna en el atributo emisor
      */
     public void setEmisor(String emisor) {
@@ -79,6 +87,7 @@ public class Tarjeta {
 
     /**
      * Getter del atributo numero
+     *
      * @return devuelve el atributo numero
      */
     public String getNumero() {
@@ -87,6 +96,7 @@ public class Tarjeta {
 
     /**
      * Setter del atributo numero
+     *
      * @param numero Se asigna en el atributo numero
      */
     public void setNumero(String numero) {
@@ -95,6 +105,7 @@ public class Tarjeta {
 
     /**
      * Getter del atributo codSeguridad
+     *
      * @return devuelve el atributo codSeguridad
      */
     public String getCodSeguridad() {
@@ -103,20 +114,22 @@ public class Tarjeta {
 
     /**
      * Setter del atributo codSeguridad
+     *
      * @param codSeguridad Se asigna en el atributo codSeguridad
      */
     public void setCodSeguridad(String codSeguridad) {
         this.codSeguridad = codSeguridad;
     }
-    
+
     /**
      * Método para cobrar una multa por no asistir a una reserva
+     *
      * @param gFecha
      * @param gHora
-     * @param gAsistencia 
+     * @param gAsistencia
      */
-    public void cobrarMulta( String gFecha,String gHora, Boolean gAsistencia ){
-            //placeholder
+    public void cobrarMulta(String gFecha, String gHora, Boolean gAsistencia) {
+        
     }
-    
+
 }
