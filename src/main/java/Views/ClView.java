@@ -53,7 +53,7 @@ public class ClView extends javax.swing.JFrame {
                 setLocationRelativeTo(null);
                 
         this.cliente1= cliente1;
-                
+        avisoPrevioReserva();
     }
 
     /**
@@ -104,7 +104,6 @@ public class ClView extends javax.swing.JFrame {
         jComboBoxClienteReservaCapacidad = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jComboBox_horaBuscar = new javax.swing.JComboBox<>();
-        jButton_mesasBuscar = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable_mesasDisponibles = new javax.swing.JTable();
         jTextFieldClienteReservaCodSeg = new javax.swing.JTextField();
@@ -302,13 +301,6 @@ public class ClView extends javax.swing.JFrame {
             }
         });
 
-        jButton_mesasBuscar.setText("Mesas Disponible");
-        jButton_mesasBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_mesasBuscarActionPerformed(evt);
-            }
-        });
-
         jTable_mesasDisponibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -335,7 +327,7 @@ public class ClView extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTable_mesasDisponibles);
         jTable_mesasDisponibles.getAccessibleContext().setAccessibleName("Hora");
 
-        JButton_confirmarFecha.setText("Confirmar");
+        JButton_confirmarFecha.setText("Mesas Disponibles");
         JButton_confirmarFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JButton_confirmarFechaActionPerformed(evt);
@@ -376,14 +368,12 @@ public class ClView extends javax.swing.JFrame {
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel17))
                             .addComponent(jLabel3))
-                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                                 .addGap(106, 106, 106)
                                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(JButton_confirmarFecha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel14)
                                 .addGap(155, 155, 155)
                                 .addComponent(jLabel26)
@@ -391,7 +381,7 @@ public class ClView extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(551, 551, 551)
                 .addComponent(jLabel8)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
             .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                 .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
@@ -421,7 +411,7 @@ public class ClView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jButton_nuevaReserva)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_mesasBuscar)))
+                        .addComponent(JButton_confirmarFecha)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -436,9 +426,7 @@ public class ClView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField_fechaNewReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(JButton_confirmarFecha))
+                            .addComponent(jTextField_fechaNewReserva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel14)
                                 .addComponent(jLabel26)))))
@@ -496,7 +484,7 @@ public class ClView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton_nuevaReserva)
-                                    .addComponent(jButton_mesasBuscar))))))
+                                    .addComponent(JButton_confirmarFecha))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1095,10 +1083,6 @@ public class ClView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_JButton_confirmarFechaActionPerformed
 
-    private void jButton_mesasBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_mesasBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_mesasBuscarActionPerformed
-
     private void jBVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerDatosActionPerformed
         //trae nombre, coreo y telefono y guarda
         int idCliente = cliente1.getId();
@@ -1334,6 +1318,17 @@ public class ClView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_cliente_eliminar_reserva1ActionPerformed
 
+    private void avisoPrevioReserva(){
+        ReservaDAO reservaDAO = new ReservaDAO();
+        ArrayList<Reserva> auxReservas = reservaDAO.obtenerReservasHistorial(cliente1);
+        for(Reserva res : auxReservas){
+            if(res.getFecha().isAfter(LocalDate.now())
+                    && res.getFecha().isBefore(LocalDate.now().plusDays(5))){
+                javax.swing.JOptionPane.showMessageDialog(this, "Tiene una reserva próxima", "Aviso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                break;
+            }
+        }
+    }
 
     
     
@@ -1349,7 +1344,6 @@ public class ClView extends javax.swing.JFrame {
     public javax.swing.JButton jButton_cliente_eliminar_reserva1;
     public javax.swing.JButton jButton_cliente_modificar_reserva;
     public javax.swing.JButton jButton_cliente_perfil_actualizar;
-    private javax.swing.JButton jButton_mesasBuscar;
     public javax.swing.JButton jButton_nuevaReserva;
     private javax.swing.JComboBox<String> jComboBoxCapMod;
     private javax.swing.JComboBox<String> jComboBoxClienteReservaCapacidad;
