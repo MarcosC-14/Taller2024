@@ -10,7 +10,8 @@ import java.util.ArrayList;
  * Clase cliente que hereda atributos y metodos de la clase Persona, ademas de
  * aplicar los propios.
  *
- * @author Marcos Ramon Caraballo
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class Cliente extends Persona {

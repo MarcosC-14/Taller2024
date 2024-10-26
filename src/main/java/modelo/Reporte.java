@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * requeridos. estos metodos se llevan a cabo en clases que tienen vinculacion
  * con la base de datos
  *
- * @author Valentin Rebechi
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class Reporte {

@@ -14,7 +14,8 @@ import java.sql.SQLException;
 /**
 * Esta clase se encarga de gestionar la conexión con la base de datos de las tarjetas.
 * Tiene un método que se encarga de guardar las tarjetas en la base de datos 
-* @author Marcos Ramon Caraballo, Angelina María Vialle,
+* @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
 */
 public class TarjetaDAO {

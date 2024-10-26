@@ -10,8 +10,10 @@ import modelo.Capacidad;
 import modelo.Ubicacion;
 
 /**
- *
- * @author Charly Cimino
+ *La clase MensajeReserva es un Jframe que se abre cuando un cliente quiere realizar
+ * una reserva y muestra todos los datos que debe llenar
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  */
 public class MensajeReserva extends javax.swing.JFrame {
     private ClView clView;

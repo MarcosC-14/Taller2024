@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * con los tipos de empleados existentes.Hereda atributos y metodos de Persona.
  * Se definen los atributos de Rol y de ID con sus respectivos Getter y Setter.
  *
- * @author Valentin Rebechi
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class Empleado extends Persona {

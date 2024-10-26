@@ -41,7 +41,8 @@ import persistencia.ClasesDao.ReservaDAO;
  * un analisis durante un periodo de tiempo. El administrador puede visualizar,
  * agregar o eliminar empleados.
  *
- * @author Rebechi
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class AdView extends javax.swing.JFrame {

@@ -28,7 +28,8 @@ import modelo.Ubicacion;
 * por el numero de mesa.
 * Se encarga de conectar a la base de datos y manejar las consultas necesarias para
 * gestionar las reservas.
-* @author Marcos Ramon Caraballo, Angelina María Vialle,
+* @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
 * @version 27/10/2024
 */
 public class ReservaDAO {

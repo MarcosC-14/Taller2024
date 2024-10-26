@@ -15,7 +15,8 @@ import java.util.ArrayList;
  * aunque estan definidos en clases terminadas en Dao, ya que estos metodos
  * tienen relacion directa con la base de datos.
  *
- * @author Valentin Rebechi
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class Administrador extends Empleado {
@@ -36,7 +37,7 @@ public class Administrador extends Empleado {
         this.setContrasenia(e.getContrasenia());
         this.setId(e.getId());
     }
-    
+
     public void CrearCuentaEmpleado(Empleado e) {
     }
 

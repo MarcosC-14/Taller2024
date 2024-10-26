@@ -6,7 +6,8 @@ package modelo;
 
 /**
  *
- * @author marco
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  */
 
 import java.io.FileOutputStream;

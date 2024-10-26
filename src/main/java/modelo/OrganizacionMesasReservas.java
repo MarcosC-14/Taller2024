@@ -7,7 +7,8 @@ import java.util.Iterator;
 import java.util.ArrayList; 
 /**
  * Nose bien que hace...
- * @author 
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class OrganizacionMesasReservas {

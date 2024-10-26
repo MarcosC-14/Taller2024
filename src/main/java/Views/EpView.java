@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Views;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import persistencia.ClasesDao.ReservaDAO;
@@ -11,28 +12,36 @@ import modelo.Empleado;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Rol;
+
 /**
+ * La clase EpView es un Jframe donde los usuarios de tipo empleado que no son
+ * administradores son dirigidos. Aqui se muestran las mesas correspondientes,
+ * confirmar asistencia de los comensales y poner horario de inicio,fin de
+ * servicio
  *
- * @author Rebechi
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  */
 public class EpView extends javax.swing.JFrame {
+
     private DefaultTableModel tabla;
     private ReservaDAO reservaDAO;
     private ArrayList<Reserva> reservas;
-   
+
     private Empleado empleado;
+
     /**
      * Creates new form EpView
      */
     public EpView(Empleado empleado) {
         initComponents();
-         setSize(970, 600);
-                setResizable(false);
-                setTitle("Sistema de Clientes");
-                setLocationRelativeTo(null);
+        setSize(970, 600);
+        setResizable(false);
+        setTitle("Sistema de Clientes");
+        setLocationRelativeTo(null);
         tabla = (DefaultTableModel) tablaListadoMesasEmpleado.getModel();
-        this.empleado=empleado;
-                
+        this.empleado = empleado;
+
     }
 
     /**
@@ -169,128 +178,156 @@ public class EpView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void actualizarTablaMesasDeHoy(){
+/**
+     * Metodo que actualia la informacion que se encunetra en la tabla de mesas
+     * del dia
+     */
+    private void actualizarTablaMesasDeHoy() {
         tabla.setRowCount(0);
-        Object[] o = new Object [6];
-        reservaDAO= new ReservaDAO();
+        Object[] o = new Object[6];
+        reservaDAO = new ReservaDAO();
         reservas = new ArrayList<Reserva>();
-        reservas= reservaDAO.obtenerReservasDeHoy();
-        for(Reserva reserva1: reservas){   
-            o[0]=reserva1.getMesa().getNumero();
-            o[1]=reserva1.getCliente().getNombre();
-            o[2]=reserva1.getComentario();
-            if(reserva1.getAsistencia()){
-                o[3]="Asistio";
-            }else{
-                o[3]="No asistio";
+        reservas = reservaDAO.obtenerReservasDeHoy();
+        for (Reserva reserva1 : reservas) {
+            o[0] = reserva1.getMesa().getNumero();
+            o[1] = reserva1.getCliente().getNombre();
+            o[2] = reserva1.getComentario();
+            if (reserva1.getAsistencia()) {
+                o[3] = "Asistio";
+            } else {
+                o[3] = "No asistio";
             }
-            if(reserva1.getTiempoOcupacion() != null){
-                o[4]= reserva1.getTiempoOcupacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-            }else{
-                o[4]= "";
+            if (reserva1.getTiempoOcupacion() != null) {
+                o[4] = reserva1.getTiempoOcupacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            } else {
+                o[4] = "";
             }
-            if(reserva1.getTiempoFinalizacion() != null){
-                o[5]= reserva1.getTiempoFinalizacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-            }else{
-                o[4]= "";
+            if (reserva1.getTiempoFinalizacion() != null) {
+                o[5] = reserva1.getTiempoFinalizacion().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            } else {
+                o[4] = "";
             }
             tabla.addRow(o);
         }
-        
+
     }
+
+    /**
+     * Metodo que se aplica al apretar el boton de salir Se cierra la ventana
+     * EpView y se abre la de inicio
+     *
+     * @param evt es el evento de apretar el boton salir
+     */
     private void jToggleButton_empleado_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton_empleado_salirActionPerformed
-        if(evt.getSource()== jToggleButton_empleado_salir){
-          dispose();
-          Inicio login = new Inicio();
-          login.setVisible(true);
-    }
+        if (evt.getSource() == jToggleButton_empleado_salir) {
+            dispose();
+            Inicio login = new Inicio();
+            login.setVisible(true);
+        }
     }//GEN-LAST:event_jToggleButton_empleado_salirActionPerformed
     /**
-     * Boton que se activa cuando un recepcionista trata de cambiar la asistencia
-     * de un cliente.
-     * Revisa que quien intente cambiar la asistenica sea un recepcionista. Si no 
-     * es un recepcionista le muentra un mensaje indicandole que no es un recepcionista 
+     * Boton que se activa cuando un recepcionista trata de cambiar la
+     * asistencia de un cliente. Revisa que quien intente cambiar la asistenica
+     * sea un recepcionista. Si no es un recepcionista le muentra un mensaje
+     * indicandole que no es un recepcionista
+     *
      * @param evt accion que ocurre
      */
     private void btnRecepcionistaAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistaAsistenciaActionPerformed
 
-      if(esRecepcionista()){
-        int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
-       if (filaSeleccionada != -1) {
-           reservas=reservaDAO.obtenerReservasDeHoy();
-            String asistenciaActual = (String) tabla.getValueAt(filaSeleccionada, 3);
-            int nuevoEstado = asistenciaActual.equals("Asistio") ? 0 : 1;
-            Reserva reserva= reservas.get(filaSeleccionada);
-         int numMesa=reserva.getMesa().getNumero();
-          boolean asistencia=reserva.getAsistencia();
-         LocalTime hora = reserva.getHora();
-            boolean actualizado =reservaDAO.cambiarAsistencia(numMesa, hora, asistencia);
-            if(actualizado){
-                reserva.setAsistencia(actualizado);
-                javax.swing.JOptionPane.showMessageDialog(this, "Asistencia actualizada", "Asistencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                this.actualizarTablaMesasDeHoy();
-            }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar la asistencia", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (esRecepcionista()) {
+            int filaSeleccionada = tablaListadoMesasEmpleado.getSelectedRow();
+            if (filaSeleccionada != -1) {
+                reservas = reservaDAO.obtenerReservasDeHoy();
+                String asistenciaActual = (String) tabla.getValueAt(filaSeleccionada, 3);
+                int nuevoEstado = asistenciaActual.equals("Asistio") ? 0 : 1;
+                Reserva reserva = reservas.get(filaSeleccionada);
+                int numMesa = reserva.getMesa().getNumero();
+                boolean asistencia = reserva.getAsistencia();
+                LocalTime hora = reserva.getHora();
+                boolean actualizado = reservaDAO.cambiarAsistencia(numMesa, hora, asistencia);
+                if (actualizado) {
+                    reserva.setAsistencia(actualizado);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Asistencia actualizada", "Asistencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    this.actualizarTablaMesasDeHoy();
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar la asistencia", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
             }
-       }
-      }else{
-        javax.swing.JOptionPane.showMessageDialog(this, "No sos recepcionista", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-      }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No sos recepcionista", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnRecepcionistaAsistenciaActionPerformed
-
+    /**
+     * Llama al metodo ActualizarTablasDeHoy
+     *
+     * @param evt evento de apretar el boton Mesas de hoy
+     */
     private void jButtonMesasHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMesasHoyActionPerformed
         actualizarTablaMesasDeHoy();
     }//GEN-LAST:event_jButtonMesasHoyActionPerformed
-
+    /**
+     * Es el metodo de apretar el horario de inicio del servicio verifica que
+     * quien lo presione sea un mesero,ya que solo un mesero puede hacerlo
+     *
+     * @param evt es el evento de presionar el boton inicio
+     */
     private void jButtonMeseroHoraInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraInicioActionPerformed
-       if(esMesero()){
-        Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
-        reserva.setTiempoOcupacion(LocalTime.now());
-        if(reservaDAO.modificarTiempoOcupacionFin(reserva)){
-            System.out.println("todo bien");
+        if (esMesero()) {
+            Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
+            reserva.setTiempoOcupacion(LocalTime.now());
+            if (reservaDAO.modificarTiempoOcupacionFin(reserva)) {
+                System.out.println("todo bien");
+            }
+            actualizarTablaMesasDeHoy();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No sos mesero", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
-        actualizarTablaMesasDeHoy();
-       } else{
-            javax.swing.JOptionPane.showMessageDialog(this, "No sos mesero", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);  
-       }
     }//GEN-LAST:event_jButtonMeseroHoraInicioActionPerformed
-
+/**
+     * Es el metodo de apretar el horario de fin del servicio verifica que
+     * quien lo presione sea un mesero,ya que solo un mesero puede hacerlo
+     *
+     * @param evt es el evento de presionar el boton fin
+     */
     private void jButtonMeseroHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraFinActionPerformed
-        if(esMesero()){
-        Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
-        reserva.setTiempoFinalizacion(LocalTime.now());
-        if(reservaDAO.modificarTiempoOcupacionFin(reserva))
-            System.out.println("tobo bien");
-        actualizarTablaMesasDeHoy();
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(this, "No sos mesero", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);  
-       }
+        if (esMesero()) {
+            Reserva reserva = reservas.get(tablaListadoMesasEmpleado.getSelectedRow());
+            reserva.setTiempoFinalizacion(LocalTime.now());
+            if (reservaDAO.modificarTiempoOcupacionFin(reserva)) {
+                System.out.println("tobo bien");
+            }
+            actualizarTablaMesasDeHoy();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No sos mesero", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonMeseroHoraFinActionPerformed
 
-/**
- * Revisa si es un mesero, aun no terminado.
- * @return  true en caso que lo encuentre, false si no
- */
-    public boolean esMesero(){
-        boolean bandera=false;
-        if(empleado.getRol().equals(Rol.Mesero)){
-            bandera=true;
+    /**
+     * Revisa si es un mesero, aun no terminado.
+     *
+     * @return true en caso que lo encuentre, false si no
+     */
+    public boolean esMesero() {
+        boolean bandera = false;
+        if (empleado.getRol().equals(Rol.Mesero)) {
+            bandera = true;
         }
         return bandera;
     }
- 
-/**
- * Revisa si es un recepcionista. Aun no terminado.
- * @return  true en caso que lo encuentre, false si no
- */
-    public boolean esRecepcionista(){
-        boolean bandera=false;
-        if(empleado.getRol().equals(Rol.Recepcionista)){
-            bandera=true;
+
+    /**
+     * Revisa si es un recepcionista. Aun no terminado.
+     *
+     * @return true en caso que lo encuentre, false si no
+     */
+    public boolean esRecepcionista() {
+        boolean bandera = false;
+        if (empleado.getRol().equals(Rol.Recepcionista)) {
+            bandera = true;
         }
         return bandera;
-    } 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRecepcionistaAsistencia;

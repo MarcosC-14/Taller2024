@@ -22,7 +22,8 @@ import modelo.BloqueoMesaEventoEspecial;
  * (usuario y contraseña), de vuelve un lista de todos los empleados en la base 
  * de datos, permite registrar a un empleado, revisa si un correo existe en la tabla
  * de empleados, ademas de revisar si el empleado es mesero o recepcionista.
- * @author Marcos Ramon Caraballo, Angelina María Vialle,
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024
  */
 public class EmpleadoDAO {

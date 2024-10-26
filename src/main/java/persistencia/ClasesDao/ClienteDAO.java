@@ -20,7 +20,8 @@ import java.util.Arrays;
  * su contraseña, permitir que actualice su numero de telefono y su correo electronico
  * y obtener los datos del cliente.
  * Se utiliza la clase SQLiteManager para concectarse a la base de datos.
- * @author Marcos Ramon Caraballo, Angelina María Vialle,
+ *@author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Caraballo
  * @version 27/10/2024 
  */
 public class ClienteDAO{
