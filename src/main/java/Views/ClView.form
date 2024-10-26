@@ -82,7 +82,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="860" height="60"/>
+          <AbsoluteConstraints x="0" y="0" width="1100" height="60"/>
         </Constraint>
       </Constraints>
 
@@ -92,7 +92,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="484" max="32767" attributes="0"/>
+                  <EmptySpace pref="751" max="32767" attributes="0"/>
                   <Component id="jToggleButton_cliente_Salir" min="-2" pref="86" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
@@ -117,7 +117,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Restaurante Floripa"/>
+            <Property name="text" type="java.lang.String" value="Delicias Gourmet"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="jToggleButton_cliente_Salir">
