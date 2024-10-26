@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class AgendaRestaurante {
 
-    private ArrayList<Date> fechasEspecial;
+    private ArrayList<BloqueoMesaEventoEspecial> fechasEspecial;
     private Date horaApertura;
     private Date horaCierre;
     private ArrayList<Reserva> reservas;
@@ -37,7 +37,7 @@ public class AgendaRestaurante {
      * @param reservas es un objeto de reserva que se añade al listado de
      * reservas
      */
-    public AgendaRestaurante(ArrayList<Date> fechasEspecial, Date horaApertura, Date horaCierre, Reserva reservas) {
+    public AgendaRestaurante(ArrayList<BloqueoMesaEventoEspecial> fechasEspecial, Date horaApertura, Date horaCierre, Reserva reservas) {
         this.fechasEspecial = fechasEspecial;
         this.horaApertura = horaApertura;
         this.horaCierre = horaCierre;
@@ -52,7 +52,7 @@ public class AgendaRestaurante {
      * @param horaCierre horario de cierre del restaurante
      * @param reservas listado de reservas del restaurante
      */
-    public AgendaRestaurante(ArrayList<Date> fechasEspecial, Date horaApertura, Date horaCierre, ArrayList<Reserva> reservas) {
+    public AgendaRestaurante(ArrayList<BloqueoMesaEventoEspecial> fechasEspecial, Date horaApertura, Date horaCierre, ArrayList<Reserva> reservas) {
         this.fechasEspecial = fechasEspecial;
         this.horaApertura = horaApertura;
         this.horaCierre = horaCierre;
@@ -83,14 +83,14 @@ public class AgendaRestaurante {
      * @return listado de las fechas especiales
      *
      */
-    public ArrayList<Date> getFechasEspecial() {
+    public ArrayList<BloqueoMesaEventoEspecial> getFechasEspecial() {
         return fechasEspecial;
     }
 /**
  * Metodo Setter del arraylist fechasEspecial
  * @param fechasEspecial es una lista de las fechas especiales
  */
-    public void setFechasEspecial(ArrayList<Date> fechasEspecial) {
+    public void setFechasEspecial(ArrayList<BloqueoMesaEventoEspecial> fechasEspecial) {
         this.fechasEspecial = fechasEspecial;
     }
 /**
