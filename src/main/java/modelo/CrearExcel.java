@@ -32,10 +32,10 @@ public class CrearExcel {
     header.createCell(0).setCellValue("Mesa");
     header.createCell(1).setCellValue("Fecha");
     header.createCell(2).setCellValue("Hora");
-    header.createCell(3).setCellValue("Ocupacion");
-    header.createCell(4).setCellValue("Finalizacion");
+    header.createCell(3).setCellValue("Tiempo de Ocupacion");
+    header.createCell(4).setCellValue("Tiempo de Finalizacion");
     header.createCell(5).setCellValue("Cliente");
-    header.createCell(6).setCellValue("Comentario");
+    header.createCell(6).setCellValue("Comensales");
     
     
   
@@ -45,20 +45,21 @@ public class CrearExcel {
 
         row.createCell(0).setCellValue(reservas.get(i).getMesa().getNumero());
 
-        row.createCell(1).setCellValue(reservas.get(i).getFecha());
+        row.createCell(1).setCellValue(reservas.get(i).getFecha().toString());
 
-        row.createCell(2).setCellValue(reservas.get(i).getHora().getHour());
-        
-        row.createCell(3).setCellValue(reservas.get(i).getAsistencia());
-        
-        if(!(reservas.get(i).getTiempoFinalizacion()==null)){
-          row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().getHour());  
+        row.createCell(2).setCellValue(reservas.get(i).getHora().toString());
+        if(!(reservas.get(i).getTiempoOcupacion()==null)){
+            row.createCell(3).setCellValue(reservas.get(i).getTiempoOcupacion().toString());
         }
         
         
+        if(!(reservas.get(i).getTiempoFinalizacion()==null)){
+          row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().toString());  
+        }
+  
         row.createCell(5).setCellValue(reservas.get(i).getCliente().getNombre());
         
-        row.createCell(6).setCellValue(reservas.get(i).getComentario());
+        row.createCell(6).setCellValue(reservas.get(i).getMesa().getCapacidad().toString());
     }
    
     // Escribe el archivo
@@ -79,8 +80,8 @@ public class CrearExcel {
     // Crea los valores de las tablas
     Row header = Sheet.createRow(0);
     header.createCell(0).setCellValue("Nombre       ");
-    header.createCell(1).setCellValue("Correo       ");
-    header.createCell(2).setCellValue("Telefono     ");
+    header.createCell(1).setCellValue("Telefono       ");
+    header.createCell(2).setCellValue("Correo     ");
     
     
     
@@ -91,9 +92,9 @@ public class CrearExcel {
 
         row.createCell(0).setCellValue(cliente.get(i).getNombre());
 
-        row.createCell(1).setCellValue(cliente.get(i).getCorreo());
-
-        row.createCell(2).setCellValue(cliente.get(i).getTelefono());
+        row.createCell(1).setCellValue(cliente.get(i).getTelefono());
+        
+        row.createCell(2).setCellValue(cliente.get(i).getCorreo());
         
     }
    
