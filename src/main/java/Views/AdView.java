@@ -167,6 +167,7 @@ public class AdView extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        EstacionesExcel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -868,6 +869,13 @@ public class AdView extends javax.swing.JFrame {
             }
         });
 
+        EstacionesExcel.setText("Exportar a Excel");
+        EstacionesExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstacionesExcelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -878,7 +886,6 @@ public class AdView extends javax.swing.JFrame {
                         .addGap(286, 286, 286)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jButton8)
-                            .addComponent(jButton6)
                             .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addComponent(jLabel31)
                                 .addGap(18, 18, 18)
@@ -897,8 +904,13 @@ public class AdView extends javax.swing.JFrame {
                                 .addComponent(jTextFieldVerano, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(240, 240, 240)
-                        .addComponent(jLabel32)))
-                .addContainerGap(270, Short.MAX_VALUE))
+                        .addComponent(jLabel32))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jButton6)
+                        .addGap(56, 56, 56)
+                        .addComponent(EstacionesExcel)))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -924,7 +936,9 @@ public class AdView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(EstacionesExcel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1696,8 +1710,32 @@ public class AdView extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_ExcelclienteActionPerformed
 
+    private void EstacionesExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstacionesExcelActionPerformed
+        String verano = jTextFieldVerano.getText();
+        String otoño = jTextFieldOtoño.getText();
+        String invierno = jTextFieldInvierno.getText();
+        String primavera = jTextFieldPrimavera.getText();
+        if(verano.equals("")
+                || otoño.equals("")
+                || invierno.equals("")
+                || primavera.equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }else{
+            try {
+                CrearExcel.HacerExcelEstaciones(new String [] {verano,otoño,invierno,primavera});
+            } catch (Exception ex) {
+                Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+        
+    }//GEN-LAST:event_EstacionesExcelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton EstacionesExcel;
     private javax.swing.JButton Excel;
     private javax.swing.JButton Excelcliente;
     private javax.swing.JButton jBReservasFecha;

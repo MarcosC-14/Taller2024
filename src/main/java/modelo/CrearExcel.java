@@ -83,7 +83,7 @@ public class CrearExcel {
        
         HSSFWorkbook workBook = new HSSFWorkbook();
        
-       HSSFSheet Sheet = workBook.createSheet("Reservas");
+       HSSFSheet Sheet = workBook.createSheet("Cliente");
 
     // Crea los valores de las tablas
     Row header = Sheet.createRow(0);
@@ -114,6 +114,40 @@ public class CrearExcel {
         
     }
     
+    public static void HacerExcelEstaciones(String[] valores) throws Exception{
+         FILE = "ExcelExportados/EstacionExcelFile.xlsx";
+       
+        HSSFWorkbook workBook = new HSSFWorkbook();
+       
+       HSSFSheet Sheet = workBook.createSheet("Estacion");
+
+    // Crea los valores de las tablas
+    Row header = Sheet.createRow(0);
+    header.createCell(0).setCellValue("Verano       ");
+    header.createCell(1).setCellValue("Otoño       ");
+    header.createCell(2).setCellValue("Invierno     ");
+    header.createCell(3).setCellValue("Primavera     ");
+    
+        
+        HSSFRow row = Sheet.createRow(1);
+
+        row.createCell(0).setCellValue(valores[0]);
+
+        row.createCell(1).setCellValue(valores[1]);
+        
+        row.createCell(2).setCellValue(valores[2]);
+        row.createCell(3).setCellValue(valores[3]);
+   
+        // Escribe el archivo
+        FileOutputStream fos = new FileOutputStream(FILE);
+        workBook.write(fos);
+        workBook.close();
+        
+        
+    
+        
+        
+    }
     
      
     
