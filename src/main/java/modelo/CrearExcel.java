@@ -5,24 +5,29 @@
 package modelo;
 
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 
 /**
  *
  * @author Uvenk
  */ 
 public class CrearExcel {
+    private static String FILE = "Excel.xlsx";
     
     public static void hacerExcelReserva(ArrayList<Reserva> reservas) throws Exception {
-       HSSFWorkbook workBook = new HSSFWorkbook();
-       FileOutputStream fos = new FileOutputStream("/Users/Documents/11.xls");
+        FILE = "ExcelExportados/ReservasExcelFile.xlsx";
+       
+        HSSFWorkbook workBook = new HSSFWorkbook();
+       
        HSSFSheet Sheet = workBook.createSheet("Reservas");
 
-    // Create the first row corresponding to the header
+    // Crea los valores de las tablas
     Row header = Sheet.createRow(0);
     header.createCell(0).setCellValue("Mesa");
     header.createCell(1).setCellValue("Fecha");
@@ -33,9 +38,9 @@ public class CrearExcel {
     header.createCell(6).setCellValue("Comentario");
     
     
-    // Iterate over all the list an create the rows of data
+  
     for(int i = 0; i < reservas.size(); i++){
-        // Create the current starting from 1 to al.size()
+      
         HSSFRow row = Sheet.createRow((short) i + 1);
 
         row.createCell(0).setCellValue(reservas.get(i).getMesa().getNumero());
@@ -46,47 +51,56 @@ public class CrearExcel {
         
         row.createCell(3).setCellValue(reservas.get(i).getAsistencia());
         
-        row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().getHour());
+        if(!(reservas.get(i).getTiempoFinalizacion()==null)){
+          row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().getHour());  
+        }
+        
         
         row.createCell(5).setCellValue(reservas.get(i).getCliente().getNombre());
         
         row.createCell(6).setCellValue(reservas.get(i).getComentario());
     }
-    // Write the result into the file
+   
+    // Escribe el archivo
+        FileOutputStream fos = new FileOutputStream(FILE);
         workBook.write(fos);
-        
-        
+        workBook.close();
+
     }
     
     
     public static void hacerExcelCliente(ArrayList<Cliente> cliente) throws Exception {
-       HSSFWorkbook workBook = new HSSFWorkbook();
-       FileOutputStream fos = new FileOutputStream("/Users/Documents/11.xls");
+         FILE = "ExcelExportados/ClientesExcelFile.xlsx";
+       
+        HSSFWorkbook workBook = new HSSFWorkbook();
+       
        HSSFSheet Sheet = workBook.createSheet("Reservas");
 
-    // Create the first row corresponding to the header
+    // Crea los valores de las tablas
     Row header = Sheet.createRow(0);
-    header.createCell(0).setCellValue("Mesa");
-    header.createCell(1).setCellValue("Fecha");
-    header.createCell(2).setCellValue("Hora");
+    header.createCell(0).setCellValue("Nombre       ");
+    header.createCell(1).setCellValue("Correo       ");
+    header.createCell(2).setCellValue("Telefono     ");
+    
+    
+    
    
-    
-    
-    // Iterate over all the list an create the rows of data
     for(int i = 0; i < cliente.size(); i++){
-         //Create the current starting from 1 to al.size()
+        
         HSSFRow row = Sheet.createRow((short) i + 1);
 
-        row.createCell(0).setCellValue(cliente.get(i).getMesa().getNumero());
+        row.createCell(0).setCellValue(cliente.get(i).getNombre());
 
-        row.createCell(1).setCellValue(cliente.get(i).getFecha());
+        row.createCell(1).setCellValue(cliente.get(i).getCorreo());
 
-       row.createCell(2).setCellValue(cliente.get(i).getHora().getHour());
+        row.createCell(2).setCellValue(cliente.get(i).getTelefono());
         
-       
     }
-    // Write the result into the file
+   
+        // Escribe el archivo
+        FileOutputStream fos = new FileOutputStream(FILE);
         workBook.write(fos);
+        workBook.close();
         
         
     }
