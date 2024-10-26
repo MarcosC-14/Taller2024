@@ -1125,12 +1125,37 @@ public class ClView extends javax.swing.JFrame {
         reserva.setHora(horaBuscar);
         reserva.setComentario(jTextField_comentario.getText());
         Mesa mesaR = new Mesa();
-        Capacidad capacidad =Capacidad.valueOf((String)this.jComboBoxClienteReservaCapacidad.getSelectedItem());
-        Ubicacion ubicacion = Ubicacion.valueOf((String)this.jComboBoxClienteReservaUbicacion.getSelectedItem());
         int numM = Integer.parseInt((String)jComboBoxClienteReservaMesa.getSelectedItem());
-        mesaR.setNumero(numM);
-        mesaR.setCapacidad(capacidad);
-        mesaR.setUbicacion(ubicacion);
+         mesaR.setNumero(numM);
+        switch(mesaR.getNumero()){
+            case 3:
+                mesaR.setCapacidad(Capacidad.dos);
+                break;
+            case 1,6,7,8:
+                mesaR.setCapacidad(Capacidad.cuatro);
+                break;
+            case 4:
+                mesaR.setCapacidad(Capacidad.seis);
+                break;
+            case 2:
+                mesaR.setCapacidad(Capacidad.ocho);
+                break;
+            case 5:
+                mesaR.setCapacidad(Capacidad.diez);
+                break;
+        }
+        switch(mesaR.getNumero()){
+            case 1,2,3,4,5:
+                mesaR.setUbicacion(Ubicacion.Interior);
+                break;
+            case 6,7,8:
+                mesaR.setUbicacion(Ubicacion.Exterior);
+                break;
+        }
+
+        
+        
+        
         reserva.setMesa(mesaR);
         
         TarjetaDAO tarjetaR = new TarjetaDAO();
@@ -1146,7 +1171,7 @@ public class ClView extends javax.swing.JFrame {
             tarjetaR.guardarTarjeta(tarjeta);
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
-            MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, numM, capacidad, ubicacion, tarjeta.getNumero(), reserva.getComentario(), this);
+            MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, numM, mesaR.getCapacidad(), mesaR.getUbicacion(), tarjeta.getNumero(), reserva.getComentario(), this);
             this.setVisible(false);
         }
         
