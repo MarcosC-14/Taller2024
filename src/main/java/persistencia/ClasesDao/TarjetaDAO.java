@@ -15,7 +15,7 @@ import java.sql.SQLException;
 * Esta clase se encarga de gestionar la conexión con la base de datos de las tarjetas.
 * Tiene una funcion que se encarga de guardar las tarjetas en la base de datos, 
 * una funcion que revisa si una tarjeta se encuentra en la base de datos por su numero de tarjeta
-* @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+* @author   Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  * @version 27/10/2024
 */
@@ -116,6 +116,11 @@ public class TarjetaDAO {
     
      }
      
+     /**
+      * Se encarga de revisar si el String ingresado se puede convertir a long
+      * @param  strNum String a convertir.
+      * @return true en caso que se pueda convertir, false en caso contrario.
+      */
      public static boolean convertToLong(String strNum) {
     boolean retorno=true;
     long valor;
