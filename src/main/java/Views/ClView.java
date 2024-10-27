@@ -396,7 +396,7 @@ public class ClView extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(551, 551, 551)
                 .addComponent(jLabel8)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
                 .addGroup(realizaReserva_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(realizaReserva_clienteLayout.createSequentialGroup()
@@ -588,7 +588,7 @@ public class ClView extends javax.swing.JFrame {
                         .addComponent(jLTelefono)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTxtClientePerfilTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(766, Short.MAX_VALUE))
+                .addContainerGap(456, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -935,7 +935,7 @@ public class ClView extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addGap(444, 444, 444)
                         .addComponent(jLabel4)))
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         historial_clienteLayout.setVerticalGroup(
             historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1026,7 +1026,7 @@ public class ClView extends javax.swing.JFrame {
 
         jTabbedPane_cliente.addTab("Historial", historial_cliente);
 
-        getContentPane().add(jTabbedPane_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1410, 630));
+        getContentPane().add(jTabbedPane_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1100, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1129,11 +1129,12 @@ public class ClView extends javax.swing.JFrame {
      * Metodo que se produce al apretar el boton Nueva reserva Verifica que la
      * fecha ingresada sea valida,que se haga con una anticipacion mayor a 1 dia
      * Verifica que esa mesa ya no se encuentre ocupada en la misma fecha y
-     * hora. Actualiza la tabla de mesas disponibles en esa fecha, la tabla del
-     * historial de reservas del cliente y las reservas generales del
-     * restaurante
+     * hora. Verifica que se ingrese una tarjeta con todos sus datos y que su 
+     * numero tenga menos de 17 caracteres Actualiza la tabla de mesas disponibles
+     * en esa fecha, la tabla del historial de reservas del cliente y las reservas 
+     * generales del restaurante
      *
-     * @param evt es el evento de apretar el boton Nueva Reserva
+     * @param   evt es el evento que se produce al apretar el boton Nueva Reserva
      */
     private void jButton_nuevaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_nuevaReservaActionPerformed
         String auxFecha = jTextField_fechaNewReserva.getText();
@@ -1194,11 +1195,61 @@ public class ClView extends javax.swing.JFrame {
         reserva.setMesa(mesaR);
 
         TarjetaDAO tarjetaR = new TarjetaDAO();
-        tarjeta.setNombre(jTextFieldCienteReservaNombreT.getText());
-        tarjeta.setEmisor(this.jTextFieldClienteReservaEmiT.getText());
-        tarjeta.setNumero(this.jTextFieldClienteReservanNumT.getText());
-        tarjeta.setCodSeguridad(this.jTextFieldClienteReservaCodSeg.getText());
+        String nombreTarjeta=jTextFieldCienteReservaNombreT.getText();
+        String emisorTarjeta=this.jTextFieldClienteReservaEmiT.getText();
+        String numeroTarjeta=this.jTextFieldClienteReservanNumT.getText(); 
+        String codigoSegTarjeta=this.jTextFieldClienteReservaCodSeg.getText();
 
+        if(nombreTarjeta.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el nombre de la  tarjeta", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if(emisorTarjeta.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el emisor de la tarjeta", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if(numeroTarjeta.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el" 
+                    +"numero de la tarjeta", "Advertencia", javax.swing.
+                            JOptionPane.WARNING_MESSAGE);
+            return;
+        } else{
+            if(numeroTarjeta.length()>16){
+                javax.swing.JOptionPane.showMessageDialog(this, "El numero de "+
+                        "la tarjeta no puede tener más de 16 digitos", 
+                        "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+        
+        if(codigoSegTarjeta.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el codigo de seguridad de la tarjeta", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }else{
+            if(codigoSegTarjeta.length()>3){
+                javax.swing.JOptionPane.showMessageDialog(this, "La tarjeta no"+
+                        " puede tener un codigo de seguridad de más de 3"+ 
+                        " digitos", "Advertencia", javax.swing.JOptionPane.
+                                WARNING_MESSAGE);
+                return;
+            }
+        }
+        boolean actualizar = tarjetaR.existeTarjeta(numeroTarjeta);
+        if(actualizar){
+            Tarjeta tar= new Tarjeta(nombreTarjeta, emisorTarjeta, numeroTarjeta, codigoSegTarjeta);
+            if(!(tarjetaR.tarjetaValida(tar))){
+             javax.swing.JOptionPane.showMessageDialog(this, "Datos de tarjeta Incorrectos", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;   
+            }
+        }
+            tarjeta.setNombre(nombreTarjeta);
+            tarjeta.setEmisor(emisorTarjeta);
+            tarjeta.setNumero(numeroTarjeta);
+            tarjeta.setCodSeguridad(codigoSegTarjeta);
+            
+        
         reserva.setTarjeta(tarjeta);
         agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
         if (rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)
@@ -1221,6 +1272,8 @@ public class ClView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton_nuevaReservaActionPerformed
 
+    
+    
     private void jTextFieldClienteReservanNumTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClienteReservanNumTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldClienteReservanNumTActionPerformed
@@ -1406,10 +1459,24 @@ public class ClView extends javax.swing.JFrame {
             tarjeta.setNumero(jTxtNumeroTarjetaMod.getText());
             tarjeta.setCodSeguridad(jTxtCodigoTarjetaMod.getText());
             TarjetaDAO tarjetaR = new TarjetaDAO();
+            //revisar si esta en la base de datos la nueva 
+            if(tarjetaR.existeTarjeta(tarjeta.getNumero())){
+                if(!(tarjetaR.tarjetaValida(tarjeta))){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos"+
+                            " de la tarjeta son incorrectos", "Advertencia",javax.
+                                    swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }else{
+                    reserva.setTarjeta(tarjeta);
+                }
+            }else{
             if (tarjetaR.guardarTarjeta(tarjeta)) {
                 reserva.setTarjeta(tarjeta);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Los datos de la tarjeta son incorrectos", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "Los datos de"+
+                        " la tarjeta son incorrectos", "Advertencia", javax.
+                                swing.JOptionPane.WARNING_MESSAGE);
+            }
             }
         }
 
@@ -1421,7 +1488,7 @@ public class ClView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Reserva modificada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "La mesa no se encuentra disponible", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "La mesa no se encuentra disponible", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
         actualizarTablaMesas(jTable_mesasDisponibles);
         this.actualizarTablaHistorial();

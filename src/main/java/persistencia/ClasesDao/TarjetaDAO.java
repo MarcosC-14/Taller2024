@@ -13,7 +13,8 @@ import java.sql.SQLException;
 
 /**
 * Esta clase se encarga de gestionar la conexión con la base de datos de las tarjetas.
-* Tiene un método que se encarga de guardar las tarjetas en la base de datos 
+* Tiene una funcion que se encarga de guardar las tarjetas en la base de datos, 
+* una funcion que revisa si una tarjeta se encuentra en la base de datos por su numero de tarjeta
 * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  * @version 27/10/2024
@@ -60,9 +61,14 @@ public class TarjetaDAO {
         boolean bandera= false;
         String buscarNumTarjeta = "SELECT * FROM tarjeta WHERE numero = ?";
         con = conn.getConexion();
+        if(!convertToLong(numeroTarjeta)){
+            return false;
+        }
+        long numeroTarjeta1=Long.parseLong(numeroTarjeta);
         try{
             ps=con.prepareStatement(buscarNumTarjeta);
-            ps.setString(1,numeroTarjeta);
+            
+            ps.setLong(1,numeroTarjeta1);
             rs=ps.executeQuery();
             if(rs.next()){    
                 bandera=true;
@@ -75,7 +81,49 @@ public class TarjetaDAO {
         return bandera;
     }
     
+    /**
+     * Revisa si todos los datos de la tarjeta coinciden con los que estan en la 
+     * base de datos.
+     * @return  tru en caso de que coincidan, false en caso contrario.
+     */
+     public boolean tarjetaValida ( Tarjeta tarjeta){
+         boolean enBase = true;
+         con= conn.getConexion();
+         String sql = "SELECT * FROM tarjeta WHERE numero=?";
+         
+         long numeroTarjeta =Long.parseLong(tarjeta.getNumero());
+         try{
+             con= conn.getConexion();
+             ps=con.prepareStatement(sql);
+             ps.setLong(1,numeroTarjeta);
+             ResultSet rs = ps.executeQuery();
+             if(!(tarjeta.getCodSeguridad().equals(rs.getString("cod_seguridad")))){
+                 enBase = false ;
+             }
+             if(!(tarjeta.getNombre().equals(rs.getString("nombre")))){
+                 enBase = false ;
+             }
+             if(!(tarjeta.getEmisor().equals(rs.getString("emisor")))){
+                 enBase = false ;
+             }
+         }catch(SQLException e){
+             System.out.println(e.getMessage());
+         }finally {
+             conn.cerrarConexion();
+         }
+         return enBase;
     
     
+     }
      
+     public static boolean convertToLong(String strNum) {
+    boolean retorno=true;
+    long valor;
+    try {
+        valor = Long.parseLong(strNum);
+    } catch (NumberFormatException | NullPointerException nfe) {
+        return false; 
+    }
+    return retorno;
+}
 }
