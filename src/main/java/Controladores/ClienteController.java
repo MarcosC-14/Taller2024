@@ -120,10 +120,11 @@ public class ClienteController implements ActionListener {
 
     /**
      * Revisa que la fecha ingresada coincida con el formato de fecha 
-     * establecida
+     * establecida.
      *
-     * @param fecha
-     * @return
+     * @param   fecha representa la fecha que debe revisar.
+     * @return  true en caso de que sea un formato valido, false en caso 
+     * contrario.
      */
     public static boolean esFormatoFechaValido(String fecha) {
         // Definimos el patrón del formato de fecha esperado (dd/mm/aa)
