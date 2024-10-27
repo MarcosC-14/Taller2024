@@ -1402,7 +1402,10 @@ public class AdView extends javax.swing.JFrame {
         if (nombre.equals("")
                 || correo.equals("")
                 || contrasenia.equals("")) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "Debe completar todos los campos",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
             if (ClienteController.esCorreoElectronicoValido(correo)) {
                 Empleado emp = new Empleado();
@@ -1412,11 +1415,15 @@ public class AdView extends javax.swing.JFrame {
                 emp.setRol(rol);
                 System.out.println(emp);
                 if (empleadoDAO.registrarEmpleado(emp)) {
-                    javax.swing.JOptionPane.showMessageDialog(null, "Registrado exitosamente");
+                    javax.swing.JOptionPane.showMessageDialog(null,
+                            "Registrado exitosamente");
                     actualizarTablaEmpleado();
                 }
             } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Ingrese un correo electronico valido");
+                javax.swing.JOptionPane.showMessageDialog(null, 
+                        "Ingrese un correo electronico valido",
+                        "Advertencia", 
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
             }
 
         }

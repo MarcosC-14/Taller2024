@@ -89,6 +89,8 @@ public class ClienteController implements ActionListener {
                     cliente.setCorreo(correo);
                     cliente.setContrasenia(contrasenia);
                     cliente.setTelefono(telefono);
+                    
+                    
                     if (clienteDAO.registrarCliente(cliente)) {
                         JOptionPane.showMessageDialog(null, "Registrado exitosamente");
                     }
