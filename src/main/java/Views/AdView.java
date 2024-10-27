@@ -1581,7 +1581,7 @@ public class AdView extends javax.swing.JFrame {
         int cantInvierno = 0;
         int cantOtoño = 0;
         for (Reserva res : reservas) {
-            if (res.getAsistencia()) {
+            if (!res.getAsistencia()) {
                 continue;
             }
             LocalDate aux = res.getFecha();
