@@ -43,7 +43,6 @@ import persistencia.ClasesDao.ReservaDAO;
  */
 public class AdView extends javax.swing.JFrame {
 
-    private DefaultTableModel tabla;
     private Administrador administrador;
     private EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     private ClienteDAO clienteDAO = new ClienteDAO();
@@ -71,7 +70,6 @@ public class AdView extends javax.swing.JFrame {
         setTitle("Panel de administracion");
         setLocationRelativeTo(null);
         this.administrador = administrador;
-        tabla = (DefaultTableModel) jTableReporteReservas.getModel();
         agendaR = empleadoDAO.obtenerHoraAperturaCierre();
         bmes = empleadoDAO.obtenerBloqueosMesasEventosEspeciales();
         agendaR.setFechasEspecial(bmes);
@@ -1909,7 +1907,7 @@ public class AdView extends javax.swing.JFrame {
         } else {
             try {
                 CrearExcel.HacerExcelEstaciones(
-                            new String[]{verano, otoño, invierno, primavera});
+                        new String[]{verano, otoño, invierno, primavera});
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
