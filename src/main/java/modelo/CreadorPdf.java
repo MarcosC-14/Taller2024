@@ -6,8 +6,9 @@ package modelo;
 
 /**
  * La clase CreadorPdf se encarga de 
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
- * Caraballo
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
+ * Caraballo.
+ * @version 27/10/2024.
  */
 import java.io.FileOutputStream;
 import com.itextpdf.text.BadElementException;
@@ -172,7 +173,7 @@ public class CreadorPdf {
  * @param   document representa el documento donde estamos trabajando.
  * @param   clientes representa todos los clientes que conforman el reporte. 
  * @throws  DocumentException  ocurre cuando hay un error al añadir la tabla al
- * documento
+ * documento.
  */
     private static void createTableClientes(Document document,
             ArrayList<Cliente> clientes) throws DocumentException {
@@ -210,14 +211,19 @@ public class CreadorPdf {
 /**
  * Se encarga de agregar lineas vacias a los parrafors del documento.
  * @param   paragraph representa el parrafo.
- * @param   number representa la cantidad de espacios 
+ * @param   number representa la cantidad de espacios.
  */    
     private static void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
             paragraph.add(new Paragraph(" "));
         }
     }
-
+/**
+ * 
+ * @param titulo
+ * @param valores
+ * @throws IOException 
+ */
     public static void hacerPdfEstaciones(String titulo, String[] valores) throws IOException {
         FILE = "PDFsExportados/" + titulo + ".pdf";
         Files.createDirectories(Paths.get("ExcelExportados"));

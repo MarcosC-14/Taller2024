@@ -17,7 +17,9 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author Uvenk
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
+ * Caraballo.
+ * @version 27/10/2024
  */
 public class CrearExcel {
 
