@@ -84,7 +84,7 @@ public class TarjetaDAO {
     /**
      * Revisa si todos los datos de la tarjeta coinciden con los que estan en la 
      * base de datos.
-     * @return  tru en caso de que coincidan, false en caso contrario.
+     * @return  true en caso de que coincidan, false en caso contrario.
      */
      public boolean tarjetaValida ( Tarjeta tarjeta){
          boolean enBase = true;

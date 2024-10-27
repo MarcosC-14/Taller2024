@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.util.Iterator;
 import java.util.ArrayList; 
 /**
- * Nose bien que hace...
+ * 
  * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  * @version 27/10/2024
