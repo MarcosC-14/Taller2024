@@ -6,7 +6,6 @@ package modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 
 /**
  * La clase Reserva se encarga de generar y almacenar la reservacion de una mesa
@@ -29,22 +28,6 @@ public class Reserva {
     private Tarjeta tarjeta;
     private int id;
     private boolean multa;
-
-    /**
-     * Metdo Getter multa
-     * @return true si la multa fue realizada y false en caso contrario
-     */
-    public boolean getMulta() {
-        return multa;
-    }
-
-    /**
-     *Metodo Setter multa
-     * @param multa si se le aplica o no a un cliente
-     */
-    public void setMulta(boolean multa) {
-        this.multa = multa;
-    }
 
     /**
      * Constructor por defecto de Reserva
@@ -288,6 +271,22 @@ public class Reserva {
         this.id = id;
     }
 
+    /**
+     * Metodo Getter multa
+     * @return true si la multa fue realizada y false en caso contrario
+     */
+    public boolean getMulta() {
+        return multa;
+    }
+
+    /**
+     *Metodo Setter multa
+     * @param multa si se le aplica o no a un cliente
+     */
+    public void setMulta(boolean multa) {
+        this.multa = multa;
+    }
+    
     /**
      * Metodo toString que retorna los datos de la reserva
      *

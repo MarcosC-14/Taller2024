@@ -1393,9 +1393,6 @@ public class AdView extends javax.swing.JFrame {
             case "Recepcionista":
                 rol = Rol.Recepcionista;
                 break;
-            case "Cocinero":
-                rol = Rol.Cocinero;
-                break;
             default:
                 break;
         }

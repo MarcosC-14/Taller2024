@@ -51,7 +51,7 @@ public class Empleado extends Persona {
  */
     public Empleado() {
         super();
-        rol = Rol.Cocinero;
+        rol = null;
         this.reservas = new ArrayList<Reserva>();
     }
 /**
