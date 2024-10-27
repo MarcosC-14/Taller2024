@@ -1004,29 +1004,6 @@ public class AdView extends javax.swing.JFrame {
 
     }
 
-    /**
-     * con el array list de obtenerReservasHistorial. los que tengan una fecha
-     * anterior a localdatetime.now los remueve del arrayList<reserva>,
-     * ReservaDAo local. guarda en la tabla, al inicio limpiar la tabla
-     */
-    /**
-     * con obtenerClientes de cliente dao, llama a la funcion para tener las
-     * asistencias y guarda en una varibles y luego compara con el siguiente, si
-     * es mayor cambia, si no queda igual
-     */
-    /**
-     * esta en reservaDAo
-     */
-    /**
-     * metodo reservaDAo
-     */
-    /**
-     * arrayList.size para la estacion /** Evento del boton salir, para que
-     * cuando sea oprimido cierre el jFrame de AdView y abra el Inicio
-     *
-     * @param evt es evento de presionar el boton
-     */
-
     private void jButton_Administrador_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Administrador_salirActionPerformed
         dispose();
         Inicio login = new Inicio();

@@ -48,7 +48,7 @@ public class Mesa {
      * @param capacidad que indica cuantas personas maximo se pueden sentar en
      * esa mesa.
      * @param ubicacion que indica donde se ubica la mesa.
-     * @param reserva contiene la informacion de la reserva
+     * @param reserva contiene la informacion de la reserva que se va a agredar.
      */
     public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Reserva reserva) {
         this();
@@ -64,7 +64,7 @@ public class Mesa {
      * @param capacidad que indica cuantas personas maximo se pueden sentar en
      * esa mesa.
      * @param ubicacion que indica donde se ubica la mesa.
-     * @param reserva contiene el listado de reservas
+     * @param reservas contiene el listado de reservas
      */
     public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, ArrayList<Reserva> reservas) {
         this.numero = numero;
@@ -91,7 +91,7 @@ public class Mesa {
  * @param reserva es la reserva a agregar al listado
  */
     public void agregarReserva(Reserva reserva) {
-        if (reservas.size() == 0) {
+        if (reservas.isEmpty()) {
             this.reservas = new ArrayList<Reserva>();
         }
         reservas.add(reserva);
@@ -141,7 +141,7 @@ public class Mesa {
     
     /**
      * Metodo que guarda la capacidad y la ubicacion en la mesa.
-     * @    La mesa con la nueva capacidad y ubicacion.
+     * @return  La mesa con la nueva capacidad y ubicacion.
      */
     public Mesa obtenerCapUbi(){
         switch (this.getNumero()) {

@@ -85,7 +85,6 @@ public class ClienteDAO{
         try {
             con = conn.getConexion();
             ps = con.prepareStatement(query);
-            //Enviar parametros
             ps.setString(1, user);
             ps.setString(2, password);
             rs = ps.executeQuery();

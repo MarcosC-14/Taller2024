@@ -57,14 +57,14 @@ public class TarjetaDAO {
      * @return  true en caso de que encuentre el numero de la tarjeta, false si 
      * no lo encontro.
      */
-    public boolean existeTarjeta(String numeroTarjeta){
+    public boolean existeTarjeta(String numero){
         boolean bandera= false;
         String buscarNumTarjeta = "SELECT * FROM tarjeta WHERE numero = ?";
         con = conn.getConexion();
-        if(!convertToLong(numeroTarjeta)){
+        if(!convertToLong(numero)){
             return false;
         }
-        long numeroTarjeta1=Long.parseLong(numeroTarjeta);
+        long numeroTarjeta1=Long.parseLong(numero);
         try{
             ps=con.prepareStatement(buscarNumTarjeta);
             
@@ -118,14 +118,14 @@ public class TarjetaDAO {
      
      /**
       * Se encarga de revisar si el String ingresado se puede convertir a long
-      * @param  strNum String a convertir.
+      * @param  n String a convertir.
       * @return true en caso que se pueda convertir, false en caso contrario.
       */
-     public static boolean convertToLong(String strNum) {
+     public static boolean convertToLong(String n) {
     boolean retorno=true;
     long valor;
     try {
-        valor = Long.parseLong(strNum);
+        valor = Long.parseLong(n);
     } catch (NumberFormatException | NullPointerException nfe) {
         return false; 
     }

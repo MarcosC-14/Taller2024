@@ -20,7 +20,6 @@ public class Tarjeta {
     private String emisor;
     private String numero;
     private String codSeguridad;
-    private ArrayList<Reserva> reservas;
 
     /**
      * Constructor por defecto de Tarjeta
@@ -30,7 +29,6 @@ public class Tarjeta {
         this.emisor = "";
         this.numero = "";
         this.codSeguridad = "";
-        this.reservas = new ArrayList<Reserva>();
     }
 
     /**
@@ -48,15 +46,7 @@ public class Tarjeta {
         this.emisor = emisor;
         this.codSeguridad = codSeguridad;  
     }
-    public Tarjeta(String nombre, String emisor, String numero, String codSeguridad,  Reserva reserva){
-        this();
-        this.nombre = nombre;
-        this.numero = numero;
-        this.emisor = emisor;
-        this.codSeguridad = codSeguridad;
-        this.reservas.add(reserva);
-    }
-
+    
     /**
      * Getter del atributo nombre
      *
@@ -129,15 +119,6 @@ public class Tarjeta {
         this.codSeguridad = codSeguridad;
     }
 
-    /**
-     * Método para cobrar una multa por no asistir a una reserva
-     *
-     * @param gFecha
-     * @param gHora
-     * @param gAsistencia
-     */
-    public void cobrarMulta(String gFecha, String gHora, Boolean gAsistencia) {
-        
-    }
+    
 
 }
