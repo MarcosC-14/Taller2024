@@ -36,7 +36,7 @@ public class ClRegisterView extends javax.swing.JFrame {
     ClienteDAO clienteDAO = new ClienteDAO();
 
     /**
-     * Creates new form ClRegisterView
+     * Constructor por defecto de la clase.
      */
     public ClRegisterView() {
         initComponents();

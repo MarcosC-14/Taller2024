@@ -16,8 +16,9 @@ import modelo.Rol;
 /**
  * La clase EpView es un Jframe donde los usuarios de tipo empleado que no son
  * administradores son dirigidos. Aqui se muestran las mesas correspondientes,
- * confirmar asistencia de los comensales y poner horario de inicio,fin de
- * servicio.
+ * confirmar asistencia de los comensales y poner horario de inicio y de fin de
+ * servicio, ademas de tener metodos para saber si un empleado es mesero o es
+ * recepcionista.
  *
  * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
@@ -31,7 +32,11 @@ public class EpView extends javax.swing.JFrame {
     private Empleado empleado;
 
     /**
-     * Creates new form EpView
+     * Constructor parametrizado de la clase Epview.
+     * Se encarga de llamar a un metodo que inicializa los componentes, 
+     * darle tamaño a la ventana, hacer que el usuario no pueda cambiarle el 
+     * tamaño a la ventana, darle un titulo y centrarla.  
+     * @param   empleado representa a un empleado.
      */
     public EpView(Empleado empleado) {
         initComponents();
@@ -230,11 +235,11 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton_empleado_salirActionPerformed
     /**
      * Boton que se activa cuando un recepcionista trata de cambiar la
-     * asistencia de un cliente. Revisa que quien intente cambiar la asistenica
+     * asistencia de un cliente. Revisa que quien intente cambiar la asistencia
      * sea un recepcionista. Si no es un recepcionista le muentra un mensaje
-     * indicandole que no es un recepcionista
+     * indicandole que no es un recepcionista.
      *
-     * @param evt accion que ocurre
+     * @param   evt accion que ocurre al presionar el boton.
      */
     private void btnRecepcionistaAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistaAsistenciaActionPerformed
 
@@ -284,18 +289,17 @@ public class EpView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRecepcionistaAsistenciaActionPerformed
     /**
-     * Llama al metodo ActualizarTablasDeHoy
-     *
-     * @param evt evento de apretar el boton Mesas de hoy
+     * Llama al metodo ActualizarTablasDeHoy.
+     * @param evt evento de apretar el boton Mesas de hoy.
      */
     private void jButtonMesasHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMesasHoyActionPerformed
         actualizarTablaMesasDeHoy();
     }//GEN-LAST:event_jButtonMesasHoyActionPerformed
     /**
-     * Es el metodo de apretar el horario de inicio del servicio verifica que
-     * quien lo presione sea un mesero,ya que solo un mesero puede hacerlo
+     * Cuando un mesero lo presiona, registra en la reserva la hora de inicio
+     * de ocupacion, solo en caso de que haya asistido a la misma el cliente.
      *
-     * @param evt es el evento de presionar el boton inicio
+     * @param evt es el evento de presionar el boton inicio.
      */
     private void jButtonMeseroHoraInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraInicioActionPerformed
         if (esMesero()) {
@@ -330,10 +334,10 @@ public class EpView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonMeseroHoraInicioActionPerformed
     /**
-     * Es el metodo de apretar el horario de fin del servicio verifica que quien
-     * lo presione sea un mesero,ya que solo un mesero puede hacerlo
+     * Cuando un mesero lo presiona, registra en la reserva la hora de fin
+     * de ocupacion, solo en caso de que haya asistido a la misma el cliente.
      *
-     * @param evt es el evento de presionar el boton fin
+     * @param evt es el evento de presionar el boton fin.
      */
     private void jButtonMeseroHoraFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMeseroHoraFinActionPerformed
         if (esMesero()) {
@@ -370,9 +374,9 @@ public class EpView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMeseroHoraFinActionPerformed
 
     /**
-     * Revisa si es un mesero, aun no terminado.
+     * Se encarga de revisar si es un mesero.
      *
-     * @return true en caso que lo encuentre, false si no
+     * @return true en caso que lo encuentre, false si no.
      */
     public boolean esMesero() {
         boolean bandera = false;
@@ -383,9 +387,9 @@ public class EpView extends javax.swing.JFrame {
     }
 
     /**
-     * Revisa si es un recepcionista. Aun no terminado.
+     * Se encarga de revisar si es un recepcionista.
      *
-     * @return true en caso que lo encuentre, false si no
+     * @return true en caso que lo encuentre, false si no.
      */
     public boolean esRecepcionista() {
         boolean bandera = false;

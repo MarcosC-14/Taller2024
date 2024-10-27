@@ -14,7 +14,7 @@ import modelo.Ubicacion;
  * La clase MensajeReserva es un Jframe que se abre cuando un cliente quiere
  * realizar una reserva y muestra todos los datos que debe llenar
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
  * Caraballo
  */
 public class MensajeReserva extends javax.swing.JFrame {
@@ -242,17 +242,21 @@ public class MensajeReserva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Se encarga de llevar al cliente a la ventana de ClView y cerrar la actual
+     * @param   evt representa apretar el boton Atras. 
+     */
     private void jBAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtrasActionPerformed
         clView.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBAtrasActionPerformed
 
     private void jTxtCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCapacidadActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTxtCapacidadActionPerformed
 
     private void jTxtNumeroTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNumeroTarjetaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTxtNumeroTarjetaActionPerformed
 
 
