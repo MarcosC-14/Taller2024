@@ -1482,8 +1482,8 @@ public class ClView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Reserva modificada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, reserva.getMesa().getNumero(), reserva.getMesa().getCapacidad(), reserva.getMesa().getUbicacion(), reserva.getTarjeta().getNumero(), reserva.getComentario(), this);
                 this.setVisible(false);
-                reserva = null;
-                tarjeta = null;
+                reserva = new Reserva();
+                tarjeta = new Tarjeta();
             }
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "La mesa no se encuentra disponible", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
