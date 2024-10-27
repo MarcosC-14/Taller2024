@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Views;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -10,38 +11,48 @@ import modelo.Capacidad;
 import modelo.Ubicacion;
 
 /**
- *La clase MensajeReserva es un Jframe que se abre cuando un cliente quiere realizar
- * una reserva y muestra todos los datos que debe llenar
+ * La clase MensajeReserva es un Jframe que se abre cuando un cliente quiere
+ * realizar una reserva y muestra todos los datos que debe llenar
+ *
  * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  */
 public class MensajeReserva extends javax.swing.JFrame {
-    private ClView clView;
 
+    private ClView clView;
 
     /**
      * Contructor Parametrizado.
-     * @param   fecha representa la fecha de la reserva.
-     * @param   hora representa la hora de la reserva.
-     * @param   numMesa representa el numero de mesa.
-     * @param   capacidad representa la capacidad de la mesa.
-     * @param   ubicacion representa la ubicacion de la mesa.
-     * @param   numTarjeta representa el numero de tarjeta.
-     * @param   comentario representa el comentario que escribio un cliente.
-     * @param   clView  representa la ventana anterior para poder abrirla cuandon
+     *
+     * @param fecha representa la fecha de la reserva.
+     * @param hora representa la hora de la reserva.
+     * @param numMesa representa el numero de mesa.
+     * @param capacidad representa la capacidad de la mesa.
+     * @param ubicacion representa la ubicacion de la mesa.
+     * @param numTarjeta representa el numero de tarjeta.
+     * @param comentario representa el comentario que escribio un cliente.
+     * @param clView representa la ventana anterior para poder abrirla cuandon
      * se presione el boton atras.
      */
-    public MensajeReserva( LocalDate fecha, LocalTime hora, int numMesa, Capacidad capacidad, Ubicacion ubicacion, String numTarjeta, String comentario, ClView clView) {
+    public MensajeReserva(LocalDate fecha,
+            LocalTime hora,
+            int numMesa,
+            Capacidad capacidad,
+            Ubicacion ubicacion,
+            String numTarjeta,
+            String comentario,
+            ClView clView) {
         initComponents();
         setLocationRelativeTo(null);
-        jTxtFecha.setText(fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        jTxtFecha.setText(fecha.
+                format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         jTxtHora.setText(hora.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
         jTxtNumeroMesa.setText(String.valueOf(numMesa));
         jTxtCapacidad.setText(String.valueOf(capacidad));
         jTxtUbicacion.setText(String.valueOf(ubicacion));
         jTxtNumeroTarjeta.setText(String.valueOf(numTarjeta));
         jTxtComentario.setText(comentario);
-        this.clView=clView;
+        this.clView = clView;
         this.setVisible(true);
     }
 
@@ -232,7 +243,7 @@ public class MensajeReserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtrasActionPerformed
-       clView.setVisible(true);
+        clView.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBAtrasActionPerformed
 
@@ -244,7 +255,6 @@ public class MensajeReserva extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtNumeroTarjetaActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAtras;

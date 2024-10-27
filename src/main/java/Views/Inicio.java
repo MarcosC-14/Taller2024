@@ -14,10 +14,10 @@ import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
  * Clase inicio es un Jframe que se presenta al inicio para que el usuario pueda
- * acceder al sistema, lo envia a otra ventana para que pueda recuperar su 
+ * acceder al sistema, lo envia a otra ventana para que pueda recuperar su
  * contraseña o registrarse si es un cliente.
  *
- * @author  Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  * @version 27/10/2024
  */
@@ -198,10 +198,11 @@ public class Inicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txt_passwordActionPerformed
     /**
-     * Metodo que se ejecuta cuando se aprieta el boton de ingresar.
-     * Verifica que los datos ingresados sean validos y compara
-     * con que tipo de usuario corresponde para dirigirlo a su panel.
-     * @param   evt es el evento de apretar el boton de ingresar
+     * Metodo que se ejecuta cuando se aprieta el boton de ingresar. Verifica
+     * que los datos ingresados sean validos y compara con que tipo de usuario
+     * corresponde para dirigirlo a su panel.
+     *
+     * @param evt es el evento de apretar el boton de ingresar
      */
     private void jButton_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ingresoActionPerformed
         String correo = this.txt_username.getText().trim();
@@ -209,18 +210,21 @@ public class Inicio extends javax.swing.JFrame {
         // validar que los campos no esten vacios 
         if (!correo.equals("") || !pass.equals("")) {
             // pasar parametros al metodo login
-            usuario = cliente_dao.loginQuery(correo, pass);
+            usuario = cliente_dao.loginQuery(correo,
+                    pass);
             if (usuario.getCorreo().equals(correo)) {
                 ClView aux = new ClView((Cliente) usuario);
                 aux.setVisible(true);
                 this.dispose();
             } else {
                 usuario = null;
-                usuario = empleadoDao.loginQuery(correo, pass);
+                usuario = empleadoDao.loginQuery(correo,
+                        pass);
                 System.out.println(usuario);
                 if (usuario.getCorreo().equals(correo)) {
                     Empleado emp = (Empleado) usuario;
-                    if (((Empleado) usuario).getRol().toString().equals("Administrador")) {
+                    if (((Empleado) usuario).getRol().toString().equals(
+                            "Administrador")) {
 
                         Administrador admin = new Administrador(emp);
                         AdView adView = new AdView(admin);
@@ -232,18 +236,21 @@ public class Inicio extends javax.swing.JFrame {
                         this.dispose();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+                    JOptionPane.showMessageDialog(null,
+                            "Usuario o contraseña invalido");
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido");
+            JOptionPane.showMessageDialog(null,
+                    "Usuario o contraseña invalido");
         }
 
     }//GEN-LAST:event_jButton_ingresoActionPerformed
     /**
      * Metodo que se ejecuta cuando se aprieta el boton de registro cliente.
      * Lleva al usuario a la ventana de registro.
-     * @param   evt es el evento de apretar el boton registro cliente.
+     *
+     * @param evt es el evento de apretar el boton registro cliente.
      */
     private void jButton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registroActionPerformed
         ClRegisterView viewCl = new ClRegisterView();
@@ -252,7 +259,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_registroActionPerformed
     /**
      * Metodo que se ejecuta cuando se aprieta el boton de recuperar contraseña.
-     * @param   evt es el evento de apretar el boton recuperar contraseña.
+     *
+     * @param evt es el evento de apretar el boton recuperar contraseña.
      */
     private void jButton_recuperarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_recuperarContraseñaActionPerformed
         ClRecuperarC ventanaContraseña = new ClRecuperarC();

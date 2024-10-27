@@ -39,14 +39,17 @@ public class Tarjeta {
      * @param numero Es numero de la tarjeta
      * @param codSeguridad Es el codigo de seguridad de la tarjeta
      */
-    public Tarjeta(String nombre, String emisor, String numero, String codSeguridad) {
+    public Tarjeta(String nombre,
+            String emisor,
+            String numero,
+            String codSeguridad) {
         this();
         this.nombre = nombre;
         this.numero = numero;
         this.emisor = emisor;
-        this.codSeguridad = codSeguridad;  
+        this.codSeguridad = codSeguridad;
     }
-    
+
     /**
      * Getter del atributo nombre
      *
@@ -118,7 +121,5 @@ public class Tarjeta {
     public void setCodSeguridad(String codSeguridad) {
         this.codSeguridad = codSeguridad;
     }
-
-    
 
 }

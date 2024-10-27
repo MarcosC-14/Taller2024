@@ -8,10 +8,11 @@ import java.util.ArrayList;
 
 /**
  * Clase cliente que hereda de Persona, contiene sus constructores por defecto y
- * parametrizados, ademas de los metodos necesarios para obtener, guardar los datos
- * de los atributos y actualizar la informacion de contacto del cliente.
+ * parametrizados, ademas de los metodos necesarios para obtener, guardar los
+ * datos de los atributos y actualizar la informacion de contacto del cliente.
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle, Ian Franco Caraballo, Valentin Rebechi.
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Ian Franco Caraballo,
+ * Valentin Rebechi.
  * @version 27/10/2024
  */
 public class Cliente extends Persona {
@@ -32,7 +33,7 @@ public class Cliente extends Persona {
     /**
      * Devuelve el id del cliente.
      *
-     * @return  numero de identificacion del cliente
+     * @return numero de identificacion del cliente
      */
     public int getId() {
         return id;
@@ -41,7 +42,7 @@ public class Cliente extends Persona {
     /**
      * Metodo Setter del Id
      *
-     * @param   id es el numero de identificacion del cliente
+     * @param id es el numero de identificacion del cliente
      */
     public void setId(int id) {
         this.id = id;
@@ -69,7 +70,7 @@ public class Cliente extends Persona {
     /**
      * Método getter del atributo telefono
      *
-     * @return  devuelve el telefono almacenado
+     * @return devuelve el telefono almacenado
      */
     public String getTelefono() {
         return telefono;
@@ -78,25 +79,23 @@ public class Cliente extends Persona {
     /**
      * Método setter del atributo telefono
      *
-     * @param   telefono representa un numero de telefono
+     * @param telefono representa un numero de telefono
      */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-   
-
     /**
      * Método para actualizar informacion de contacto del cliente
      *
-     * @param   correo representa el correo de un cliente.
-     * @param   telefono representa el telefono de un cliente.
+     * @param correo representa el correo de un cliente.
+     * @param telefono representa el telefono de un cliente.
      */
-    public void actualizarInformacion(String correo, String telefono) {
+    public void actualizarInformacion(String correo,
+            String telefono) {
         this.setCorreo(correo);
         this.setTelefono(telefono);
     }
-
 
     /**
      * Metodo toString que muestra los datos del cliente
@@ -104,6 +103,9 @@ public class Cliente extends Persona {
      * @return retorna una cadena con los datos del cliente
      */
     public String toString() {
-        return "Cliente: (Nombre: " + super.getNombre() + ", Correo: " + super.getCorreo() + ", Contrasenia: " + super.getContrasenia() + ", Telefono: " + telefono + "y datos de Reservas: " + reservas + ")";
+        return "Cliente: (Nombre: " + super.getNombre()
+                + ", Correo: " + super.getCorreo() + ", Contrasenia: "
+                + super.getContrasenia() + ", Telefono: " + telefono
+                + "y datos de Reservas: " + reservas + ")";
     }
 }
