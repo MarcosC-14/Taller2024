@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * La clase empleado representa a un empleado tiene sus constructores, ademas de 
- * metodos para obtener y guardar los datos de los atributos 
+ * metodos para obtener y guardar los datos de los atributos. 
  *
  * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
  * Caraballo

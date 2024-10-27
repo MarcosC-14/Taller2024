@@ -559,8 +559,8 @@ public class ReservaDAO {
           
           /**
            * Cuenta todas las asistencias en la base de datos
-           * de un cliente pasado por parámetro
-           * @param cliente representa el cliente al que se contarán
+           * de un cliente pasado por parámetro.
+           * @param     cliente representa el cliente al que se contarán
            * sus asistencias
            * @return    un entero que representa la cantidad de asistencias
            */

@@ -112,8 +112,8 @@ public class ClienteDAO{
      public String recuperarContraseña(String correo){ 
          String contraseña="";
          String recuperaC="SELECT * FROM cliente WHERE correo = ?";
+          con=conn.getConexion();
          try {
-             con=conn.getConexion();
              ps=con.prepareStatement(recuperaC);
              ps.setString(1,correo);
              rs=ps.executeQuery();
@@ -145,13 +145,12 @@ public class ClienteDAO{
          String sql="UPDATE cliente SET correo = ? WHERE id = ?";
          String correoBuscar="SELECT * FROM cliente WHERE correo= ?";
          try{
-             con = conn.getConexion(); //asegura que estas conectado
+             con = conn.getConexion();
              ps=con.prepareStatement(buscaId);
              ps.setInt(1, id);
              rs=ps.executeQuery();
              if(rs.next()){    
                  if(ClienteController.esCorreoElectronicoValido(correoNuevo)){
-                     System.out.println("Hola2");
                         ps=con.prepareStatement(correoBuscar);
                         ps.setString(1,correoNuevo);
                         rs=ps.executeQuery();
@@ -165,11 +164,14 @@ public class ClienteDAO{
                         }
                         }
                         }else{
-                     JOptionPane.showMessageDialog(null,"INGRESE UN CORREO ELECTRONICO VALIDO","Error", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(null,"INGRESE UN CORREO "+
+                             "ELECTRONICO VALIDO","Error", JOptionPane.
+                                     ERROR_MESSAGE);
                  }}
              
          }catch(SQLException e){
-             JOptionPane.showMessageDialog(null,"Error al actualizar la informacion: "+e);
+             JOptionPane.showMessageDialog(null,"Error al actualizar la"+
+                     " informacion: "+e.getMessage());
              System.out.println(e.getMessage());
          }finally {
             conn.cerrarConexion();
