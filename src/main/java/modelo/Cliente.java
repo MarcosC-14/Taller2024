@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 /**
  * Clase cliente que hereda de Persona, contiene sus constructores por defecto y
- * parametrizados, ademas de los metodos necesarios para obtener y guardar los datos
- * de los atributos.
+ * parametrizados, ademas de los metodos necesarios para obtener, guardar los datos
+ * de los atributos y actualizar la informacion de contacto del cliente.
  *
  * @author Marcos Ramon Caraballo, Angelina María Vialle, Ian Franco Caraballo, Valentin Rebechi.
  * @version 27/10/2024
@@ -84,20 +84,10 @@ public class Cliente extends Persona {
         this.telefono = telefono;
     }
 
-    /**
-     * Metodo para agregar una reserva nueva
-     *
-     * @param reserva es la nueva reserva que se agrega al arraylist
-     */
-    public void agregarReserva(Reserva reserva) {
-        if (reservas.size() == 0) {
-            this.reservas = new ArrayList<Reserva>();
-        }
-        this.reservas.add(reserva);
-    }
+   
 
     /**
-     * Método para actualizar los atributos del cliente
+     * Método para actualizar informacion de contacto del cliente
      *
      * @param   correo representa el correo de un cliente.
      * @param   telefono representa el telefono de un cliente.
@@ -107,18 +97,6 @@ public class Cliente extends Persona {
         this.setTelefono(telefono);
     }
 
-    /**
-     * Método para recuperar la contrasenia del usuario
-     *
-     * @param correo Ingresa el correo por parámetro
-     * @return Devuelve la contrasenia
-     */
-    public String recuperarContrasenia(String correo) {
-        if (this.getCorreo().equalsIgnoreCase(correo)) {
-            return this.getContrasenia();
-        }
-        return "Correo Invalido, intente de nuevo";
-    }
 
     /**
      * Metodo toString que muestra los datos del cliente

@@ -40,9 +40,9 @@ public class ClienteController implements ActionListener {
      * Este metodo se encarga de registrar a un nuevo cliente en la base de
      * datos.
      *
-     * @param cliente, representa a un objeto cliente, el cual contendrá los
+     * @param   cliente representa a un objeto cliente, el cual contendrá los
      * datos a registrar.
-     * @param clienteDao, contiene los metodos que interactuan entre cliente y
+     * @param   clienteDAO contiene los metodos que interactuan entre cliente y
      * la base de datos.
      */
     public ClienteController(Cliente cliente, ClienteDAO clienteDAO) {
@@ -54,7 +54,7 @@ public class ClienteController implements ActionListener {
     /**
      *
      * @param view hace referencia a la interfaz grafica que se le muestra al
-     * cliente al momento de registrarse Tambien se pone el boton de confirmar
+     * cliente al momento de registrarse. Tambien se pone el boton de confirmar
      * en escucha para que cuando sea oprimido ejecute su metodo
      * correspondiente.
      *
@@ -119,7 +119,8 @@ public class ClienteController implements ActionListener {
     }
 
     /**
-     * Ni idea que hace el metodo()
+     * Revisa que la fecha ingresada coincida con el formato de fecha 
+     * establecida
      *
      * @param fecha
      * @return

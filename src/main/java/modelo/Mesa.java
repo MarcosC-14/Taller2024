@@ -138,5 +138,38 @@ public class Mesa {
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
+    
+    /**
+     * Metodo que guarda la capacidad y la ubicacion en la mesa.
+     * @    La mesa con la nueva capacidad y ubicacion.
+     */
+    public Mesa obtenerCapUbi(){
+        switch (this.getNumero()) {
+            case 3:
+                this.setCapacidad(Capacidad.dos);
+                break;
+            case 1, 6, 7, 8:
+                this.setCapacidad(Capacidad.cuatro);
+                break;
+            case 4:
+                this.setCapacidad(Capacidad.seis);
+                break;
+            case 2:
+                this.setCapacidad(Capacidad.ocho);
+                break;
+            case 5:
+                this.setCapacidad(Capacidad.diez);
+                break;
+        }
+        switch (this.getNumero()) {
+            case 1, 2, 3, 4, 5:
+                this.setUbicacion(Ubicacion.Interior);
+                break;
+            case 6, 7, 8:
+                this.setUbicacion(Ubicacion.Exterior);
+                break;
+        }
+        return this;
+    }
 
 }
