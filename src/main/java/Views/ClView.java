@@ -1476,6 +1476,7 @@ public class ClView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Los datos de"+
                         " la tarjeta son incorrectos", "Advertencia", javax.
                                 swing.JOptionPane.WARNING_MESSAGE);
+                return;
             }
             }
         }
