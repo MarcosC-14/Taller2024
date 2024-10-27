@@ -25,6 +25,12 @@ import modelo.BloqueoMesaEventoEspecial;
  * -Registrar a un empleado.
  * -Revisa si un correo existe en la tabla de empleados.
  * -Revisar si el empleado es mesero o recepcionista.
+ * -Guardar en la base de datos una mesa bloqueada o evento especial
+ * -Obtener una lista de los bloqueos de mesa y los eventos especiales.
+ * -Eliminar un bloqueo de mesa o evento especial
+ * -Guardar la hora de apertura y cierre definida por un administrador.
+ * -Obtiener un objeto AgendaRestaurante con la hora de apertura y cierre.
+ * -Revisa si el bloqueo de mesa o evento especial ya se encuentran en la base de datos.
  * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo.
  * @version 27/10/2024.
@@ -47,15 +53,11 @@ public class EmpleadoDAO {
  * credenciales, devuelve un objeto nulo.
  */
     public Empleado loginQuery(String usuario, String contraseña){
-        System.out.println("angelina");
         String query = "SELECT * FROM empleado WHERE correo = ? AND contraseña = ?";
-        
         try {
             con = conn.getConexion();
             ps = con.prepareStatement(query);
-            //Enviar parametros
             ps.setString(1, usuario);
-            System.out.println(usuario);
             ps.setString(2, contraseña);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -66,7 +68,6 @@ public class EmpleadoDAO {
                 Rol rol =  Rol.valueOf(rs.getString("rol"));
                 empleado.setRol(rol);
                 empleado.setId(rs.getInt("id"));
-                System.out.println("Entre");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener Empleado" + e);
