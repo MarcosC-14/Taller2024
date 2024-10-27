@@ -124,20 +124,20 @@ public class AdView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jComboBoxMesas = new javax.swing.JComboBox<>();
         jButtonVerBloqueMesaEvento = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelHoraCierre = new javax.swing.JLabel();
         jLabelHoraApertura = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        jBAperturaCierreModificar = new javax.swing.JButton();
         jComboBoxHoraApertura = new javax.swing.JComboBox<>();
         jComboBoxHoraCierre = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_clientesAdmin = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBTodosClientes = new javax.swing.JButton();
+        jBMejorCliente = new javax.swing.JButton();
+        jBClientesNoAsistieron1Año = new javax.swing.JButton();
         jButtonExportarClientes = new javax.swing.JButton();
         Excelcliente = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -153,7 +153,7 @@ public class AdView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jBReporteREservasPdf = new javax.swing.JButton();
         Excel = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -166,15 +166,15 @@ public class AdView extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jBAnalisisTiempoVer = new javax.swing.JButton();
+        jBAnalisisTiempoPdf = new javax.swing.JButton();
         EstacionesExcel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(204, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(204, 0, 0))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -431,10 +431,10 @@ public class AdView extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Eliminar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBEliminarActionPerformed(evt);
             }
         });
 
@@ -454,7 +454,7 @@ public class AdView extends javax.swing.JFrame {
                         .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(jBEliminar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonVerBloqueMesaEvento))
                             .addGroup(jPanel_eventosEspecialesLayout.createSequentialGroup()
@@ -498,7 +498,7 @@ public class AdView extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel_eventosEspecialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerBloqueMesaEvento)
-                    .addComponent(jButton2))
+                    .addComponent(jBEliminar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -521,11 +521,11 @@ public class AdView extends javax.swing.JFrame {
         jLabelHoraApertura.setForeground(new java.awt.Color(255, 255, 255));
         jLabelHoraApertura.setText("Hora de apertura:");
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton5.setText("Modificar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBAperturaCierreModificar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jBAperturaCierreModificar.setText("Modificar");
+        jBAperturaCierreModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBAperturaCierreModificarActionPerformed(evt);
             }
         });
 
@@ -546,7 +546,7 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jLabelHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAperturaCierreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(191, Short.MAX_VALUE))
@@ -566,7 +566,7 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jComboBoxHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBAperturaCierreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
         );
 
@@ -617,29 +617,29 @@ public class AdView extends javax.swing.JFrame {
 
         jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 250));
 
-        jButton1.setText("Todos los clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBTodosClientes.setText("Todos los clientes");
+        jBTodosClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBTodosClientesActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel5.add(jBTodosClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jButton7.setText("Mejor Cliente");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jBMejorCliente.setText("Mejor Cliente");
+        jBMejorCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jBMejorClienteActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
+        jPanel5.add(jBMejorCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
 
-        jButton3.setText("Clientes que no asistieron en el último año");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBClientesNoAsistieron1Año.setText("Clientes que no asistieron en el último año");
+        jBClientesNoAsistieron1Año.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBClientesNoAsistieron1AñoActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        jPanel5.add(jBClientesNoAsistieron1Año, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         jButtonExportarClientes.setText("Exportar a PDF");
         jButtonExportarClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -729,10 +729,10 @@ public class AdView extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Final");
 
-        jButton4.setText("Exportar a PDF");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBReporteREservasPdf.setText("Exportar a PDF");
+        jBReporteREservasPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBReporteREservasPdfActionPerformed(evt);
             }
         });
 
@@ -760,7 +760,7 @@ public class AdView extends javax.swing.JFrame {
                                     .addComponent(jLabel16)))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
-                                .addComponent(jButton4)
+                                .addComponent(jBReporteREservasPdf)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Excel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -817,7 +817,7 @@ public class AdView extends javax.swing.JFrame {
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
+                            .addComponent(jBReporteREservasPdf)
                             .addComponent(Excel))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(52, 52, 52))
@@ -855,18 +855,18 @@ public class AdView extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel32.setText("Concurrencia por estacion");
 
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton8.setText("Ver");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jBAnalisisTiempoVer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jBAnalisisTiempoVer.setText("Ver");
+        jBAnalisisTiempoVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jBAnalisisTiempoVerActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Exportar a PDF");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jBAnalisisTiempoPdf.setText("Exportar a PDF");
+        jBAnalisisTiempoPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jBAnalisisTiempoPdfActionPerformed(evt);
             }
         });
 
@@ -886,7 +886,7 @@ public class AdView extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(286, 286, 286)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jButton8)
+                            .addComponent(jBAnalisisTiempoVer)
                             .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addComponent(jLabel31)
                                 .addGap(18, 18, 18)
@@ -908,7 +908,7 @@ public class AdView extends javax.swing.JFrame {
                         .addComponent(jLabel32))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(222, 222, 222)
-                        .addComponent(jButton6)
+                        .addComponent(jBAnalisisTiempoPdf)
                         .addGap(56, 56, 56)
                         .addComponent(EstacionesExcel)))
                 .addContainerGap(252, Short.MAX_VALUE))
@@ -935,15 +935,15 @@ public class AdView extends javax.swing.JFrame {
                     .addComponent(jTextFieldPrimavera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8)
+                .addComponent(jBAnalisisTiempoVer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
+                    .addComponent(jBAnalisisTiempoPdf)
                     .addComponent(EstacionesExcel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton6, jButton8});
+        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jBAnalisisTiempoPdf, jBAnalisisTiempoVer});
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -1122,7 +1122,7 @@ public class AdView extends javax.swing.JFrame {
      *
      * @param evt es evento de apretar el boton eliminar
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         bme = agendaR.getFechasEspecial().get(jTable_bloqueoMesas.getSelectedRow());
         /**
          * Se envia un mensaje al usuario, de confirmacion si el bloqueo se
@@ -1134,7 +1134,7 @@ public class AdView extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar bloqueo o evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBEliminarActionPerformed
     /**
      * Evento que se ejecuta cuando se aprieta el boton Se llama al metodo
      * actualizarTablaBloqueoMesaEvento
@@ -1434,11 +1434,11 @@ public class AdView extends javax.swing.JFrame {
      *
      * @param evt es el evento de apretar el boton
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBTodosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodosClientesActionPerformed
         clientes = clienteDAO.obtenerClientes();
         this.tituloClientes = "Lista de clientes";
         actualizarTablaCliente(clientes);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBTodosClientesActionPerformed
 
     private void jTextFieldVeranoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldVeranoActionPerformed
         // TODO add your handling code here:
@@ -1447,7 +1447,7 @@ public class AdView extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jBMejorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMejorClienteActionPerformed
         clientes = clienteDAO.obtenerClientes();
         int maxAsistencias = 0;
         for (int i = 0; i < clientes.size(); i++) {
@@ -1463,7 +1463,7 @@ public class AdView extends javax.swing.JFrame {
         }
         this.tituloClientes = "Cliente(s) con mayor cantidad asistencias";
         actualizarTablaCliente(clientes);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jBMejorClienteActionPerformed
     /**
      * Metodo que se aplica al apretar el boton Clientes que no asistieron el
      * ultimo año Muestra en la lista los clientes que no han asistido a sus
@@ -1471,7 +1471,7 @@ public class AdView extends javax.swing.JFrame {
      *
      * @param evt es el evento de presionar el boton
      */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBClientesNoAsistieron1AñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClientesNoAsistieron1AñoActionPerformed
         clientes = clienteDAO.obtenerClientes();
         for (Cliente cliente : clientes) {
             cliente.setReservas(reservaDAO.obtenerReservasHistorial(cliente));
@@ -1510,14 +1510,14 @@ public class AdView extends javax.swing.JFrame {
         }
         this.tituloClientes = "Clientes que no asistieron en el último año";
         actualizarTablaCliente(clientes);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBClientesNoAsistieron1AñoActionPerformed
     /**
      * Es el metodo que se ejecuta al presionar el boton Ver Muestra la
      * concurrencia de clientes por estacion del año.
      *
      * @param evt es el evento de presionar el boton de Ver
      */
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jBAnalisisTiempoVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnalisisTiempoVerActionPerformed
         reservas = reservaDAO.obtenerReservas();
 
         MonthDay verano = MonthDay.of(12, 20);
@@ -1555,14 +1555,14 @@ public class AdView extends javax.swing.JFrame {
         this.jTextFieldPrimavera.setText(String.valueOf(cantPrimavera));
 
 
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jBAnalisisTiempoVerActionPerformed
     /**
      * Es el metodo que se ejecuta al presionar el boton Exportar a PDF Se crea
      * y exporta un archivo pdf con la informacion que contiene la taba
      *
      * @param evt es el evento de presionar el boton Exportar a PDF
      */
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jBReporteREservasPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReporteREservasPdfActionPerformed
         if (reservas == null || reservas.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else if (tituloReservas.equals("")) {
@@ -1571,7 +1571,7 @@ public class AdView extends javax.swing.JFrame {
             CreadorPdf.hacerPdfReserva(tituloReservas, reservas);
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jBReporteREservasPdfActionPerformed
 
     private void jTabbedPane2ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane2ComponentMoved
         // TODO add your handling code here:
@@ -1657,7 +1657,7 @@ public class AdView extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jBAperturaCierreModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAperturaCierreModificarActionPerformed
         String auxHoraAp = jComboBoxHoraApertura.getSelectedItem().toString() + ":00:00";
         String auxHoraCi = jComboBoxHoraCierre.getSelectedItem().toString() + ":00:00";
         if (auxHoraCi.equals("00:00:00")) {
@@ -1680,7 +1680,7 @@ public class AdView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un problema", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jBAperturaCierreModificarActionPerformed
     /**
      * Es el Metodo que se ejecuta al cambiar la opciones del jComboBox
      * 
@@ -1705,7 +1705,7 @@ public class AdView extends javax.swing.JFrame {
      * Verifica que existan datos.
      * @param evt es el evento de presionar el boton Expotar a PDF
      */
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jBAnalisisTiempoPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnalisisTiempoPdfActionPerformed
         String verano = jTextFieldVerano.getText();
         String otoño = jTextFieldOtoño.getText();
         String invierno = jTextFieldInvierno.getText();
@@ -1719,7 +1719,7 @@ public class AdView extends javax.swing.JFrame {
             CreadorPdf.hacerPdfEstaciones("ConcurrenciasPorEstacion", new String[]{verano, otoño, invierno, primavera});
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jBAnalisisTiempoPdfActionPerformed
     /**
      * Metodo que exporta el listado de las reservas en un archivo excel
      *
@@ -1794,17 +1794,17 @@ public class AdView extends javax.swing.JFrame {
     private javax.swing.JButton EstacionesExcel;
     private javax.swing.JButton Excel;
     private javax.swing.JButton Excelcliente;
+    private javax.swing.JButton jBAnalisisTiempoPdf;
+    private javax.swing.JButton jBAnalisisTiempoVer;
+    private javax.swing.JButton jBAperturaCierreModificar;
+    private javax.swing.JButton jBClientesNoAsistieron1Año;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBMejorCliente;
+    private javax.swing.JButton jBReporteREservasPdf;
     private javax.swing.JButton jBReservasFecha;
     private javax.swing.JButton jBReservasFuturas;
     private javax.swing.JButton jBTodasLasReservas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jBTodosClientes;
     private javax.swing.JButton jButtonExportarClientes;
     private javax.swing.JButton jButtonVerBloqueMesaEvento;
     private javax.swing.JButton jButtonVerEmpleados;

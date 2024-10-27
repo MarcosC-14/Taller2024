@@ -315,10 +315,12 @@ public class EmpleadoDAO {
      }
         
     /**
-     * Se encarga de revisar si el bloqueo o evento ingresado se encuentra en la base de datos.
-     * Devuelve true si se encuentra en la base de datos, false si no esta en la base de datos
-     * @param   b representa al bloqueo o evento a revisar
-     * @return  true si lo encuentra, false si no
+     * Se encarga de revisar si el bloqueo o evento ingresado se encuentra en la
+     * base de datos.
+     * Devuelve true si se encuentra en la base de datos, false si no esta en la
+     * base de datos.
+     * @param   b representa al bloqueo o evento a revisar.
+     * @return  true si lo encuentra, false si no.
      */
     public boolean existeBloqueoEvento(BloqueoMesaEventoEspecial b){
         String sql="SELECT * FROM bloqueo_evento WHERE mesa =?"

@@ -17,7 +17,7 @@ import modelo.Rol;
  * La clase EpView es un Jframe donde los usuarios de tipo empleado que no son
  * administradores son dirigidos. Aqui se muestran las mesas correspondientes,
  * confirmar asistencia de los comensales y poner horario de inicio,fin de
- * servicio
+ * servicio.
  *
  * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
@@ -179,8 +179,8 @@ public class EpView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
-     * Metodo que actualia la informacion que se encunetra en la tabla de mesas
-     * del dia
+     * Se encarga de actualizar la informacion que se encuentra en la tabla de 
+     * mesas del dia.
      */
     private void actualizarTablaMesasDeHoy() {
         tabla.setRowCount(0);
@@ -213,10 +213,10 @@ public class EpView extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que se aplica al apretar el boton de salir Se cierra la ventana
-     * EpView y se abre la de inicio
+     * Metodo que se aplica al apretar el boton de salir. Se cierra la ventana
+     * EpView y se abre la de inicio.
      *
-     * @param evt es el evento de apretar el boton salir
+     * @param evt es el evento de apretar el boton salir.
      */
     private void jToggleButton_empleado_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton_empleado_salirActionPerformed
         if (evt.getSource() == jToggleButton_empleado_salir) {
