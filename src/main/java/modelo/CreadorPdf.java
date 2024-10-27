@@ -5,13 +5,21 @@
 package modelo;
 
 /**
- * La clase CreadorPdf se encarga de 
+ * La clase CreadorPdf se encarga de crear los documentos tipo pdf para:
+ * -Reserva.
+ * -Cliente.
+ * -Reservas por Estacion.
+ * Ademas hace las tablas para:
+ * -Reserva.
+ * -Cliente.
+ * -Reservas por Estacion.
+ * Ademas agrega un titulo al documento, le agrega un titulo a los metadatos
+ * y permite agregar espacios luego de los parrafos.
  * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
  * Caraballo.
  * @version 27/10/2024.
  */
 import java.io.FileOutputStream;
-import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -218,11 +226,13 @@ public class CreadorPdf {
             paragraph.add(new Paragraph(" "));
         }
     }
+  
 /**
- * 
- * @param titulo
- * @param valores
- * @throws IOException 
+ * Se encarga de crear un documento .pdf con un titulo y una cadena de valores.
+ * @param   titulo representa el titulo del documento.
+ * @param   valores representa los valores que conforman el reporte.
+ * @throws  IOException ocurre cuando sucede un error al crear el directorio o 
+ * al escribir en el archivo.
  */
     public static void hacerPdfEstaciones(String titulo, String[] valores) throws IOException {
         FILE = "PDFsExportados/" + titulo + ".pdf";
@@ -242,10 +252,13 @@ public class CreadorPdf {
         }
     }
     /**
-     * Se encarga de crear una tabla, 
-     * @param   document
-     * @param   valores
-     * @throws  DocumentException 
+     * Se encarga de crear una tabla con la cantidad de reservas segun la 
+     * estacion. 
+     * @param   document representa el documento donde estamos trabajando.
+     * @param   valores representa los valores que tienen las reservas en cada
+     * estacion.
+     * @throws  DocumentException ocurre cuando hay un error al añadir la tabla al
+ * documento. 
      */
     private static void createTableEstaciones(Document document, String[] valores) throws DocumentException {
         PdfPTable table = new PdfPTable(4);
