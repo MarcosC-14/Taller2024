@@ -12,37 +12,42 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 /**
- * la clase ClRegisterView es un jFrame donde se muestra la interfaz grafica para 
- * que el nuevo cliente pueda registrarse de forma correcta
+ * la clase ClRegisterView es un jFrame donde se muestra la interfaz grafica
+ * para que el nuevo cliente pueda registrarse de forma correcta
+ *
  * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  */
 public class ClRegisterView extends javax.swing.JFrame {
-      /**
-       * Se instancia la conexion a la base de datos ya que los datos ingresados posteriormente
-       * se almacenan en ella.
-       * Se instancia un cliente para almacenar previamente alli los valores ingresados sean verificados
-       * Se instancia clienteDao ya que alli se encuentra el metodo de registrar cliente.
-       */
+
+    /**
+     * Se instancia la conexion a la base de datos ya que los datos ingresados
+     * posteriormente se almacenan en ella. Se instancia un cliente para
+     * almacenar previamente alli los valores ingresados sean verificados Se
+     * instancia clienteDao ya que alli se encuentra el metodo de registrar
+     * cliente.
+     */
     SQLiteManager cn = new SQLiteManager();
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
     Cliente cliente = new Cliente();
     ClienteDAO clienteDAO = new ClienteDAO();
+
     /**
      * Creates new form ClRegisterView
      */
     public ClRegisterView() {
-     initComponents();
-     ClienteController clienteC = new ClienteController(cliente, clienteDAO);
-     clienteC.setClRegisterView(this);
-         setSize(729, 420);
-                setResizable(false);
-                setTitle("Panel de administracion");
-                setLocationRelativeTo(null);
+        initComponents();
+        ClienteController clienteC = new ClienteController(cliente,
+                clienteDAO);
+        clienteC.setClRegisterView(this);
+        setSize(729,
+                420);
+        setResizable(false);
+        setTitle("Panel de administracion");
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -189,15 +194,15 @@ public class ClRegisterView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_correoRegistroClienteActionPerformed
 
     private void jButton_confirmarRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_confirmarRegistroClienteActionPerformed
-    
+
     }//GEN-LAST:event_jButton_confirmarRegistroClienteActionPerformed
 
     private void jButton_cancelarRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelarRegistroClienteActionPerformed
-         if(evt.getSource()== jButton_cancelarRegistroCliente){
-          dispose();
-          Inicio login = new Inicio();
-          login.setVisible(true);
-    }
+        if (evt.getSource() == jButton_cancelarRegistroCliente) {
+            dispose();
+            Inicio login = new Inicio();
+            login.setVisible(true);
+        }
     }//GEN-LAST:event_jButton_cancelarRegistroClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

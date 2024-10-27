@@ -28,21 +28,16 @@ import modelo.AgendaRestaurante;
 import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
- * La clase ClView representa a la ventana que puede ver el cliente. 
- * 
- * Tiene metodos para: 
- * -Actualizar la tabla del historial.
- * -Actualizar la tabla de mesas.
- * -Ordena la tabla de historial.
- * -Volver a la ventana de inicio.
- * -Realizar una nueva reserva.
- * -Confirmar que la fecha ingresada sea valida.
- * -Ver los datos de las reservas.
- * -Modificar la reserva.
- * -Eliminar la reserva.
- * -En caso de ser cumplir con los criterios avisa que tenes una reserva a futuro.
+ * La clase ClView representa a la ventana que puede ver el cliente.
  *
- * @author  Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * Tiene metodos para: -Actualizar la tabla del historial. -Actualizar la tabla
+ * de mesas. -Ordena la tabla de historial. -Volver a la ventana de inicio.
+ * -Realizar una nueva reserva. -Confirmar que la fecha ingresada sea valida.
+ * -Ver los datos de las reservas. -Modificar la reserva. -Eliminar la reserva.
+ * -En caso de ser cumplir con los criterios avisa que tenes una reserva a
+ * futuro.
+ *
+ * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  * @version 27/10/2024
  */
@@ -59,18 +54,19 @@ public class ClView extends javax.swing.JFrame {
     private AgendaRestaurante agendaR = new AgendaRestaurante();
 
     /**
-     * Construcutor donde se inicializan los componentes de la ventana, se 
-     * define el tamaño de ventana, se hace que sea imposible modificar por el 
+     * Construcutor donde se inicializan los componentes de la ventana, se
+     * define el tamaño de ventana, se hace que sea imposible modificar por el
      * usuario cambiar el tamaño de la ventana, le pone el titulo a la ventana y
-     * la centra. Se guarda el cliente que inicio sesion en y que se paso por 
-     * parametro, ademas verifica si hay que enviarle un alerta de reserva 
+     * la centra. Se guarda el cliente que inicio sesion en y que se paso por
+     * parametro, ademas verifica si hay que enviarle un alerta de reserva
      * proxima al cliente
      *
      * @param cliente1 es el cliente que ingresa
      */
     public ClView(Cliente cliente1) {
         initComponents();
-        setSize(1125, 670);
+        setSize(1125,
+                670);
         setResizable(false);
         setTitle("Sistema de Clientes");
         setLocationRelativeTo(null);
@@ -1048,7 +1044,8 @@ public class ClView extends javax.swing.JFrame {
         ReservaDAO reservaDAO = new ReservaDAO();
         reservas = reservaDAO.obtenerReservasHistorial(cliente1);
 
-        DefaultTableModel model = (DefaultTableModel) jTable_historialCliente.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable_historialCliente.
+                getModel();
         model.setRowCount(0);
         ordenarTablaHistorial();
 
@@ -1066,7 +1063,7 @@ public class ClView extends javax.swing.JFrame {
     /**
      * Metodo que actualiza la tabla de mesas.
      *
-     * @param   tabla representa la tabla que se va aactualizar
+     * @param tabla representa la tabla que se va aactualizar
      */
     private void actualizarTablaMesas(javax.swing.JTable tabla) {
         ReservaDAO reservaDAO = new ReservaDAO();
@@ -1074,19 +1071,26 @@ public class ClView extends javax.swing.JFrame {
         mesas = reservaDAO.mesas();
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model.setRowCount(0);
-        String filtroUbi = (String) (jComboBoxClienteReservaUbicacion.getSelectedItem());
-        String filtroCap = (String) (jComboBoxClienteReservaCapacidad.getSelectedItem());
+        String filtroUbi = (String) (jComboBoxClienteReservaUbicacion.
+                getSelectedItem());
+        String filtroCap = (String) (jComboBoxClienteReservaCapacidad.
+                getSelectedItem());
 
         for (Mesa m : mesas) {
             String disponible = "No";
             agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
-            if (reservaDAO.mesaDisponible(m.getNumero(), fechaBuscar, horaBuscar)
-                    && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
+            if (reservaDAO.mesaDisponible(m.getNumero(),
+                    fechaBuscar,
+                    horaBuscar)
+                    && horaBuscar.isAfter(agendaR.getHoraApertura().
+                            minusSeconds(1))
                     && horaBuscar.isBefore(agendaR.getHoraCierre())) {
                 disponible = "Sí";
             }
-            if (filtroUbi.equals("Cualquiera") || filtroUbi.equals(String.valueOf(m.getUbicacion()))) {
-                if (filtroCap.equals("Cualquiera") || filtroCap.equals(String.valueOf(m.getCapacidad()))) {
+            if (filtroUbi.equals("Cualquiera") || filtroUbi.equals(String.
+                    valueOf(m.getUbicacion()))) {
+                if (filtroCap.equals("Cualquiera") || filtroCap.equals(String.
+                        valueOf(m.getCapacidad()))) {
                     model.addRow(new Object[]{
                         m.getNumero(),
                         m.getCapacidad(),
@@ -1102,9 +1106,11 @@ public class ClView extends javax.swing.JFrame {
      * Metodo que ordena la tabla del historial de reservas
      */
     private void ordenarTablaHistorial() {
-        Collections.sort(reservas, new Comparator<Reserva>() {
+        Collections.sort(reservas,
+                new Comparator<Reserva>() {
             @Override
-            public int compare(Reserva r1, Reserva r2) {
+            public int compare(Reserva r1,
+                    Reserva r2) {
                 int comparacionFecha = r1.getFecha().compareTo(r2.getFecha());
                 if (comparacionFecha == 0) {
                     return r1.getFecha().compareTo(r2.getFecha());
@@ -1136,12 +1142,12 @@ public class ClView extends javax.swing.JFrame {
      * Metodo que se produce al apretar el boton Nueva reserva Verifica que la
      * fecha ingresada sea valida,que se haga con una anticipacion mayor a 1 dia
      * Verifica que esa mesa ya no se encuentre ocupada en la misma fecha y
-     * hora. Verifica que se ingrese una tarjeta con todos sus datos y que su 
-     * numero tenga menos de 17 caracteres Actualiza la tabla de mesas disponibles
-     * en esa fecha, la tabla del historial de reservas del cliente y las reservas 
-     * generales del restaurante
+     * hora. Verifica que se ingrese una tarjeta con todos sus datos y que su
+     * numero tenga menos de 17 caracteres Actualiza la tabla de mesas
+     * disponibles en esa fecha, la tabla del historial de reservas del cliente
+     * y las reservas generales del restaurante
      *
-     * @param   evt es el evento que se produce al apretar el boton Nueva Reserva
+     * @param evt es el evento que se produce al apretar el boton Nueva Reserva
      */
     private void jButton_nuevaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_nuevaReservaActionPerformed
         String auxFecha = jTextField_fechaNewReserva.getText();
@@ -1150,20 +1156,33 @@ public class ClView extends javax.swing.JFrame {
         reserva.setCliente(cliente1);
         if (ClienteController.esFormatoFechaValido(auxFecha)) {
             try {
-                fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                fechaBuscar = LocalDate.parse(auxFecha,
+                        DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             } catch (java.time.format.DateTimeParseException e) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ingrese una fecha válida",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
-            if (LocalDateTime.now().isBefore(LocalDateTime.of(fechaBuscar, horaBuscar))) {
+            horaBuscar = LocalTime.parse(auxHora,
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
+            if (LocalDateTime.now().isBefore(LocalDateTime.of(fechaBuscar,
+                    horaBuscar))) {
 
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "No puede hacer una reservación"
+                                + " con menos de un día de antelación",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Ingrese una fecha en formato dd/mm/aaaa",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
         actualizarTablaMesas(jTable_mesasDisponibles);
@@ -1171,105 +1190,143 @@ public class ClView extends javax.swing.JFrame {
         reserva.setHora(horaBuscar);
         reserva.setComentario(jTextField_comentario.getText());
         Mesa mesaR = new Mesa();
-        int numM = Integer.parseInt((String) jComboBoxClienteReservaMesa.getSelectedItem());
+        int numM = Integer.parseInt((String) jComboBoxClienteReservaMesa.
+                getSelectedItem());
         mesaR.setNumero(numM);
 
         reserva.setMesa(mesaR.obtenerCapUbi());
 
         TarjetaDAO tarjetaR = new TarjetaDAO();
-        String nombreTarjeta=jTextFieldCienteReservaNombreT.getText();
-        String emisorTarjeta=this.jTextFieldClienteReservaEmiT.getText();
-        String numeroTarjeta=this.jTextFieldClienteReservanNumT.getText(); 
-        String codigoSegTarjeta=this.jTextFieldClienteReservaCodSeg.getText();
+        String nombreTarjeta = jTextFieldCienteReservaNombreT.getText();
+        String emisorTarjeta = this.jTextFieldClienteReservaEmiT.getText();
+        String numeroTarjeta = this.jTextFieldClienteReservanNumT.getText();
+        String codigoSegTarjeta = this.jTextFieldClienteReservaCodSeg.getText();
 
-        if(nombreTarjeta.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el nombre de la  tarjeta", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (nombreTarjeta.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No ingreso el nombre de la  tarjeta",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        if(emisorTarjeta.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el emisor de la tarjeta", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+
+        if (emisorTarjeta.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No ingreso el emisor de la tarjeta",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        if(numeroTarjeta.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el" 
-                    +"numero de la tarjeta", "Advertencia", javax.swing.
-                            JOptionPane.WARNING_MESSAGE);
+
+        if (numeroTarjeta.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No ingreso el"
+                    + "numero de la tarjeta",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
-        } else{
-            if(numeroTarjeta.length()>16){
-                javax.swing.JOptionPane.showMessageDialog(this, "El numero de "+
-                        "la tarjeta no puede tener más de 16 digitos", 
-                        "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (numeroTarjeta.length() > 16) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "El numero de la tarjeta no puede"
+                                + " tener más de 16 digitos",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
-        if(codigoSegTarjeta.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el codigo de seguridad de la tarjeta", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (codigoSegTarjeta.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No ingreso el codigo de seguridad"
+                            + " de la tarjeta",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
-        }else{
-            if(codigoSegTarjeta.length()>3){
-                javax.swing.JOptionPane.showMessageDialog(this, "La tarjeta no"+
-                        " puede tener un codigo de seguridad de más de 3"+ 
-                        " digitos", "Advertencia", javax.swing.JOptionPane.
-                                WARNING_MESSAGE);
+        } else {
+            if (codigoSegTarjeta.length() > 3) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "La tarjeta no"
+                        + " puede tener un codigo"
+                        + " de seguridad de más de 3 digitos",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
         boolean actualizar = tarjetaR.existeTarjeta(numeroTarjeta);
-        if(actualizar){
-            Tarjeta tar= new Tarjeta(nombreTarjeta, emisorTarjeta, numeroTarjeta, codigoSegTarjeta);
-            if(!(tarjetaR.tarjetaValida(tar))){
-             javax.swing.JOptionPane.showMessageDialog(this, "Datos de tarjeta Incorrectos", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-            return;   
+        if (actualizar) {
+            Tarjeta tar = new Tarjeta(nombreTarjeta,
+                    emisorTarjeta,
+                    numeroTarjeta,
+                    codigoSegTarjeta);
+            if (!(tarjetaR.tarjetaValida(tar))) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Datos de tarjeta Incorrectos",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
             }
         }
-            tarjeta.setNombre(nombreTarjeta);
-            tarjeta.setEmisor(emisorTarjeta);
-            tarjeta.setNumero(numeroTarjeta);
-            tarjeta.setCodSeguridad(codigoSegTarjeta);
-         if(!actualizar){   
+        tarjeta.setNombre(nombreTarjeta);
+        tarjeta.setEmisor(emisorTarjeta);
+        tarjeta.setNumero(numeroTarjeta);
+        tarjeta.setCodSeguridad(codigoSegTarjeta);
+        if (!actualizar) {
             reserva.setTarjeta(tarjeta);
-         }
+        }
         agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
-        if (rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)
+        if (rDAO.mesaDisponible(mesaR.getNumero(),
+                fechaBuscar,
+                horaBuscar)
                 && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
                 && horaBuscar.isBefore(agendaR.getHoraCierre())) {
             boolean reservaHecha = rDAO.realizarReserva(reserva);
-           
+
             if (reservaHecha) {
-                if(!actualizar){
-                tarjetaR.guardarTarjeta(tarjeta);
+                if (!actualizar) {
+                    tarjetaR.guardarTarjeta(tarjeta);
                 }
-                javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Reserva realizada con éxito.",
+                        "Éxito",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 this.actualizarTablaMesas(jTable_mesasDisponibles);
-                MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, numM, mesaR.getCapacidad(), mesaR.getUbicacion(), tarjeta.getNumero(), reserva.getComentario(), this);
+                MensajeReserva mensajeR = new MensajeReserva(fechaBuscar,
+                        horaBuscar,
+                        numM,
+                        mesaR.getCapacidad(),
+                        mesaR.getUbicacion(),
+                        tarjeta.getNumero(),
+                        reserva.getComentario(),
+                        this);
                 this.setVisible(false);
                 reserva = new Reserva();
                 tarjeta = new Tarjeta();
-                
+
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "La mesa no se encuentra disponible en la fecha y hora ingresada.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "La mesa no se encuentra disponible"
+                            + " en la fecha y hora ingresada.",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
         }
 
 
     }//GEN-LAST:event_jButton_nuevaReservaActionPerformed
-    
-    
-    
+
+
     private void jTextFieldClienteReservanNumTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClienteReservanNumTActionPerformed
-       
+
     }//GEN-LAST:event_jTextFieldClienteReservanNumTActionPerformed
 
     private void jComboBoxClienteReservaMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteReservaMesaActionPerformed
-      
+
     }//GEN-LAST:event_jComboBoxClienteReservaMesaActionPerformed
     /**
      * Cuando se lo presiona llama al metodo actualizarTablaHistorial.
-     * 
-     * @param   evt evento que ocurre al presionar el boton.
+     *
+     * @param evt evento que ocurre al presionar el boton.
      */
     private void jBVerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerHistorialActionPerformed
         this.actualizarTablaHistorial();
@@ -1277,32 +1334,46 @@ public class ClView extends javax.swing.JFrame {
 
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
     /**
-     * Se encarga de revisar que la fecha ingresada sea valida y llama a la 
+     * Se encarga de revisar que la fecha ingresada sea valida y llama a la
      * funcion actualizarTablaMesas para mostrar los datos en la tabla
-     * @param   evt representa el evento que ocurre al presionar el boton
+     *
+     * @param evt representa el evento que ocurre al presionar el boton
      */
     private void JButton_confirmarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_confirmarFechaActionPerformed
         String auxFecha = jTextField_fechaNewReserva.getText();
         String auxHora = (String) jComboBox_horaBuscar.getSelectedItem() + ":00:00";
         if (ClienteController.esFormatoFechaValido(auxFecha)) {
             try {
-                fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                fechaBuscar = LocalDate.parse(auxFecha,
+                        DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             } catch (java.time.format.DateTimeParseException e) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ingrese una fecha válida",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
-               
-            horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
-            if (LocalDateTime.now().isBefore(LocalDateTime.of(fechaBuscar, horaBuscar))){
+
+            horaBuscar = LocalTime.parse(auxHora,
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
+            if (LocalDateTime.now().isBefore(LocalDateTime.of(fechaBuscar,
+                    horaBuscar))) {
                 actualizarTablaMesas(jTable_mesasDisponibles);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "No puede hacer una reservación"
+                                + " con menos de un día de antelación",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Ingrese una fecha en formato dd/mm/aaaa",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
         }
 
 
@@ -1324,11 +1395,11 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBVerDatosActionPerformed
 
     private void nombreClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteBaseActionPerformed
-       
+
     }//GEN-LAST:event_nombreClienteBaseActionPerformed
 
     private void jTxtClientePerfilNuevoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtClientePerfilNuevoCorreoActionPerformed
-        
+
     }//GEN-LAST:event_jTxtClientePerfilNuevoCorreoActionPerformed
     /**
      * Es el metodo ejecutado cuando se aprieta el boton acutalizar verifica que
@@ -1344,7 +1415,11 @@ public class ClView extends javax.swing.JFrame {
         String correoIngresado = jTxtClientePerfilNuevoCorreo.getText();
 
         if (correoIngresado.isEmpty() && telefonoIngresado.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese un correo o telefono para actualizar sus datos.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Por favor, ingrese un correo o telefono"
+                            + " para actualizar sus datos.",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
 
         }
@@ -1352,26 +1427,41 @@ public class ClView extends javax.swing.JFrame {
         // Llamar al método actualizarInformacion del objeto clienteDAO
         boolean resultadoC;
         boolean resultadoT;
-        
-        
-        if(!(telefonoIngresado.isEmpty())){
-            resultadoT= cliente.actualizarTelefono(idCliente, telefonoIngresado);
-            
-            if(resultadoT){
-                cliente1.actualizarInformacion(cliente1.getCorreo(), telefonoIngresado);
-                javax.swing.JOptionPane.showMessageDialog(this, "Telefono actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        if (!(telefonoIngresado.isEmpty())) {
+            resultadoT = cliente.actualizarTelefono(idCliente,
+                    telefonoIngresado);
+
+            if (resultadoT) {
+                cliente1.actualizarInformacion(cliente1.getCorreo(),
+                        telefonoIngresado);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Telefono actualizado",
+                        "Actualizar Datos de Contacto",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el telefono.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "No se pudo actualizar el telefono.",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }
         if (!(correoIngresado.isEmpty())) {
 
-            resultadoC = cliente.actualizarCorreo(idCliente, correoIngresado);
-            if(resultadoC){
-                cliente1.actualizarInformacion(correoIngresado, cliente1.getTelefono());
-                javax.swing.JOptionPane.showMessageDialog(this, "Correo actualizado", "Actualizar Datos de Contacto", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            resultadoC = cliente.actualizarCorreo(idCliente,
+                    correoIngresado);
+            if (resultadoC) {
+                cliente1.actualizarInformacion(correoIngresado,
+                        cliente1.getTelefono());
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Correo actualizado",
+                        "Actualizar Datos de Contacto",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el correo.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "No se pudo actualizar el correo.",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton_cliente_perfil_actualizarActionPerformed
@@ -1382,19 +1472,30 @@ public class ClView extends javax.swing.JFrame {
      * modificaciones que se realicen sean correctas y cumplan con las
      * condiciones de una reserva.
      *
-     * @param   evt evento que ocurre al presionar el boton modificar.
+     * @param evt evento que ocurre al presionar el boton modificar.
      */
     private void jButton_cliente_modificar_reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_modificar_reservaActionPerformed
-        if (reservas == null || reservas.isEmpty() || jTable_historialCliente.getSelectedRow() == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (reservas == null || reservas.isEmpty() || jTable_historialCliente.
+                getSelectedRow() == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Seleccione una reserva del historial",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-      
+
         reserva = reservas.get(jTable_historialCliente.getSelectedRow());
         ReservaDAO rDAO = new ReservaDAO();
 
-        if (((long) (LocalDateTime.now().until(LocalDateTime.of(reserva.getFecha(), reserva.getHora()), ChronoUnit.HOURS))) <= 24) {
-            javax.swing.JOptionPane.showMessageDialog(this, "No puede modificar una reserva con menos de 24 horas de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (((long) (LocalDateTime.now().until(LocalDateTime.of(reserva.
+                getFecha(),
+                reserva.getHora()),
+                ChronoUnit.HOURS))) <= 24) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No puede modificar una reserva"
+                            + " con menos de 24 horas de antelación",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -1407,20 +1508,34 @@ public class ClView extends javax.swing.JFrame {
         if (!auxFecha.equals("")) {
             if (ClienteController.esFormatoFechaValido(auxFecha)) {
                 try {
-                    fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    fechaBuscar = LocalDate.parse(auxFecha,
+                            DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 } catch (java.time.format.DateTimeParseException e) {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "Ingrese una fecha válida",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                if (((long) (LocalDateTime.now().until(LocalDateTime.of(fechaBuscar, horaBuscar), ChronoUnit.HOURS))) >= 24) {
+                if (((long) (LocalDateTime.now().until(LocalDateTime.of(
+                        fechaBuscar,
+                        horaBuscar),
+                        ChronoUnit.HOURS))) >= 24) {
                     reserva.setFecha(fechaBuscar);
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "No puede hacer una reservación"
+                                    + " con menos de un día de antelación",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
                     return;
                 }
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ingrese una fecha en formato dd/mm/aaaa",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
@@ -1428,16 +1543,18 @@ public class ClView extends javax.swing.JFrame {
         String auxHora = (String) jComboBoxHoraBuscarMod.getSelectedItem();
         if (!auxHora.equals("No cambiar")) {
             auxHora += ":00:00";
-            horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
+            horaBuscar = LocalTime.parse(auxHora,
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
             reserva.setHora(horaBuscar);
         }
 
         if (jTextField_comentarioMod.getText().equals("")) {
             reserva.setComentario(jTextField_comentarioMod.getText());
         }
-        if(!jComboBoxMesaMod.getSelectedItem().toString().equals( "No cambiar")){
+        if (!jComboBoxMesaMod.getSelectedItem().toString().equals("No cambiar")) {
             Mesa mesaR = new Mesa();
-            int numM = Integer.parseInt((String) jComboBoxMesaMod.getSelectedItem());
+            int numM = Integer.parseInt((String) jComboBoxMesaMod.
+                    getSelectedItem());
             mesaR.setNumero(numM);
             reserva.setMesa(mesaR.obtenerCapUbi());
         }
@@ -1453,128 +1570,165 @@ public class ClView extends javax.swing.JFrame {
             tarjeta.setCodSeguridad(jTxtCodigoTarjetaMod.getText());
             TarjetaDAO tarjetaR = new TarjetaDAO();
             //revisar si esta en la base de datos la nueva 
-            if(tarjetaR.existeTarjeta(tarjeta.getNumero())){
-                if(!(tarjetaR.tarjetaValida(tarjeta))){
-                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos"+
-                            " de la tarjeta son incorrectos", "Advertencia",javax.
-                                    swing.JOptionPane.WARNING_MESSAGE);
+            if (tarjetaR.existeTarjeta(tarjeta.getNumero())) {
+                if (!(tarjetaR.tarjetaValida(tarjeta))) {
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "Los datos"
+                            + " de la tarjeta son incorrectos",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
                     return;
-                }else{
+                } else {
                     reserva.setTarjeta(tarjeta);
                 }
-            }else{
-            if (tarjetaR.guardarTarjeta(tarjeta)) {
-                reserva.setTarjeta(tarjeta);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Los datos de"+
-                        " la tarjeta son incorrectos", "Advertencia", javax.
-                                swing.JOptionPane.WARNING_MESSAGE);
-                return;
-            }
+                if (tarjetaR.guardarTarjeta(tarjeta)) {
+                    reserva.setTarjeta(tarjeta);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "Los datos de"
+                            + " la tarjeta son incorrectos",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
             }
         }
 
         agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
-        if (rDAO.mesaDisponible(reserva.getMesa().getNumero(), fechaBuscar, horaBuscar)
+        if (rDAO.mesaDisponible(reserva.getMesa().getNumero(),
+                fechaBuscar,
+                horaBuscar)
                 && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
                 && horaBuscar.isBefore(agendaR.getHoraCierre())) {
             if (rDAO.modificarReserva(reserva)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Reserva modificada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, reserva.getMesa().getNumero(), reserva.getMesa().getCapacidad(), reserva.getMesa().getUbicacion(), reserva.getTarjeta().getNumero(), reserva.getComentario(), this);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Reserva modificada con éxito.",
+                        "Éxito",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                MensajeReserva mensajeR = new MensajeReserva(fechaBuscar,
+                        horaBuscar,
+                        reserva.getMesa().getNumero(),
+                        reserva.getMesa().getCapacidad(),
+                        reserva.getMesa().getUbicacion(),
+                        reserva.getTarjeta().getNumero(),
+                        reserva.getComentario(),
+                        this);
                 this.setVisible(false);
                 reserva = new Reserva();
                 tarjeta = new Tarjeta();
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "La mesa no se encuentra disponible", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "La mesa no se encuentra disponible",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
         }
         actualizarTablaMesas(jTable_mesasDisponibles);
         this.actualizarTablaHistorial();
-        
+
     }//GEN-LAST:event_jButton_cliente_modificar_reservaActionPerformed
 
     private void jComboBoxUbiModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUbiModActionPerformed
-     
+
     }//GEN-LAST:event_jComboBoxUbiModActionPerformed
 
     private void jComboBoxMesaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesaModActionPerformed
-      
+
     }//GEN-LAST:event_jComboBoxMesaModActionPerformed
 
     private void jTxtClientePerfilTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtClientePerfilTelefonoActionPerformed
 
     }//GEN-LAST:event_jTxtClientePerfilTelefonoActionPerformed
     /**
-     * Metodo que se ejecuta al presionar el boton Ver. Se encarga de que la tabla
-     * muestre las mesas disponibles en la fecha de la reserva marcada.
+     * Metodo que se ejecuta al presionar el boton Ver. Se encarga de que la
+     * tabla muestre las mesas disponibles en la fecha de la reserva marcada.
      *
      * @param evt es el evento de presionar el boton ver
      */
     private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
-        if (reservas == null || reservas.isEmpty() || jTable_historialCliente.getSelectedRow() == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una reserva del historial", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (reservas == null || reservas.isEmpty() || jTable_historialCliente.
+                getSelectedRow() == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Seleccione una reserva del historial",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         reserva = reservas.get(jTable_historialCliente.getSelectedRow());
-        
+
         String auxFecha = jTxt_cliente_fecha.getText();
         String auxHora = (String) jComboBoxHoraBuscarMod.getSelectedItem();
         if (ClienteController.esFormatoFechaValido(auxFecha)) {
             try {
-                fechaBuscar = LocalDate.parse(auxFecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                fechaBuscar = LocalDate.parse(auxFecha,
+                        DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             } catch (java.time.format.DateTimeParseException e) {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                        "Ingrese una fecha válida", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ingrese una fecha válida",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            } else {
-            if(jTxt_cliente_fecha.getText().equals("")){
-                if(reserva.getHora() != null){
+        } else {
+            if (jTxt_cliente_fecha.getText().equals("")) {
+                if (reserva.getHora() != null) {
                     fechaBuscar = reserva.getFecha();
                 }
-                
-            }else{
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                        "Ingrese una fecha en formato dd/mm/aaaa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ingrese una fecha en formato dd/mm/aaaa",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
-       
+
         }
         if (!auxHora.equals("No cambiar")) {
-                auxHora += ":00:00";
-                horaBuscar = LocalTime.parse(auxHora, DateTimeFormatter.ofPattern("HH:mm:ss"));
-            } else {                            
-                    horaBuscar = reserva.getHora();            
-            }
-        
-        
-        if (LocalDateTime.now().isBefore(LocalDateTime.of(fechaBuscar, horaBuscar))) {
-                if (((long) (LocalDateTime.now().until(LocalDateTime.of(fechaBuscar, horaBuscar), ChronoUnit.HOURS))) >= 24) {
+            auxHora += ":00:00";
+            horaBuscar = LocalTime.parse(auxHora,
+                    DateTimeFormatter.ofPattern("HH:mm:ss"));
+        } else {
+            horaBuscar = reserva.getHora();
+        }
 
-                    actualizarTablaMesas(jTable_mesasDisponiblesMod);
-                } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, 
-                            "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                }
-        }else {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                        "No puede hacer una reservación con menos de un día de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (LocalDateTime.now().isBefore(LocalDateTime.of(fechaBuscar,
+                horaBuscar))) {
+            if (((long) (LocalDateTime.now().until(LocalDateTime.of(fechaBuscar,
+                    horaBuscar),
+                    ChronoUnit.HOURS))) >= 24) {
+
+                actualizarTablaMesas(jTable_mesasDisponiblesMod);
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "No puede hacer una reservación"
+                                + " con menos de un día de antelación",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
             }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No puede hacer una reservación"
+                            + " con menos de un día de antelación",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_jBVerActionPerformed
 
     private void jTxtEmisorTarjetaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmisorTarjetaModActionPerformed
-        
+
     }//GEN-LAST:event_jTxtEmisorTarjetaModActionPerformed
 
     private void telefonoClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoClienteBaseActionPerformed
-        
+
     }//GEN-LAST:event_telefonoClienteBaseActionPerformed
 
     private void jComboBoxHoraBuscarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHoraBuscarModActionPerformed
-        
+
     }//GEN-LAST:event_jComboBoxHoraBuscarModActionPerformed
     /**
      * Es el metodo que se ejecuta al apretar el boton Cancelar, Se elimina la
@@ -1587,15 +1741,28 @@ public class ClView extends javax.swing.JFrame {
     private void jButton_cliente_eliminar_reserva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_eliminar_reserva1ActionPerformed
         reserva = reservas.get(jTable_historialCliente.getSelectedRow());
         ReservaDAO rDAO = new ReservaDAO();
-        if (((long) (LocalDateTime.now().until(LocalDateTime.of(reserva.getFecha(), reserva.getHora()), ChronoUnit.HOURS))) >= 24) {
+        if (((long) (LocalDateTime.now().until(LocalDateTime.of(reserva.
+                getFecha(),
+                reserva.getHora()),
+                ChronoUnit.HOURS))) >= 24) {
             if (rDAO.eliminarReserva(reserva)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Reserva eliminada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Reserva eliminada con éxito.",
+                        "Éxito",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 this.actualizarTablaHistorial();
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar reserva", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Error al eliminar reserva",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "No puede eliminar una reserva con menos de 24 horas de antelación", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No puede eliminar una reserva"
+                            + " con menos de 24 horas de antelación",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton_cliente_eliminar_reserva1ActionPerformed
 
@@ -1621,11 +1788,15 @@ public class ClView extends javax.swing.JFrame {
      */
     private void avisoPrevioReserva() {
         ReservaDAO reservaDAO = new ReservaDAO();
-        ArrayList<Reserva> auxReservas = reservaDAO.obtenerReservasHistorial(cliente1);
+        ArrayList<Reserva> auxReservas = reservaDAO.obtenerReservasHistorial(
+                cliente1);
         for (Reserva res : auxReservas) {
             if (res.getFecha().isAfter(LocalDate.now())
                     && res.getFecha().isBefore(LocalDate.now().plusDays(5))) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Tiene una reserva próxima", "Aviso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Tiene una reserva próxima",
+                        "Aviso",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
         }

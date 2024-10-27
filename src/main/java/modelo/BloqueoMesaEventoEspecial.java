@@ -22,9 +22,9 @@ public class BloqueoMesaEventoEspecial {
     private LocalTime horaFin;
     private LocalDate fecha;
     private int id;
-    
+
     /**
-     * Constructor por defecto de la clase que da valor 0 o null a sus 
+     * Constructor por defecto de la clase que da valor 0 o null a sus
      * atributos.
      */
     public BloqueoMesaEventoEspecial() {
@@ -38,13 +38,17 @@ public class BloqueoMesaEventoEspecial {
      * Constructor parametrizado de la clase, donde los valores son pasados por
      * parametro.
      *
-     * @param   numMesa es el numero de mesa que se requiere bloquear
-     * @param   horaInicio horario de inicio del bloqueo.
-     * @param   horaFin horario de finalizacion del bloqueo. 
-     * @param   fecha fecha del bloque.
-     * @param   id  codigo generado a partir del bloqueo de la mesa/s.
+     * @param numMesa es el numero de mesa que se requiere bloquear
+     * @param horaInicio horario de inicio del bloqueo.
+     * @param horaFin horario de finalizacion del bloqueo.
+     * @param fecha fecha del bloque.
+     * @param id codigo generado a partir del bloqueo de la mesa/s.
      */
-    public BloqueoMesaEventoEspecial(int numMesa, LocalTime horaInicio, LocalTime horaFin, LocalDate fecha, int id) {
+    public BloqueoMesaEventoEspecial(int numMesa,
+            LocalTime horaInicio,
+            LocalTime horaFin,
+            LocalDate fecha,
+            int id) {
         this.numMesa = numMesa;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -54,7 +58,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Se encarga de retornar el numero de la mesa que se bloquea.
-     * @return  el numero de la mesa.
+     *
+     * @return el numero de la mesa.
      */
     public int getNumMesa() {
         return numMesa;
@@ -62,7 +67,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Se esncarga de asignarle el valor al numero de mesa.
-     * @param   numMesa es el numero correspondiente a la mesa.
+     *
+     * @param numMesa es el numero correspondiente a la mesa.
      */
     public void setNumMesa(int numMesa) {
         this.numMesa = numMesa;
@@ -70,7 +76,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Se encarga de retornar la hora de inicio del bloqueo.
-     * @return  horario en que se inicia wl bloqueo.
+     *
+     * @return horario en que se inicia wl bloqueo.
      */
     public LocalTime getHoraInicio() {
         return horaInicio;
@@ -78,7 +85,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Se encarga de asignarle la hora a la hora de inicio del bloqueo.
-     * @param   horaInicio es la hora en la que se inicia el bloqueo.
+     *
+     * @param horaInicio es la hora en la que se inicia el bloqueo.
      */
     public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
@@ -86,7 +94,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Retorna la hora de finalizacion del bloqueo.
-     * @return  horario en el que finaliza el bloqueo.
+     *
+     * @return horario en el que finaliza el bloqueo.
      */
     public LocalTime getHoraFin() {
         return horaFin;
@@ -94,7 +103,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Asigna la hora de finalizacion al bloqueo.
-     * @param   horaFin horario en el que finaliza el bloqueo.
+     *
+     * @param horaFin horario en el que finaliza el bloqueo.
      */
     public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
@@ -102,7 +112,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Retorna la fecha en la que se realiza el bloqueo.
-     * @return  fecha en la que se genera el bloqueo.
+     *
+     * @return fecha en la que se genera el bloqueo.
      */
     public LocalDate getFecha() {
         return fecha;
@@ -110,8 +121,9 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Asigna la fecha al bloqueo
-     * @param   fecha es la fecha con el formato dd/mm/aaaa en la que se genera 
-     * el bloqueo.
+     *
+     * @param fecha es la fecha con el formato dd/mm/aaaa en la que se genera el
+     * bloqueo.
      */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
@@ -119,7 +131,8 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Retorna codigo que identifica al bloqueo.
-     * @return  codigo que identifica al bloqueo.
+     *
+     * @return codigo que identifica al bloqueo.
      */
     public int getId() {
         return id;
@@ -127,12 +140,11 @@ public class BloqueoMesaEventoEspecial {
 
     /**
      * Asigna el id al bloqueo.
-     * @param   id codigo generado en el bloqueo.
+     *
+     * @param id codigo generado en el bloqueo.
      */
-
     public void setId(int id) {
         this.id = id;
     }
 
-    
 }

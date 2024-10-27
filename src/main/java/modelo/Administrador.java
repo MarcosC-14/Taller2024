@@ -8,11 +8,11 @@ import java.util.Date;
 import java.util.ArrayList;
 
 /**
- * Clase Administrador es un persona tipo empleado. Tiene un
- * listado de todos los empleados(mozos,recepcionistas,administradores) y la
- * agenda del restaurante Tambien se encuentra los metodos que este realiza,
- * aunque estan definidos en clases terminadas en Dao, ya que estos metodos
- * tienen relacion directa con la base de datos.
+ * Clase Administrador es un persona tipo empleado. Tiene un listado de todos
+ * los empleados(mozos,recepcionistas,administradores) y la agenda del
+ * restaurante Tambien se encuentra los metodos que este realiza, aunque estan
+ * definidos en clases terminadas en Dao, ya que estos metodos tienen relacion
+ * directa con la base de datos.
  *
  * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
  * Caraballo
@@ -23,6 +23,7 @@ public class Administrador extends Empleado {
     private ArrayList<Empleado> gestiona;
     private AgendaRestaurante administra;
     private ArrayList<Cliente> clientes;
+
     /**
      * Constructor parametrizado de la clase Administrador que recibe los datos
      * de empleado

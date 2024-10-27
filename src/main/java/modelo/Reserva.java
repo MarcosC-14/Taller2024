@@ -54,7 +54,14 @@ public class Reserva {
      * @param tiempoFinalizacion la hora de finalizacion de la ocupacion de la
      * mesa
      */
-    public Reserva(LocalDate fecha, LocalTime hora, String comentario, Cliente cliente, Tarjeta tarjeta, Mesa mesa, LocalDate tiempoOcupacion, LocalDate tiempoFinalizacion) {
+    public Reserva(LocalDate fecha,
+            LocalTime hora,
+            String comentario,
+            Cliente cliente,
+            Tarjeta tarjeta,
+            Mesa mesa,
+            LocalDate tiempoOcupacion,
+            LocalDate tiempoFinalizacion) {
         this.fecha = fecha;
         this.hora = hora;
         this.comentario = comentario;
@@ -273,6 +280,7 @@ public class Reserva {
 
     /**
      * Metodo Getter multa
+     *
      * @return true si la multa fue realizada y false en caso contrario
      */
     public boolean getMulta() {
@@ -280,13 +288,14 @@ public class Reserva {
     }
 
     /**
-     *Metodo Setter multa
+     * Metodo Setter multa
+     *
      * @param multa si se le aplica o no a un cliente
      */
     public void setMulta(boolean multa) {
         this.multa = multa;
     }
-    
+
     /**
      * Metodo toString que retorna los datos de la reserva
      *
@@ -294,7 +303,12 @@ public class Reserva {
      */
     @Override
     public String toString() {
-        return "Reserva{" + "fecha=" + fecha + ", hora=" + hora + ", comentario=" + comentario + ", asistencia=" + asistencia + ", tiempoOcupacion=" + tiempoOcupacion + ", tiempoFinalizacion=" + tiempoFinalizacion + ", mesa=" + mesa + ", cliente=" + cliente + ", tarjeta=" + tarjeta + ", id=" + id + ", multa=" + multa + '}';
+        return "Reserva{" + "fecha=" + fecha + ", hora=" +
+                hora + ", comentario=" + comentario + ", asistencia=" +
+                asistencia + ", tiempoOcupacion=" + tiempoOcupacion +
+                ", tiempoFinalizacion=" + tiempoFinalizacion + ", mesa=" +
+                mesa + ", cliente=" + cliente + ", tarjeta=" +
+                tarjeta + ", id=" + id + ", multa=" + multa + '}';
     }
 
 }
