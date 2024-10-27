@@ -1214,6 +1214,7 @@ public class AdView extends javax.swing.JFrame {
             }else {
             numeroMesa = Integer.parseInt(auxNumMesa);
             b.setNumMesa(numeroMesa);
+            System.out.println(b.getHoraInicio());
             if(!empleadoDAO.existeBloqueoEvento(b)){
                 if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
                     javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el bloqueo de mesa.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
