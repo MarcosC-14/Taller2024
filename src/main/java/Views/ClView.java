@@ -154,7 +154,7 @@ public class ClView extends javax.swing.JFrame {
         jTxt_cliente_fecha = new javax.swing.JTextField();
         jButton_cliente_modificar_reserva = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jBVerHistorial = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jComboBoxHoraBuscarMod = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
@@ -706,10 +706,10 @@ public class ClView extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Ver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBVerHistorial.setText("Ver");
+        jBVerHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBVerHistorialActionPerformed(evt);
             }
         });
 
@@ -877,7 +877,7 @@ public class ClView extends javax.swing.JFrame {
                                         .addGap(11, 11, 11)
                                         .addComponent(jButton_cliente_modificar_reserva)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton2)
+                                        .addComponent(jBVerHistorial)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton_cliente_eliminar_reserva1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(79, 79, 79)
@@ -976,7 +976,7 @@ public class ClView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_cliente_modificar_reserva)
-                            .addComponent(jButton2)
+                            .addComponent(jBVerHistorial)
                             .addComponent(jButton_cliente_eliminar_reserva1)))
                     .addComponent(jLabel30)
                     .addGroup(historial_clienteLayout.createSequentialGroup()
@@ -1174,7 +1174,7 @@ public class ClView extends javax.swing.JFrame {
         int numM = Integer.parseInt((String) jComboBoxClienteReservaMesa.getSelectedItem());
         mesaR.setNumero(numM);
 
-        reserva.setMesa(obtenerCapUbi(mesaR));
+        reserva.setMesa(mesaR.obtenerCapUbi());
 
         TarjetaDAO tarjetaR = new TarjetaDAO();
         String nombreTarjeta=jTextFieldCienteReservaNombreT.getText();
@@ -1257,51 +1257,27 @@ public class ClView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton_nuevaReservaActionPerformed
     
-    private Mesa obtenerCapUbi(Mesa mesaR){
-        switch (mesaR.getNumero()) {
-            case 3:
-                mesaR.setCapacidad(Capacidad.dos);
-                break;
-            case 1, 6, 7, 8:
-                mesaR.setCapacidad(Capacidad.cuatro);
-                break;
-            case 4:
-                mesaR.setCapacidad(Capacidad.seis);
-                break;
-            case 2:
-                mesaR.setCapacidad(Capacidad.ocho);
-                break;
-            case 5:
-                mesaR.setCapacidad(Capacidad.diez);
-                break;
-        }
-        switch (mesaR.getNumero()) {
-            case 1, 2, 3, 4, 5:
-                mesaR.setUbicacion(Ubicacion.Interior);
-                break;
-            case 6, 7, 8:
-                mesaR.setUbicacion(Ubicacion.Exterior);
-                break;
-        }
-        return mesaR;
-    }
     
     
     private void jTextFieldClienteReservanNumTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClienteReservanNumTActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextFieldClienteReservanNumTActionPerformed
 
     private void jComboBoxClienteReservaMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteReservaMesaActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jComboBoxClienteReservaMesaActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    /**
+     * Cuando se lo presiona llama al metodo actualizarTablaHistorial.
+     * 
+     * @param   evt evento que ocurre al presionar el boton.
+     */
+    private void jBVerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerHistorialActionPerformed
         this.actualizarTablaHistorial();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBVerHistorialActionPerformed
 
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox2ActionPerformed
     /**
      * Se encarga de revisar que la fecha ingresada sea valida y llama a la 
@@ -1332,10 +1308,10 @@ public class ClView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JButton_confirmarFechaActionPerformed
     /**
-     * Accion de apretar el boton ver datos muestra el nombre,correo y telefono
-     * del cliente
+     * Accion de apretar el boton ver datos. Muestra el nombre,correo y telefono
+     * del cliente.
      *
-     * @param evt es el evento de apretar el boton ver datos
+     * @param evt es el evento de apretar el boton ver datos.
      */
     private void jBVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerDatosActionPerformed
 
@@ -1348,11 +1324,11 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBVerDatosActionPerformed
 
     private void nombreClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteBaseActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_nombreClienteBaseActionPerformed
 
     private void jTxtClientePerfilNuevoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtClientePerfilNuevoCorreoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTxtClientePerfilNuevoCorreoActionPerformed
     /**
      * Es el metodo ejecutado cuando se aprieta el boton acutalizar verifica que
@@ -1459,11 +1435,11 @@ public class ClView extends javax.swing.JFrame {
         if (jTextField_comentarioMod.getText().equals("")) {
             reserva.setComentario(jTextField_comentarioMod.getText());
         }
-        if(jComboBoxMesaMod.getSelectedItem().toString() != "No cambiar"){
+        if(!jComboBoxMesaMod.getSelectedItem().toString().equals( "No cambiar")){
             Mesa mesaR = new Mesa();
             int numM = Integer.parseInt((String) jComboBoxMesaMod.getSelectedItem());
             mesaR.setNumero(numM);
-            reserva.setMesa(obtenerCapUbi(mesaR));
+            reserva.setMesa(mesaR.obtenerCapUbi());
         }
 
         if (!jTxtNombreTarjetaMod.getText().equals("")
@@ -1518,15 +1494,15 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_cliente_modificar_reservaActionPerformed
 
     private void jComboBoxUbiModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUbiModActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_jComboBoxUbiModActionPerformed
 
     private void jComboBoxMesaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesaModActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jComboBoxMesaModActionPerformed
 
     private void jTxtClientePerfilTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtClientePerfilTelefonoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTxtClientePerfilTelefonoActionPerformed
     /**
      * Metodo que se ejecuta al presionar el boton Ver. Se encarga de que la tabla
@@ -1590,15 +1566,15 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBVerActionPerformed
 
     private void jTxtEmisorTarjetaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmisorTarjetaModActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTxtEmisorTarjetaModActionPerformed
 
     private void telefonoClienteBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoClienteBaseActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_telefonoClienteBaseActionPerformed
 
     private void jComboBoxHoraBuscarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHoraBuscarModActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBoxHoraBuscarModActionPerformed
     /**
      * Es el metodo que se ejecuta al apretar el boton Cancelar, Se elimina la
@@ -1662,7 +1638,7 @@ public class ClView extends javax.swing.JFrame {
     private javax.swing.JPanel historial_cliente;
     private javax.swing.JButton jBVer;
     private javax.swing.JButton jBVerDatos;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBVerHistorial;
     public javax.swing.JButton jButton_cliente_eliminar_reserva1;
     public javax.swing.JButton jButton_cliente_modificar_reserva;
     public javax.swing.JButton jButton_cliente_perfil_actualizar;

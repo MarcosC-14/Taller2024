@@ -48,7 +48,7 @@ public class Mesa {
      * @param capacidad que indica cuantas personas maximo se pueden sentar en
      * esa mesa.
      * @param ubicacion que indica donde se ubica la mesa.
-     * @param reserva contiene la informacion de la reserva
+     * @param reserva contiene la informacion de la reserva que se va a agredar.
      */
     public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, Reserva reserva) {
         this();
@@ -64,7 +64,7 @@ public class Mesa {
      * @param capacidad que indica cuantas personas maximo se pueden sentar en
      * esa mesa.
      * @param ubicacion que indica donde se ubica la mesa.
-     * @param reserva contiene el listado de reservas
+     * @param reservas contiene el listado de reservas
      */
     public Mesa(int numero, Capacidad capacidad, Ubicacion ubicacion, ArrayList<Reserva> reservas) {
         this.numero = numero;
@@ -91,7 +91,7 @@ public class Mesa {
  * @param reserva es la reserva a agregar al listado
  */
     public void agregarReserva(Reserva reserva) {
-        if (reservas.size() == 0) {
+        if (reservas.isEmpty()) {
             this.reservas = new ArrayList<Reserva>();
         }
         reservas.add(reserva);
@@ -137,6 +137,39 @@ public class Mesa {
  */
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
+    }
+    
+    /**
+     * Metodo que guarda la capacidad y la ubicacion en la mesa.
+     * @return  La mesa con la nueva capacidad y ubicacion.
+     */
+    public Mesa obtenerCapUbi(){
+        switch (this.getNumero()) {
+            case 3:
+                this.setCapacidad(Capacidad.dos);
+                break;
+            case 1, 6, 7, 8:
+                this.setCapacidad(Capacidad.cuatro);
+                break;
+            case 4:
+                this.setCapacidad(Capacidad.seis);
+                break;
+            case 2:
+                this.setCapacidad(Capacidad.ocho);
+                break;
+            case 5:
+                this.setCapacidad(Capacidad.diez);
+                break;
+        }
+        switch (this.getNumero()) {
+            case 1, 2, 3, 4, 5:
+                this.setUbicacion(Ubicacion.Interior);
+                break;
+            case 6, 7, 8:
+                this.setUbicacion(Ubicacion.Exterior);
+                break;
+        }
+        return this;
     }
 
 }

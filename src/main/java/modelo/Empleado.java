@@ -15,6 +15,7 @@ public class Empleado extends Persona {
 
     private Rol rol;
     private int id;
+    private ArrayList<Reserva> reservas;
 /**
  * Metodo Getter de id
  * @return id del empleado
@@ -50,11 +51,15 @@ public class Empleado extends Persona {
  * @param clientes clientes que atiende el empleado
  * @param mesas atendidas por el empleado
  */
-    public Empleado(String nombre, String correo, String contrasenia, Rol rol, ArrayList<Cliente> clientes, ArrayList<Mesa> mesas) {
+    public Empleado(String nombre, String correo, String contrasenia, Rol rol, ArrayList<Reserva> reservas) {
         super(nombre, correo, contrasenia);
         this.rol = rol;
-        this.clientes = clientes;
-        this.mesas = mesas;
+        this.reservas=reservas;
+    }
+    public Empleado(String nombre, String correo, String contrasenia, Rol rol, Reserva reserva){
+        super(nombre, correo, contrasenia);
+        this.rol = rol;
+        this.reservas.add(reserva);
     }
 /**
  * Metodo Getter de clientes

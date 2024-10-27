@@ -15,7 +15,7 @@ import java.sql.SQLException;
 * Esta clase se encarga de gestionar la conexión con la base de datos de las tarjetas.
 * Tiene una funcion que se encarga de guardar las tarjetas en la base de datos, 
 * una funcion que revisa si una tarjeta se encuentra en la base de datos por su numero de tarjeta
-* @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+* @author   Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  * @version 27/10/2024
 */
@@ -57,14 +57,14 @@ public class TarjetaDAO {
      * @return  true en caso de que encuentre el numero de la tarjeta, false si 
      * no lo encontro.
      */
-    public boolean existeTarjeta(String numeroTarjeta){
+    public boolean existeTarjeta(String numero){
         boolean bandera= false;
         String buscarNumTarjeta = "SELECT * FROM tarjeta WHERE numero = ?";
         con = conn.getConexion();
-        if(!convertToLong(numeroTarjeta)){
+        if(!convertToLong(numero)){
             return false;
         }
-        long numeroTarjeta1=Long.parseLong(numeroTarjeta);
+        long numeroTarjeta1=Long.parseLong(numero);
         try{
             ps=con.prepareStatement(buscarNumTarjeta);
             
@@ -116,11 +116,16 @@ public class TarjetaDAO {
     
      }
      
-     public static boolean convertToLong(String strNum) {
+     /**
+      * Se encarga de revisar si el String ingresado se puede convertir a long
+      * @param  n String a convertir.
+      * @return true en caso que se pueda convertir, false en caso contrario.
+      */
+     public static boolean convertToLong(String n) {
     boolean retorno=true;
     long valor;
     try {
-        valor = Long.parseLong(strNum);
+        valor = Long.parseLong(n);
     } catch (NumberFormatException | NullPointerException nfe) {
         return false; 
     }

@@ -85,7 +85,6 @@ public class ClienteDAO{
         try {
             con = conn.getConexion();
             ps = con.prepareStatement(query);
-            //Enviar parametros
             ps.setString(1, user);
             ps.setString(2, password);
             rs = ps.executeQuery();
@@ -227,9 +226,9 @@ public class ClienteDAO{
     * de un cliente a través de su id, devolviendo un arreglo de String con esos valores.
     * @param    id es el id que corresponde al cliente.
     * @return   un arreglo de String con la siguiente información:
-    *           datosCliente[0]: nombre del cliente.
-    *           datosCliente[1]: correo electronico del cliente.
-    *           datosCliente[2]: teléfono del cliente.
+    *           -datosCliente[0]: nombre del cliente.
+    *           -datosCliente[1]: correo electronico del cliente.
+    *           -datosCliente[2]: teléfono del cliente.
     */
      public String[] mostrarDatos(int id){
          String datosCliente[]=new String[3];

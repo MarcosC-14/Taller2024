@@ -4,7 +4,6 @@
  */
 package Views;
 
-import Controladores.LoginControl;
 import javax.swing.JOptionPane;
 import modelo.Administrador;
 import modelo.Cliente;
@@ -33,8 +32,6 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         setResizable(false);
-        LoginControl cliente_login = new LoginControl(cliente, cliente_dao);
-        cliente_login.setInicio(this);
         setLocationRelativeTo(null);
 
     }

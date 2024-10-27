@@ -259,7 +259,7 @@ public class ReservaDAO {
                 String tEmi = rs.getString("emisor");
                 String tCodSeguridad = rs.getString("cod_seguridad");
                 
-                reserva.setTarjeta(new Tarjeta(tNombre,tEmi,tNum,tCodSeguridad,reserva));
+                reserva.setTarjeta(new Tarjeta(tNombre,tEmi,tNum,tCodSeguridad));
                 
                 reservas.add(reserva);
             }
@@ -652,7 +652,7 @@ public class ReservaDAO {
                     String tEmi = rs.getString("emisor");
                     String tCodSeguridad = rs.getString("cod_seguridad");
 
-                    reserva.setTarjeta(new Tarjeta(tNombre,tEmi,tNum,tCodSeguridad,reserva));
+                    reserva.setTarjeta(new Tarjeta(tNombre,tEmi,tNum,tCodSeguridad));
 
                     reservas.add(reserva);
                 }
