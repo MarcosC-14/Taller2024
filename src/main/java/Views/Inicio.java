@@ -14,10 +14,12 @@ import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
  * Clase inicio es un Jframe que se presenta al inicio para que el usuario pueda
- * acceder al sistema, recuperar su contrasñea o registrarse si es un cliente
+ * acceder al sistema, lo envia a otra ventana para que pueda recuperar su 
+ * contraseña o registrarse si es un cliente.
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author  Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
+ * @version 27/10/2024
  */
 public class Inicio extends javax.swing.JFrame {
 
@@ -27,7 +29,8 @@ public class Inicio extends javax.swing.JFrame {
     Persona usuario;
 
     /**
-     * Creates new form SystemView
+     * Constructor por defecto de la clase, inicializa los componentes, hace que
+     * el cliente no lo pueda redimensionar y centra la ventana.
      */
     public Inicio() {
         initComponents();
@@ -192,13 +195,13 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_passwordActionPerformed
     /**
-     *Metodo que se ejecuta cuando se aprieta el boton de ingresar.
+     * Metodo que se ejecuta cuando se aprieta el boton de ingresar.
      * Verifica que los datos ingresados sean validos y compara
      * con que tipo de usuario corresponde para dirigirlo a su panel.
-     * @param evt es el evento de apretar el boton de ingresar
+     * @param   evt es el evento de apretar el boton de ingresar
      */
     private void jButton_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ingresoActionPerformed
         String correo = this.txt_username.getText().trim();
@@ -239,8 +242,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_ingresoActionPerformed
     /**
      * Metodo que se ejecuta cuando se aprieta el boton de registro cliente.
-     * Lleva al usuario a la ventana de registro
-     * @param evt es el evento de apretar el boton registro cliente
+     * Lleva al usuario a la ventana de registro.
+     * @param   evt es el evento de apretar el boton registro cliente.
      */
     private void jButton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registroActionPerformed
         ClRegisterView viewCl = new ClRegisterView();
@@ -248,8 +251,8 @@ public class Inicio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton_registroActionPerformed
     /**
-     *Metodo que se ejecuta cuando se aprieta el boton de recuperar contraseña.
-     * @param evt es el evento de apretar el boton recuperar contraseña
+     * Metodo que se ejecuta cuando se aprieta el boton de recuperar contraseña.
+     * @param   evt es el evento de apretar el boton recuperar contraseña.
      */
     private void jButton_recuperarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_recuperarContraseñaActionPerformed
         ClRecuperarC ventanaContraseña = new ClRecuperarC();
