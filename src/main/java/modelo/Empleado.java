@@ -66,8 +66,9 @@ public class Empleado extends Persona {
      *
      * @param nombre nombre del empleado.
      * @param correo correo del empleado.
-     * @param contrasenia contrasela del empleado.
+     * @param contrasenia contraseña del empleado.
      * @param rol rol del empleado.
+     * @param reservas representa las reservas asociadas a un empleado.
      */
     public Empleado(String nombre,
             String correo,
