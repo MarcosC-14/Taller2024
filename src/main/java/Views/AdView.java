@@ -59,10 +59,9 @@ public class AdView extends javax.swing.JFrame {
     ArrayList<Cliente> clientes;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
-    private String tituloPdfReservas; 
-    private String tituloPdfClientes; 
+    private String tituloPdfReservas;
+    private String tituloPdfClientes;
     private AgendaRestaurante agendaR;
-    
 
     /**
      * Creates new form AdView
@@ -1178,7 +1177,7 @@ public class AdView extends javax.swing.JFrame {
     private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
         BloqueoMesaEventoEspecial b = new BloqueoMesaEventoEspecial();
         String auxFecha = jTextField_fechaEvento.getText();
-        
+
         LocalDate fechaBloqueoEvento;
         if (ClienteController.esFormatoFechaValido(auxFecha)) {
             try {
@@ -1257,7 +1256,6 @@ public class AdView extends javax.swing.JFrame {
      */
     private void jBReservasFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFechaActionPerformed
 
-        
         String auxFechaI = jTxtFechaInicial.getText();
         String auxFechaF = jTxtFechaFinal.getText();
         if (!ClienteController.esFormatoFechaValido(auxFechaI)
@@ -1288,12 +1286,9 @@ public class AdView extends javax.swing.JFrame {
 
             tituloPdfReservas = "Reservas entre fechas";
 
-
             actualizarTablaReservasCliente();
 
         }
-
-        
 
 
     }//GEN-LAST:event_jBReservasFechaActionPerformed
@@ -1358,7 +1353,7 @@ public class AdView extends javax.swing.JFrame {
                     i--;
                 }
             }
-            tituloPdfReservas = "Reservas Futuras de "+ cliente.getNombre();
+            tituloPdfReservas = "Reservas Futuras de " + cliente.getNombre();
             actualizarTablaReservasCliente();
         }
     }//GEN-LAST:event_jBReservasFuturasActionPerformed
@@ -1430,7 +1425,12 @@ public class AdView extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton_administrador_empleado_agregarActionPerformed
-
+    /**
+     * Metodo que se aplica al apretaron el boton Se obtiene el listado de los
+     * clientes
+     *
+     * @param evt es el evento de apretar el boton
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         clientes = clienteDAO.obtenerClientes();
         this.tituloPdfClientes = "Lista de clientes";
@@ -1440,10 +1440,10 @@ public class AdView extends javax.swing.JFrame {
     private void jTextFieldVeranoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldVeranoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldVeranoActionPerformed
-/**
- * Nose que es Jbutton7
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         clientes = clienteDAO.obtenerClientes();
         int maxAsistencias = 0;
@@ -1461,10 +1461,13 @@ public class AdView extends javax.swing.JFrame {
         this.tituloPdfClientes = "Cliente(s) con mayor cantidad asistencias";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton7ActionPerformed
-/**
- * Nose que es Jbutton3
- * @param evt 
- */
+    /**
+     * Metodo que se aplica al apretar el boton Clientes que no asistieron el
+     * ultimo año Muestra en la lista los clientes que no han asistido a sus
+     * reservas en el ultimo año
+     *
+     * @param evt es el evento de presionar el boton
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         clientes = clienteDAO.obtenerClientes();
         for (Cliente cliente : clientes) {
@@ -1505,10 +1508,12 @@ public class AdView extends javax.swing.JFrame {
         this.tituloPdfClientes = "Clientes que no asistieron en el último año";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton3ActionPerformed
-/**
- * nose que es Jbutton8
- * @param evt 
- */
+    /**
+     * Es el metodo que se ejecuta al presionar el boton Ver Muestra la
+     * concurrencia de clientes por estacion del año.
+     *
+     * @param evt es el evento de presionar el boton de Ver
+     */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         reservas = reservaDAO.obtenerReservas();
 
@@ -1522,7 +1527,7 @@ public class AdView extends javax.swing.JFrame {
         int cantInvierno = 0;
         int cantOtoño = 0;
         for (Reserva res : reservas) {
-            if(res.getAsistencia()){
+            if (res.getAsistencia()) {
                 continue;
             }
             LocalDate aux = res.getFecha();
@@ -1548,13 +1553,18 @@ public class AdView extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton8ActionPerformed
-
+    /**
+     * Es el metodo que se ejecuta al presionar el boton Exportar a PDF Se crea
+     * y exporta un archivo pdf con la informacion que contiene la taba
+     *
+     * @param evt es el evento de presionar el boton Exportar a PDF
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if(reservas == null || reservas.isEmpty()){
+        if (reservas == null || reservas.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }else if(tituloPdfReservas.equals("")){
+        } else if (tituloPdfReservas.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar nuevamente la tabla para volver a imprimir", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }else{
+        } else {
             CreadorPdf.hacerPdfReserva(tituloPdfReservas, reservas);
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
@@ -1563,23 +1573,30 @@ public class AdView extends javax.swing.JFrame {
     private void jTabbedPane2ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane2ComponentMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane2ComponentMoved
-
+    /**
+     * Metodo que se aplica al apretar el boton Exportar a PDF Se crea y exporta
+     * un archivo PDf con la informacion que contiene la tabla
+     *
+     * @param evt es el evento de presionar el boton Exportar a PDF
+     */
     private void jButtonExportarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarClientesActionPerformed
-        
-        if(clientes == null || clientes.isEmpty()){
+
+        if (clientes == null || clientes.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }else if(tituloPdfClientes.equals("")){
+        } else if (tituloPdfClientes.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }else{
+        } else {
             CreadorPdf.hacerPdfCliente(tituloPdfClientes, clientes);
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonExportarClientesActionPerformed
-
-    private void mostrarHorarioAperturaCierre(){
+    /**
+     * Metodo que muestra los horarios de apertura y cierre
+     */
+    private void mostrarHorarioAperturaCierre() {
         System.out.println(agendaR.getHoraApertura());
         System.out.println(agendaR.getHoraCierre());
-        switch(agendaR.getHoraApertura().format(DateTimeFormatter.ofPattern("HH:mm:ss"))){
+        switch (agendaR.getHoraApertura().format(DateTimeFormatter.ofPattern("HH:mm:ss"))) {
             case "12:00:00":
                 jComboBoxHoraApertura.setSelectedIndex(0);
                 break;
@@ -1601,9 +1618,9 @@ public class AdView extends javax.swing.JFrame {
             case "23:59:59":
                 jComboBoxHoraApertura.setSelectedIndex(6);
                 break;
-                
+
         }
-        switch(agendaR.getHoraCierre().format(DateTimeFormatter.ofPattern("HH:mm:ss"))){
+        switch (agendaR.getHoraCierre().format(DateTimeFormatter.ofPattern("HH:mm:ss"))) {
             case "12:00:00":
                 jComboBoxHoraCierre.setSelectedIndex(0);
                 break;
@@ -1625,112 +1642,142 @@ public class AdView extends javax.swing.JFrame {
             case "23:59:59":
                 jComboBoxHoraCierre.setSelectedIndex(6);
                 break;
-                
+
         }
     }
+
+    /**
+     * Metodo que se aplica al apretar el boton Modificar. Modifica el horario
+     * de apertura y cierre del restaurante. verifica que los horarios
+     * ingresados sean validos. Se controla que el horario de apertura sea menor
+     * que el de cierre.
+     *
+     * @param evt
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String auxHoraAp = jComboBoxHoraApertura.getSelectedItem().toString()+":00:00";
-        String auxHoraCi = jComboBoxHoraCierre.getSelectedItem().toString()+":00:00";
-        if(auxHoraCi.equals("00:00:00")){
+        String auxHoraAp = jComboBoxHoraApertura.getSelectedItem().toString() + ":00:00";
+        String auxHoraCi = jComboBoxHoraCierre.getSelectedItem().toString() + ":00:00";
+        if (auxHoraCi.equals("00:00:00")) {
             auxHoraCi = "23:59:59";
         }
-        LocalTime horaAp = LocalTime.parse(auxHoraAp
-            ,DateTimeFormatter.ofPattern("HH:mm:ss"));
-        LocalTime horaCi = LocalTime.parse(auxHoraCi
-            ,DateTimeFormatter.ofPattern("HH:mm:ss"));
-         if (horaAp.isAfter(horaCi) || horaAp.equals(horaCi)){
+        LocalTime horaAp = LocalTime.parse(auxHoraAp,
+                DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime horaCi = LocalTime.parse(auxHoraCi,
+                DateTimeFormatter.ofPattern("HH:mm:ss"));
+        if (horaAp.isAfter(horaCi) || horaAp.equals(horaCi)) {
             javax.swing.JOptionPane.showMessageDialog(this, "La fecha inicial no puede ser mayor o igual a la fecha final", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-         }else{
-             
-             if(empleadoDAO.definirHoraAperturaCierre(horaAp,horaCi)){
-                 javax.swing.JOptionPane.showMessageDialog(this, "Horario modificado con éxito", "Advertencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                 agendaR.setHoraApertura(horaAp);
-                 agendaR.setHoraCierre(horaCi);
-                 mostrarHorarioAperturaCierre();
-             }else{
-                 javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un problema", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-             }
-         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+        } else {
 
+            if (empleadoDAO.definirHoraAperturaCierre(horaAp, horaCi)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Horario modificado con éxito", "Advertencia", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                agendaR.setHoraApertura(horaAp);
+                agendaR.setHoraCierre(horaCi);
+                mostrarHorarioAperturaCierre();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un problema", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+    /**
+     * Es el Metodo que se ejecuta al cambiar la opciones del jComboBox
+     * 
+     * @param evt es el evento de cambiar de opcion del JComboBox
+     */
     private void jComboBoxMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesasActionPerformed
         // TODO add your handling code here:
-        if(!jComboBoxMesas.getSelectedItem().toString().equals("Todas")){
+        if (!jComboBoxMesas.getSelectedItem().toString().equals("Todas")) {
             jComboBoxHoraInicio.setSelectedIndex(0);
             jComboBoxHoraFin.setSelectedIndex(5);
             jComboBoxHoraInicio.setEnabled(false);
             jComboBoxHoraFin.setEnabled(false);
-        }else{
-            
+        } else {
+
             jComboBoxHoraInicio.setEnabled(true);
             jComboBoxHoraFin.setEnabled(true);
         }
     }//GEN-LAST:event_jComboBoxMesasActionPerformed
-
+    /**
+     * Es el metodo que se aplica al presionar el boton Exportar a PDF
+     * Se encarga de crear y exportar un archivo pdf con los datos mostrados de concurrencia por estacion
+     * Verifica que existan datos.
+     * @param evt es el evento de presionar el boton Expotar a PDF
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         String verano = jTextFieldVerano.getText();
         String otoño = jTextFieldOtoño.getText();
         String invierno = jTextFieldInvierno.getText();
         String primavera = jTextFieldPrimavera.getText();
-        if(verano.equals("")
+        if (verano.equals("")
                 || otoño.equals("")
                 || invierno.equals("")
-                || primavera.equals("")){
+                || primavera.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }else{
-            CreadorPdf.hacerPdfEstaciones("ConcurrenciasPorEstacion", new String [] {verano,otoño,invierno,primavera});
+        } else {
+            CreadorPdf.hacerPdfEstaciones("ConcurrenciasPorEstacion", new String[]{verano, otoño, invierno, primavera});
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    /**
+     * Metodo que exporta el listado de las reservas en un archivo excel
+     *
+     * @param evt es el evento de apretar el boton exportar a excel
+     */
     private void ExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelActionPerformed
-        if(reservas == null || reservas.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE); 
-        }else{
+        if (reservas == null || reservas.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
             try {
                 CrearExcel.hacerExcelReserva(reservas);
             } catch (Exception ex) {
                 Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
             }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a excel en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        }        
- 
-    }//GEN-LAST:event_ExcelActionPerformed
+        }
 
+    }//GEN-LAST:event_ExcelActionPerformed
+    /**
+     * Metodo que exporta el listado de clientes en un archivo excel
+     *
+     * @param evt es el evento de apretar el boton exportar a excel
+     */
     private void ExcelclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelclienteActionPerformed
-        if(clientes == null || clientes.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE); 
-        }else{
+        if (clientes == null || clientes.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
             try {
                 CrearExcel.hacerExcelCliente(clientes);
             } catch (Exception ex) {
                 Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
             }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a excel en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        }        
+        }
     }//GEN-LAST:event_ExcelclienteActionPerformed
-
+    /**
+     * Metodo que exporta el analisis de concurrencia por estacion en un archivo
+     * excel
+     *
+     * @param evt es el evento de apretar el boton exportar a excel
+     */
     private void EstacionesExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstacionesExcelActionPerformed
         String verano = jTextFieldVerano.getText();
         String otoño = jTextFieldOtoño.getText();
         String invierno = jTextFieldInvierno.getText();
         String primavera = jTextFieldPrimavera.getText();
-        if(verano.equals("")
+        if (verano.equals("")
                 || otoño.equals("")
                 || invierno.equals("")
-                || primavera.equals("")){
+                || primavera.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }else{
+        } else {
             try {
-                CrearExcel.HacerExcelEstaciones(new String [] {verano,otoño,invierno,primavera});
+                CrearExcel.HacerExcelEstaciones(new String[]{verano, otoño, invierno, primavera});
             } catch (Exception ex) {
                 Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
             }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_EstacionesExcelActionPerformed
 
 
