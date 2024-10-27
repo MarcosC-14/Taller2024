@@ -181,12 +181,12 @@ public class EmpleadoDAO {
             if(b.getHoraInicio() != null){
                 ps.setString(3, b.getHoraInicio().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
             }else{
-                ps.setString(3,null);
+                ps.setString(3,"");
             }
             if(b.getHoraFin() != null){
                 ps.setString(4, b.getHoraFin().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
             }else{
-                ps.setString(4,null);
+                ps.setString(4,"");
             }
             bloqueo = (ps.executeUpdate() > 0);
             
@@ -215,13 +215,13 @@ public class EmpleadoDAO {
                 b.setNumMesa(rs.getInt("mesa"));
                 b.setFecha(LocalDate.parse(rs.getString("fecha"),
                         DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                if(rs.getString("hora_inicio") != null){
+                if(!rs.getString("hora_inicio").equals("")){
                     b.setHoraInicio(LocalTime.parse(rs.getString("hora_inicio"),
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
                 }else{
                     b.setHoraInicio(null);
                 }
-                if(rs.getString("hora_fin") != null){
+                if(!rs.getString("hora_fin").equals("")){
                     b.setHoraFin(LocalTime.parse(rs.getString("hora_fin"),
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
                 }else{
@@ -331,13 +331,13 @@ public class EmpleadoDAO {
             ps.setString(2,b.getFecha()
                         .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             if(b.getHoraInicio() == null){
-                ps.setString(3,null);
+                ps.setString(3,"");
             }else{
                 ps.setString(3,b.getHoraInicio()
                         .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
             }
             if(b.getHoraFin()== null){
-                ps.setString(4,null);
+                ps.setString(4,"");
             }else{
                 ps.setString(4,b.getHoraFin()
                         .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
