@@ -311,5 +311,46 @@ public class EmpleadoDAO {
         return aR;
      }
         
+    /**
+     * Se encarga de revisar si el bloqueo o evento ingresado se encuentra en la base de datos.
+     * Devuelve true si se encuentra en la base de datos, false si no esta en la base de datos
+     * @param   b representa al bloqueo o evento a revisar
+     * @return  true si lo encuentra, false si no
+     */
+    public boolean existeBloqueoEvento(BloqueoMesaEventoEspecial b){
+        String sql="SELECT * FROM bloqueo_evento WHERE mesa =?"
+                + "AND fecha = ? "
+                + "AND hora_inicio = ?"
+                + "AND hora_fin = ?";
+        boolean bandera= false;
+        try{
+            con= conn.getConexion();
+            ps=con.prepareStatement(sql);
+            ps.setInt(1,b.getNumMesa());
+            ps.setString(2,b.getFecha()
+                        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            if(b.getHoraInicio() == null){
+                ps.setString(3,null);
+            }else{
+                ps.setString(3,b.getHoraInicio()
+                        .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            }
+            if(b.getHoraFin()== null){
+                ps.setString(4,null);
+            }else{
+                ps.setString(4,b.getHoraFin()
+                        .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            }
+            rs=ps.executeQuery();
+            if(rs.next()){
+                bandera=true;
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+             conn.cerrarConexion();
+        } 
+        return bandera;
+     }
 }
     

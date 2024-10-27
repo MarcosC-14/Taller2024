@@ -59,8 +59,8 @@ public class AdView extends javax.swing.JFrame {
     ArrayList<Cliente> clientes;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
-    private String tituloPdfReservas;
-    private String tituloPdfClientes;
+    private String tituloReservas;
+    private String tituloClientes;
     private AgendaRestaurante agendaR;
 
     /**
@@ -76,6 +76,8 @@ public class AdView extends javax.swing.JFrame {
         this.administrador = administrador;
         tabla = (DefaultTableModel) jTableReporteReservas.getModel();
         agendaR = empleadoDAO.obtenerHoraAperturaCierre();
+        bmes = empleadoDAO.obtenerBloqueosMesasEventosEspeciales();
+        agendaR.setFechasEspecial(bmes);
         mostrarHorarioAperturaCierre();
 
     }
@@ -1179,32 +1181,48 @@ public class AdView extends javax.swing.JFrame {
         LocalTime horaInicio;
         LocalTime horaFin;
         if (auxNumMesa.equals("Todas")) {
-            if (Integer.parseInt(auxHoraInicio) > Integer.parseInt(auxHoraFin)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "La hora de inicio del evento debe ser menor a la hora de su finalización", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            numeroMesa = 0;
-            horaInicio = LocalTime.parse(auxHoraInicio + ":00:00",
-                    DateTimeFormatter.ofPattern("HH:mm:ss"));
-            horaFin = LocalTime.parse(auxHoraFin + ":00:00",
-                    DateTimeFormatter.ofPattern("HH:mm:ss"));
+                if (Integer.parseInt(auxHoraInicio) >= Integer.parseInt(auxHoraFin)) {
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "La hora de inicio del evento debe ser menor a la hora de su finalización",
+                            "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                numeroMesa = 0;
+                horaInicio = LocalTime.parse(auxHoraInicio + ":00:00",
+                        DateTimeFormatter.ofPattern("HH:mm:ss"));
+                horaFin = LocalTime.parse(auxHoraFin + ":00:00",
+                        DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-            b.setNumMesa(numeroMesa);
-            b.setHoraInicio(horaInicio);
-            b.setHoraFin(horaFin);
+                b.setNumMesa(numeroMesa);
+                b.setHoraInicio(horaInicio);
+                b.setHoraFin(horaFin);
 
-            if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el evento.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el evento", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
+                if(!empleadoDAO.existeBloqueoEvento(b)){
+                    if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el evento.",
+                                "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el evento",
+                                "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    }
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "El evento o bloqueo ingresado ya está registrado",
+                            "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
+
+
+            }else {
             numeroMesa = Integer.parseInt(auxNumMesa);
             b.setNumMesa(numeroMesa);
-            if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el bloqueo de mesa.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el bloqueo de mesa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            if(!empleadoDAO.existeBloqueoEvento(b)){
+                if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Se añadió el bloqueo de mesa.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al añadir el bloqueo de mesa", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "El evento o bloqueo ingresado ya está registrado",
+                            "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }
         actualizarTablaBloqueoMesaEvento();
@@ -1261,7 +1279,7 @@ public class AdView extends javax.swing.JFrame {
                 }
             }
 
-            tituloPdfReservas = "Reservas entre fechas";
+            tituloReservas = "Reservas entre fechas";
 
             actualizarTablaReservasCliente();
 
@@ -1280,7 +1298,7 @@ public class AdView extends javax.swing.JFrame {
 
         if (verificarCliente()) {
             reservas = reservaDAO.obtenerReservasHistorial(cliente);
-            tituloPdfReservas = "Todas las reservas de " + cliente.getNombre();
+            tituloReservas = "Todas las reservas de " + cliente.getNombre();
             actualizarTablaReservasCliente();
         }
     }//GEN-LAST:event_jBTodasLasReservasActionPerformed
@@ -1330,7 +1348,7 @@ public class AdView extends javax.swing.JFrame {
                     i--;
                 }
             }
-            tituloPdfReservas = "Reservas Futuras de " + cliente.getNombre();
+            tituloReservas = "Reservas Futuras de " + cliente.getNombre();
             actualizarTablaReservasCliente();
         }
     }//GEN-LAST:event_jBReservasFuturasActionPerformed
@@ -1410,7 +1428,7 @@ public class AdView extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         clientes = clienteDAO.obtenerClientes();
-        this.tituloPdfClientes = "Lista de clientes";
+        this.tituloClientes = "Lista de clientes";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1435,7 +1453,7 @@ public class AdView extends javax.swing.JFrame {
                 i = -1;
             }
         }
-        this.tituloPdfClientes = "Cliente(s) con mayor cantidad asistencias";
+        this.tituloClientes = "Cliente(s) con mayor cantidad asistencias";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton7ActionPerformed
     /**
@@ -1482,7 +1500,7 @@ public class AdView extends javax.swing.JFrame {
             }
 
         }
-        this.tituloPdfClientes = "Clientes que no asistieron en el último año";
+        this.tituloClientes = "Clientes que no asistieron en el último año";
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jButton3ActionPerformed
     /**
@@ -1539,10 +1557,10 @@ public class AdView extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (reservas == null || reservas.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        } else if (tituloPdfReservas.equals("")) {
+        } else if (tituloReservas.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar nuevamente la tabla para volver a imprimir", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
-            CreadorPdf.hacerPdfReserva(tituloPdfReservas, reservas);
+            CreadorPdf.hacerPdfReserva(tituloReservas, reservas);
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -1560,10 +1578,10 @@ public class AdView extends javax.swing.JFrame {
 
         if (clientes == null || clientes.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        } else if (tituloPdfClientes.equals("")) {
+        } else if (tituloClientes.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
-            CreadorPdf.hacerPdfCliente(tituloPdfClientes, clientes);
+            CreadorPdf.hacerPdfCliente(tituloClientes, clientes);
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonExportarClientesActionPerformed
@@ -1702,11 +1720,14 @@ public class AdView extends javax.swing.JFrame {
     private void ExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelActionPerformed
         if (reservas == null || reservas.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        } else {
+        } else if (tituloReservas.equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } 
+        else{
             try {
-                CrearExcel.hacerExcelReserva(reservas);
-            } catch (Exception ex) {
-                Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
+                CrearExcel.hacerExcelReserva(tituloReservas,reservas);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a excel en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
@@ -1720,11 +1741,14 @@ public class AdView extends javax.swing.JFrame {
     private void ExcelclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelclienteActionPerformed
         if (clientes == null || clientes.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "La tabla está vacía", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-        } else {
+        }  else if (tituloClientes.equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } 
+        else{
             try {
-                CrearExcel.hacerExcelCliente(clientes);
-            } catch (Exception ex) {
-                Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
+                CrearExcel.hacerExcelCliente(tituloClientes, clientes);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a excel en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
@@ -1748,8 +1772,8 @@ public class AdView extends javax.swing.JFrame {
         } else {
             try {
                 CrearExcel.HacerExcelEstaciones(new String[]{verano, otoño, invierno, primavera});
-            } catch (Exception ex) {
-                Logger.getLogger(AdView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta ExcelExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
