@@ -5,8 +5,6 @@
 package Views;
 
 import Controladores.ClienteController;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -30,30 +28,43 @@ import modelo.AgendaRestaurante;
 import persistencia.ClasesDao.EmpleadoDAO;
 
 /**
- * La clase Clview es un Jfrmame donde los usuarios de tipo cliente pueden
- * observar, cancelar,realizar una reserva o modificar una.
+ * La clase ClView representa a la ventana que puede ver el cliente. 
+ * 
+ * Tiene metodos para: 
+ * -Actualizar la tabla del historial.
+ * -Actualizar la tabla de mesas.
+ * -Ordena la tabla de historial.
+ * -Volver a la ventana de inicio.
+ * -Realizar una nueva reserva.
+ * -Confirmar que la fecha ingresada sea valida.
+ * -Ver los datos de las reservas.
+ * -Modificar la reserva.
+ * -Eliminar la reserva.
+ * -En caso de ser cumplir con los criterios avisa que tenes una reserva a futuro.
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author  Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
+ * @version 27/10/2024
  */
 public class ClView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ClView Inicializa tabla de mesas
-     */
-    ArrayList<Tarjeta> tarjetas;
-    ArrayList<Mesa> mesas;
-    ArrayList<Reserva> reservas;
-    LocalDate fechaBuscar;
-    LocalTime horaBuscar;
-    Cliente cliente1;
-    Tarjeta tarjeta = new Tarjeta();
-    Reserva reserva = new Reserva();
-    AgendaRestaurante agendaR = new AgendaRestaurante();
+    private ArrayList<Tarjeta> tarjetas;
+    private ArrayList<Mesa> mesas;
+    private ArrayList<Reserva> reservas;
+    private LocalDate fechaBuscar;
+    private LocalTime horaBuscar;
+    private Cliente cliente1;
+    private Tarjeta tarjeta = new Tarjeta();
+    private Reserva reserva = new Reserva();
+    private AgendaRestaurante agendaR = new AgendaRestaurante();
 
     /**
-     * Construcutor donde se define el tamaño de ventana Se verifica si hay que
-     * enviarle un alerta de reserva proxima al cliente
+     * Construcutor donde se inicializan los componentes de la ventana, se 
+     * define el tamaño de ventana, se hace que sea imposible modificar por el 
+     * usuario cambiar el tamaño de la ventana, le pone el titulo a la ventana y
+     * la centra. Se guarda el cliente que inicio sesion en y que se paso por 
+     * parametro, ademas verifica si hay que enviarle un alerta de reserva 
+     * proxima al cliente
      *
      * @param cliente1 es el cliente que ingresa
      */
@@ -1030,16 +1041,15 @@ public class ClView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
+    /**
      * Metodo que actualiza la tabla del historial de reservas del cliente
      */
     private void actualizarTablaHistorial() {
         ReservaDAO reservaDAO = new ReservaDAO();
-
         reservas = reservaDAO.obtenerReservasHistorial(cliente1);
 
         DefaultTableModel model = (DefaultTableModel) jTable_historialCliente.getModel();
-        model.setRowCount(0); // Limpia todas las filas existentes
+        model.setRowCount(0);
         ordenarTablaHistorial();
 
         for (Reserva res : reservas) {
@@ -1051,20 +1061,19 @@ public class ClView extends javax.swing.JFrame {
                 asistencia, res.getTarjeta().getNumero()
             });
         }
-
     }
 
     /**
      * Metodo que actualiza la tabla de mesas.
      *
-     * @param tabla
+     * @param   tabla representa la tabla que se va aactualizar
      */
     private void actualizarTablaMesas(javax.swing.JTable tabla) {
         ReservaDAO reservaDAO = new ReservaDAO();
 
         mesas = reservaDAO.mesas();
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-        model.setRowCount(0); //Elimina las filas existentes;
+        model.setRowCount(0);
         String filtroUbi = (String) (jComboBoxClienteReservaUbicacion.getSelectedItem());
         String filtroCap = (String) (jComboBoxClienteReservaCapacidad.getSelectedItem());
 
@@ -1086,9 +1095,7 @@ public class ClView extends javax.swing.JFrame {
                     });
                 }
             }
-
         }
-
     }
 
     /**
@@ -1223,7 +1230,6 @@ public class ClView extends javax.swing.JFrame {
                 return;
             }
         }
-        
         if(codigoSegTarjeta.isEmpty()){
             javax.swing.JOptionPane.showMessageDialog(this, "No ingreso el codigo de seguridad de la tarjeta", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
@@ -1248,18 +1254,19 @@ public class ClView extends javax.swing.JFrame {
             tarjeta.setEmisor(emisorTarjeta);
             tarjeta.setNumero(numeroTarjeta);
             tarjeta.setCodSeguridad(codigoSegTarjeta);
-            
-        
-        reserva.setTarjeta(tarjeta);
+         if(!actualizar){   
+            reserva.setTarjeta(tarjeta);
+         }
         agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
         if (rDAO.mesaDisponible(mesaR.getNumero(), fechaBuscar, horaBuscar)
                 && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
                 && horaBuscar.isBefore(agendaR.getHoraCierre())) {
             boolean reservaHecha = rDAO.realizarReserva(reserva);
-            //si no existe el numero de tarjeta debe guardar la tarjeta
+           
             if (reservaHecha) {
-
+                if(!actualizar){
                 tarjetaR.guardarTarjeta(tarjeta);
+                }
                 javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 this.actualizarTablaMesas(jTable_mesasDisponibles);
                 MensajeReserva mensajeR = new MensajeReserva(fechaBuscar, horaBuscar, numM, mesaR.getCapacidad(), mesaR.getUbicacion(), tarjeta.getNumero(), reserva.getComentario(), this);
@@ -1291,8 +1298,9 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
     /**
-     *
-     * @param evt
+     * Se encarga de revisar que la fecha ingresada sea valida y llama a la 
+     * funcion actualizarTablaMesas para mostrar los datos en la tabla
+     * @param   evt representa el evento que ocurre al presionar el boton
      */
     private void JButton_confirmarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_confirmarFechaActionPerformed
         String auxFecha = jTextField_fechaNewReserva.getText();
@@ -1360,8 +1368,8 @@ public class ClView extends javax.swing.JFrame {
         }
         ClienteDAO cliente = new ClienteDAO();
         // Llamar al método actualizarInformacion del objeto clienteDAO
-        boolean resultadoC=false;
-        boolean resultadoT=false;
+        boolean resultadoC;
+        boolean resultadoT;
         
         
         if(!(telefonoIngresado.isEmpty())){
@@ -1390,9 +1398,9 @@ public class ClView extends javax.swing.JFrame {
      * Verifica que haya una reserva seleccionada para modificar, que esta
      * modificacion se haga con mas de un dia de anticipacion y que las
      * modificaciones que se realicen sean correctas y cumplan con las
-     * condiciones de una reserva
+     * condiciones de una reserva.
      *
-     * @param evt
+     * @param   evt evento que ocurre al presionar el boton modificar.
      */
     private void jButton_cliente_modificar_reservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_modificar_reservaActionPerformed
         if (reservas == null) {
@@ -1507,7 +1515,7 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtClientePerfilTelefonoActionPerformed
     /**
-     * Metodo que se ejecuta al preionar el boton Ver Se encarga de que la tabla
+     * Metodo que se ejecuta al presionar el boton Ver. Se encarga de que la tabla
      * muestre las mesas disponibles en la fecha de la reserva marcada.
      *
      * @param evt es el evento de presionar el boton ver
@@ -1578,12 +1586,12 @@ public class ClView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxHoraBuscarModActionPerformed
     /**
-     * Es el metodo que se ejecuta al apretar el boton Eliminar Se elimina la
+     * Es el metodo que se ejecuta al apretar el boton Cancelar, Se elimina la
      * reserva seleccionada, se verifica que el cliente seleccione la reserva a
      * eliminar, que la eliminacion sea con mas de 24 horas de anticipacion. Se
      * envia mensaje de confirmacion. error o que no se puede realizar la accion
      *
-     * @param evt es el evento de apretar el boton eliminar
+     * @param evt es el evento de apretar el boton cancelar
      */
     private void jButton_cliente_eliminar_reserva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cliente_eliminar_reserva1ActionPerformed
         reserva = reservas.get(jTable_historialCliente.getSelectedRow());
