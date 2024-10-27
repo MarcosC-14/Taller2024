@@ -250,10 +250,9 @@ public class ReservaDAO {
                 }
                 
                 int mesaNum = rs.getInt("numero");
-                Capacidad mesaUbi = Capacidad.valueOf(rs.getString("Capacidad"));
-                Ubicacion mesaCap = Ubicacion.valueOf(rs.getString("Ubicacion"));
-                
-                reserva.setMesa(new Mesa(mesaNum,mesaUbi,mesaCap,reserva));
+                Capacidad mesaCap = Capacidad.valueOf(rs.getString("capacidad"));
+                Ubicacion mesaUbi = Ubicacion.valueOf(rs.getString("ubicacion"));
+                reserva.setMesa(new Mesa(mesaNum,mesaCap,mesaUbi,reserva));
                 
                 String tNombre = rs.getString("nombre_tarjeta");
                 String tNum = rs.getString("numero_tarjeta");
