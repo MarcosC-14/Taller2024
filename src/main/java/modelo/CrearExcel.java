@@ -59,11 +59,6 @@ public class CrearExcel {
           row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion()
                   .format(DateTimeFormatter.ofPattern("HH:mm:ss")));  
         }
-        
-        
-        if(!(reservas.get(i).getTiempoFinalizacion()==null)){
-          row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().toString());  
-        }
   
         row.createCell(5).setCellValue(reservas.get(i).getCliente().getNombre());
         

@@ -1513,7 +1513,7 @@ public class AdView extends javax.swing.JFrame {
         reservas = reservaDAO.obtenerReservas();
 
         MonthDay verano = MonthDay.of(12, 20);
-        MonthDay primavera = MonthDay.of(11, 20);
+        MonthDay primavera = MonthDay.of(9, 20);
         MonthDay invierno = MonthDay.of(6, 20);
         MonthDay otoño = MonthDay.of(3, 20);
 
@@ -1631,6 +1631,9 @@ public class AdView extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         String auxHoraAp = jComboBoxHoraApertura.getSelectedItem().toString()+":00:00";
         String auxHoraCi = jComboBoxHoraCierre.getSelectedItem().toString()+":00:00";
+        if(auxHoraAp.equals("00:00:00")){
+            auxHoraAp = "23:59:59";
+        }
         if(auxHoraCi.equals("00:00:00")){
             auxHoraCi = "23:59:59";
         }
