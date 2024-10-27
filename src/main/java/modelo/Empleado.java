@@ -3,19 +3,34 @@ package modelo;
 import java.util.ArrayList;
 
 /**
- * La clase empleado crea la estructura necesaria para aplicar luego herencia
- * con los tipos de empleados existentes.Hereda atributos y metodos de Persona.
- * Se definen los atributos de Rol y de ID con sus respectivos Getter y Setter.
+ * La clase empleado representa a un empleado tiene sus constructores, ademas de 
+ * metodos para obtener y guardar los datos de los atributos 
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
  * Caraballo
- * @version 27/10/2024
+ * @version 27/10/2024.
  */
 public class Empleado extends Persona {
 
     private Rol rol;
     private int id;
     private ArrayList<Reserva> reservas;
+    
+    /**
+     * Permite obtener las reservas asociadas a un empleado.
+     * @return un ArrayList de Reservas.
+     */
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+    /**
+     * Permite guardas una lista de reservas .
+     * @param   reservas representa las reservas que atiende un empleado.
+     */
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+    
 /**
  * Metodo Getter de id
  * @return id del empleado
@@ -31,64 +46,42 @@ public class Empleado extends Persona {
     public void setId(int id) {
         this.id = id;
     }
-    private ArrayList<Cliente> clientes;
-    private ArrayList<Mesa> mesas;
 /**
  * Constructor por defecto de Empleado
  */
     public Empleado() {
         super();
         rol = Rol.Cocinero;
-        this.clientes = new ArrayList<Cliente>();
-        this.mesas = new ArrayList<Mesa>();
+        this.reservas = new ArrayList<Reserva>();
     }
 /**
- * Constructor parametrizado de empleado
- * @param nombre nombre del empleado
- * @param correo correo del empleado
- * @param contrasenia contrasela del empleado
- * @param rol rol del empleado
- * @param clientes clientes que atiende el empleado
- * @param mesas atendidas por el empleado
+ * Constructor parametrizado de empleado.
+ * @param nombre nombre del empleado.
+ * @param correo correo del empleado.
+ * @param contrasenia contrasela del empleado.
+ * @param rol rol del empleado.
  */
     public Empleado(String nombre, String correo, String contrasenia, Rol rol, ArrayList<Reserva> reservas) {
         super(nombre, correo, contrasenia);
         this.rol = rol;
         this.reservas=reservas;
     }
+    
+    /**
+     * Constructor Parametrizado de empleado.
+     * @param   nombre representa el nombre del empleado.
+     * @param   correo representa el correo electronico del empleado.
+     * @param   contrasenia representa la contrasenia del empleado.
+     * @param   rol representa el rol que tiene el empleado.
+     * @param   reserva representa la reserva que atiende el empleado.
+     */
     public Empleado(String nombre, String correo, String contrasenia, Rol rol, Reserva reserva){
         super(nombre, correo, contrasenia);
         this.rol = rol;
         this.reservas.add(reserva);
     }
-/**
- * Metodo Getter de clientes
- * @return listado de clientes que atiende el empleado
- */
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
-/**
- * Metodo Setter de clientes
- * @param clientes listado de clientes que atiende el empleado
- */
-    public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-/**
- * Metodo Getter de mesas
- * @return listado de mesas que atiende el empleado
- */
-    public ArrayList<Mesa> getMesas() {
-        return mesas;
-    }
-/**
- * Metodo Setter de mesas
- * @param mesas listado de mesas que atiende el empleado
- */
-    public void setMesas(ArrayList<Mesa> mesas) {
-        this.mesas = mesas;
-    }
+
+
 /**
  * Metodo Getter de rol
  * @return rol del empleado
@@ -103,26 +96,8 @@ public class Empleado extends Persona {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-/**
- * 
- * @param cliente cliente que se agrega al listado de clientes atendidos por el empleado
- */
-    public void agregarCliente(Cliente cliente) {
-        if (clientes.size() == 0) {
-            this.clientes = new ArrayList<Cliente>();
-        }
-        clientes.add(cliente);
-    }
-/**
- * 
- * @param mesa objeto mesa que se agrega al listado de mesas atendidas por empleado 
- */
-    public void agregarMesa(Mesa mesa) {
-        if (mesas.size() == 0) {
-            this.mesas = new ArrayList<Mesa>();
-        }
-        mesas.add(mesa);
-    }
+
+
 
     /**
      * Metodo toString que devuelve los datos del empleado

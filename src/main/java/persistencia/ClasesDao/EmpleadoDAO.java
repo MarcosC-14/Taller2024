@@ -17,14 +17,17 @@ import modelo.AgendaRestaurante;
 import modelo.BloqueoMesaEventoEspecial;
 
 /**
- * Esta clase se encarga de relacionarse con la base de datos de empleado, tiene 
- * metodos que permitenel ingreso de un empleado con sus correspondientes credenciales
- * (usuario y contraseña), de vuelve un lista de todos los empleados en la base 
- * de datos, permite registrar a un empleado, revisa si un correo existe en la tabla
- * de empleados, ademas de revisar si el empleado es mesero o recepcionista.
+ * Esta clase se encarga de relacionarse con la base de datos de empleado.
+ * Tiene metodos que permiten:
+ * -Ingresar un empleado con sus correspondientes credenciales(usuario y 
+ * contraseña).
+ * -Devolver un lista de todos los empleados en la base de datos. 
+ * -Registrar a un empleado.
+ * -Revisa si un correo existe en la tabla de empleados.
+ * -Revisar si el empleado es mesero o recepcionista.
  * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
- * Caraballo
- * @version 27/10/2024
+ * Caraballo.
+ * @version 27/10/2024.
  */
 public class EmpleadoDAO {
      private SQLiteManager conn = new SQLiteManager();
@@ -36,12 +39,12 @@ public class EmpleadoDAO {
 /**
  * Se encarga de verificar que el usuario y contraseña ingresados sean los de un 
  * empleado.
- * @param   usuario es el correo electronico del empleado, con el cual puede ingresar
- * al sistema.
+ * @param   usuario es el correo electronico del empleado, con el cual puede 
+ * ingresar al sistema.
  * @param   contraseña es la contraseña que usa el empleado para ingresar.
  * @return  devuelve un objeto de tipo Empleado con la informacion del empleado. 
- * En caso de que no encuentre un empleado en la base de datos con esas credenciales,
- * devuelve un objeto nulo.
+ * En caso de que no encuentre un empleado en la base de datos con esas 
+ * credenciales, devuelve un objeto nulo.
  */
     public Empleado loginQuery(String usuario, String contraseña){
         System.out.println("angelina");
@@ -73,9 +76,9 @@ public class EmpleadoDAO {
         return empleado;
 }
     /**
-     *Devuelve una lista de todos los empleados
-     * @return  ArrayList de todos los empleados con su contraseña, correo, nombre,
-     * id y rol.
+     * Devuelve una lista de todos los empleados.
+     * @return  ArrayList de todos los empleados con su contraseña, correo, 
+     * nombre, id y rol.
      */
     public ArrayList<Empleado> obtenerEmpleados(){
         Connection con = conn.getConexion();
@@ -105,8 +108,8 @@ public class EmpleadoDAO {
     /**
      * Se encarga de guardar en la base de datos a un nuevo empleado.
      * @param   emp representa a un empleado.
-     * @return  false si no se pudo registrar, true en caso de que si se haya podido
-     * guardar en la base de datos
+     * @return  false si no se pudo registrar, true en caso de que si se haya 
+     * podido guardar en la base de datos.
      */
     public boolean registrarEmpleado(Empleado emp) {
         boolean registrado = false;
@@ -130,8 +133,10 @@ public class EmpleadoDAO {
         return registrado; 
     }
     /**
-     * Se encarga de revisar si el correo ingresado se encuentra en la base de datos.
-     * Devuelve true si se encuentra en la base de datos, false si no esta en la base de datos
+     * Se encarga de revisar si el correo ingresado se encuentra en la base de 
+     * datos.
+     * Devuelve true si se encuentra en la base de datos, false si no esta en la
+     * base de datos
      * @param   correoNuevo representa al correo del empleado a revisar
      * @return  true si lo encuentra, false si no
      */
@@ -155,10 +160,11 @@ public class EmpleadoDAO {
      }
     
     /**
-     * Guardar en la base de datos la mesa bloqueada o un evento especial
-     * dependiendo los datos ingresados
-     * @param   b representa el bloque o evento que se guardará en la base de datos
-     * @return true si se pudo bloquear, false en caso de que no se pueda
+     * Guarda en la base de datos la mesa bloqueada o un evento especial
+     * dependiendo los datos ingresados.
+     * @param   b representa el bloque o evento que se guardará en la base de 
+     * datos.
+     * @return true si se pudo bloquear, false en caso de que no se pueda.
      */
     public boolean bloquearMesaEventoEspecial(BloqueoMesaEventoEspecial b) {
         boolean bloqueo = false;
@@ -231,9 +237,9 @@ public class EmpleadoDAO {
         return bs;
     }
     /**
-     * Elimina un bloqueo de mesa o evento especial de la base de datos
-     * @param bme representa el bloqueo o evento a eliminar
-     * @return true si se pudo eliminar, falso si no se pudo eliminar
+     * Elimina un bloqueo de mesa o evento especial de la base de datos.
+     * @param bme representa el bloqueo o evento a eliminar.
+     * @return true si se pudo eliminar, false si no se pudo eliminar.
      */
     public boolean eliminarBloqueoEvento(BloqueoMesaEventoEspecial bme) {
         boolean eliminado = false;
@@ -253,10 +259,10 @@ public class EmpleadoDAO {
 
     /**
      * Guarda en la base de datos la hora de apertura y la hora de cierre
-     * definidas por un administrador
-     * @param horaAp    representa la hora de apertura
-     * @param horaCi    representa la hora de cierre
-     * @return  true si se pudo guardar, false si no se pudo guardar
+     * definidas por un administrador.
+     * @param   horaAp representa la hora de apertura.
+     * @param   horaCi representa la hora de cierre.
+     * @return  true si se pudo guardar, false si no se pudo guardar.
      */
     public boolean definirHoraAperturaCierre(LocalTime horaAp, LocalTime horaCi) {
         boolean modificado=false;
@@ -279,9 +285,9 @@ public class EmpleadoDAO {
     }
     /**
      * Obtiene un objeto AgendaRestaurante con la hora de apertura
-     * y la hora de cierre como atributos
-     * @return un objeto AgendaRestaurante con los datos guardados en 
-     * la base de datos
+     * y la hora de cierre como atributos.
+     * @return  un objeto AgendaRestaurante con los datos guardados en 
+     * la base de datos.
      */
     public AgendaRestaurante obtenerHoraAperturaCierre(){
         String sql="SELECT * FROM agenda_restaurante WHERE id = 1";
