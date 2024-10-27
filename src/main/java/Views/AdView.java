@@ -6,6 +6,7 @@ package Views;
 
 import Controladores.ClienteController;
 import java.awt.Color;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -1565,7 +1566,11 @@ public class AdView extends javax.swing.JFrame {
         } else if (tituloReservas.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar nuevamente la tabla para volver a imprimir", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
-            CreadorPdf.hacerPdfReserva(tituloReservas, reservas);
+            try {
+                CreadorPdf.hacerPdfReserva(tituloReservas, reservas);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jBReporteREservasPdfActionPerformed
@@ -1586,7 +1591,11 @@ public class AdView extends javax.swing.JFrame {
         } else if (tituloClientes.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
-            CreadorPdf.hacerPdfCliente(tituloClientes, clientes);
+            try {
+                CreadorPdf.hacerPdfCliente(tituloClientes, clientes);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonExportarClientesActionPerformed
@@ -1713,7 +1722,11 @@ public class AdView extends javax.swing.JFrame {
                 || primavera.equals("")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe cargar la tabla para poder exportarla", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
-            CreadorPdf.hacerPdfEstaciones("ConcurrenciasPorEstacion", new String[]{verano, otoño, invierno, primavera});
+            try {
+                CreadorPdf.hacerPdfEstaciones("ConcurrenciasPorEstacion", new String[]{verano, otoño, invierno, primavera});
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
             javax.swing.JOptionPane.showMessageDialog(this, "Se exportó a pdf en la carpeta PDFsExportados", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jBAnalisisTiempoPdfActionPerformed
