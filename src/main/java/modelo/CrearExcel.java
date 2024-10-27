@@ -27,13 +27,9 @@ public class CrearExcel {
 
     public static void hacerExcelReserva(String titulo, ArrayList<Reserva> reservas) throws Exception {
         FILE = "ExcelExportados/" + titulo + ".xlsx";
-
         Files.createDirectories(Paths.get("ExcelExportados"));
-
         HSSFWorkbook workBook = new HSSFWorkbook();
-
         HSSFSheet Sheet = workBook.createSheet("Reservas");
-
         Row header = Sheet.createRow(0);
         header.createCell(0).setCellValue("Mesa");
         header.createCell(1).setCellValue("Fecha");
@@ -42,18 +38,12 @@ public class CrearExcel {
         header.createCell(4).setCellValue("Tiempo de Finalizacion");
         header.createCell(5).setCellValue("Cliente");
         header.createCell(6).setCellValue("Comensales");
-
         for (int i = 0; i < reservas.size(); i++) {
-
             HSSFRow row = Sheet.createRow((short) i + 1);
-
             row.createCell(0).setCellValue(reservas.get(i).getMesa().getNumero());
-
             row.createCell(1).setCellValue(reservas.get(i).getFecha().
                     format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-
             row.createCell(2).setCellValue(reservas.get(i).getHora().getHour());
-
             if (!(reservas.get(i).getTiempoOcupacion() == null)) {
                 row.createCell(3).setCellValue(reservas.get(i).getTiempoOcupacion().
                         format(DateTimeFormatter.ofPattern("HH:mm:ss")));
@@ -62,14 +52,11 @@ public class CrearExcel {
                 row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion()
                         .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
             }
-
             row.createCell(5).setCellValue(reservas.get(i).
                     getCliente().getNombre());
-
             row.createCell(6).setCellValue(reservas.get(i).
                     getMesa().getCapacidad().toString());
         }
-
         guardarArchivo(workBook, FILE);
     }
 
