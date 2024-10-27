@@ -5,7 +5,10 @@
 package modelo;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -21,9 +24,11 @@ import java.time.format.DateTimeFormatter;
 public class CrearExcel {
     private static String FILE = "Excel.xlsx";
     
-    public static void hacerExcelReserva(ArrayList<Reserva> reservas) throws Exception {
-        FILE = "ExcelExportados/ReservasExcelFile.xlsx";
+    public static void hacerExcelReserva(String titulo, ArrayList<Reserva> reservas) throws Exception {
+        FILE = "ExcelExportados/" + titulo + ".xlsx";
        
+        Files.createDirectories(Paths.get("ExcelExportados"));
+        
         HSSFWorkbook workBook = new HSSFWorkbook();
        
        HSSFSheet Sheet = workBook.createSheet("Reservas");
@@ -60,27 +65,18 @@ public class CrearExcel {
                   .format(DateTimeFormatter.ofPattern("HH:mm:ss")));  
         }
         
-        
-        if(!(reservas.get(i).getTiempoFinalizacion()==null)){
-          row.createCell(4).setCellValue(reservas.get(i).getTiempoFinalizacion().toString());  
-        }
-  
         row.createCell(5).setCellValue(reservas.get(i).getCliente().getNombre());
         
         row.createCell(6).setCellValue(reservas.get(i).getMesa().getCapacidad().toString());
     }
    
-    // Escribe el archivo
-        FileOutputStream fos = new FileOutputStream(FILE);
-        workBook.write(fos);
-        workBook.close();
-
+    guardarArchivo(workBook, FILE);
     }
     
     
-    public static void hacerExcelCliente(ArrayList<Cliente> cliente) throws Exception {
-         FILE = "ExcelExportados/ClientesExcelFile.xlsx";
-       
+    public static void hacerExcelCliente(String titulo, ArrayList<Cliente> cliente) throws Exception {
+        FILE = "ExcelExportados/"+titulo+".xlsx";
+        Files.createDirectories(Paths.get("ExcelExportados"));
         HSSFWorkbook workBook = new HSSFWorkbook();
        
        HSSFSheet Sheet = workBook.createSheet("Cliente");
@@ -106,18 +102,13 @@ public class CrearExcel {
         
     }
    
-        // Escribe el archivo
-        FileOutputStream fos = new FileOutputStream(FILE);
-        workBook.write(fos);
-        workBook.close();
-        
-        
+        guardarArchivo(workBook, FILE); 
     }
     
     public static void HacerExcelEstaciones(String[] valores) throws Exception{
-         FILE = "ExcelExportados/EstacionExcelFile.xlsx";
-       
-        HSSFWorkbook workBook = new HSSFWorkbook();
+       FILE = "ExcelExportados/ConcurrenciasPorEstacion.xlsx";
+       Files.createDirectories(Paths.get("ExcelExportados"));
+       HSSFWorkbook workBook = new HSSFWorkbook();
        
        HSSFSheet Sheet = workBook.createSheet("Estacion");
 
@@ -139,16 +130,17 @@ public class CrearExcel {
         row.createCell(3).setCellValue(valores[3]);
    
         // Escribe el archivo
-        FileOutputStream fos = new FileOutputStream(FILE);
-        workBook.write(fos);
-        workBook.close();
-        
-        
-    
-        
-        
+        guardarArchivo(workBook, FILE); 
     }
     
-     
-    
+    private static void guardarArchivo(HSSFWorkbook workBook, String titulo) throws IOException{
+        try{
+            workBook.write( new FileOutputStream(titulo));
+        }catch(Exception e){
+            
+        }finally{
+            workBook.close();
+        }
+        
+    }
 }
