@@ -46,7 +46,7 @@ public class CreadorPdf {
         FILE = "PDFsExportados/" + titulo + ".pdf";
         
         try {
-            Files.createDirectories(Paths.get("ExcelExportados"));
+            Files.createDirectories(Paths.get("PDFsExportados"));
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
             document.open();
@@ -71,7 +71,7 @@ public class CreadorPdf {
  */
     public static void hacerPdfCliente(String titulo, ArrayList<Cliente> clientes) throws IOException {
         FILE = "PDFsExportados/" + titulo + ".pdf";
-        Files.createDirectories(Paths.get("ExcelExportados"));
+        Files.createDirectories(Paths.get("PDFsExportados"));
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
@@ -226,7 +226,7 @@ public class CreadorPdf {
  */
     public static void hacerPdfEstaciones(String titulo, String[] valores) throws IOException {
         FILE = "PDFsExportados/" + titulo + ".pdf";
-        Files.createDirectories(Paths.get("ExcelExportados"));
+        Files.createDirectories(Paths.get("PDFsExportados"));
 
         try {
             Document document = new Document();
