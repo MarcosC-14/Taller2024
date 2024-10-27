@@ -138,7 +138,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
 
         String resultado = clienteDAO.recuperarContraseña(correoIngreso);
 
-        if (resultado != "") {
+        if (resultado.equals("")) {
             // Mostrar el resultado en un JOptionPane
             javax.swing.JOptionPane.showMessageDialog(this,
                     resultado,

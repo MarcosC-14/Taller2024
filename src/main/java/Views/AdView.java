@@ -59,8 +59,12 @@ public class AdView extends javax.swing.JFrame {
     private AgendaRestaurante agendaR;
 
     /**
-     * Creates new form AdView
+     * Constructor parametrizado de la clase AdView, se encarga de llamar a un 
+     * metodo que inicializa lod componentes, darle el tamaño a la ventana,
+     * centrarla, darle un titulo, evita que el usuario pueda cambiarle el
+     * tamaño a la ventana.
      *
+     * @param   administrador representa a un administrador.
      */
     public AdView(Administrador administrador) {
         initComponents();
@@ -1117,7 +1121,7 @@ public class AdView extends javax.swing.JFrame {
 
 
     private void jTabbedPane2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTabbedPane2KeyPressed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTabbedPane2KeyPressed
     /**
      * Evento que se ejecuta cuando se aprieta el boton de eliminar en
@@ -1263,15 +1267,15 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_bloqueoMesasActionPerformed
 
     private void jTextField_fechaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_fechaEventoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField_fechaEventoActionPerformed
 
     private void jTxtFechaFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFechaFinalActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTxtFechaFinalActionPerformed
 
     private void jTxtFechaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFechaInicialActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTxtFechaInicialActionPerformed
     /**
      * Es el evento que se produce al oprimir el boton ReservasFechas Se
@@ -1348,11 +1352,11 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBTodasLasReservasActionPerformed
     /**
-     * el metodo verificarCliente se encarga de controlar si el cliente buscado
-     * se encuentra dentro de nuestro registro
+     * Se encarga de controlar si el cliente buscado se encuentra dentro de 
+     * nuestro registro.
      *
      * @return true si el cliente se encuentra registrado, false si el cliente
-     * no esta
+     * no esta registrado.
      */
     private boolean verificarCliente() {
         if (jTxtCorreo.getText().equals("")) {
@@ -1379,9 +1383,9 @@ public class AdView extends javax.swing.JFrame {
     /**
      * Es el evento que se produce al oprimir el boton Reservas futuras. Como
      * resultado muestra en la tabla todas las reservas que se realizaron para
-     * fechas futuras a la actual
+     * fechas futuras a la actual.
      *
-     * @param evt evento de presionar el boton Reservas Futuras
+     * @param evt evento de presionar el boton Reservas Futuras.
      */
     private void jBReservasFuturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFuturasActionPerformed
         if (verificarCliente()) {
@@ -1401,29 +1405,29 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBReservasFuturasActionPerformed
     /**
-     * Se llama al metodo de actualizarTablaEmpleado al presionar el boton ver
+     * Se llama al metodo de actualizarTablaEmpleado al presionar el boton Ver.
      *
-     * @param evt es el evento de presionar el boton ver
+     * @param evt es el evento de presionar el boton Ver.
      */
     private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
         actualizarTablaEmpleado();
     }//GEN-LAST:event_jButtonVerEmpleadosActionPerformed
 
     private void jTextField_administrador_empleado_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_administrador_empleado_nombreActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_jTextField_administrador_empleado_nombreActionPerformed
 
     private void jComboBox_administrador_empleado_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_administrador_empleado_rolActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jComboBox_administrador_empleado_rolActionPerformed
     /**
-     * es el evento que se produce al apretar el boton agregar. Aqui se verifica
+     * Es el evento que se produce al apretar el boton agregar. Aqui se verifica
      * que los datos ingresados para la creacion del nuevo usuario sean validos.
      * Si existe un error en alguno de ellos se mostraran distintas advertencias
      * por pantalla. Si el nuevo usuario es agregado correctamente se muestra
      * por pantalla una confirmacion.
      *
-     * @param evt es el evento de presionar el boton agregar
+     * @param evt es el evento de presionar el boton agregar.
      */
     private void jButton_administrador_empleado_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_empleado_agregarActionPerformed
         String nombre = this.jTextField_administrador_empleado_nombre.getText();
@@ -1475,10 +1479,10 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_administrador_empleado_agregarActionPerformed
     /**
-     * Metodo que se aplica al apretaron el boton Se obtiene el listado de los
-     * clientes
+     * Permite obtener el listado de los clientes y llama al metodo 
+     * actualizarTablaCliente.
      *
-     * @param evt es el evento de apretar el boton
+     * @param evt es el evento de apretar el boton.
      */
     private void jBTodosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodosClientesActionPerformed
         clientes = clienteDAO.obtenerClientes();
@@ -1487,11 +1491,12 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBTodosClientesActionPerformed
 
     private void jTextFieldVeranoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldVeranoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldVeranoActionPerformed
     /**
-     *
-     * @param evt
+     * Se encarga de buscar a aquel/llos clientes que hayan hecho mas reservas y
+     * asistido a ellas.
+     * @param   evt es el evento de apretar el boton.
      */
     private void jBMejorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMejorClienteActionPerformed
         clientes = clienteDAO.obtenerClientes();
@@ -1512,21 +1517,19 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBMejorClienteActionPerformed
     /**
      * Metodo que se aplica al apretar el boton Clientes que no asistieron el
-     * ultimo año Muestra en la lista los clientes que no han asistido a sus
-     * reservas en el ultimo año
+     * ultimo año.
+     * Muestra en la lista los clientes que no han asistido a sus reservas en 
+     * el ultimo año.
      *
-     * @param evt es el evento de presionar el boton
+     * @param evt es el evento de presionar el boton.
      */
     private void jBClientesNoAsistieron1AñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClientesNoAsistieron1AñoActionPerformed
         clientes = clienteDAO.obtenerClientes();
         for (Cliente cliente : clientes) {
             cliente.setReservas(reservaDAO.obtenerReservasHistorial(cliente));
         }
-
         int conti = 0;
         for (int i = 0; i < clientes.size(); i++) {
-            System.out.println(conti++);
-
             Cliente auxCliente = clientes.get(i);
             ArrayList<Reserva> auxReservas = auxCliente.getReservas();
             if (auxReservas.isEmpty()) {
@@ -1537,9 +1540,6 @@ public class AdView extends javax.swing.JFrame {
                 for (Reserva res : auxReservas) {
                     LocalDateTime auxF = LocalDateTime.of(res.getFecha(),
                             res.getHora());
-                    System.out.println(auxF);
-                    System.out.println(res.getCliente().getNombre());
-                    System.out.println("" + res.getAsistencia());
                     if (auxF.isAfter(LocalDateTime.now().minusYears(1))
                             && auxF.isBefore(LocalDateTime.now())) {
                         if (!res.getAsistencia()) {
@@ -1559,10 +1559,10 @@ public class AdView extends javax.swing.JFrame {
         actualizarTablaCliente(clientes);
     }//GEN-LAST:event_jBClientesNoAsistieron1AñoActionPerformed
     /**
-     * Es el metodo que se ejecuta al presionar el boton Ver Muestra la
-     * concurrencia de clientes por estacion del año.
+     * Es el metodo que se ejecuta al presionar el boton Ver.
+     * Muestra la concurrencia de clientes por estacion del año.
      *
-     * @param evt es el evento de presionar el boton de Ver
+     * @param evt es el evento de presionar el boton de Ver.
      */
     private void jBAnalisisTiempoVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnalisisTiempoVerActionPerformed
         reservas = reservaDAO.obtenerReservas();
@@ -1608,10 +1608,10 @@ public class AdView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBAnalisisTiempoVerActionPerformed
     /**
-     * Es el metodo que se ejecuta al presionar el boton Exportar a PDF Se crea
-     * y exporta un archivo pdf con la informacion que contiene la taba
+     * Es el metodo que se ejecuta al presionar el boton Exportar a PDF.
+     * Se crea y exporta un archivo pdf con la informacion que contiene la taba.
      *
-     * @param evt es el evento de presionar el boton Exportar a PDF
+     * @param evt es el evento de presionar el boton Exportar a PDF.
      */
     private void jBReporteREservasPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReporteREservasPdfActionPerformed
         if (reservas == null || reservas.isEmpty()) {
@@ -1639,13 +1639,14 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBReporteREservasPdfActionPerformed
 
     private void jTabbedPane2ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane2ComponentMoved
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_jTabbedPane2ComponentMoved
     /**
-     * Metodo que se aplica al apretar el boton Exportar a PDF Se crea y exporta
-     * un archivo PDf con la informacion que contiene la tabla
+     * Metodo que se aplica al apretar el boton Exportar a PDF.
+     * Se crea y exporta un archivo PDf con la informacion que contiene la 
+     * tabla.
      *
-     * @param evt es el evento de presionar el boton Exportar a PDF
+     * @param evt es el evento de presionar el boton Exportar a PDF.
      */
     private void jButtonExportarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarClientesActionPerformed
 
@@ -1673,7 +1674,7 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonExportarClientesActionPerformed
     /**
-     * Metodo que muestra los horarios de apertura y cierre
+     * Se encarga de mostrar los horarios de apertura y cierre del restaurante.
      */
     private void mostrarHorarioAperturaCierre() {
         System.out.println(agendaR.getHoraApertura());
@@ -1731,12 +1732,12 @@ public class AdView extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que se aplica al apretar el boton Modificar. Modifica el horario
-     * de apertura y cierre del restaurante. verifica que los horarios
-     * ingresados sean validos. Se controla que el horario de apertura sea menor
-     * que el de cierre.
+     * Metodo que se aplica al apretar el boton Modificar. 
+     * Modifica el horario de apertura y cierre del restaurante. Verifica que 
+     * los horarios ingresados sean validos. Se controla que el horario de 
+     * apertura sea menor que el de cierre.
      *
-     * @param evt
+     * @param   evt es el evento que se produce al presionar el boton.
      */
     private void jBAperturaCierreModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAperturaCierreModificarActionPerformed
         String auxHoraAp = jComboBoxHoraApertura.
@@ -1776,12 +1777,12 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBAperturaCierreModificarActionPerformed
     /**
-     * Es el Metodo que se ejecuta al cambiar la opciones del jComboBox
+     * Es el metodo que se ejecuta al cambiar la opciones del jComboBox.
      *
-     * @param evt es el evento de cambiar de opcion del JComboBox
+     * @param evt es el evento de cambiar de opcion del JComboBox.
      */
     private void jComboBoxMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesasActionPerformed
-        // TODO add your handling code here:
+      
         if (!jComboBoxMesas.getSelectedItem().toString().equals("Todas")) {
             jComboBoxHoraInicio.setSelectedIndex(0);
             jComboBoxHoraFin.setSelectedIndex(5);
@@ -1794,9 +1795,10 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBoxMesasActionPerformed
     /**
-     * Es el metodo que se aplica al presionar el boton Exportar a PDF Se
+     * Es el metodo que se aplica al presionar el boton Exportar a PDF. Se
      * encarga de crear y exportar un archivo pdf con los datos mostrados de
-     * concurrencia por estacion Verifica que existan datos.
+     * concurrencia por estacion.
+     * Verifica que esten cargados los datos.
      *
      * @param evt es el evento de presionar el boton Expotar a PDF
      */
@@ -1827,9 +1829,9 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBAnalisisTiempoPdfActionPerformed
     /**
-     * Metodo que exporta el listado de las reservas en un archivo excel
+     * Metodo que exporta el listado de las reservas en un archivo .xlsx.
      *
-     * @param evt es el evento de apretar el boton exportar a excel
+     * @param evt es el evento de apretar el boton exportar a excel.
      */
     private void ExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelActionPerformed
         if (reservas == null || reservas.isEmpty()) {
@@ -1857,9 +1859,9 @@ public class AdView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ExcelActionPerformed
     /**
-     * Metodo que exporta el listado de clientes en un archivo excel
+     * Metodo que exporta el listado de clientes en un archivo .xlsx.
      *
-     * @param evt es el evento de apretar el boton exportar a excel
+     * @param evt es el evento de apretar el boton exportar a excel.
      */
     private void ExcelclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelclienteActionPerformed
         if (clientes == null || clientes.isEmpty()) {
@@ -1887,9 +1889,9 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_ExcelclienteActionPerformed
     /**
      * Metodo que exporta el analisis de concurrencia por estacion en un archivo
-     * excel
+     * xlsx.
      *
-     * @param evt es el evento de apretar el boton exportar a excel
+     * @param evt es el evento de apretar el boton exportar a excel.
      */
     private void EstacionesExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstacionesExcelActionPerformed
         String verano = jTextFieldVerano.getText();

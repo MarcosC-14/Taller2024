@@ -17,7 +17,7 @@ import persistencia.ClasesDao.EmpleadoDAO;
  * acceder al sistema, lo envia a otra ventana para que pueda recuperar su
  * contraseña o registrarse si es un cliente.
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
  * Caraballo
  * @version 27/10/2024
  */

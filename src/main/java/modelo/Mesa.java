@@ -23,6 +23,9 @@ public class Mesa {
     public String mapa;
     private ArrayList<Reserva> reservas;
 
+    /**
+     * Constructor por defecto de la clase Mesa
+     */
     public Mesa() {
         this.reservas = new ArrayList<Reserva>();
     }
