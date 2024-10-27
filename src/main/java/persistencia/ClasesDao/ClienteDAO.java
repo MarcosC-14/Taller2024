@@ -45,22 +45,28 @@ public class ClienteDAO{
      */
     public boolean registrarCliente(Cliente cliente){
         boolean registrado = false;
-        String buscarCorreo="SELECT * FROM cliente WHERE correo=?";
-        String correo= cliente.getContrasenia();
+        String buscarCorreo="SELECT correo FROM cliente WHERE correo=?"
+                + " UNION SELECT correo FROM empleado WHERE correo=?";
+        String correo= cliente.getCorreo();
         //que revise si el correo ya esta ingresado
         String sql = "INSERT into cliente (nombre,correo,contrasenia,telefono) VALUES(?,?,?,?)";
         try {
             con = conn.getConexion();
             ps= con.prepareStatement(buscarCorreo);
             ps.setString(1, correo);
+            ps.setString(2, correo);
             rs=ps.executeQuery();
             if(!rs.next()){
-            ps = con.prepareStatement(sql);
-            ps.setString(1, cliente.getNombre());
-            ps.setString(2, cliente.getCorreo());
-            ps.setString(3, cliente.getContrasenia());
-            ps.setString(4, cliente.getTelefono());
-            registrado = (ps.executeUpdate() > 0);
+                ps = con.prepareStatement(sql);
+                ps.setString(1, cliente.getNombre());
+                ps.setString(2, cliente.getCorreo());
+                ps.setString(3, cliente.getContrasenia());
+                ps.setString(4, cliente.getTelefono());
+                registrado = (ps.executeUpdate() > 0);
+            }else{
+                JOptionPane.showMessageDialog(null,
+                        "El correo ya se encuentra registrado",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
             System.out.println(e.toString());

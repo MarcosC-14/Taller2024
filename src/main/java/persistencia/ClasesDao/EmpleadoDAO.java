@@ -116,15 +116,15 @@ public class EmpleadoDAO {
         boolean registrado = false;
         //que revise si el correo ya esta ingresado
         String sql = "INSERT into empleado (nombre,correo,contraseña,rol) VALUES(?,?,?,?)";
+        con = conn.getConexion();
         try {
-            if(!existeCorreo(empleado.getCorreo())){
-            con = conn.getConexion();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, emp.getNombre());
-            ps.setString(2, emp.getCorreo());
-            ps.setString(3, emp.getContrasenia());
-            ps.setString(4, emp.getRol().toString());
-            registrado = (ps.executeUpdate() > 0);
+            if(!existeCorreo(emp.getCorreo())){
+                ps = con.prepareStatement(sql);
+                ps.setString(1, emp.getNombre());
+                ps.setString(2, emp.getCorreo());
+                ps.setString(3, emp.getContrasenia());
+                ps.setString(4, emp.getRol().toString());
+                registrado = (ps.executeUpdate() > 0);
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -142,21 +142,23 @@ public class EmpleadoDAO {
      * @return  true si lo encuentra, false si no
      */
     public boolean existeCorreo(String correoNuevo){
-        String buscarCorreo="SELECT * FROM empleado WHERE correo=?";
+        String buscarCorreo="SELECT correo FROM empleado WHERE correo = ? "
+                + "UNION SELECT correo FROM cliente WHERE correo = ?";
         boolean bandera= false;
         try{
-            con= conn.getConexion();
             ps=con.prepareStatement(buscarCorreo);
             ps.setString(1,correoNuevo);
+            ps.setString(2,correoNuevo);
             rs=ps.executeQuery();
             if(rs.next()){
                 bandera=true;
+                javax.swing.JOptionPane.showMessageDialog(null,
+                            "Correo ya registrado",
+                            "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         }catch(SQLException e){
             System.out.println(e);
-        }finally{
-             conn.cerrarConexion();
-        } 
+        }
         return bandera;
      }
     
