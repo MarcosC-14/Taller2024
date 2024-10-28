@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Views;
 
 import Controladores.ClienteController;
@@ -1243,7 +1240,6 @@ public class AdView extends javax.swing.JFrame {
         } else {
             numeroMesa = Integer.parseInt(auxNumMesa);
             b.setNumMesa(numeroMesa);
-            System.out.println(b.getHoraInicio());
             if (!empleadoDAO.existeBloqueoEvento(b)) {
                 if (empleadoDAO.bloquearMesaEventoEspecial(b)) {
                     javax.swing.JOptionPane.showMessageDialog(this,
@@ -1463,7 +1459,6 @@ public class AdView extends javax.swing.JFrame {
                 emp.setCorreo(correo);
                 emp.setContrasenia(contrasenia);
                 emp.setRol(rol);
-                System.out.println(emp);
                 if (empleadoDAO.registrarEmpleado(emp)) {
                     javax.swing.JOptionPane.showMessageDialog(null,
                             "Registrado exitosamente");
@@ -1677,8 +1672,6 @@ public class AdView extends javax.swing.JFrame {
      * Se encarga de mostrar los horarios de apertura y cierre del restaurante.
      */
     private void mostrarHorarioAperturaCierre() {
-        System.out.println(agendaR.getHoraApertura());
-        System.out.println(agendaR.getHoraCierre());
         switch (agendaR.getHoraApertura().
                 format(DateTimeFormatter.ofPattern("HH:mm:ss"))) {
             case "12:00:00":

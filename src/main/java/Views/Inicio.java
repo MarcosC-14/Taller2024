@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Views;
 
 import javax.swing.JOptionPane;
@@ -220,7 +217,6 @@ public class Inicio extends javax.swing.JFrame {
                 usuario = null;
                 usuario = empleadoDao.loginQuery(correo,
                         pass);
-                System.out.println(usuario);
                 if (usuario.getCorreo().equals(correo)) {
                     Empleado emp = (Empleado) usuario;
                     if (((Empleado) usuario).getRol().toString().equals(

@@ -24,7 +24,6 @@ public class Main {
         reservas = reservaDao.obtenerReservasPasadas();
 
         boolean bandera = reservaDao.cobrarMulta(reservas);
-        System.out.println("Cobro multa: " + bandera);
     }
 
 }

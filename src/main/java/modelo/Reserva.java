@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
 import java.time.LocalDate;
@@ -76,43 +73,43 @@ public class Reserva {
     /**
      * Se encarga de retornar el valor de la asistencia.
      *
-     * @return true en caso de que asista, false en caso contrario
+     * @return  true en caso de que asista, false en caso contrario.
      */
     public boolean getAsistencia() {
         return asistencia;
     }
 
     /**
-     * Devuelve la fecha
+     * Devuelve la fecha.
      *
-     * @return la fecha de de la reserva
+     * @return  la fecha de de la reserva.
      */
     public LocalDate getFecha() {
         return fecha;
     }
 
     /**
-     * Setter del atributo fecha
+     * Setter del atributo fecha.
      *
-     * @param fecha
+     * @param   fecha representa la fecha.
      */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
     /**
-     * Getter del atributo hora
+     * Getter del atributo hora.
      *
-     * @return
+     * @return  la hora.
      */
     public LocalTime getHora() {
         return hora;
     }
 
     /**
-     * Setter del atributo hora
+     * Setter del atributo hora.
      *
-     * @param hora Se asigna al atributo hora
+     * @param   hora Se asigna al atributo hora.
      */
     public void setHora(LocalTime hora) {
         this.hora = hora;
@@ -121,7 +118,7 @@ public class Reserva {
     /**
      * Getter del atributo comentario
      *
-     * @return devuelve el atributo comentario
+     * @return  devuelve el atributo comentario
      */
     public String getComentario() {
         return comentario;
@@ -130,16 +127,16 @@ public class Reserva {
     /**
      * Setter del atributo comentario
      *
-     * @param comentario Se asigna al atributo comentario
+     * @param   comentario Se asigna al atributo comentario
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
 
     /**
-     * Setter del atributo asistencia
+     * Setter del atributo asistencia.
      *
-     * @param asistencia Se asigna al atributo asistencia
+     * @param   asistencia Se asigna al atributo asistencia.
      */
     public void setAsistencia(boolean asistencia) {
         this.asistencia = asistencia;
@@ -184,7 +181,7 @@ public class Reserva {
     /**
      * Permite cambiar el valor de mesa de la reserva.
      *
-     * @param mesa un objeto de tipo mesa
+     * @param mesa un objeto de tipo mesa.
      */
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
@@ -211,7 +208,7 @@ public class Reserva {
     /**
      * Metodo Getter de cliente
      *
-     * @return cliente
+     * @return  cliente representa el cliente asociado a la reserva.
      */
     public Cliente getCliente() {
         return cliente;
@@ -220,7 +217,8 @@ public class Reserva {
     /**
      * Metodo Setter de tarjeta
      *
-     * @param tarjeta utilizada para realizar la reserva
+     * @param   tarjeta representa la tarjeta utilizada para realizar la 
+     * reserva.
      */
     public void setTarjeta(Tarjeta tarjeta) {
         this.tarjeta = tarjeta;
