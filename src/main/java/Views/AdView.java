@@ -964,12 +964,10 @@ public class AdView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
-     * /**
-     * el metodo actualizarTablaBloqueoEvento se encarga de generar una
-     * actualizacion a la tabla que muestra los datos de los eventos cuando
-     * surge alguna modificacion para que estos datos se muestren de forma
-     * correcta
+    /** 
+     * Se encarga de generar una actualizacion a la tabla que muestra los datos 
+     * de los eventos cuando surge alguna modificacion para que estos datos se 
+     * muestren de forma correcta.
      */
 
     private void actualizarTablaBloqueoMesaEvento() {
@@ -979,7 +977,7 @@ public class AdView extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) jTable_bloqueoMesas.
                 getModel();
-        model.setRowCount(0); //Elimina las filas existentes;
+        model.setRowCount(0); 
 
         for (BloqueoMesaEventoEspecial b : agendaR.getFechasEspecial()) {
             String horaInicio;
@@ -1012,8 +1010,8 @@ public class AdView extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_jButton_Administrador_salirActionPerformed
     /**
-     * el metodo actualizarTablaMesas se encarga de generar una actualizacion a
-     * la tabla que muestra los datos de las mesas cuando surge alguna
+     * Se encarga de generar una actualizacion a la tabla.
+     * Que muestra los datos de las mesas cuando surge alguna
      * modificacion para que estos datos se muestren de forma correcta
      */
     private void actualizarTablaMesas() {
@@ -1036,9 +1034,10 @@ public class AdView extends javax.swing.JFrame {
     }
 
     /**
-     * el metodo actualizarTablaCliente se encarga de generar una actualizacion
-     * a la tabla que muestra los datos de los clientes cuando surge alguna
-     * modificacion para que estos datos se muestren de forma correcta
+     * Se encarga de generar una actualizacion a la tabla que muestra los datos
+     * de los clientes cuando surge alguna modificacion para que estos datos 
+     * se muestren de forma correcta.
+     * @param   clientes representa a una lista de clientes.
      */
     private void actualizarTablaCliente(ArrayList<Cliente> clientes) {
 
@@ -1122,9 +1121,9 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane2KeyPressed
     /**
      * Evento que se ejecuta cuando se aprieta el boton de eliminar en
-     * bloqueo/eventos
+     * bloqueo/eventos.
      *
-     * @param evt es evento de apretar el boton eliminar
+     * @param   evt es el evento de apretar el boton eliminar.
      */
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         bme = agendaR.getFechasEspecial().get(jTable_bloqueoMesas.
@@ -1147,10 +1146,10 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
     /**
-     * Evento que se ejecuta cuando se aprieta el boton Se llama al metodo
-     * actualizarTablaBloqueoMesaEvento
+     * Evento que se ejecuta cuando se aprieta el boton.
+     * Se llama al metodo actualizarTablaBloqueoMesaEvento.
      *
-     * @param evt es evento de apretar el boton actualizar
+     * @param   evt es el evento de apretar el boton actualizar.
      */
     private void jButtonVerBloqueMesaEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerBloqueMesaEventoActionPerformed
         actualizarTablaBloqueoMesaEvento();
@@ -1162,7 +1161,7 @@ public class AdView extends javax.swing.JFrame {
      * es mayor que el de inicio, se muestra un cartel de advertencia
      * solicitando corregir estos datos.
      *
-     * @param evt es el evento de apretar el boton bloquear
+     * @param evt es el evento de apretar el boton bloquear.
      */
     private void jButton_bloqueoMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bloqueoMesasActionPerformed
         BloqueoMesaEventoEspecial b = new BloqueoMesaEventoEspecial();
@@ -1334,9 +1333,9 @@ public class AdView extends javax.swing.JFrame {
     }//GEN-LAST:event_jBReservasFechaActionPerformed
     /**
      * Es el evento que se produce al oprimir el boton Todas las Reservas. Como
-     * resultado muestra en la tabla todas las reservas realizadas
+     * resultado muestra en la tabla todas las reservas realizadas.
      *
-     * @param evt evento de presionar el boton Todas las Reservas
+     * @param   evt evento de presionar el boton Todas las Reservas.
      *
      */
     private void jBTodasLasReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodasLasReservasActionPerformed
@@ -1381,7 +1380,7 @@ public class AdView extends javax.swing.JFrame {
      * resultado muestra en la tabla todas las reservas que se realizaron para
      * fechas futuras a la actual.
      *
-     * @param evt evento de presionar el boton Reservas Futuras.
+     * @param   evt evento de presionar el boton Reservas Futuras.
      */
     private void jBReservasFuturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservasFuturasActionPerformed
         if (verificarCliente()) {
@@ -1403,7 +1402,7 @@ public class AdView extends javax.swing.JFrame {
     /**
      * Se llama al metodo de actualizarTablaEmpleado al presionar el boton Ver.
      *
-     * @param evt es el evento de presionar el boton Ver.
+     * @param   evt es el evento de presionar el boton Ver.
      */
     private void jButtonVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEmpleadosActionPerformed
         actualizarTablaEmpleado();
@@ -1423,7 +1422,7 @@ public class AdView extends javax.swing.JFrame {
      * por pantalla. Si el nuevo usuario es agregado correctamente se muestra
      * por pantalla una confirmacion.
      *
-     * @param evt es el evento de presionar el boton agregar.
+     * @param   evt es el evento de presionar el boton agregar.
      */
     private void jButton_administrador_empleado_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administrador_empleado_agregarActionPerformed
         String nombre = this.jTextField_administrador_empleado_nombre.getText();
@@ -1477,7 +1476,7 @@ public class AdView extends javax.swing.JFrame {
      * Permite obtener el listado de los clientes y llama al metodo 
      * actualizarTablaCliente.
      *
-     * @param evt es el evento de apretar el boton.
+     * @param   evt es el evento de apretar el boton.
      */
     private void jBTodosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTodosClientesActionPerformed
         clientes = clienteDAO.obtenerClientes();
@@ -1557,11 +1556,10 @@ public class AdView extends javax.swing.JFrame {
      * Es el metodo que se ejecuta al presionar el boton Ver.
      * Muestra la concurrencia de clientes por estacion del año.
      *
-     * @param evt es el evento de presionar el boton de Ver.
+     * @param evt    es el evento de presionar el boton de Ver.
      */
     private void jBAnalisisTiempoVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnalisisTiempoVerActionPerformed
         reservas = reservaDAO.obtenerReservas();
-
         MonthDay verano = MonthDay.of(12,
                 20);
         MonthDay primavera = MonthDay.of(11,
@@ -1606,7 +1604,7 @@ public class AdView extends javax.swing.JFrame {
      * Es el metodo que se ejecuta al presionar el boton Exportar a PDF.
      * Se crea y exporta un archivo pdf con la informacion que contiene la taba.
      *
-     * @param evt es el evento de presionar el boton Exportar a PDF.
+     * @param   evt es el evento de presionar el boton Exportar a PDF.
      */
     private void jBReporteREservasPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReporteREservasPdfActionPerformed
         if (reservas == null || reservas.isEmpty()) {
@@ -1641,7 +1639,7 @@ public class AdView extends javax.swing.JFrame {
      * Se crea y exporta un archivo PDf con la informacion que contiene la 
      * tabla.
      *
-     * @param evt es el evento de presionar el boton Exportar a PDF.
+     * @param   evt es el evento de presionar el boton Exportar a PDF.
      */
     private void jButtonExportarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarClientesActionPerformed
 
@@ -1772,7 +1770,7 @@ public class AdView extends javax.swing.JFrame {
     /**
      * Es el metodo que se ejecuta al cambiar la opciones del jComboBox.
      *
-     * @param evt es el evento de cambiar de opcion del JComboBox.
+     * @param   evt es el evento de cambiar de opcion del JComboBox.
      */
     private void jComboBoxMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesasActionPerformed
       
@@ -1793,7 +1791,7 @@ public class AdView extends javax.swing.JFrame {
      * concurrencia por estacion.
      * Verifica que esten cargados los datos.
      *
-     * @param evt es el evento de presionar el boton Expotar a PDF
+     * @param   evt es el evento de presionar el boton Expotar a PDF
      */
     private void jBAnalisisTiempoPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnalisisTiempoPdfActionPerformed
         String verano = jTextFieldVerano.getText();
@@ -1854,7 +1852,7 @@ public class AdView extends javax.swing.JFrame {
     /**
      * Metodo que exporta el listado de clientes en un archivo .xlsx.
      *
-     * @param evt es el evento de apretar el boton exportar a excel.
+     * @param   evt es el evento de apretar el boton exportar a excel.
      */
     private void ExcelclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelclienteActionPerformed
         if (clientes == null || clientes.isEmpty()) {
@@ -1884,7 +1882,7 @@ public class AdView extends javax.swing.JFrame {
      * Metodo que exporta el analisis de concurrencia por estacion en un archivo
      * xlsx.
      *
-     * @param evt es el evento de apretar el boton exportar a excel.
+     * @param   evt es el evento de apretar el boton exportar a excel.
      */
     private void EstacionesExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstacionesExcelActionPerformed
         String verano = jTextFieldVerano.getText();

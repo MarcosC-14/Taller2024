@@ -64,7 +64,7 @@ public class ClienteController implements ActionListener {
      * Controla que los datos ingresados sean validos, si es asi lo registra, si
      * no muestra un mensaje pidiendo que complete los datos.
      *
-     * @param e es el evento que activa el boton de registrar
+     * @param e es el evento que activa el boton de registrar.
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -120,10 +120,7 @@ public class ClienteController implements ActionListener {
      * contrario.
      */
     public static boolean esFormatoFechaValido(String fecha) {
-        // Definimos el patrón del formato de fecha esperado (dd/mm/aa)
         String formatoFecha = "\\d{2}/\\d{2}/\\d{4}";
-
-        // Comprobamos si la fecha ingresada coincide con el formato esperado
         return fecha.matches(formatoFecha);
     }
 }
