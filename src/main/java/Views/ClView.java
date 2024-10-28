@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Views;
 
 import Controladores.ClienteController;
@@ -1498,8 +1495,6 @@ public class ClView extends javax.swing.JFrame {
 
         String auxFecha = jTxt_cliente_fecha.getText();
         reserva.setCliente(cliente1);
-        System.out.println(reserva.getTarjeta().getNumero());
-
         fechaBuscar = reserva.getFecha();
         horaBuscar = reserva.getHora();
         if (!auxFecha.equals("")) {
