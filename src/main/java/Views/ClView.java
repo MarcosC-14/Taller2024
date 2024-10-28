@@ -21,7 +21,6 @@ import persistencia.ClasesDao.TarjetaDAO;
 import modelo.Cliente;
 import modelo.Reserva;
 import modelo.Tarjeta;
-import Views.MensajeReserva;
 import modelo.AgendaRestaurante;
 import persistencia.ClasesDao.EmpleadoDAO;
 
@@ -1567,7 +1566,6 @@ public class ClView extends javax.swing.JFrame {
             tarjeta.setNumero(jTxtNumeroTarjetaMod.getText());
             tarjeta.setCodSeguridad(jTxtCodigoTarjetaMod.getText());
             TarjetaDAO tarjetaR = new TarjetaDAO();
-            //revisar si esta en la base de datos la nueva 
             if (tarjetaR.existeTarjeta(tarjeta.getNumero())) {
                 if (!(tarjetaR.tarjetaValida(tarjeta))) {
                     javax.swing.JOptionPane.showMessageDialog(this,
