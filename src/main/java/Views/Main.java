@@ -9,12 +9,12 @@ import persistencia.ClasesDao.ReservaDAO;
 import java.util.ArrayList;
 
 /**
- * La clase MainPRUEBA es donde se ejecuta todo el programa.
+ * La clase Main es donde se ejecuta todo el programa.
  *
  * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
  * Caraballo
  */
-public class MainPRUEBA {
+public class Main {
 
     public static void main(String[] args) {
         Inicio login = new Inicio();
