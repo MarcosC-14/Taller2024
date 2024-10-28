@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia.ClasesDao;
 
 import persistencia.SQLiteManager;
@@ -55,7 +51,7 @@ public class TarjetaDAO {
                     tarjeta.getCodSeguridad());
             realizado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
-            System.out.println("hola" + e.toString());
+            System.out.println(e.toString());
         } finally {
             conn.cerrarConexion();
         }
@@ -66,6 +62,7 @@ public class TarjetaDAO {
     /**
      * Se encarga de revisar si un numero de tarjeta esta en la base de datos.
      *
+     * @param numero Es el numero de tarjeta a revisar
      * @return true en caso de que encuentre el numero de la tarjeta, false si
      * no lo encontro.
      */
@@ -98,6 +95,7 @@ public class TarjetaDAO {
      * Revisa si todos los datos de la tarjeta coinciden con los que estan en la
      * base de datos.
      *
+     * @param tarjeta Es el objeto Tarjeta cuyos datos se van a validar
      * @return true en caso de que coincidan, false en caso contrario.
      */
     public boolean tarjetaValida(Tarjeta tarjeta) {

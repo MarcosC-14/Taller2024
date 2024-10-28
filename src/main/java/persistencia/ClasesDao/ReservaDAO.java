@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia.ClasesDao;
 
 import modelo.Reserva;
@@ -80,7 +76,7 @@ public class ReservaDAO {
                     reserva.getTarjeta().getNumero());
             realizado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
-            System.out.println("Prueba 1" + e.toString());
+            System.out.println(e.toString());
         } finally {
             conn.cerrarConexion();
         }
@@ -299,7 +295,7 @@ public class ReservaDAO {
                 reservas.add(reserva);
             }
         } catch (SQLException e) {
-            System.out.println("hola" + e.toString());
+            System.out.println(e.toString());
         } finally {
             conn.cerrarConexion();
         }
@@ -526,9 +522,6 @@ public class ReservaDAO {
                 + " hora_fin = ?"
                 + " WHERE id = ?";
         try {
-
-            System.out.println(reserva.getTiempoOcupacion());
-            System.out.println(reserva.getTiempoFinalizacion());
             ps = con.prepareStatement(sql);
             if (reserva.getTiempoOcupacion() != null) {
                 ps.setString(1,
@@ -548,7 +541,6 @@ public class ReservaDAO {
             }
             ps.setInt(3,
                     reserva.getId());
-            System.out.println(reserva.getId());
             modificado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -610,6 +602,10 @@ public class ReservaDAO {
     /**
      * Cobrar la multa al dia siguiente (automatico), cambie el estado de multa
      * de Reserva= true, se guarda en base de datos como 1
+     * @param reservas Es el ArrayList con el que se comprobara
+     * en cada reserva la asistencia y si ya se cobró la multa 
+     * @return  returns true si se cobró una multa, false si 
+     * no se cobró una multa
      */
     public boolean cobrarMulta(ArrayList<Reserva> reservas) {
         Connection con = conn.getConexion();
