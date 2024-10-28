@@ -120,7 +120,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
      * llama el metodo recuperarContraseña de la clase ClienteDAO y muestra en
      * pantalla el resultado de llamar a ese metodo.
      *
-     * @param evt representa el evento que se genera al presionar el boton
+     * @param   evt representa el evento que se genera al presionar el boton
      * enviar.
      */
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
@@ -155,7 +155,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
      * Se encarga de generar una nueva ventana Inicio, hacerla visible y cerrar
      * la ventana actual.
      *
-     * @param evt el evento generado al presionar el boton "Atras".
+     * @param   evt el evento generado al presionar el boton "Atras".
      */
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         Inicio inicio = new Inicio();

@@ -11,20 +11,14 @@ import java.sql.ResultSet;
 
 /**
  * la clase ClRegisterView es un jFrame donde se muestra la interfaz grafica
- * para que el nuevo cliente pueda registrarse de forma correcta
+ * para que el nuevo cliente pueda registrarse y ver sus fatos de forma correcta
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author  Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  */
 public class ClRegisterView extends javax.swing.JFrame {
 
-    /**
-     * Se instancia la conexion a la base de datos ya que los datos ingresados
-     * posteriormente se almacenan en ella. Se instancia un cliente para
-     * almacenar previamente alli los valores ingresados sean verificados Se
-     * instancia clienteDao ya que alli se encuentra el metodo de registrar
-     * cliente.
-     */
+    
     SQLiteManager cn = new SQLiteManager();
     Connection conn;
     PreparedStatement pst;
@@ -187,7 +181,7 @@ public class ClRegisterView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_correoRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_correoRegistroClienteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField_correoRegistroClienteActionPerformed
 
     private void jButton_confirmarRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_confirmarRegistroClienteActionPerformed

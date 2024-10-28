@@ -31,7 +31,7 @@ import persistencia.ClasesDao.EmpleadoDAO;
  * -En caso de ser cumplir con los criterios avisa que tenes una reserva a
  * futuro.
  *
- * @author Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
+ * @author  Marcos Ramon Caraballo, Angelina María Vialle,Valentin Rebechi,Ian
  * Caraballo
  * @version 27/10/2024
  */
@@ -53,9 +53,9 @@ public class ClView extends javax.swing.JFrame {
      * usuario cambiar el tamaño de la ventana, le pone el titulo a la ventana y
      * la centra. Se guarda el cliente que inicio sesion en y que se paso por
      * parametro, ademas verifica si hay que enviarle un alerta de reserva
-     * proxima al cliente
+     * proxima al cliente.
      *
-     * @param cliente1 es el cliente que ingresa
+     * @param   cliente1 es el cliente que ingresa.
      */
     public ClView(Cliente cliente1) {
         initComponents();
@@ -1057,7 +1057,7 @@ public class ClView extends javax.swing.JFrame {
     /**
      * Metodo que actualiza la tabla de mesas.
      *
-     * @param tabla representa la tabla que se va aactualizar
+     * @param   tabla representa la tabla que se va a actualizar.
      */
     private void actualizarTablaMesas(javax.swing.JTable tabla) {
         ReservaDAO reservaDAO = new ReservaDAO();
@@ -1117,9 +1117,9 @@ public class ClView extends javax.swing.JFrame {
 
     /**
      * Metodo que se produce al apretar el boton salir cierra la ventana ClView
-     * y abre la de inicio
+     * y abre la de inicio.
      *
-     * @param evt es el evento de apretar el boton salir
+     * @param   evt es el evento de apretar el boton salir.
      */
     private void jToggleButton_cliente_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton_cliente_SalirActionPerformed
         if (evt.getSource() == jToggleButton_cliente_Salir) {
@@ -1130,7 +1130,7 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton_cliente_SalirActionPerformed
 
     private void jTextField_fechaNewReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_fechaNewReservaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField_fechaNewReservaActionPerformed
     /**
      * Metodo que se produce al apretar el boton Nueva reserva Verifica que la
@@ -1141,7 +1141,7 @@ public class ClView extends javax.swing.JFrame {
      * disponibles en esa fecha, la tabla del historial de reservas del cliente
      * y las reservas generales del restaurante
      *
-     * @param evt es el evento que se produce al apretar el boton Nueva Reserva
+     * @param   evt es el evento que se produce al apretar el boton Nueva Reserva
      */
     private void jButton_nuevaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_nuevaReservaActionPerformed
         String auxFecha = jTextField_fechaNewReserva.getText();
@@ -1305,8 +1305,6 @@ public class ClView extends javax.swing.JFrame {
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
         }
-
-
     }//GEN-LAST:event_jButton_nuevaReservaActionPerformed
 
 
@@ -1320,7 +1318,7 @@ public class ClView extends javax.swing.JFrame {
     /**
      * Cuando se lo presiona llama al metodo actualizarTablaHistorial.
      *
-     * @param evt evento que ocurre al presionar el boton.
+     * @param   evt evento que ocurre al presionar el boton.
      */
     private void jBVerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerHistorialActionPerformed
         this.actualizarTablaHistorial();
@@ -1332,9 +1330,9 @@ public class ClView extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
     /**
      * Se encarga de revisar que la fecha ingresada sea valida y llama a la
-     * funcion actualizarTablaMesas para mostrar los datos en la tabla
+     * funcion actualizarTablaMesas para mostrar los datos en la tabla.
      *
-     * @param evt representa el evento que ocurre al presionar el boton
+     * @param   evt representa el evento que ocurre al presionar el boton
      */
     private void JButton_confirmarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_confirmarFechaActionPerformed
         String auxFecha = jTextField_fechaNewReserva.getText();
@@ -1376,7 +1374,7 @@ public class ClView extends javax.swing.JFrame {
      * Accion de apretar el boton ver datos. Muestra el nombre,correo y telefono
      * del cliente.
      *
-     * @param evt es el evento de apretar el boton ver datos.
+     * @param   evt es el evento de apretar el boton ver datos.
      */
     private void jBVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerDatosActionPerformed
 
