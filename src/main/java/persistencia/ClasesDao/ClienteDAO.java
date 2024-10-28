@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia.ClasesDao;
 
 import Controladores.ClienteController;
@@ -13,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import java.util.Arrays;
 
 /**
  * La clase ClienteDAO ofrece los metodos necesarios para realizar las
@@ -265,7 +260,7 @@ public class ClienteDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
                     "Error al actualizar la informacion: " + e);
-            System.out.println(e);
+            System.out.println(e.getMessage());
         } finally {
             conn.cerrarConexion();
         }
@@ -297,7 +292,7 @@ public class ClienteDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
                     "Error al buscar la informacion: " + e);
-            System.out.println(e);
+            System.out.println(e.getMessage());
         } finally {
             conn.cerrarConexion();
         }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia.ClasesDao;
 
 import modelo.Reserva;
@@ -80,7 +76,7 @@ public class ReservaDAO {
                     reserva.getTarjeta().getNumero());
             realizado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
-            System.out.println("Prueba 1" + e.toString());
+            System.out.println(e.toString());
         } finally {
             conn.cerrarConexion();
         }
@@ -166,7 +162,8 @@ public class ReservaDAO {
 
     /**
      * Se encarga de guardar todas las mesas de la base de datos en un ArrayList
-     * de tipo Mesa. return una lista con todas las mesas.
+     * de tipo Mesa. 
+     * @return una lista con todas las mesas.
      */
     public ArrayList<Mesa> mesas() {
         Connection con = conn.getConexion();
@@ -299,7 +296,7 @@ public class ReservaDAO {
                 reservas.add(reserva);
             }
         } catch (SQLException e) {
-            System.out.println("hola" + e.toString());
+            System.out.println(e.toString());
         } finally {
             conn.cerrarConexion();
         }
@@ -526,9 +523,6 @@ public class ReservaDAO {
                 + " hora_fin = ?"
                 + " WHERE id = ?";
         try {
-
-            System.out.println(reserva.getTiempoOcupacion());
-            System.out.println(reserva.getTiempoFinalizacion());
             ps = con.prepareStatement(sql);
             if (reserva.getTiempoOcupacion() != null) {
                 ps.setString(1,
@@ -548,7 +542,6 @@ public class ReservaDAO {
             }
             ps.setInt(3,
                     reserva.getId());
-            System.out.println(reserva.getId());
             modificado = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -559,8 +552,9 @@ public class ReservaDAO {
     }
 
     /**
-     * ArrayList que devuelva todas las reservas pasadas, si su fecha es menor a
+     * ArrayList que devuelve todas las reservas pasadas, si su fecha es menor a
      * hoy lo guarda en su arrayList
+     * @return Array list con las reservas pasadas
      */
     public ArrayList<Reserva> obtenerReservasPasadas() {
         Connection con = conn.getConexion();
@@ -610,6 +604,10 @@ public class ReservaDAO {
     /**
      * Cobrar la multa al dia siguiente (automatico), cambie el estado de multa
      * de Reserva= true, se guarda en base de datos como 1
+     * @param reservas Es el ArrayList con el que se comprobara
+     * en cada reserva la asistencia y si ya se cobró la multa 
+     * @return  returns true si se cobró una multa, false si 
+     * no se cobró una multa
      */
     public boolean cobrarMulta(ArrayList<Reserva> reservas) {
         Connection con = conn.getConexion();
@@ -644,7 +642,7 @@ public class ReservaDAO {
      * parámetro.
      *
      * @param cliente representa el cliente al que se contarán sus asistencias.
-     * @return un entero que representa la cantidad de asistencias.
+     * @return  un entero que representa la cantidad de asistencias.
      */
     public int cantidadAsistencias(Cliente cliente) {
         Connection con = conn.getConexion();
@@ -671,6 +669,10 @@ public class ReservaDAO {
 
     }
 
+    /**
+     * ArrayList que devuelve todas las reservas de la base de datos
+     * @return  ArrayList con todas las reservas
+     */
     public ArrayList<Reserva> obtenerReservas() {
         Connection con = conn.getConexion();
         ResultSet rs;
@@ -746,7 +748,7 @@ public class ReservaDAO {
                 reservas.add(reserva);
             }
         } catch (SQLException e) {
-            System.out.println("hola" + e.toString());
+            System.out.println(e.toString());
         } finally {
             conn.cerrarConexion();
         }

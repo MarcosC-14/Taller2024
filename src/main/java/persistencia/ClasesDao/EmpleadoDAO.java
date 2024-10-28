@@ -174,7 +174,7 @@ public class EmpleadoDAO {
                         javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
         return bandera;
     }
@@ -347,7 +347,7 @@ public class EmpleadoDAO {
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         } finally {
             conn.cerrarConexion();
         }
@@ -397,7 +397,7 @@ public class EmpleadoDAO {
                 bandera = true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         } finally {
             conn.cerrarConexion();
         }
