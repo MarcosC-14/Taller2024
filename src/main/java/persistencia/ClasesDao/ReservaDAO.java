@@ -162,7 +162,8 @@ public class ReservaDAO {
 
     /**
      * Se encarga de guardar todas las mesas de la base de datos en un ArrayList
-     * de tipo Mesa. return una lista con todas las mesas.
+     * de tipo Mesa. 
+     * @return una lista con todas las mesas.
      */
     public ArrayList<Mesa> mesas() {
         Connection con = conn.getConexion();
@@ -551,8 +552,9 @@ public class ReservaDAO {
     }
 
     /**
-     * ArrayList que devuelva todas las reservas pasadas, si su fecha es menor a
+     * ArrayList que devuelve todas las reservas pasadas, si su fecha es menor a
      * hoy lo guarda en su arrayList
+     * @return Array list con las reservas pasadas
      */
     public ArrayList<Reserva> obtenerReservasPasadas() {
         Connection con = conn.getConexion();
@@ -640,7 +642,7 @@ public class ReservaDAO {
      * parámetro.
      *
      * @param cliente representa el cliente al que se contarán sus asistencias.
-     * @return un entero que representa la cantidad de asistencias.
+     * @return  un entero que representa la cantidad de asistencias.
      */
     public int cantidadAsistencias(Cliente cliente) {
         Connection con = conn.getConexion();
@@ -667,6 +669,10 @@ public class ReservaDAO {
 
     }
 
+    /**
+     * ArrayList que devuelve todas las reservas de la base de datos
+     * @return  ArrayList con todas las reservas
+     */
     public ArrayList<Reserva> obtenerReservas() {
         Connection con = conn.getConexion();
         ResultSet rs;
@@ -742,7 +748,7 @@ public class ReservaDAO {
                 reservas.add(reserva);
             }
         } catch (SQLException e) {
-            System.out.println("hola" + e.toString());
+            System.out.println(e.toString());
         } finally {
             conn.cerrarConexion();
         }
