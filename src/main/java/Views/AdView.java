@@ -405,7 +405,7 @@ public class AdView extends javax.swing.JFrame {
 
         jLabel4.setText("Hora Inicio");
 
-        jComboBoxHoraInicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBoxHoraInicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22" }));
 
         jLabel5.setText("Hora Fin");
 

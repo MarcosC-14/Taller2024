@@ -344,14 +344,14 @@ public class ReservaDAO {
                 reserva1.setMesa(mesa);
                 reserva1.setHora(LocalTime.parse(rs.getString("hora"),
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
-                if (rs.getString("hora_fin") != null) {
+                if (!rs.getString("hora_fin").equals("")) {
                     reserva1.setTiempoFinalizacion(LocalTime.parse(rs.getString(
                             "hora_fin"),
                             DateTimeFormatter.ofPattern("HH:mm:ss")));
                 } else {
                     reserva1.setTiempoFinalizacion(null);
                 }
-                if (rs.getString("hora_inicio") != null) {
+                if (!rs.getString("hora_inicio").equals("")) {
                     reserva1.setTiempoOcupacion(LocalTime.parse(rs.getString(
                             "hora_inicio"),
                             DateTimeFormatter.ofPattern("HH:mm:ss")));
@@ -529,16 +529,14 @@ public class ReservaDAO {
                         reserva.getTiempoOcupacion().format(DateTimeFormatter.
                                 ofPattern("HH:mm:ss")));
             } else {
-                ps.setString(1,
-                        null);
+                ps.setString(1,"");
             }
             if (reserva.getTiempoFinalizacion() != null) {
                 ps.setString(2,
                         reserva.getTiempoFinalizacion().format(
                                 DateTimeFormatter.ofPattern("HH:mm:ss")));
             } else {
-                ps.setString(2,
-                        null);
+                ps.setString(2,"");
             }
             ps.setInt(3,
                     reserva.getId());
