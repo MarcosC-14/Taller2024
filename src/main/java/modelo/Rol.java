@@ -8,6 +8,20 @@ package modelo;
  * @version 27/10/2024.
  */
 public enum Rol {
-    Administrador, Recepcionista, Mesero,
+
+    /**
+     * Rol de administrador
+     */
+    Administrador,
+
+    /**
+     * Rol de recepcionista
+     */
+    Recepcionista,
+
+    /**
+     * Rol de mesero
+     */
+    Mesero,
     
 }

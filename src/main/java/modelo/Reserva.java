@@ -252,16 +252,10 @@ public class Reserva {
 
     }
 
-    //Este queda? 
-    public void muestraResMesa() {
-        //Si muestra reservaciones de mesas, debería estar en cliente? tal vez organizacionMEsas
-
-    }
-
     /**
      * Metodo Getter de id
      *
-     * @return codigo de reserva
+     * @return  codigo de reserva.
      */
     public int getId() {
         return id;

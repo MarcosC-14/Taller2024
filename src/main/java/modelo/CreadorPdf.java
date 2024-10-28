@@ -1,21 +1,6 @@
 
 package modelo;
 
-/**
- * La clase CreadorPdf se encarga de crear los documentos tipo pdf para:
- * -Reserva.
- * -Cliente.
- * -Reservas por Estacion.
- * Ademas hace las tablas para:
- * -Reserva.
- * -Cliente.
- * -Reservas por Estacion.
- * Ademas agrega un titulo al documento, le agrega un titulo a los metadatos
- * y permite agregar espacios luego de los parrafos.
- * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
- * Caraballo.
- * @version 27/10/2024.
- */
 import java.io.FileOutputStream;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -32,6 +17,21 @@ import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+/**
+ * La clase CreadorPdf se encarga de crear los documentos tipo pdf para:
+ * -Reserva.
+ * -Cliente.
+ * -Reservas por Estacion.
+ * Ademas hace las tablas para:
+ * -Reserva.
+ * -Cliente.
+ * -Reservas por Estacion.
+ * Ademas agrega un titulo al documento, le agrega un titulo a los metadatos
+ * y permite agregar espacios luego de los parrafos.
+ * @author Marcos Ramon Caraballo, Angelina María Vialle, Valentin Rebechi, Ian
+ * Caraballo.
+ * @version 27/10/2024.
+ */
 public class CreadorPdf {
 
     private static String FILE = "PruebaPDF.pdf";
