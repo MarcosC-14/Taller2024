@@ -44,6 +44,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
+        jLCorreo.setForeground(new java.awt.Color(255, 255, 255));
         jLCorreo.setText("Correo");
 
         correo.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +139,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
 
         String resultado = clienteDAO.recuperarContraseña(correoIngreso);
 
-        if (resultado.equals("")) {
+        if (!resultado.equals("")) {
             // Mostrar el resultado en un JOptionPane
             javax.swing.JOptionPane.showMessageDialog(this,
                     resultado,

@@ -96,8 +96,6 @@ public class ClienteController implements ActionListener {
                 }
 
             }
-        } else if (e.getSource().equals(view2.jButton_nuevaReserva)) {
-
         }
     }
 

@@ -110,7 +110,7 @@ public class ClRegisterView extends javax.swing.JFrame {
             }
         });
 
-        jButton_cancelarRegistroCliente.setText("Cancelar");
+        jButton_cancelarRegistroCliente.setText("Volver");
         jButton_cancelarRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_cancelarRegistroClienteActionPerformed(evt);
