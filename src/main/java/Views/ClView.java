@@ -781,6 +781,12 @@ public class ClView extends javax.swing.JFrame {
             }
         });
 
+        jTxtNumeroTarjetaMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtNumeroTarjetaModActionPerformed(evt);
+            }
+        });
+
         jTxtCodigoTarjetaMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtCodigoTarjetaModActionPerformed(evt);
@@ -1770,6 +1776,10 @@ public class ClView extends javax.swing.JFrame {
     private void jTxtCodigoTarjetaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoTarjetaModActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCodigoTarjetaModActionPerformed
+
+    private void jTxtNumeroTarjetaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNumeroTarjetaModActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtNumeroTarjetaModActionPerformed
     /**
      * Metodo que envia un mensaje al cliente al ingresar al sistema Este
      * mensaje se envia cuando este cliente tiene una reserva dentro de los

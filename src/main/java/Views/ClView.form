@@ -1423,6 +1423,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTxtNumeroTarjetaMod">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtNumeroTarjetaModActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTxtCodigoTarjetaMod">
               <Events>
