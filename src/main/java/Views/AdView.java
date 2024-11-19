@@ -1055,7 +1055,6 @@ public class AdView extends javax.swing.JFrame {
 
         for (Cliente c : clientes) {
             model.addRow(new Object[]{
-                c.getId(),
                 c.getNombre(),
                 c.getTelefono(),
                 c.getCorreo()
