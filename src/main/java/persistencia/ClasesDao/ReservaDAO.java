@@ -304,9 +304,8 @@ public class ReservaDAO {
      * @return las reservas de clientes del dia de hoy.
      */
     public ArrayList<Reserva> obtenerReservasDeHoy() {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
+        
         LocalDate hoy = LocalDate.now();
         String sql = "SELECT * FROM reserva WHERE fecha=?";
         String baseCliente = "SELECT * FROM reserva ";
@@ -339,16 +338,16 @@ public class ReservaDAO {
                 reserva1.setMesa(mesa);
                 reserva1.setHora(LocalTime.parse(rs.getString("hora"),
                         DateTimeFormatter.ofPattern("HH:mm:ss")));
-                if (!rs.getString("hora_fin").equals("")) {
-                    reserva1.setTiempoFinalizacion(LocalTime.parse(rs.getString(
-                            "hora_fin"),
+                String horaFin=rs.getString("hora_fin");
+                if (horaFin!=null && !horaFin.isEmpty()) {
+                    reserva1.setTiempoFinalizacion(LocalTime.parse(horaFin,
                             DateTimeFormatter.ofPattern("HH:mm:ss")));
                 } else {
                     reserva1.setTiempoFinalizacion(null);
                 }
-                if (!rs.getString("hora_inicio").equals("")) {
-                    reserva1.setTiempoOcupacion(LocalTime.parse(rs.getString(
-                            "hora_inicio"),
+                String horaInicio=rs.getString("hora_inicio");
+                if (horaInicio!=null && !horaInicio.isEmpty()) {
+                    reserva1.setTiempoOcupacion(LocalTime.parse(horaInicio,
                             DateTimeFormatter.ofPattern("HH:mm:ss")));
                 } else {
                     reserva1.setTiempoOcupacion(null);
