@@ -873,12 +873,9 @@ public class ClView extends javax.swing.JFrame {
             .addGroup(historial_clienteLayout.createSequentialGroup()
                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(historial_clienteLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(historial_clienteLayout.createSequentialGroup()
-                                .addGap(714, 714, 714)
-                                .addComponent(jLabel37))
-                            .addGroup(historial_clienteLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(historial_clienteLayout.createSequentialGroup()
                                         .addComponent(jLabel33)
@@ -897,69 +894,65 @@ public class ClView extends javax.swing.JFrame {
                                         .addComponent(jButton_cliente_eliminar_reserva1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(79, 79, 79)
                                         .addComponent(jLabel30)))
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel38))
+                            .addGroup(historial_clienteLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(historial_clienteLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel15)
-                                            .addComponent(jLabel35))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBoxUbiMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBoxHoraBuscarMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(historial_clienteLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(historial_clienteLayout.createSequentialGroup()
-                                                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel11)
-                                                    .addComponent(jLabel34))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jComboBoxCapMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBoxMesaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(historial_clienteLayout.createSequentialGroup()
-                                                .addComponent(jLabel36)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(historial_clienteLayout.createSequentialGroup()
-                                        .addGap(51, 51, 51)
-                                        .addComponent(jLabel9))
-                                    .addGroup(historial_clienteLayout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jLabel38)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTxtNombreTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(historial_clienteLayout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jLabel10)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jTxt_cliente_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(historial_clienteLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel39)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jLabel41))))
                         .addGap(18, 18, 18)
                         .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtNombreTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtEmisorTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtNumeroTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCodigoTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addGap(786, 786, 786)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jTxt_cliente_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addGap(814, 814, 814)
+                        .addComponent(jLabel9))
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addGap(775, 775, 775)
+                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(historial_clienteLayout.createSequentialGroup()
-                                .addComponent(jLabel39)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTxtEmisorTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel34))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxCapMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxMesaMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(historial_clienteLayout.createSequentialGroup()
-                                .addComponent(jLabel40)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTxtNumeroTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(historial_clienteLayout.createSequentialGroup()
-                                .addComponent(jLabel41)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTxtCodigoTarjetaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addGap(781, 781, 781)
+                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel35))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(historial_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxUbiMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxHoraBuscarMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(historial_clienteLayout.createSequentialGroup()
+                        .addGap(720, 720, 720)
+                        .addComponent(jLabel37))
                     .addGroup(historial_clienteLayout.createSequentialGroup()
                         .addComponent(jLabel32)
                         .addGap(96, 96, 96)
                         .addComponent(jLabel13)
                         .addGap(444, 444, 444)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         historial_clienteLayout.setVerticalGroup(
@@ -1587,7 +1580,37 @@ public class ClView extends javax.swing.JFrame {
                 | !jTxtEmisorTarjetaMod.getText().equals("")
                 | !jTxtNumeroTarjetaMod.getText().equals("")
                 | !jTxtCodigoTarjetaMod.getText().equals("")) {
-
+            if(jTxtNombreTarjetaMod.getText().equals("")
+                || jTxtEmisorTarjetaMod.getText().equals("")
+                || jTxtNumeroTarjetaMod.getText().equals("")
+                || jTxtCodigoTarjetaMod.getText().equals("")){
+                javax.swing.JOptionPane.showMessageDialog(this,
+                            "No completaste los datos de la tarjeta",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+            }
+            String codigoTarjeta =jTxtCodigoTarjetaMod.getText();
+            if (codigoTarjeta.length() > 3) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "La tarjeta no"
+                        + " puede tener un codigo"
+                        + " de seguridad de más de 3 digitos",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            String numeroTarjeta = jTxtNumeroTarjetaMod.getText();
+            if (numeroTarjeta.length() > 16) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "El numero de la tarjeta no puede"
+                                + " tener más de 16 digitos",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            
             tarjeta.setNombre(jTxtNombreTarjetaMod.getText());
             tarjeta.setEmisor(jTxtEmisorTarjetaMod.getText());
             tarjeta.setNumero(jTxtNumeroTarjetaMod.getText());
