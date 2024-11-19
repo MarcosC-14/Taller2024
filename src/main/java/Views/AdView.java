@@ -1569,7 +1569,7 @@ public class AdView extends javax.swing.JFrame {
         reservas = reservaDAO.obtenerReservas();
         MonthDay verano = MonthDay.of(12,
                 20);
-        MonthDay primavera = MonthDay.of(11,
+        MonthDay primavera = MonthDay.of(9,
                 20);
         MonthDay invierno = MonthDay.of(6,
                 20);
