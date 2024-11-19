@@ -1627,11 +1627,20 @@ public class ClView extends javax.swing.JFrame {
         }
 
         agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
-        if (rDAO.mesaDisponible(reserva.getMesa().getNumero(),
+        
+        boolean cambiarFecha = !jTxt_cliente_fecha.getText().equals("");
+        boolean cambiarHora = !((String) jComboBoxHoraBuscarMod.
+                getSelectedItem()).equals("No cambiar");
+        boolean cambiarMesa = !jComboBoxMesaMod.getSelectedItem().
+                toString().equals("No cambiar");
+        
+        if (!(cambiarFecha || cambiarHora || cambiarMesa)
+                || (rDAO.mesaDisponible(reserva.getMesa().getNumero(),
                 fechaBuscar,
-                horaBuscar)
+                horaBuscar))
                 && horaBuscar.isAfter(agendaR.getHoraApertura().minusSeconds(1))
-                && horaBuscar.isBefore(agendaR.getHoraCierre())) {
+                && horaBuscar.isBefore(agendaR.getHoraCierre())
+                ) {
             if (rDAO.modificarReserva(reserva)) {
                 javax.swing.JOptionPane.showMessageDialog(this,
                         "Reserva modificada con éxito.",
