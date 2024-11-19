@@ -1595,6 +1595,15 @@ public class ClView extends javax.swing.JFrame {
                     return;
             }
             String codigoTarjeta =jTxtCodigoTarjetaMod.getText();
+            try {
+                Integer.parseInt(codigoTarjeta);    
+            } catch (NumberFormatException excepcion) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ingrese un numero en el codigo de tarjeta",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+        }
             if (codigoTarjeta.length() > 3) {
                 javax.swing.JOptionPane.showMessageDialog(this,
                         "La tarjeta no"
@@ -1604,7 +1613,17 @@ public class ClView extends javax.swing.JFrame {
                         javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
+            
             String numeroTarjeta = jTxtNumeroTarjetaMod.getText();
+            try {
+                Integer.parseInt(numeroTarjeta);    
+            } catch (NumberFormatException excepcion) {
+             javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ingrese un numero en la tarjeta",
+                        "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             if (numeroTarjeta.length() > 16) {
                 javax.swing.JOptionPane.showMessageDialog(this,
                         "El numero de la tarjeta no puede"
