@@ -225,20 +225,19 @@ public class Inicio extends javax.swing.JFrame {
                         Administrador admin = new Administrador(emp);
                         AdView adView = new AdView(admin);
                         adView.setVisible(true);
-                        this.dispose();
                     } else {
                         EpView epView = new EpView(emp);
                         epView.setVisible(true);
-                        this.dispose();
                     }
+                    this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "Usuario o contraseña invalido");
+                            "Correo o Contraseña invalido");
                 }
             }
         } else {
             JOptionPane.showMessageDialog(null,
-                    "Usuario o contraseña invalido");
+                    "Complete los campos de Correo y Contraseña");
         }
 
     }//GEN-LAST:event_jButton_ingresoActionPerformed
