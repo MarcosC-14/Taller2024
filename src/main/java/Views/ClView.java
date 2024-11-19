@@ -1550,7 +1550,7 @@ public class ClView extends javax.swing.JFrame {
             reserva.setHora(horaBuscar);
         }
 
-        if (jTextField_comentarioMod.getText().equals("")) {
+        if (!jTextField_comentarioMod.getText().equals("")) {
             reserva.setComentario(jTextField_comentarioMod.getText());
         }
         if (!jComboBoxMesaMod.getSelectedItem().toString().equals("No cambiar")) {
