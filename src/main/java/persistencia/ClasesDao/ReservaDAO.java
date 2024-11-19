@@ -126,7 +126,8 @@ public class ReservaDAO {
                         disponible = false;
                         break;
                     } else {
-                        if (rs.getString("hora_inicio") != null
+                        if ((rs.getInt("mesa") == 0) 
+                                && rs.getString("hora_inicio") != null
                                 && rs.getString("hora_fin") != null) {
 
                             LocalTime auxHoraI = LocalTime.parse(rs.getString(
