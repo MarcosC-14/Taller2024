@@ -54,7 +54,6 @@ public class ReservaDAO {
     public boolean realizarReserva(Reserva reserva) {
         boolean realizado = false;
         con = conn.getConexion();
-        ResultSet rs;
         String sql = "INSERT into reserva "
                 + "(fecha,hora,comentario,num_mesa,id_cliente,id_tarjeta)"
                 + " VALUES(?,?,?,?,?,?)";
@@ -100,8 +99,7 @@ public class ReservaDAO {
             LocalDate fecha,
             LocalTime hora) {
         boolean disponible = false;
-        Connection con = conn.getConexion();
-        ResultSet rs;
+        con = conn.getConexion();
         String sql = "SELECT * FROM reserva WHERE num_mesa = ? "
                 + " AND fecha = ? AND hora = ?";
         try {
@@ -166,9 +164,7 @@ public class ReservaDAO {
      * @return una lista con todas las mesas.
      */
     public ArrayList<Mesa> mesas() {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         ArrayList<Mesa> mesas = new ArrayList<Mesa>();
         String sql = "SELECT * FROM mesa";
         try {
@@ -230,9 +226,7 @@ public class ReservaDAO {
      * @return una lista con el historia de las reservas de ese cliente.
      */
     public ArrayList<Reserva> obtenerReservasHistorial(Cliente c) {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         String sql = "SELECT rTabla.*, mTabla.*, tTabla.*, "
                 + "tTabla.nombre AS nombre_tarjeta, tTabla.emisor,"
@@ -555,9 +549,7 @@ public class ReservaDAO {
      * @return Array list con las reservas pasadas
      */
     public ArrayList<Reserva> obtenerReservasPasadas() {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         LocalDate hoy = LocalDate.now();
         ArrayList<Reserva> reservasPasadas = new ArrayList<Reserva>();
         String sql = "SELECT * FROM reserva"

@@ -140,14 +140,20 @@ public class ClRecuperarC extends javax.swing.JFrame {
         String resultado = clienteDAO.recuperarContraseña(correoIngreso);
 
         if (!resultado.equals("")) {
-            // Mostrar el resultado en un JOptionPane
+            if(!resultado.equals("Correo no encontrado")){
             javax.swing.JOptionPane.showMessageDialog(this,
                     resultado,
                     "Recuperar Contraseña",
                     javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }else{
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    resultado,
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
         } else {
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "El correo no se encuentra en la base de datos",
+                    "Ocurrio un error",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
         }

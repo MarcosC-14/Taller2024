@@ -146,8 +146,7 @@ public class ClienteDAO {
                 contraseña = "Correo no encontrado";
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Error al obtener Cliente" + e);
+            System.out.println(e.getMessage());
         } finally {
             conn.cerrarConexion();
         }
@@ -229,8 +228,8 @@ public class ClienteDAO {
         String verificaId = "SELECT *  FROM cliente WHERE id= ?";
         String verificaTelefono = "SELECT *  FROM cliente WHERE telefono= ?";
         String sql = "UPDATE cliente SET telefono = ? WHERE id = ?";
-        try {
-            con = conn.getConexion(); //asegura que estas conectado
+        con = conn.getConexion(); 
+        try { 
             ps = con.prepareStatement(verificaId);
             ps.setInt(1,
                     id);
@@ -250,16 +249,9 @@ public class ClienteDAO {
                     if (actualizacion) {
                         cliente.setTelefono(telefono);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null,
-                            "El telefono ya se encuentra registrado",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
+                } 
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Error al actualizar la informacion: " + e);
             System.out.println(e.getMessage());
         } finally {
             conn.cerrarConexion();
