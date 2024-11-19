@@ -538,7 +538,7 @@ public class AdView extends javax.swing.JFrame {
         jComboBoxHoraApertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22" }));
 
         jComboBoxHoraCierre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBoxHoraCierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBoxHoraCierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "14", "16", "18", "20", "22", "00" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1701,26 +1701,23 @@ public class AdView extends javax.swing.JFrame {
         }
         switch (agendaR.getHoraCierre().
                 format(DateTimeFormatter.ofPattern("HH:mm:ss"))) {
-            case "12:00:00":
+            case "14:00:00":
                 jComboBoxHoraCierre.setSelectedIndex(0);
                 break;
-            case "14:00:00":
+            case "16:00:00":
                 jComboBoxHoraCierre.setSelectedIndex(1);
                 break;
-            case "16:00:00":
+            case "18:00:00":
                 jComboBoxHoraCierre.setSelectedIndex(2);
                 break;
-            case "18:00:00":
+            case "20:00:00":
                 jComboBoxHoraCierre.setSelectedIndex(3);
                 break;
-            case "20:00:00":
+            case "22:00:00":
                 jComboBoxHoraCierre.setSelectedIndex(4);
                 break;
-            case "22:00:00":
-                jComboBoxHoraCierre.setSelectedIndex(5);
-                break;
             case "23:59:59":
-                jComboBoxHoraCierre.setSelectedIndex(6);
+                jComboBoxHoraCierre.setSelectedIndex(5);
                 break;
 
         }
