@@ -219,7 +219,7 @@ public class Inicio extends javax.swing.JFrame {
                         pass);
                 if (usuario.getCorreo().equals(correo)) {
                     Empleado emp = (Empleado) usuario;
-                    if (((Empleado) usuario).getRol().toString().equals(
+                    if (emp.getRol().toString().equals(
                             "Administrador")) {
 
                         Administrador admin = new Administrador(emp);
@@ -227,7 +227,7 @@ public class Inicio extends javax.swing.JFrame {
                         adView.setVisible(true);
                         this.dispose();
                     } else {
-                        EpView epView = new EpView((Empleado) usuario);
+                        EpView epView = new EpView(emp);
                         epView.setVisible(true);
                         this.dispose();
                     }
