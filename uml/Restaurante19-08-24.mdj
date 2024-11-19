@@ -1236,57 +1236,6 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAGRTTEO+LCKjvE=",
-											"_parent": {
-												"$ref": "AAAAAAGRMXv0YF/IWuA="
-											},
-											"model": {
-												"$ref": "AAAAAAGRTTEO17CHS60="
-											},
-											"font": "Arial;13;0",
-											"left": 1301,
-											"top": 836,
-											"width": 186.06884765625,
-											"height": 13,
-											"text": "+dispo(numero: int, fecha: Date)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAGRTTdGL7FtXmY=",
-											"_parent": {
-												"$ref": "AAAAAAGRMXv0YF/IWuA="
-											},
-											"model": {
-												"$ref": "AAAAAAGRTTdGFLFqgmc="
-											},
-											"font": "Arial;13;0",
-											"left": 1301,
-											"top": 851,
-											"width": 186.06884765625,
-											"height": 13,
-											"text": "+filtroubi(Ubicacion ubicacion)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAGRTTd5YrHKIxU=",
-											"_parent": {
-												"$ref": "AAAAAAGRMXv0YF/IWuA="
-											},
-											"model": {
-												"$ref": "AAAAAAGRTTd5TbHHW9I="
-											},
-											"font": "Arial;13;0",
-											"left": 1301,
-											"top": 866,
-											"width": 186.06884765625,
-											"height": 13,
-											"text": "+filtrocapa(Capacidad capa)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
 											"_id": "AAAAAAGRTUPSFbpSTU4=",
 											"_parent": {
 												"$ref": "AAAAAAGRMXv0YF/IWuA="
@@ -1308,7 +1257,7 @@
 									"left": 1296,
 									"top": 741,
 									"width": 196.06884765625,
-									"height": 143
+									"height": 98
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -8148,72 +8097,6 @@
 									},
 									"name": "value",
 									"type": "String"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGRTTEO17CHS60=",
-							"_parent": {
-								"$ref": "AAAAAAGRMXv0YF+/SLE="
-							},
-							"name": "dispo",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGRTTJODrDK2E4=",
-									"_parent": {
-										"$ref": "AAAAAAGRTTEO17CHS60="
-									},
-									"name": "numero",
-									"type": "int"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGRTTJODrDLGIQ=",
-									"_parent": {
-										"$ref": "AAAAAAGRTTEO17CHS60="
-									},
-									"name": "fecha",
-									"type": "Date"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGRTTdGFLFqgmc=",
-							"_parent": {
-								"$ref": "AAAAAAGRMXv0YF+/SLE="
-							},
-							"name": "filtroubi",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGRTTd44LGt1DI=",
-									"_parent": {
-										"$ref": "AAAAAAGRTTdGFLFqgmc="
-									},
-									"name": "Ubicacion ubicacion",
-									"type": ""
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGRTTd5TbHHW9I=",
-							"_parent": {
-								"$ref": "AAAAAAGRMXv0YF+/SLE="
-							},
-							"name": "filtrocapa",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGRTTegLrIKn6A=",
-									"_parent": {
-										"$ref": "AAAAAAGRTTd5TbHHW9I="
-									},
-									"name": "Capacidad capa",
-									"type": ""
 								}
 							]
 						},
