@@ -88,9 +88,7 @@ public class EmpleadoDAO {
      * nombre, id y rol.
      */
     public ArrayList<Empleado> obtenerEmpleados() {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
         String sql = "SELECT * FROM empleado";
         try {

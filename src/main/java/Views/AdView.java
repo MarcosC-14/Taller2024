@@ -535,7 +535,7 @@ public class AdView extends javax.swing.JFrame {
         });
 
         jComboBoxHoraApertura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBoxHoraApertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
+        jComboBoxHoraApertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22" }));
 
         jComboBoxHoraCierre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBoxHoraCierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "18", "20", "22", "00" }));
@@ -1696,9 +1696,6 @@ public class AdView extends javax.swing.JFrame {
                 break;
             case "22:00:00":
                 jComboBoxHoraApertura.setSelectedIndex(5);
-                break;
-            case "23:59:59":
-                jComboBoxHoraApertura.setSelectedIndex(6);
                 break;
 
         }

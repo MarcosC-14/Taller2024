@@ -298,9 +298,7 @@ public class ClienteDAO {
      * @return un ArrayList de todos los clientes.
      */
     public ArrayList<Cliente> obtenerClientes() {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
         String sql = "SELECT * FROM cliente";
         try {
