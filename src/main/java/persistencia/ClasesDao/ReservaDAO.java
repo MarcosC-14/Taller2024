@@ -546,8 +546,8 @@ public class ReservaDAO {
 
     /**
      * ArrayList que devuelve todas las reservas pasadas, si su fecha es menor a
-     * hoy lo guarda en su arrayList
-     * @return Array list con las reservas pasadas
+     * hoy, no asistio y no tuvo multa, lo guarda en su arrayList
+     * @return  ArrayList con las reservas pasadas
      */
     public ArrayList<Reserva> obtenerReservasPasadas() {
         con = conn.getConexion();
@@ -593,17 +593,15 @@ public class ReservaDAO {
     }
 
     /**
-     * Cobrar la multa al dia siguiente (automatico), cambie el estado de multa
-     * de Reserva= true, se guarda en base de datos como 1
+     * Cobra la multa al dia siguiente (automatico), cambia el estado de multa
+     * de Reserva a true, se guarda en base de datos como 1
      * @param reservas Es el ArrayList con el que se comprobara
      * en cada reserva la asistencia y si ya se cobró la multa 
      * @return  returns true si se cobró una multa, false si 
      * no se cobró una multa
      */
     public boolean cobrarMulta(ArrayList<Reserva> reservas) {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         String sql = "UPDATE reserva SET multa = ? WHERE id = ?";
         boolean cobrar = false;
         for (Reserva reserva : reservas) {
@@ -616,7 +614,9 @@ public class ReservaDAO {
                             1);
                     ps.setInt(2,
                             reserva.getId());
-                    cobrar = (ps.executeUpdate() > 0);
+                    if(ps.executeUpdate() > 0){
+                        cobrar = true;
+                    }
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
                 }
