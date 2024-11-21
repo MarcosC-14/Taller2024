@@ -1210,7 +1210,7 @@ public class ClView extends javax.swing.JFrame {
 
         if (nombreTarjeta.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "No ingreso el nombre de la  tarjeta",
+                    "No ingresó el nombre de la  tarjeta",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
@@ -1218,7 +1218,7 @@ public class ClView extends javax.swing.JFrame {
 
         if (emisorTarjeta.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "No ingreso el emisor de la tarjeta",
+                    "No ingresó el emisor de la tarjeta",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
@@ -1226,48 +1226,47 @@ public class ClView extends javax.swing.JFrame {
 
         if (numeroTarjeta.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "No ingreso el "
+                    "No ingresó el "
                     + "número de la tarjeta",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         } else {
             
-        try {
-            Integer.parseInt(numeroTarjeta);    
-        } catch (NumberFormatException excepcion) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                        "El numero de tarjeta solo puede tener numeros",
-                        "Advertencia",
-                        javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
-        }
+            if(!numeroTarjeta.matches("\\d+")){
+                javax.swing.JOptionPane.showMessageDialog(this,
+                            "El número de tarjeta solo puede tener números",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+            }
+            
             if (numeroTarjeta.length() > 16) {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                        "El numero de la tarjeta no puede"
-                                + " tener más de 16 digitos",
+                        "El número de la tarjeta no puede"
+                                + " tener más de 16 dígitos",
                         "Advertencia",
                         javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
-        }
-        try {
-            Integer.parseInt(codigoSegTarjeta);    
-        } catch (NumberFormatException excepcion) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                        "El codigo seguridad solo puede tener numeros",
-                        "Advertencia",
-                        javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
+            
         }
         if (codigoSegTarjeta.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "No ingreso el codigo de seguridad"
+                    "No ingreso el código de seguridad"
                             + " de la tarjeta",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         } else {
+            if(!codigoSegTarjeta.matches("\\d+")){
+                javax.swing.JOptionPane.showMessageDialog(this,
+                            "El código de seguridad de la tarjeta"
+                                    + " solo puede tener números",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+            }
             if (codigoSegTarjeta.length() > 3) {
                 javax.swing.JOptionPane.showMessageDialog(this,
                         "La tarjeta no"
@@ -1595,15 +1594,15 @@ public class ClView extends javax.swing.JFrame {
                     return;
             }
             String codigoTarjeta =jTxtCodigoTarjetaMod.getText();
-            try {
-                Integer.parseInt(codigoTarjeta);    
-            } catch (NumberFormatException excepcion) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                        "Ingrese un numero en el codigo de tarjeta",
-                        "Advertencia",
-                        javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
-        }
+            
+            if(!codigoTarjeta.matches("\\d+")){
+                javax.swing.JOptionPane.showMessageDialog(this,
+                            "Ingrese un número en el código de tarjeta",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+            }
+            
             if (codigoTarjeta.length() > 3) {
                 javax.swing.JOptionPane.showMessageDialog(this,
                         "La tarjeta no"
@@ -1615,19 +1614,18 @@ public class ClView extends javax.swing.JFrame {
             }
             
             String numeroTarjeta = jTxtNumeroTarjetaMod.getText();
-            try {
-                Integer.parseInt(numeroTarjeta);    
-            } catch (NumberFormatException excepcion) {
-             javax.swing.JOptionPane.showMessageDialog(this,
-                        "Ingrese un numero en la tarjeta",
-                        "Advertencia",
-                        javax.swing.JOptionPane.WARNING_MESSAGE);
-                return;
+            
+            if(!numeroTarjeta.matches("\\d+")){
+                javax.swing.JOptionPane.showMessageDialog(this,
+                            "Ingrese un número en la tarjeta",
+                            "Advertencia",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
             }
             if (numeroTarjeta.length() > 16) {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                        "El numero de la tarjeta no puede"
-                                + " tener más de 16 digitos",
+                        "El número de la tarjeta no puede"
+                                + " tener más de 16 dígitos",
                         "Advertencia",
                         javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
