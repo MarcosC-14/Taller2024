@@ -17,12 +17,6 @@ import java.sql.ResultSet;
  * Caraballo
  */
 public class ClRegisterView extends javax.swing.JFrame {
-
-    
-    SQLiteManager cn = new SQLiteManager();
-    Connection conn;
-    PreparedStatement pst;
-    ResultSet rs;
     Cliente cliente = new Cliente();
     ClienteDAO clienteDAO = new ClienteDAO();
 

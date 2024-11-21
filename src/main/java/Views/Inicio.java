@@ -203,10 +203,8 @@ public class Inicio extends javax.swing.JFrame {
      */
     private void jButton_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ingresoActionPerformed
         String correo = this.txt_username.getText().trim();
-        String pass = String.valueOf(this.txt_password.getPassword());
-        // validar que los campos no esten vacios 
-        if (!correo.equals("") || !pass.equals("")) {
-            // pasar parametros al metodo login
+        String pass = String.valueOf(this.txt_password.getPassword()); 
+        if (!correo.equals("") || !pass.equals("")) { 
             usuario = cliente_dao.loginQuery(correo,
                     pass);
             if (usuario.getCorreo().equals(correo)) {

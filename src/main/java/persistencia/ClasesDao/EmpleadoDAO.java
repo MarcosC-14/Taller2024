@@ -232,9 +232,7 @@ public class EmpleadoDAO {
      * @return ArrayList de todos los bloqueos y eventos
      */
     public ArrayList<BloqueoMesaEventoEspecial> obtenerBloqueosMesasEventosEspeciales() {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         ArrayList<BloqueoMesaEventoEspecial> bs = new ArrayList<BloqueoMesaEventoEspecial>();
         String sql = "SELECT * FROM bloqueo_evento";
         try {
@@ -302,9 +300,7 @@ public class EmpleadoDAO {
     public boolean definirHoraAperturaCierre(LocalTime horaAp,
             LocalTime horaCi) {
         boolean modificado = false;
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         String sql = "UPDATE agenda_restaurante SET hora_apertura = ?, "
                 + " hora_cierre = ? WHERE id = 1";
         try {

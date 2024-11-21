@@ -25,7 +25,6 @@ public class EpView extends javax.swing.JFrame {
     private DefaultTableModel tabla;
     private ReservaDAO reservaDAO;
     private ArrayList<Reserva> reservas;
-
     private Empleado empleado;
 
     /**

@@ -21,14 +21,14 @@ public class MensajeReserva extends javax.swing.JFrame {
     /**
      * Contructor Parametrizado.
      *
-     * @param fecha representa la fecha de la reserva.
-     * @param hora representa la hora de la reserva.
-     * @param numMesa representa el numero de mesa.
-     * @param capacidad representa la capacidad de la mesa.
-     * @param ubicacion representa la ubicacion de la mesa.
-     * @param numTarjeta representa el numero de tarjeta.
-     * @param comentario representa el comentario que escribio un cliente.
-     * @param clView representa la ventana anterior para poder abrirla cuandon
+     * @param   fecha representa la fecha de la reserva.
+     * @param   hora representa la hora de la reserva.
+     * @param   numMesa representa el numero de mesa.
+     * @param   capacidad representa la capacidad de la mesa.
+     * @param   ubicacion representa la ubicacion de la mesa.
+     * @param   numTarjeta representa el numero de tarjeta.
+     * @param   comentario representa el comentario que escribio un cliente.
+     * @param   clView representa la ventana anterior para poder abrirla cuandon
      * se presione el boton atras.
      */
     public MensajeReserva(LocalDate fecha,

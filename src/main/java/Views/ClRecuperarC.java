@@ -1,7 +1,7 @@
 package Views;
 
 import persistencia.ClasesDao.ClienteDAO;
-import modelo.Cliente;
+import Controladores.ClienteController;
 
 /**
  * Ventana grafica que permite recuperar la contraseña de un cliente
@@ -127,15 +127,21 @@ public class ClRecuperarC extends javax.swing.JFrame {
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
         String correoIngreso = correo.getText();
         if (correoIngreso.isEmpty()) {
-
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Por favor, ingrese su correo.",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
+        if (ClienteController.esCorreoElectronicoValido(correoIngreso)) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "El correo electronico debe llevar @",
+                    "Advertencia",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente cliente1 = new Cliente();
+        
 
         String resultado = clienteDAO.recuperarContraseña(correoIngreso);
 

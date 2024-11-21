@@ -369,9 +369,8 @@ public class ReservaDAO {
      * @return una mesa con numero, capacidad y ubicacion.
      */
     public Mesa obtenerMesaPorNumero(int num) {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
+        
         Mesa mesa = new Mesa();
         String sql = "SELECT * FROM mesa WHERE numero=?";
         try {
@@ -411,9 +410,7 @@ public class ReservaDAO {
             boolean asistencia) {
 
         boolean actualizacion = false;
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         String sql = "UPDATE reserva SET asistencia = ? "
                 + " WHERE num_mesa=? AND hora=?";
         try {
@@ -447,7 +444,6 @@ public class ReservaDAO {
     public boolean modificarReserva(Reserva reserva) {
         boolean realizado = false;
         con = conn.getConexion();
-        ResultSet rs;
         String sql = "UPDATE reserva SET fecha = ?, hora = ?, "
                 + "comentario = ?, num_mesa = ?, id_cliente= ?,"
                 + " id_tarjeta = ? WHERE id = ?";
@@ -487,7 +483,6 @@ public class ReservaDAO {
     public boolean eliminarReserva(Reserva reserva) {
         boolean eliminado = false;
         con = conn.getConexion();
-        ResultSet rs;
         String sql = "DELETE FROM reserva WHERE id = ?";
         try {
             ps = con.prepareStatement(sql);
@@ -512,7 +507,6 @@ public class ReservaDAO {
     public boolean modificarTiempoOcupacionFin(Reserva reserva) {
         boolean modificado = false;
         con = conn.getConexion();
-        ResultSet rs;
         String sql = "UPDATE reserva SET hora_inicio = ?,"
                 + " hora_fin = ?"
                 + " WHERE id = ?";
@@ -635,9 +629,7 @@ public class ReservaDAO {
      * @return  un entero que representa la cantidad de asistencias.
      */
     public int cantidadAsistencias(Cliente cliente) {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+         con = conn.getConexion();
         String sql = "SELECT COUNT(*) FROM reserva"
                 + " WHERE id_cliente = ? AND asistencia = 1";
         int cantidad = 0;
@@ -664,9 +656,7 @@ public class ReservaDAO {
      * @return  ArrayList con todas las reservas
      */
     public ArrayList<Reserva> obtenerReservas() {
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        con = conn.getConexion();
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         String sql = "SELECT rTabla.*, mTabla.*, tTabla.*, cTabla.*, "
                 + "cTabla.id AS id_cTabla, "

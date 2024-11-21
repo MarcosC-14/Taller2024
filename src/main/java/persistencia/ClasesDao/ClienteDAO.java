@@ -277,7 +277,7 @@ public class ClienteDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1,
                     id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             datosCliente[0] = rs.getString("nombre");
             datosCliente[1] = rs.getString("correo");
             datosCliente[2] = rs.getString("telefono");
@@ -328,10 +328,8 @@ public class ClienteDAO {
      * @return un objeto cliente en caso de que este en la base de datos.
      */
     public Cliente obtenerCliente(String correo) {
-        Cliente cliente = new Cliente();
-        Connection con = conn.getConexion();
-        ResultSet rs;
-        PreparedStatement ps;
+        cliente = new Cliente();
+        con = conn.getConexion();
         String sql = "SELECT * FROM cliente WHERE correo=?";
         try {
 

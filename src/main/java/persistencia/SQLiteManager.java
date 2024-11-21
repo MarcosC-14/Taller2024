@@ -25,10 +25,7 @@ public class SQLiteManager {
      */
     public Connection getConexion() {
         try {
-            // Establece la URL de conexión a la base de datos SQLite
             String url = "jdbc:sqlite:Restaurante.db";
-
-            // Conecta a la base de datos
             connection = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.err.println("Error de conexión: " + e.getMessage());

@@ -45,10 +45,10 @@ public class AdView extends javax.swing.JFrame {
     private ClienteDAO clienteDAO = new ClienteDAO();
     private Cliente cliente = new Cliente();
     private ReservaDAO reservaDAO = new ReservaDAO();
-    ArrayList<BloqueoMesaEventoEspecial> bmes = new ArrayList<BloqueoMesaEventoEspecial>();
-    BloqueoMesaEventoEspecial bme;
-    ArrayList<Reserva> reservas;
-    ArrayList<Cliente> clientes;
+    private ArrayList<BloqueoMesaEventoEspecial> bmes = new ArrayList<BloqueoMesaEventoEspecial>();
+    private BloqueoMesaEventoEspecial bme;
+    private ArrayList<Reserva> reservas;
+    private ArrayList<Cliente> clientes;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
     private String tituloReservas;
@@ -1028,7 +1028,7 @@ public class AdView extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) this.jTable_clientesAdmin.
                 getModel();
-        model.setRowCount(0); // Limpia todas las filas existentes        
+        model.setRowCount(0);         
 
         for (Cliente c : clientes) {
             model.addRow(new Object[]{
@@ -1051,7 +1051,7 @@ public class AdView extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) this.jTable_clientesAdmin.
                 getModel();
-        model.setRowCount(0); // Limpia todas las filas existentes        
+        model.setRowCount(0);        
 
         for (Cliente c : clientes) {
             model.addRow(new Object[]{
@@ -1074,7 +1074,7 @@ public class AdView extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) this.jTable_empleadosAdmin.
                 getModel();
-        model.setRowCount(0); // Limpia todas las filas existentes        
+        model.setRowCount(0);        
 
         for (Empleado e : empleados) {
             model.addRow(new Object[]{
@@ -1096,7 +1096,7 @@ public class AdView extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) jTableReporteReservas.
                 getModel();
-        model.setRowCount(0); // Limpia todas las filas existentes        
+        model.setRowCount(0);         
 
         for (Reserva res : reservas) {
             String auxHoraInicio = "";
@@ -1135,10 +1135,7 @@ public class AdView extends javax.swing.JFrame {
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         bme = agendaR.getFechasEspecial().get(jTable_bloqueoMesas.
                 getSelectedRow());
-        /**
-         * Se envia un mensaje al usuario, de confirmacion si el bloqueo se
-         * elimina correctamente o de error en caso contrario
-         */
+       
         if (empleadoDAO.eliminarBloqueoEvento(bme)) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Bloqueo o evento eliminado con éxito.",
@@ -1153,7 +1150,8 @@ public class AdView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
     /**
-     * Evento que se ejecuta cuando se aprieta el boton.
+     * Evento que se ejecuta cuando se aprieta el boton ver en la pantalla 
+     * Bloqueo/Eventos.
      * Se llama al metodo actualizarTablaBloqueoMesaEvento.
      *
      * @param   evt es el evento de apretar el boton actualizar.

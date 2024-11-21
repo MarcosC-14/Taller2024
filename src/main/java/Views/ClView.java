@@ -1237,7 +1237,7 @@ public class ClView extends javax.swing.JFrame {
             Integer.parseInt(numeroTarjeta);    
         } catch (NumberFormatException excepcion) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                        "Ingrese un numero de tarjeta",
+                        "El numero de tarjeta solo puede tener numeros",
                         "Advertencia",
                         javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
@@ -1255,7 +1255,7 @@ public class ClView extends javax.swing.JFrame {
             Integer.parseInt(codigoSegTarjeta);    
         } catch (NumberFormatException excepcion) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                        "Ingrese un numero en codigo seguridad",
+                        "El codigo seguridad solo puede tener numeros",
                         "Advertencia",
                         javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
