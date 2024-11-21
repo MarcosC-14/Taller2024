@@ -124,11 +124,11 @@ public class EpView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero", "Cliente", "Comentario", "Asistencia", "Hora Inicio", "Hora Fin"
+                "Mesa", "Cliente", "Comentario", "Hora", "Asistencia", "Hora Inicio", "Hora Fin"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -137,7 +137,7 @@ public class EpView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaListadoMesasEmpleado);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 800, 370));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 880, 370));
 
         btnRecepcionistaAsistencia.setText("Marcar asistencia");
         btnRecepcionistaAsistencia.addActionListener(new java.awt.event.ActionListener() {
@@ -195,23 +195,24 @@ public class EpView extends javax.swing.JFrame {
         for (Reserva reserva1 : reservas) {
             o[0] = reserva1.getMesa().getNumero();
             o[1] = reserva1.getCliente().getNombre();
+            o[3]=reserva1.getHora();
             o[2] = reserva1.getComentario();
             if (reserva1.getAsistencia()) {
-                o[3] = "Asistio";
+                o[4] = "Asistio";
             } else {
-                o[3] = "No asistio";
+                o[4] = "No asistio";
             }
             if (reserva1.getTiempoOcupacion() != null) {
-                o[4] = reserva1.getTiempoOcupacion().format(DateTimeFormatter.
+                o[5] = reserva1.getTiempoOcupacion().format(DateTimeFormatter.
                         ofPattern("HH:mm:ss"));
             } else {
-                o[4] = "";
+                o[5] = "";
             }
             if (reserva1.getTiempoFinalizacion() != null) {
-                o[5] = reserva1.getTiempoFinalizacion().format(
+                o[6] = reserva1.getTiempoFinalizacion().format(
                         DateTimeFormatter.ofPattern("HH:mm:ss"));
             } else {
-                o[5] = "";
+                o[6] = "";
             }
             tabla.addRow(o);
         }
@@ -255,7 +256,7 @@ public class EpView extends javax.swing.JFrame {
                     reservas = reservaDAO.obtenerReservasDeHoy();
                     String asistenciaActual = (String) tabla.getValueAt(
                             filaSeleccionada,
-                            3);
+                            4);
                     int nuevoEstado = asistenciaActual.equals("Asistio") ? 0 : 1;
                     Reserva reserva = reservas.get(filaSeleccionada);
                     int numMesa = reserva.getMesa().getNumero();
