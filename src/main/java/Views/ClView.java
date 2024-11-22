@@ -1778,14 +1778,14 @@ public class ClView extends javax.swing.JFrame {
                 actualizarTablaMesas(jTable_mesasDisponiblesMod);
             } else {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                        "No puede hacer una reservación"
+                        "No puede modificar una reservación"
                                 + " con menos de un día de antelación",
                         "Advertencia",
                         javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         } else {
             javax.swing.JOptionPane.showMessageDialog(this,
-                    "No puede hacer una reservación"
+                    "No puede modificar una reservación"
                             + " con menos de un día de antelación",
                     "Advertencia",
                     javax.swing.JOptionPane.WARNING_MESSAGE);

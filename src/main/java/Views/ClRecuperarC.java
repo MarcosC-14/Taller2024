@@ -133,7 +133,7 @@ public class ClRecuperarC extends javax.swing.JFrame {
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (ClienteController.esCorreoElectronicoValido(correoIngreso)) {
+        if (!ClienteController.esCorreoElectronicoValido(correoIngreso)) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "El correo electronico debe llevar @",
                     "Advertencia",
