@@ -20,6 +20,7 @@ public class Main {
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         reservas = reservaDao.obtenerReservasPasadas();
         boolean bandera = reservaDao.cobrarMulta(reservas);
+        //hola
     }
 
 }
