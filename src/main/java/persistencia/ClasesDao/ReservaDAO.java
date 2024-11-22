@@ -308,14 +308,12 @@ public class ReservaDAO {
         
         LocalDate hoy = LocalDate.now();
         String sql = "SELECT * FROM reserva WHERE fecha=?";
-        String baseCliente = "SELECT * FROM reserva ";
         ArrayList<Reserva> reservasDeHoy = new ArrayList<Reserva>();
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1,
                     hoy.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             rs = ps.executeQuery();
-
             while (rs.next()) {
                 Mesa mesa = obtenerMesaPorNumero(rs.getInt("num_mesa"));
                 ClienteDAO cliente = new ClienteDAO();
@@ -377,7 +375,7 @@ public class ReservaDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1,
                     num);
-            rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 int numero = rs.getInt("numero");

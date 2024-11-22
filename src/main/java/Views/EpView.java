@@ -137,7 +137,7 @@ public class EpView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaListadoMesasEmpleado);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 880, 370));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 820, 370));
 
         btnRecepcionistaAsistencia.setText("Marcar asistencia");
         btnRecepcionistaAsistencia.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class EpView extends javax.swing.JFrame {
      */
     private void actualizarTablaMesasDeHoy() {
         tabla.setRowCount(0);
-        Object[] o = new Object[6];
+        Object[] o = new Object[7];
         reservaDAO = new ReservaDAO();
         reservas = new ArrayList<Reserva>();
         reservas = reservaDAO.obtenerReservasDeHoy();
@@ -254,10 +254,6 @@ public class EpView extends javax.swing.JFrame {
                         getSelectedRow();
                 if (filaSeleccionada != -1) {
                     reservas = reservaDAO.obtenerReservasDeHoy();
-                    String asistenciaActual = (String) tabla.getValueAt(
-                            filaSeleccionada,
-                            4);
-                    int nuevoEstado = asistenciaActual.equals("Asistio") ? 0 : 1;
                     Reserva reserva = reservas.get(filaSeleccionada);
                     int numMesa = reserva.getMesa().getNumero();
                     boolean asistencia = reserva.getAsistencia();

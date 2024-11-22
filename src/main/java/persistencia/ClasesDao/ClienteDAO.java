@@ -277,7 +277,7 @@ public class ClienteDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1,
                     id);
-            rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             datosCliente[0] = rs.getString("nombre");
             datosCliente[1] = rs.getString("correo");
             datosCliente[2] = rs.getString("telefono");
