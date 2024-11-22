@@ -310,6 +310,10 @@ public class EpView extends javax.swing.JFrame {
                 if (reserva.getAsistencia()) {
                     reserva.setTiempoOcupacion(LocalTime.now());
                     if (reservaDAO.modificarTiempoOcupacionFin(reserva)) {
+                        javax.swing.JOptionPane.showMessageDialog(this,
+                                "Hora Actualizada Correctamente",
+                                "Asistencia",
+                                javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     }
                     actualizarTablaMesasDeHoy();
                 } else {
