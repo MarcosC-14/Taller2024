@@ -19,8 +19,7 @@ public class Main {
         ReservaDAO reservaDao = new ReservaDAO();
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         reservas = reservaDao.obtenerReservasPasadas();
-        boolean bandera = reservaDao.cobrarMulta(reservas);
-        //hola
+       reservaDao.cobrarMulta(reservas);
     }
 
 }
