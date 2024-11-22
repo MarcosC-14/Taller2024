@@ -35,7 +35,9 @@ public class TarjetaDAO {
      */
     public boolean guardarTarjeta(Tarjeta tarjeta) {
         boolean realizado = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "INSERT into tarjeta "
                 + " (nombre, emisor, numero, cod_seguridad) "
                 + " VALUES (?,?,?,?)";
@@ -69,7 +71,9 @@ public class TarjetaDAO {
     public boolean existeTarjeta(String numero) {
         boolean bandera = false;
         String buscarNumTarjeta = "SELECT * FROM tarjeta WHERE numero = ?";
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         if (!convertToLong(numero)) {
             return false;
         }
@@ -100,16 +104,17 @@ public class TarjetaDAO {
      */
     public boolean tarjetaValida(Tarjeta tarjeta) {
         boolean enBase = true;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "SELECT * FROM tarjeta WHERE numero=?";
 
         long numeroTarjeta = Long.parseLong(tarjeta.getNumero());
         try {
-            con = conn.getConexion();
             ps = con.prepareStatement(sql);
             ps.setLong(1,
                     numeroTarjeta);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if (!(tarjeta.getCodSeguridad().
                     equals(rs.getString("cod_seguridad")))) {
                 enBase = false;

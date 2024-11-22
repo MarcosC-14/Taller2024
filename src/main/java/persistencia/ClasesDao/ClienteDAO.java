@@ -49,11 +49,12 @@ public class ClienteDAO {
         String buscarCorreo = "SELECT correo FROM cliente WHERE correo=?"
                 + " UNION SELECT correo FROM empleado WHERE correo=?";
         String correo = cliente.getCorreo();
-        //que revise si el correo ya esta ingresado
         String sql = "INSERT into cliente (nombre,correo,contrasenia,telefono)"
                 + " VALUES(?,?,?,?)";
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-            con = conn.getConexion();
             ps = con.prepareStatement(buscarCorreo);
             ps.setString(1,
                     correo);
@@ -99,9 +100,10 @@ public class ClienteDAO {
             String password) {
         String query = "SELECT *FROM cliente WHERE correo = ?"
                 + " AND contrasenia = ?";
-
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-            con = conn.getConexion();
             ps = con.prepareStatement(query);
             ps.setString(1,
                     user);
@@ -134,7 +136,9 @@ public class ClienteDAO {
     public String recuperarContraseña(String correo) {
         String contraseña = "";
         String recuperaC = "SELECT * FROM cliente WHERE correo = ?";
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
             ps = con.prepareStatement(recuperaC);
             ps.setString(1,
@@ -169,8 +173,10 @@ public class ClienteDAO {
         String buscaId = "SELECT * FROM cliente WHERE id = ?";
         String sql = "UPDATE cliente SET correo = ? WHERE id = ?";
         String correoBuscar = "SELECT * FROM cliente WHERE correo= ?";
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-            con = conn.getConexion();
             ps = con.prepareStatement(buscaId);
             ps.setInt(1,
                     id);
@@ -228,7 +234,9 @@ public class ClienteDAO {
         String verificaId = "SELECT *  FROM cliente WHERE id= ?";
         String verificaTelefono = "SELECT *  FROM cliente WHERE telefono= ?";
         String sql = "UPDATE cliente SET telefono = ? WHERE id = ?";
-        con = conn.getConexion(); 
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try { 
             ps = con.prepareStatement(verificaId);
             ps.setInt(1,
@@ -272,12 +280,14 @@ public class ClienteDAO {
     public String[] mostrarDatos(int id) {
         String datosCliente[] = new String[3];
         String sql = "SELECT nombre, correo, telefono FROM cliente WHERE id=?";
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-            con = conn.getConexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1,
                     id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             datosCliente[0] = rs.getString("nombre");
             datosCliente[1] = rs.getString("correo");
             datosCliente[2] = rs.getString("telefono");
@@ -298,7 +308,9 @@ public class ClienteDAO {
      * @return un ArrayList de todos los clientes.
      */
     public ArrayList<Cliente> obtenerClientes() {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
         String sql = "SELECT * FROM cliente";
         try {
@@ -329,17 +341,15 @@ public class ClienteDAO {
      */
     public Cliente obtenerCliente(String correo) {
         cliente = new Cliente();
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "SELECT * FROM cliente WHERE correo=?";
         try {
-
             ps = con.prepareStatement(sql);
-
             ps.setString(1,
                     correo);
-
             rs = ps.executeQuery();
-
             if (rs.next()) {
 
                 cliente.setContrasenia(rs.getString("contrasenia"));

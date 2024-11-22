@@ -53,7 +53,9 @@ public class ReservaDAO {
      */
     public boolean realizarReserva(Reserva reserva) {
         boolean realizado = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "INSERT into reserva "
                 + "(fecha,hora,comentario,num_mesa,id_cliente,id_tarjeta)"
                 + " VALUES(?,?,?,?,?,?)";
@@ -99,7 +101,9 @@ public class ReservaDAO {
             LocalDate fecha,
             LocalTime hora) {
         boolean disponible = false;
-        con = conn.getConexion();
+       Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "SELECT * FROM reserva WHERE num_mesa = ? "
                 + " AND fecha = ? AND hora = ?";
         try {
@@ -165,7 +169,9 @@ public class ReservaDAO {
      * @return una lista con todas las mesas.
      */
     public ArrayList<Mesa> mesas() {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         ArrayList<Mesa> mesas = new ArrayList<Mesa>();
         String sql = "SELECT * FROM mesa";
         try {
@@ -227,7 +233,9 @@ public class ReservaDAO {
      * @return una lista con el historia de las reservas de ese cliente.
      */
     public ArrayList<Reserva> obtenerReservasHistorial(Cliente c) {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         String sql = "SELECT rTabla.*, mTabla.*, tTabla.*, "
                 + "tTabla.nombre AS nombre_tarjeta, tTabla.emisor,"
@@ -304,7 +312,9 @@ public class ReservaDAO {
      * @return las reservas de clientes del dia de hoy.
      */
     public ArrayList<Reserva> obtenerReservasDeHoy() {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         
         LocalDate hoy = LocalDate.now();
         String sql = "SELECT * FROM reserva WHERE fecha=?";
@@ -367,7 +377,9 @@ public class ReservaDAO {
      * @return una mesa con numero, capacidad y ubicacion.
      */
     public Mesa obtenerMesaPorNumero(int num) {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         
         Mesa mesa = new Mesa();
         String sql = "SELECT * FROM mesa WHERE numero=?";
@@ -375,7 +387,7 @@ public class ReservaDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1,
                     num);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 int numero = rs.getInt("numero");
@@ -408,7 +420,9 @@ public class ReservaDAO {
             boolean asistencia) {
 
         boolean actualizacion = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "UPDATE reserva SET asistencia = ? "
                 + " WHERE num_mesa=? AND hora=?";
         try {
@@ -441,7 +455,9 @@ public class ReservaDAO {
      */
     public boolean modificarReserva(Reserva reserva) {
         boolean realizado = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "UPDATE reserva SET fecha = ?, hora = ?, "
                 + "comentario = ?, num_mesa = ?, id_cliente= ?,"
                 + " id_tarjeta = ? WHERE id = ?";
@@ -480,7 +496,9 @@ public class ReservaDAO {
      */
     public boolean eliminarReserva(Reserva reserva) {
         boolean eliminado = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "DELETE FROM reserva WHERE id = ?";
         try {
             ps = con.prepareStatement(sql);
@@ -504,7 +522,9 @@ public class ReservaDAO {
      */
     public boolean modificarTiempoOcupacionFin(Reserva reserva) {
         boolean modificado = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "UPDATE reserva SET hora_inicio = ?,"
                 + " hora_fin = ?"
                 + " WHERE id = ?";
@@ -541,7 +561,9 @@ public class ReservaDAO {
      * @return  ArrayList con las reservas pasadas
      */
     public ArrayList<Reserva> obtenerReservasPasadas() {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         LocalDate hoy = LocalDate.now();
         ArrayList<Reserva> reservasPasadas = new ArrayList<Reserva>();
         String sql = "SELECT * FROM reserva"
@@ -592,7 +614,9 @@ public class ReservaDAO {
      * no se cobró una multa
      */
     public boolean cobrarMulta(ArrayList<Reserva> reservas) {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "UPDATE reserva SET multa = ? WHERE id = ?";
         boolean cobrar = false;
         for (Reserva reserva : reservas) {
@@ -627,7 +651,9 @@ public class ReservaDAO {
      * @return  un entero que representa la cantidad de asistencias.
      */
     public int cantidadAsistencias(Cliente cliente) {
-         con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "SELECT COUNT(*) FROM reserva"
                 + " WHERE id_cliente = ? AND asistencia = 1";
         int cantidad = 0;
@@ -654,7 +680,9 @@ public class ReservaDAO {
      * @return  ArrayList con todas las reservas
      */
     public ArrayList<Reserva> obtenerReservas() {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         String sql = "SELECT rTabla.*, mTabla.*, tTabla.*, cTabla.*, "
                 + "cTabla.id AS id_cTabla, "
