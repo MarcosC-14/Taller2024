@@ -55,8 +55,10 @@ public class EmpleadoDAO {
             String contraseña) {
         String query = "SELECT * FROM empleado WHERE"
                 + " correo = ? AND contraseña = ?";
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-            con = conn.getConexion();
             ps = con.prepareStatement(query);
             ps.setString(1,
                     usuario);
@@ -88,7 +90,9 @@ public class EmpleadoDAO {
      * nombre, id y rol.
      */
     public ArrayList<Empleado> obtenerEmpleados() {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
         String sql = "SELECT * FROM empleado";
         try {
@@ -120,10 +124,12 @@ public class EmpleadoDAO {
      */
     public boolean registrarEmpleado(Empleado emp) {
         boolean registrado = false;
-        //que revise si el correo ya esta ingresado
+        
         String sql = "INSERT into empleado"
                 + " (nombre,correo,contraseña,rol) VALUES(?,?,?,?)";
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
             if (!existeCorreo(emp.getCorreo())) {
                 ps = con.prepareStatement(sql);
@@ -153,7 +159,7 @@ public class EmpleadoDAO {
      * @param correoNuevo representa al correo del empleado a revisar
      * @return true si lo encuentra, false si no
      */
-    public boolean existeCorreo(String correoNuevo) {
+    private boolean existeCorreo(String correoNuevo) {
         String buscarCorreo = "SELECT correo FROM empleado WHERE correo = ? "
                 + "UNION SELECT correo FROM cliente WHERE correo = ?";
         boolean bandera = false;
@@ -190,9 +196,10 @@ public class EmpleadoDAO {
 
         String sql = "INSERT into bloqueo_evento"
                 + " (mesa,fecha,hora_inicio,hora_fin) VALUES(?,?,?,?)";
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-
-            con = conn.getConexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1,
                     b.getNumMesa());
@@ -232,7 +239,9 @@ public class EmpleadoDAO {
      * @return ArrayList de todos los bloqueos y eventos
      */
     public ArrayList<BloqueoMesaEventoEspecial> obtenerBloqueosMesasEventosEspeciales() {
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         ArrayList<BloqueoMesaEventoEspecial> bs = new ArrayList<BloqueoMesaEventoEspecial>();
         String sql = "SELECT * FROM bloqueo_evento";
         try {
@@ -274,7 +283,9 @@ public class EmpleadoDAO {
      */
     public boolean eliminarBloqueoEvento(BloqueoMesaEventoEspecial bme) {
         boolean eliminado = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "DELETE FROM bloqueo_evento WHERE id = ?";
         try {
             ps = con.prepareStatement(sql);
@@ -300,7 +311,9 @@ public class EmpleadoDAO {
     public boolean definirHoraAperturaCierre(LocalTime horaAp,
             LocalTime horaCi) {
         boolean modificado = false;
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         String sql = "UPDATE agenda_restaurante SET hora_apertura = ?, "
                 + " hora_cierre = ? WHERE id = 1";
         try {
@@ -328,7 +341,9 @@ public class EmpleadoDAO {
     public AgendaRestaurante obtenerHoraAperturaCierre() {
         String sql = "SELECT * FROM agenda_restaurante WHERE id = 1";
         AgendaRestaurante aR = new AgendaRestaurante();
-        con = conn.getConexion();
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -362,8 +377,10 @@ public class EmpleadoDAO {
                 + "AND hora_inicio = ?"
                 + "AND hora_fin = ?";
         boolean bandera = false;
+        Connection con = conn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-            con = conn.getConexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1,
                     b.getNumMesa());
