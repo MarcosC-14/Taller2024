@@ -198,9 +198,9 @@ public class EpView extends javax.swing.JFrame {
             o[3]=reserva1.getHora();
             o[2] = reserva1.getComentario();
             if (reserva1.getAsistencia()) {
-                o[4] = "Asistio";
+                o[4] = "Asistió";
             } else {
-                o[4] = "No asistio";
+                o[4] = "No asistió";
             }
             if (reserva1.getTiempoOcupacion() != null) {
                 o[5] = reserva1.getTiempoOcupacion().format(DateTimeFormatter.
