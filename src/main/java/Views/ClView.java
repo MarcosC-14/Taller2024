@@ -1295,9 +1295,8 @@ public class ClView extends javax.swing.JFrame {
         tarjeta.setEmisor(emisorTarjeta);
         tarjeta.setNumero(numeroTarjeta);
         tarjeta.setCodSeguridad(codigoSegTarjeta);
-        if (!actualizar) {
-            reserva.setTarjeta(tarjeta);
-        }
+        reserva.setTarjeta(tarjeta);
+        
         agendaR = new EmpleadoDAO().obtenerHoraAperturaCierre();
         if (rDAO.mesaDisponible(mesaR.getNumero(),
                 fechaBuscar,
