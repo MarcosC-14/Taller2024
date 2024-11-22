@@ -309,8 +309,7 @@ public class EpView extends javax.swing.JFrame {
                         getSelectedRow());
                 if (reserva.getAsistencia()) {
                     reserva.setTiempoOcupacion(LocalTime.now());
-                    if (reservaDAO.modificarTiempoOcupacionFin(reserva)) {
-                    }
+                    reservaDAO.modificarTiempoOcupacionFin(reserva);
                     actualizarTablaMesasDeHoy();
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(this,
